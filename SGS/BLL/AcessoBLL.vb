@@ -1,8 +1,6 @@
 ﻿
 Public Class AcessoBLL
 
-
-
     Function ListaAcessos() As Object
         Dim obj As New DAL.AcessoDAL
 
