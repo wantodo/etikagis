@@ -186,6 +186,9 @@
         btnCancelar.Enabled = True
         btnCancelar.ImageUrl = "../imagens/no.ico"
 
+        btnFinalizar.Enabled = True
+        btnFinalizar.ImageUrl = "../imagens/accept.png"
+
         pnlMsg.Visible = False
     End Sub
 
@@ -201,6 +204,9 @@
 
         btnCancelar.Enabled = False
         btnCancelar.ImageUrl = "../imagens/no_disabled.png"
+
+        btnFinalizar.Enabled = True
+        btnFinalizar.ImageUrl = "../imagens/accept_disabled.png"
     End Sub
 
     Private Sub limpaCampos()
