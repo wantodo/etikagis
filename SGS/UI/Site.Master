@@ -1,0 +1,85 @@
+﻿<%@ Master Language="VB" AutoEventWireup="false" CodeBehind="Site.master.vb" Inherits="Backend.Site" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head id="Head1" runat="server">
+    <title></title>
+
+    <link href="Styles/Site.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="Form1" runat="server">
+    <div class="page">
+        <div class="header">
+            <div id="divLogo" class="loginDisplay" 
+                style="background-image: url('../Imagens/topo_sustentabilidade.jpg'); background-repeat: no-repeat;">
+                <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
+                    <AnonymousTemplate>
+                        [ <a href="~/Account/Login.aspx" ID="HeadLoginStatus" runat="server">Log In</a> ]
+                    </AnonymousTemplate>
+                    <LoggedInTemplate>
+                        Bem vindo <span class="bold"><asp:LoginName ID="HeadLoginName" runat="server" /></span>!
+                        [ <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="Log Out" LogoutPageUrl="~/UI/frmLogin.aspx" /> ]
+                    </LoggedInTemplate>
+                </asp:LoginView>
+            </div>
+            <div class="clear hideSkiplink" style="background-color: #458B00">
+                <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
+                    <Items>
+                        <asp:MenuItem NavigateUrl="~/UI/Default.aspx" Text="Home"/>
+                        <asp:MenuItem Text="Sistema" Value="Sistema">
+                            <asp:MenuItem Text="Usuário" 
+                                Value="Usuário" NavigateUrl="~/UI/frmUsuario.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="Status" 
+                                Value="Status" NavigateUrl="~/UI/frmStatus.aspx"></asp:MenuItem>
+                        </asp:MenuItem>
+                        <asp:MenuItem Text="Cadastro" Value="Cadastro">
+                            <asp:MenuItem Text="Empresas" Value="Empresas" 
+                                NavigateUrl="~/UI/frmEmpresa.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="Representante" Value="Representante" NavigateUrl="~/UI/frmRepresentante.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="Indicador" Value="Indicador" 
+                                NavigateUrl="~/UI/frmIndicador.aspx"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/UI/frmCategoria.aspx" Text="Categoria" 
+                                Value="Categoria"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/UI/frmSubcategoria.aspx" Text="Subcategoria" 
+                                Value="Subcategoria"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/UI/frmAspecto.aspx" Text="Aspecto" 
+                                Value="Aspecto"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/UI/frmQuestao.aspx" Text="Questão" Value="Questão">
+                            </asp:MenuItem>
+                        </asp:MenuItem>
+                        <asp:MenuItem Text="Operação" Value="Operação">
+                            <asp:MenuItem Text="Representante x Questões" Value="Representante x Questões" 
+                                NavigateUrl="~/UI/frmQuestaoRepresentante.aspx">
+                            </asp:MenuItem>
+                        </asp:MenuItem>
+                        <asp:MenuItem Text="Relatórios" Value="Relatórios">
+                            <asp:MenuItem Text="Relatório Final" Value="Relatório Final"></asp:MenuItem>
+                        </asp:MenuItem>
+                        <asp:MenuItem Text="Sair" Value="Sair">
+                        </asp:MenuItem>
+                    </Items>
+                </asp:Menu>
+            </div>
+        </div>
+        <div class="main">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+
+            
+        </div>
+        <div class="clear">
+        </div>
+
+        <div class="footer"><font style="font-size:9;font-family:verdana;font:900;">						
+						Desenvolvido por <a href="http://wantodo.com.br">WanToDo</a> Sistemas. 2014         
+        </div>
+
+    </div>
+    
+    </form>
+</body>
+</html>
+
+ 
