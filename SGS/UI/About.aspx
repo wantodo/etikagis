@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="About Us" Language="vb" MasterPageFile="~/Site.Master" AutoEventWireup="false"
-    CodeBehind="About.aspx.vb" Inherits="UI.About" %>
+    CodeBehind="About.aspx.vb" Inherits="Backend.About" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
 </asp:Content>
