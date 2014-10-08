@@ -233,4 +233,17 @@
         cmbStatus.Enabled = False
         gridQuestao.Enabled = False
     End Sub
+
+    Protected Sub btnFinalizar_Click(sender As Object, e As System.Web.UI.ImageClickEventArgs) Handles btnFinalizar.Click
+        Dim objRepresentanteBLL As New BLL.RepresentanteBLL
+        Dim objQuestionarioBLL As New BLL.QuestionarioBLL
+        Dim objQuestionario As New MODEL.Questionario
+
+        objRepresentanteBLL.RetornaRepresentante(objQuestionario.representante.cd_representante)
+
+        objQuestionarioBLL.EnviaEmailFinalizar(objQuestionario)
+        lblMsg.Text = "Seu questionario foi enviado para o Ponto Focal!"
+        lblMsg.ForeColor = Drawing.Color.Red
+        pnlMsg.Visible = True
+    End Sub
 End Class
