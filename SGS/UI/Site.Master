@@ -4,7 +4,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head id="Head1" runat="server">
     <title></title>
-
     <link href="Styles/Site.css" rel="stylesheet" type="text/css" />
     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
     </asp:ContentPlaceHolder>
@@ -54,6 +53,8 @@
                             <asp:MenuItem Text="Representante x Questões" Value="Representante x Questões" 
                                 NavigateUrl="~/UI/frmQuestaoRepresentante.aspx">
                             </asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/UI/frmAnaliseRespostas.aspx" 
+                                Text="Analise de Respostas" Value="Analise de Respostas"></asp:MenuItem>
                         </asp:MenuItem>
                         <asp:MenuItem Text="Relatórios" Value="Relatórios">
                             <asp:MenuItem Text="Relatório Final" Value="Relatório Final"></asp:MenuItem>

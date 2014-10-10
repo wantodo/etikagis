@@ -138,6 +138,7 @@
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.1.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <Content Include="UI\frmAnaliseRespostas.aspx" />
     <Content Include="UI\frmAspecto.aspx" />
     <Content Include="UI\frmCategoria.aspx" />
     <Content Include="UI\frmEmpresa.aspx" />
@@ -228,6 +229,13 @@
     <Compile Include="Site.Master.vb">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\frmAnaliseRespostas.aspx.designer.vb">
+      <DependentUpon>frmAnaliseRespostas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\frmAnaliseRespostas.aspx.vb">
+      <DependentUpon>frmAnaliseRespostas.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="UI\frmAspecto.aspx.designer.vb">
       <DependentUpon>frmAspecto.aspx</DependentUpon>
