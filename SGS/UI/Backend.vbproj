@@ -150,6 +150,7 @@
     <Content Include="UI\frmRepresentante.aspx" />
     <Content Include="UI\frmStatus.aspx" />
     <Content Include="UI\frmSubcategoria.aspx" />
+    <Content Include="UI\frmUsuario.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -313,6 +314,13 @@
     <Compile Include="UI\frmSubcategoria.aspx.vb">
       <DependentUpon>frmSubcategoria.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\frmUsuario.aspx.designer.vb">
+      <DependentUpon>frmUsuario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\frmUsuario.aspx.vb">
+      <DependentUpon>frmUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
