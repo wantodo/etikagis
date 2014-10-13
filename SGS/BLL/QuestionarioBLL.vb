@@ -36,11 +36,6 @@ Public Class QuestionarioBLL
         Dim sNomeRemetente As String = ""
         Dim sAssuntoEmail As String = ""
 
-        Dim Mailmsg As New System.Net.Mail.MailMessage()
-        Dim mSmtpCliente As New SmtpClient(sSMTPeMail)
-        Dim sEmailDest As String = seMailDestinatario
-        Dim Mensagem As MailMessage = New MailMessage()
-
         Try
 
             sSMTPeMail = "smtp.etikaconsultoria.com.br"
@@ -56,6 +51,11 @@ Public Class QuestionarioBLL
             Dim erro As New Exception("Falha ao obter configurações de email.")
         End Try
 
+        Dim sEmailDest As String = seMailDestinatario
+
+        Dim Mensagem As MailMessage = New MailMessage()
+        Dim Mailmsg As New System.Net.Mail.MailMessage()
+        Dim mSmtpCliente As New SmtpClient(sSMTPeMail)
 
         Mailmsg.From = New MailAddress(seMailRemetente, sNomeRemetente)
 
@@ -71,21 +71,27 @@ Public Class QuestionarioBLL
 
         Mailmsg.Attachments.Clear()
 
-        Try
-            Try
-                mSmtpCliente.Send(Mailmsg)
-            Catch ex As Exception
-                EnviaEmailFinalizar = False
-                Dim erro As New Exception("Houve um problema ao enviar seu email. Tente Novamente.")
-                Throw erro
-            End Try
-            Mailmsg.Attachments.Dispose()
-            Mailmsg.Dispose()
-        Catch ex As Exception
-            EnviaEmailFinalizar = False
-            Dim erro As New Exception("Houve um problema ao enviar seu email. Tente Novamente.")
-            Throw erro
-        End Try
+        mSmtpCliente.Send(Mailmsg)
+        Mailmsg.Attachments.Dispose()
+        Mailmsg.Dispose()
+        EnviaEmailFinalizar = True
+
+        'Try
+        '    Try
+        '        mSmtpCliente.Send(Mailmsg)
+        '        EnviaEmailFinalizar = True
+        '    Catch ex As Exception
+        '        EnviaEmailFinalizar = False
+        '        Dim erro As New Exception("Houve um problema ao enviar seu email. Tente Novamente.")
+        '        Throw erro
+        '    End Try
+        '    Mailmsg.Attachments.Dispose()
+        '    Mailmsg.Dispose()
+        'Catch ex As Exception
+        '    EnviaEmailFinalizar = False
+        '    Dim erro As New Exception("Houve um problema ao enviar seu email. Tente Novamente.")
+        '    Throw erro
+        'End Try
     End Function
 
 
