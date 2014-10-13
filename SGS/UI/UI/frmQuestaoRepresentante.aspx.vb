@@ -235,15 +235,61 @@
     End Sub
 
     Protected Sub btnFinalizar_Click(sender As Object, e As System.Web.UI.ImageClickEventArgs) Handles btnFinalizar.Click
-        Dim objRepresentanteBLL As New BLL.RepresentanteBLL
+        Dim i As Integer
+        Dim cont As Integer = 0
+        Dim cb As CheckBox
+        Dim dt As DataTable
         Dim objQuestionarioBLL As New BLL.QuestionarioBLL
-        Dim objQuestionario As New MODEL.Questionario
 
-        objRepresentanteBLL.RetornaRepresentante(objQuestionario.representante.cd_representante)
+        If gridQuestao.Rows.Count <= 0 Then
+            Exit Sub
+        End If
 
-        objQuestionarioBLL.EnviaEmailFinalizar(objQuestionario)
-        lblMsg.Text = "Seu questionario foi enviado para o Ponto Focal!"
-        lblMsg.ForeColor = Drawing.Color.Red
-        pnlMsg.Visible = True
+        'Verifico se existe questionário
+        For i = 0 To gridQuestao.Rows.Count - 1
+            cb = gridQuestao.Rows(i).Cells(0).FindControl("chkQuestao")
+
+            If cb.Checked Then
+                cont += 1
+            End If
+        Next
+
+        If cont = 0 Then
+            lblMsg.Text = "Não existe questionário para essa área!"
+            lblMsg.ForeColor = Drawing.Color.Red
+            pnlMsg.Visible = True
+            Exit Sub
+        Else
+            pnlMsg.Visible = False
+        End If
+
+
+        'Verifico ponto focal
+        dt = objQuestionarioBLL.RetornaPontoFocal(cmbEmpresa.SelectedValue).Tables(0)
+        If dt.Rows.Count <= 0 Then
+            lblMsg.Text = "Não existe um ponto focal para essa empresa!"
+            lblMsg.ForeColor = Drawing.Color.Red
+            pnlMsg.Visible = True
+            Exit Sub
+        Else
+            pnlMsg.Visible = False
+
+            pnlFinalizar.Visible = True
+        End If
+
+
+
+
+
+        'Dim objRepresentanteBLL As New BLL.RepresentanteBLL
+        'Dim objQuestionarioBLL As New BLL.QuestionarioBLL
+        'Dim objQuestionario As New MODEL.Questionario
+
+        'objRepresentanteBLL.RetornaRepresentante(objQuestionario.representante.cd_representante)
+
+        'objQuestionarioBLL.EnviaEmailFinalizar(objQuestionario)
+        'lblMsg.Text = "Seu questionario foi enviado para o Ponto Focal!"
+        'lblMsg.ForeColor = Drawing.Color.Red
+        'pnlMsg.Visible = True
     End Sub
 End Class

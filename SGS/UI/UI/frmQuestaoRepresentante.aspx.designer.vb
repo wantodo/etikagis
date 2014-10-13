@@ -167,6 +167,33 @@ Partial Public Class frmQuestaoRepresentante
     Protected WithEvents cmbStatus As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
+    '''pnlFinalizar control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents pnlFinalizar As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
+    '''btnSim control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnSim As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''btnNao control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnNao As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
     '''pnlQuestoes control.
     '''</summary>
     '''<remarks>
