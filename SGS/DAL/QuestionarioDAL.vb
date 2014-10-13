@@ -64,4 +64,29 @@ Public Class QuestionarioDAL
         End Try
     End Function
 
+    Public Function RetornaPontoFocal(codEmpresa As Integer) As DataSet
+        Try
+            Dim dal As New BDDAL(COMUM.strConexao, True)
+            Dim param() As SqlParameter
+
+            param = {dal.CriarParametro("@cd_empresa", SqlDbType.Int, codEmpresa)}
+
+            Return dal.GetDataSet("st_sgs_ponto_focal_s", CommandType.StoredProcedure, param)
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Function
+
+    Public Sub AlteraQuestionario(codRepresentante As Integer)
+        Try
+            Dim dal As New BDDAL(COMUM.strConexao, True)
+            Dim param() As SqlParameter
+
+            param = {dal.CriarParametro("@cd_representante", SqlDbType.Int, codRepresentante)}
+
+            dal.GetDataSet("st_sgs_questionario_u", CommandType.StoredProcedure, param)
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
 End Class
