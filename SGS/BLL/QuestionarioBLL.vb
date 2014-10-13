@@ -27,7 +27,7 @@ Public Class QuestionarioBLL
     End Function
 
 
-    Function EnviaEmailFinalizar(objQuestionario As MODEL.Questionario)
+    Public Function EnviaEmailFinalizar(objQuestionario As MODEL.Questionario)
         Dim obj As New DAL.QuestionarioDAL
         Dim sSMTPeMail As String = ""
         Dim sNomeDestinatario As String = ""
@@ -87,4 +87,18 @@ Public Class QuestionarioBLL
         End Try
     End Function
 
+
+    Public Function RetornaPontoFocal(codEmpresa As Integer) As DataSet
+        Dim obj As New DAL.QuestionarioDAL
+
+        Return obj.RetornaPontoFocal(codEmpresa)
+    End Function
+
+    Public Sub AlteraQuestionario(codRepresentante As Integer)
+        Dim obj As New DAL.QuestionarioDAL
+
+        obj.AlteraQuestionario(codRepresentante)
+    End Sub
 End Class
+
+
