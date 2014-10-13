@@ -14,7 +14,7 @@
         usuario.senha = Login1.Password
 
 
-        dtUsuario = objLoginBLL.Logar(usuario).Tables(0)
+        dtUsuario = objLoginBLL.Logar(usuario, 2).Tables(0)
 
         usuario.codigo = dtUsuario.Rows(0)("cd_usuario")
         usuario.acesso = dtUsuario.Rows(0)("cd_acesso")
