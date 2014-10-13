@@ -292,4 +292,29 @@
         'lblMsg.ForeColor = Drawing.Color.Red
         'pnlMsg.Visible = True
     End Sub
+
+    Protected Sub btnNao_Click(sender As Object, e As EventArgs) Handles btnNao.Click
+        pnlMsg.Visible = False
+        pnlFinalizar.Visible = False
+    End Sub
+
+    Protected Sub btnSim_Click(sender As Object, e As EventArgs) Handles btnSim.Click
+        Dim dt As DataTable
+        Dim objQuestionario As New MODEL.Questionario
+        Dim objQuestionarioBLL As New BLL.QuestionarioBLL
+
+        dt = objQuestionarioBLL.RetornaPontoFocal(cmbEmpresa.SelectedValue).Tables(0)
+        objQuestionario.representante.dc_email = dt.Rows(0)("dc_email").ToString
+        objQuestionario.representante.no_representante = dt.Rows(0)("no_representante").ToString
+        objQuestionario.representante.dc_area = cmbArea.SelectedItem.ToString
+
+        objQuestionarioBLL.EnviaEmailFinalizar(objQuestionario)
+
+        lblMsg.Text = "Questionário finalizado com sucesso!"
+        lblMsg.ForeColor = Drawing.Color.LightGreen
+        pnlMsg.Visible = True
+
+        limpaCampos()
+        desabilitaCampos()
+    End Sub
 End Class
