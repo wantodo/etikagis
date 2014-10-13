@@ -64,6 +64,7 @@ Public Class QuestionarioBLL
         Mailmsg.IsBodyHtml = True
 
         Mailmsg.Body = "<HTML>"
+        Mailmsg.Body += "Existe um questionário liberado para a área " & objQuestionario.representante.dc_area
         Mailmsg.Body += "</HTML>"
 
         Mailmsg.To.Add(New MailAddress(seMailDestinatario, sNomeDestinatario))
