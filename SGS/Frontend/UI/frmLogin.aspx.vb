@@ -16,14 +16,15 @@
 
         dtUsuario = objLoginBLL.Logar(usuario, 2).Tables(0)
 
-        usuario.codigo = dtUsuario.Rows(0)("cd_usuario")
-        usuario.acesso = dtUsuario.Rows(0)("cd_acesso")
+        usuario.codigo = dtUsuario.Rows(0)("cd_usuario")        
 
         Select Case usuario.codigo
             Case -1
                 Login1.FailureText = "Usuario e senha não estão corretos."
                 Exit Select
             Case Else
+                usuario.acesso = dtUsuario.Rows(0)("cd_acesso")
+
                 Session("sessionUser") = usuario.nomeUsuario
                 Session("sessionPassword") = usuario.senha
                 Session("codUsuario") = usuario.codigo
