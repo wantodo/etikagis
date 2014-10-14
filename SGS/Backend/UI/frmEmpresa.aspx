@@ -82,7 +82,7 @@
                                 								
 								    <tr>
 									    <td>CNPJ*</td> <td>
-                                        <asp:TextBox ID="txtCNPJ" runat="server" MaxLength="18" Width="202px" onkeyup="MascaraCNPJ(this, event)" onblur="ValidarCNPJ(this, event)"></asp:TextBox>
+                                        <asp:TextBox ID="txtCNPJ" runat="server" MaxLength="18" Width="202px" onkeyup="MascaraCNPJ(this, event);" onblur="ValidarCNPJ(this, event);"></asp:TextBox>
                                         </td>
 								    </tr>
 

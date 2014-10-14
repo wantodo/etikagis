@@ -6,7 +6,7 @@
             Response.Redirect("frmLogin.aspx")
         End If
 
-        'txtCNPJ.Attributes.Add("onkeypress", "return MascaraCNPJ(event);")
+
 
         desabilitaCampos()
 
