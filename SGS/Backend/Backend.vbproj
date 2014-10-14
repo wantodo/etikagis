@@ -131,6 +131,7 @@
     <Content Include="Imagens\topo_form2.jpg" />
     <Content Include="Imagens\topo_form_olho.jpg" />
     <Content Include="Imagens\topo_sustentabilidade.jpg" />
+    <Content Include="Scripts\mascara.js" />
     <Content Include="Styles\css_template_form.css" />
     <Content Include="Styles\Site.css" />
     <Content Include="UI\Default.aspx" />
