@@ -111,7 +111,7 @@
                                             </td>
 								        </tr>
                                     
-                                        <tr>
+                                        <%--<tr>
 									        <td>Status*</td> <td>  
                                                 <asp:UpdatePanel ID="pnlStatus" runat="server">
                                                     <ContentTemplate >                         
@@ -123,7 +123,7 @@
                                                     </Triggers>
                                                 </asp:UpdatePanel>
                                             </td>
-								        </tr>
+								        </tr>--%>
                                     </table>
                             </fieldset>                           
 					</td>
@@ -190,10 +190,7 @@
                             <Triggers>
                                 <asp:AsyncPostBackTrigger ControlID ="gridQuestao" />
                             </Triggers>
-                        </asp:UpdatePanel>                         
-                            <%--<br>
-                            <br>
-                            <asp:Button ID="btnSalvar" runat="server" Text="Salvar" style="margin-left:48%;" />           --%>                  
+                        </asp:UpdatePanel>                                
 					</td>
 				</tr>
                 

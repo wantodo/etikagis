@@ -12,7 +12,7 @@
 
         If Not IsPostBack Then
             carrega_cmbEmpresa()
-            carrega_cmbStatus()
+            'carrega_cmbStatus()
         End If
     End Sub
 
@@ -56,14 +56,14 @@
 
     End Sub
 
-    Private Sub carrega_cmbStatus()
-        Dim objQuestionarioBLL As New BLL.QuestionarioBLL
+    'Private Sub carrega_cmbStatus()
+    '    Dim objQuestionarioBLL As New BLL.QuestionarioBLL
 
-        cmbStatus.DataTextField = "dc_status"
-        cmbStatus.DataValueField = "cd_status"
-        cmbStatus.DataSource = objQuestionarioBLL.RetornaStatusQuestionario.Tables(0)
-        cmbStatus.DataBind()
-    End Sub
+    '    cmbStatus.DataTextField = "dc_status"
+    '    cmbStatus.DataValueField = "cd_status"
+    '    cmbStatus.DataSource = objQuestionarioBLL.RetornaStatusQuestionario.Tables(0)
+    '    cmbStatus.DataBind()
+    'End Sub
 
     Private Sub carrega_cmbEmpresa()
         Dim objEmpresaBLL As New BLL.EmpresaBLL
@@ -136,7 +136,7 @@
         Dim objQuestionario As New MODEL.Questionario
 
         If cmbEmpresa.SelectedItem.Text = "" Or cmbEmpresa.SelectedItem.Text = "<Selecione>" Or cmbCategoria.SelectedItem.Text = "" Or cmbCategoria.SelectedItem.Text = "<Selecione>" Or _
-           cmbArea.SelectedItem.Text = "" Or cmbArea.SelectedItem.Text = "<Selecione>" Or cmbStatus.SelectedItem.Text = "" Or cmbStatus.SelectedItem.Text = "<Selecione>" Then
+           cmbArea.SelectedItem.Text = "" Or cmbArea.SelectedItem.Text = "<Selecione>" Then
 
             lblMsg.Text = "Os campos com * são de preenchimento obrigatório!"
             lblMsg.ForeColor = Drawing.Color.Red
@@ -158,7 +158,7 @@
                 With objQuestionario
                     .questao.cd_questao = gridQuestao.Rows(i).Cells(2).Text
                     .representante.cd_representante = cmbArea.SelectedValue
-                    .status.cd_status = cmbStatus.SelectedValue
+                    .status.cd_status = 1
                     .nm_ordem = tx.Text
                     .no_userid = Session("sessionUser")
                 End With
@@ -214,7 +214,7 @@
         carrega_cmbEmpresa()
         carrega_cmbCategoria()
         carrega_cmbArea()
-        carrega_cmbStatus()
+        'carrega_cmbStatus()
         carregaGridQuestionario()
     End Sub
 
@@ -222,7 +222,7 @@
         cmbEmpresa.Enabled = True
         cmbCategoria.Enabled = True
         cmbArea.Enabled = True
-        cmbStatus.Enabled = True
+        'cmbStatus.Enabled = True
         gridQuestao.Enabled = True
     End Sub
 
@@ -230,7 +230,7 @@
         cmbEmpresa.Enabled = False
         cmbCategoria.Enabled = False
         cmbArea.Enabled = False
-        cmbStatus.Enabled = False
+        'cmbStatus.Enabled = False
         gridQuestao.Enabled = False
     End Sub
 

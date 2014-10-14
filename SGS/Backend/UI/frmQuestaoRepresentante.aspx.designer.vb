@@ -149,24 +149,6 @@ Partial Public Class frmQuestaoRepresentante
     Protected WithEvents lblRepresentante As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''pnlStatus control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents pnlStatus As Global.System.Web.UI.UpdatePanel
-
-    '''<summary>
-    '''cmbStatus control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents cmbStatus As Global.System.Web.UI.WebControls.DropDownList
-
-    '''<summary>
     '''pnlFinalizar control.
     '''</summary>
     '''<remarks>
