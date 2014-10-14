@@ -1,11 +1,11 @@
 ﻿/* DEFAULTS
 ----------------------------------------------------------*/
 
-body   
+body
 {
     background: #b6b7bc;
     font-size: .80em;
-    font-family: "Helvetica Neue", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
+    font-family: "Helvetica Neue" , "Lucida Grande" , "Segoe UI" , Arial, Helvetica, Verdana, sans-serif;
     margin: 0px;
     padding: 0px;
     color: #696969;
@@ -136,6 +136,8 @@ first child of the left and right table columns */
     margin: 0px auto;
     text-align: center;
     line-height: normal;
+    /*background-image: url(../imagens/footer_2.jpg);*/
+    width: 100%;
 }
 
 
@@ -144,8 +146,8 @@ first child of the left and right table columns */
 
 div.hideSkiplink
 {
-    background-color:#3a4f63;
-    width:100%;
+    background-color: #3a4f63;
+    width: 100%;
 }
 
 div.menu
@@ -163,7 +165,7 @@ div.menu ul
 
 div.menu ul li a, div.menu ul li a:visited
 {
-    background-color: #465c71;
+    background-color: #45993C;
     border: 1px #4e667d solid;
     color: #dde4ec;
     display: block;
@@ -187,6 +189,7 @@ div.menu ul li a:active
     text-decoration: none;
 }
 
+
 /* FORM ELEMENTS   
 ----------------------------------------------------------*/
 
@@ -197,7 +200,7 @@ fieldset
     border: 1px solid #ccc;
 }
 
-fieldset p 
+fieldset p
 {
     margin: 2px 12px 10px 10px;
 }
@@ -207,25 +210,25 @@ fieldset.login label, fieldset.register label, fieldset.changePassword label
     display: block;
 }
 
-fieldset label.inline 
+fieldset label.inline
 {
     display: inline;
 }
 
-legend 
+legend
 {
     font-size: 1.1em;
     font-weight: 600;
     padding: 2px 4px 8px 4px;
 }
 
-input.textEntry 
+input.textEntry
 {
     width: 320px;
     border: 1px solid #ccc;
 }
 
-input.passwordEntry 
+input.passwordEntry
 {
     width: 320px;
     border: 1px solid #ccc;
@@ -259,6 +262,7 @@ div.accountInfo
     text-align: right;
     padding: 10px;
     color: White;
+    height: 113px;
 }
 
 .loginDisplay a:link
@@ -292,3 +296,107 @@ div.accountInfo
     text-align: right;
     padding-right: 10px;
 }
+
+
+/* Formatação do Formulario
+-----------------------------------------------------------------------*/
+
+#navToolBar
+{
+    width: 120%;
+    height: 38px;
+    margin-top: -11px;
+    margin-left: -20px;
+    background-color: #EDEDED;
+}
+
+#navToolBar ul
+{
+    padding: 0px;
+    margin-top: 5px;
+    margin-left: 23%;
+    list-style: none;
+    width: 70%;
+}
+
+#navToolBar ul li
+{
+    display: inline;
+}
+
+#navToolBar ul li a
+{
+    padding: 2px 5px;
+    display: inline-block;
+    text-decoration: none;
+}
+
+#navToolBar ul li a:hover
+{
+    border-bottom: 3px solid #EA0000;
+}
+
+.tabForm
+{
+    margin-left: 20%;
+    margin-top: 35px;
+    height: 34px;
+    width: 91px;
+}
+
+
+.frame
+{
+    width: 60%;
+    margin-left: 25%;
+    margin-top: 10px;
+    border-color: #B0C4DE;
+}
+
+.style1
+{
+    height: 26px;
+}
+
+.style2
+{
+    width: 13px;
+}
+
+/* Formatação do Popup
+-----------------------------------------------------------------------*/
+#message_popup
+    {
+        display:none;
+        position:absolute;
+        top:20%;
+        left:25%;
+        padding:10px 20px;
+        width:500px;
+        height:200px;
+        border:0px solid #d0d0d0;
+        BACKGROUND: url(/Imagens/bg_box_message_popup.jpg) no-repeat top left;
+     }
+
+#tit_message_popup
+    {
+            font-size:small;
+            font-weight: bold;
+            font-family: Verdana;
+            color:#666;
+            line-height: 20px;
+            VERTICAL-ALIGN: top;
+            HEIGHT: 20px;
+            text-decoration: underline;
+     }  
+     
+#txt_message_popup
+    {
+            font-size:9pt;
+            font-family: Verdana;
+            padding:15px 10px;
+            color:Gray;
+            line-height: 20px;
+            VERTICAL-ALIGN: middle;
+            HEIGHT: 90px;
+     }    

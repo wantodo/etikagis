@@ -92,14 +92,24 @@
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
+    <Content Include="Imagens\add.ico" />
+    <Content Include="Imagens\add_disabled.png" />
+    <Content Include="Imagens\find.ico" />
+    <Content Include="Imagens\find_disabled.png" />
     <Content Include="Imagens\login_bg.png" />
-    <Content Include="Styles\Site.css" />
+    <Content Include="Imagens\no.ico" />
+    <Content Include="Imagens\no_disabled.png" />
+    <Content Include="Imagens\save.ico" />
+    <Content Include="Imagens\save_disabled.png" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.1.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <Content Include="Styles\css_template_form.css" />
+    <Content Include="Styles\Site.css" />
     <Content Include="UI\frmLogin.aspx" />
+    <Content Include="UI\frmResposta.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -185,6 +195,13 @@
     </Compile>
     <Compile Include="UI\frmLogin.aspx.vb">
       <DependentUpon>frmLogin.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="UI\frmResposta.aspx.designer.vb">
+      <DependentUpon>frmResposta.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\frmResposta.aspx.vb">
+      <DependentUpon>frmResposta.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
   </ItemGroup>
