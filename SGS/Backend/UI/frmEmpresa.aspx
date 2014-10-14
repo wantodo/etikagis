@@ -7,7 +7,7 @@
         }
     </style>  
 
-    <script language="JavaScript" type="text/javascript" src="../Scripts/mascara.js"></script> 
+   <%-- <script language="JavaScript" type="text/javascript" src="../Scripts/mascara.js"></script> --%>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -82,7 +82,7 @@
                                 								
 								    <tr>
 									    <td>CNPJ*</td> <td>
-                                        <asp:TextBox ID="txtCNPJ" runat="server" MaxLength="18" Width="202px" onkeypress="MascaraCNPJ(this, event)" onblur="ValidarCNPJ(this, event)"></asp:TextBox>
+                                        <asp:TextBox ID="txtCNPJ" runat="server" MaxLength="18" Width="202px"></asp:TextBox>
                                         </td>
 								    </tr>
 
