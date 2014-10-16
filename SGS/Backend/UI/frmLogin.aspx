@@ -18,7 +18,7 @@
 </style>
     
 </head>
-<body style="background-image: url(../Imagens/sustentabilidade-2.jpg); background-repeat: no-repeat; background-position:top;">
+<body style="background-repeat: no-repeat; background-position:top;">
     
     <form id="form1" runat="server">
         <table style="width: 100%" class="Centraliza">
