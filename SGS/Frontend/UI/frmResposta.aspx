@@ -17,24 +17,14 @@
 				<tr>
 					<td colspan="2">
 						<nav id="navToolBar">
-							<ul>
+							<ul style="margin-left:45%;">
                                 <li><asp:ImageButton id="btnNovo" runat="server" ImageUrl="~/Imagens/add.ico" 
                                         style="margin-top:5px;" EnableTheming="True" /> </li>
 								<li><asp:ImageButton id="btnGravar" runat="server" 
                                         ImageUrl="~/Imagens/save_disabled.png" Enabled="False" /></li>
 								<li><asp:ImageButton id="btnCancelar" runat="server" 
                                         ImageUrl="~/Imagens/no_disabled.png" Enabled="False" /></li>
-								<li><asp:Label ID="Label1" runat="server" Text="Filtro:" />
-                                    <asp:DropDownList id="cmbFiltro" runat="server" Width="180px" >
-                                        <asp:ListItem></asp:ListItem>
-                                        <asp:ListItem>Código</asp:ListItem>
-                                        <asp:ListItem>Descrição</asp:ListItem>
-                                        <asp:ListItem>Cod. Status</asp:ListItem>
-                                        <asp:ListItem>Status</asp:ListItem>
-                                    </asp:DropDownList>
-								    <asp:TextBox runat="server" id="txtFiltro" Width="171px" />                                	
-									    <asp:ImageButton id="btnConsultar" runat="server" ImageUrl="~/Imagens/find.ico" />
-								</li>					
+										
 								
 							</ul>
 						</nav>
@@ -58,8 +48,7 @@
                         <fieldset class="frame">	
 							<legend style="color:#B0C4DE;">Questão</legend>
 							    <table>
-								    <tr>
-									    <td>Questão</td>
+								    <tr>									    
                                         <td>
                                             <asp:Label ID="lblQuestao" runat="server" Font-Bold="True" />
                                         </td>
@@ -71,14 +60,13 @@
 
                 <tr>
 					<td colspan="2">
-                        <fieldset class="frame">	
+                        <fieldset id="frameResposta" runat="server" visible="false" class="frame">	
 							<legend style="color:#B0C4DE;">Resposta</legend>
 							    <table>                                    
-                                    <tr>
-									    <td>Resposta*</td>
+                                    <tr>									    
                                         <td>
-                                            <asp:TextBox ID="TextBox1" runat="server" MaxLength="8000" Width="402px" 
-                                                        Height="137px" TextMode="MultiLine"></asp:TextBox>
+                                            <asp:TextBox ID="txtResposta" runat="server" MaxLength="8000" Width="439px" 
+                                                        Height="137px" TextMode="MultiLine" style="margin-left:15px;"></asp:TextBox>
                                         </td>
 								    </tr>			    	                                   
 							    </table>                            								
