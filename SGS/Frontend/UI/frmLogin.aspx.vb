@@ -24,6 +24,7 @@
                 Exit Select
             Case Else
                 usuario.acesso = dtUsuario.Rows(0)("cd_acesso")
+                Session("codEmpresa") = dtUsuario.Rows(0)("cd_empresas")
 
                 Session("sessionUser") = usuario.nomeUsuario
                 Session("sessionPassword") = usuario.senha
