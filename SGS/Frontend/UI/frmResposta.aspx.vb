@@ -19,6 +19,7 @@
 
         objResposta.cd_acesso = Session("acesso")
         objResposta.cd_usuario = Session("codUsuario")
+        objResposta.cd_empresa = Session("codEmpresa")
 
         ds = objRespostaBLL.ListaResposta(objResposta)
         dt = ds.Tables(0)
