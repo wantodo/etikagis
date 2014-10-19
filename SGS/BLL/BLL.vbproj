@@ -89,6 +89,7 @@
     <Compile Include="QuestaoBLL.vb" />
     <Compile Include="QuestionarioBLL.vb" />
     <Compile Include="RepresentanteBLL.vb" />
+    <Compile Include="RespostaBLL.vb" />
     <Compile Include="StatusBLL.vb" />
     <Compile Include="SubCategoriaBLL.vb" />
     <Compile Include="UsuarioBLL.vb" />

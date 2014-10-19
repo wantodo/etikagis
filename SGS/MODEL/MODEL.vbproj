@@ -88,6 +88,7 @@
     <Compile Include="Questao.vb" />
     <Compile Include="Questionario.vb" />
     <Compile Include="Representante.vb" />
+    <Compile Include="Resposta.vb" />
     <Compile Include="Status.vb" />
     <Compile Include="SubCategoria.vb" />
     <Compile Include="Usuario.vb" />

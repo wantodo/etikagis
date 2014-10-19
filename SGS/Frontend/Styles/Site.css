@@ -253,6 +253,7 @@ div.accountInfo
     float: left;
     text-align: left;
     width: auto;
+    margin-bottom: 0px;
 }
 
 .loginDisplay
