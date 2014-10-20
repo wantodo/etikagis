@@ -94,6 +94,7 @@
     <Content Include="Account\Register.aspx" />
     <Content Include="Imagens\add.ico" />
     <Content Include="Imagens\add_disabled.png" />
+    <Content Include="Imagens\edit.png" />
     <Content Include="Imagens\find.ico" />
     <Content Include="Imagens\find_disabled.png" />
     <Content Include="Imagens\login_bg.png" />

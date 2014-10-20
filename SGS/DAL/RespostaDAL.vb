@@ -9,8 +9,8 @@ Public Class RespostaDAL
             Dim param() As SqlParameter
 
             param = {dal.CriarParametro("@cd_acesso", SqlDbType.Int, resposta.cd_acesso), _
-                     dal.CriarParametro("@cd_empresa", SqlDbType.Int, resposta.cd_empresa), _
-                     dal.CriarParametro("@cd_usuario", SqlDbType.Int, resposta.cd_usuario)}
+                     dal.CriarParametro("@cd_usuario", SqlDbType.Int, resposta.cd_usuario), _
+                     dal.CriarParametro("@cd_empresa", SqlDbType.Int, resposta.cd_empresa)}
 
             Return dal.GetDataSet("st_sgs_resposta_s", CommandType.StoredProcedure, param)
         Catch ex As Exception
