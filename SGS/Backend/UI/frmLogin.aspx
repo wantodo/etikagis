@@ -18,13 +18,21 @@
 </style>
     
 </head>
-<body style="background-repeat: no-repeat; background-position:top;">
+<body style="background-repeat: no-repeat; background-position:top; background-color:#CDC9C9;">
     
     <form id="form1" runat="server">
+
+        <div id="topoLogin" 
+            style="background-color:#228B22; background-image:url('../Imagens/topoLogo.png'); background-repeat:no-repeat; background-position:center; height: 228px;">
+            <%--<span style="margin-top:50px; margin-left:auto;">
+                <img src="../Imagens/topoLogo.png" style="height: 118px; width: 158px;">
+            </span>--%>
+        </div>
+        
         <table style="width: 100%" class="Centraliza">
             <tr>
                 <td>
-                        <div style="background-image:url('../Imagens/login_bg.png'); width:100%; background-repeat:no-repeat; background-position:center; margin-left:0px; margin-top:15%; height: 283px;">
+                        <div style="background-image:url('../Imagens/login_bg2.png'); width:100%; background-repeat:no-repeat; background-position:center; margin-left:0px; margin-top:7%; height: 283px;">
 						    <br>
                             
                             <div style="margin-top: 0px; margin-left:auto; margin-right:auto; position:inherit; top: 0px; left: 0px; width: 424px;">
@@ -32,7 +40,7 @@
                                 FailureText="Erro! Nome de Usuário ou senha incorretos!" LoginButtonText="Entrar" 
                                 PasswordLabelText="Senha &nbsp;" PasswordRequiredErrorMessage="Digite sua senha!" 
                                 RememberMeText="Lembrar meus dados." 
-                                TitleText="SGS - Sistema de Gestão Sustentável" UserNameLabelText="Usuário &nbsp;" 
+                                TitleText="Sistema GIS - Gestão de Indicadores de Sustentabilidade" UserNameLabelText="Usuário &nbsp;" 
                                 UserNameRequiredErrorMessage="Digite seu nome de usuário!" Height="204px" 
                                 style="margin-top: 0px; margin-left:0px; position:inherit; top: 0px; left: 0px;" 
                                 Font-Names="Arial" Font-Overline="False" Width="391px">

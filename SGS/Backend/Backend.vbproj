@@ -119,6 +119,7 @@
     <Content Include="Imagens\footer_2.jpg" />
     <Content Include="Imagens\fundo_topo.jpg" />
     <Content Include="Imagens\login_bg.png" />
+    <Content Include="Imagens\login_bg2.png" />
     <Content Include="Imagens\menu_bg.png" />
     <Content Include="Imagens\menu_bg1.png" />
     <Content Include="Imagens\menu_bg2.png" />
@@ -128,6 +129,7 @@
     <Content Include="Imagens\save_disabled.png" />
     <Content Include="Imagens\sustentabilidade-2.jpg" />
     <Content Include="Imagens\sustentabilidade-2_old.jpg" />
+    <Content Include="Imagens\topoLogo.png" />
     <Content Include="Imagens\topo_form2.jpg" />
     <Content Include="Imagens\topo_form_olho.jpg" />
     <Content Include="Imagens\topo_sustentabilidade.jpg" />
