@@ -87,12 +87,17 @@
                                                     <asp:GridView ID="gridItemQuestao" runat="server" 
                                                         style="margin-top: 0px; margin-left:auto; margin-right:auto;" 
                                                         CellPadding="4" ForeColor="#333333" 
-                                                        Font-Size="Small">
+                                                        Font-Size="Small" AutoGenerateColumns="False">
                                                         <AlternatingRowStyle BackColor="White" />
-                                                        <Columns>                                                            
+                                                        <Columns> 
+                                                            <asp:TemplateField HeaderText="Item">
+                                                                <ItemTemplate>
+                                                                    <asp:Label ID="lblItem" runat="server"></asp:Label>
+                                                                </ItemTemplate>
+                                                            </asp:TemplateField>
                                                             <asp:TemplateField HeaderText="Resposta">
                                                                 <ItemTemplate>
-                                                                    <asp:TextBox ID="txtResposta" runat="server" Width="500px"/>
+                                                                    <asp:TextBox ID="txtResposta" runat="server" Width="250px"/>
                                                                 </ItemTemplate>
                                                             </asp:TemplateField>
                                                         </Columns>
