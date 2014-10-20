@@ -272,14 +272,14 @@
     End Sub
 
     Private Sub carrega_cmbIndicador()
-        Dim objQuestaoBLL As New BLL.QuestaoBLL
+        Dim objIndicadorBLL As New BLL.IndicadorBLL
         Dim lista As New ListItem
 
         cmbIndicador.Items.Clear()
 
         cmbIndicador.DataTextField = "Indicador"
         cmbIndicador.DataValueField = "Código"
-        cmbIndicador.DataSource = objQuestaoBLL.RetornaIndicador(cmbAspecto.SelectedValue, 0).Tables(0)
+        cmbIndicador.DataSource = objIndicadorBLL.RetornaIndicador(cmbAspecto.SelectedValue, 0).Tables(0)
         cmbIndicador.DataBind()
 
         lista.Text = "<Selecione>"
@@ -288,10 +288,10 @@
     End Sub
 
     Private Sub carrega_descricao_indicador()
-        Dim objQuestaoBLL As New BLL.QuestaoBLL
+        Dim objIndicadorBLL As New BLL.IndicadorBLL
         Dim dt As DataTable
 
-        dt = objQuestaoBLL.RetornaIndicador(cmbAspecto.SelectedValue, cmbIndicador.SelectedValue).Tables(0)
+        dt = objIndicadorBLL.RetornaIndicador(cmbAspecto.SelectedValue, cmbIndicador.SelectedValue).Tables(0)
 
         txtQuestao.Text = dt.Rows(0)("Descrição").ToString
 

@@ -32,4 +32,11 @@ Public Class IndicadorBLL
 
         obj.ExcluirIndicador(codIndicador)
     End Sub
+
+    Public Function RetornaIndicador(cd_aspecto As Integer, cd_indicador As Integer) As DataSet
+        Dim obj As New DAL.IndicadorDAL
+
+        Return obj.RetornaIndicador(cd_aspecto, cd_indicador)
+    End Function
+
 End Class

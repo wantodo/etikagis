@@ -27,10 +27,10 @@ Public Class QuestaoBLL
         Return obj.RetornaAspecto(cd_categoria)
     End Function
 
-    Public Function RetornaIndicador(cd_aspecto As Integer, cd_indicador As Integer) As DataSet
+    Public Function RetornaQuestao(codQuestao As Integer) As DataSet
         Dim obj As New DAL.QuestaoDAL
 
-        Return obj.RetornaIndicador(cd_aspecto, cd_indicador)
+        Return obj.RetornaQuestao(codQuestao)
     End Function
 
     Public Sub InsereQuestao(questao As MODEL.Questao)

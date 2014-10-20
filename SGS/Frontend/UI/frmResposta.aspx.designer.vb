@@ -95,15 +95,6 @@ Partial Public Class frmResposta
     Protected WithEvents frameItem As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
-    '''pnlGridItem control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents pnlGridItem As Global.System.Web.UI.WebControls.Panel
-
-    '''<summary>
     '''gridItemQuestao control.
     '''</summary>
     '''<remarks>
