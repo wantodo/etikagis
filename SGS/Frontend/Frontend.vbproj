@@ -101,7 +101,7 @@
     <Content Include="Imagens\no_disabled.png" />
     <Content Include="Imagens\save.ico" />
     <Content Include="Imagens\save_disabled.png" />
-    <Content Include="Default.aspx" />
+    <Content Include="UI\Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.1.js" />
@@ -154,11 +154,11 @@
       <DependentUpon>Register.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-    <Compile Include="Default.aspx.vb">
+    <Compile Include="UI\Default.aspx.vb">
       <SubType>ASPXCodeBehind</SubType>
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Default.aspx.designer.vb">
+    <Compile Include="UI\Default.aspx.designer.vb">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.vb">
