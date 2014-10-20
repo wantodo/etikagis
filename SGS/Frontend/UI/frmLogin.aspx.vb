@@ -1,4 +1,9 @@
-﻿Public Class frmLogin
+﻿Imports System.Data
+Imports System.Configuration
+Imports System.Data.SqlClient
+Imports System.Web.Security
+
+Public Class frmLogin
     Inherits System.Web.UI.Page
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
@@ -16,7 +21,7 @@
 
         dtUsuario = objLoginBLL.Logar(usuario, 2).Tables(0)
 
-        usuario.codigo = dtUsuario.Rows(0)("cd_usuario")        
+        usuario.codigo = dtUsuario.Rows(0)("cd_usuario")
 
         Select Case usuario.codigo
             Case -1
