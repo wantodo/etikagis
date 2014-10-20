@@ -72,4 +72,22 @@
             e.Row.Cells(4).Visible = False
         End If
     End Sub
+
+    Private Sub gridItemQuestao_RowDataBound(sender As Object, e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles gridItemQuestao.RowDataBound
+        Dim lb As Label
+
+        If e.Row.RowType = DataControlRowType.Header Then
+            e.Row.Cells(0).Visible = False
+            e.Row.Cells(1).Visible = False
+        End If
+
+        If e.Row.RowType = DataControlRowType.DataRow Then
+            lb = e.Row.Cells(0).FindControl("lblItem")
+            lb.Text = e.Row.Cells(0).Text
+
+            e.Row.Cells(0).Visible = False
+            e.Row.Cells(1).Visible = False
+        End If
+
+    End Sub
 End Class
