@@ -65,7 +65,7 @@
 								    </tr>  
 
                                     <tr>
-									    <td>Categoria*</td> <td>        
+									    <td>Categoria</td> <td>        
                                         <asp:UpdatePanel ID="pnlCategoria" runat="server">
                                             <ContentTemplate >                     
                                                 <asp:DropDownList ID="cmbCategoria" AutoPostBack="true" runat="server" Width="476px" Height="19px">

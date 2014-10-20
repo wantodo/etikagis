@@ -135,7 +135,7 @@
         Dim objQuestionarioBLL As New BLL.QuestionarioBLL
         Dim objQuestionario As New MODEL.Questionario
 
-        If cmbEmpresa.SelectedItem.Text = "" Or cmbEmpresa.SelectedItem.Text = "<Selecione>" Or cmbCategoria.SelectedItem.Text = "" Or cmbCategoria.SelectedItem.Text = "<Selecione>" Or _
+        If cmbEmpresa.SelectedItem.Text = "" Or cmbEmpresa.SelectedItem.Text = "<Selecione>" Or _
            cmbArea.SelectedItem.Text = "" Or cmbArea.SelectedItem.Text = "<Selecione>" Then
 
             lblMsg.Text = "Os campos com * são de preenchimento obrigatório!"
@@ -146,7 +146,7 @@
             pnlMsg.Visible = False
         End If
 
-        objQuestionarioBLL.ExcluiQuestionario(cmbArea.SelectedValue)
+        objQuestionarioBLL.ExcluiQuestionario(cmbArea.SelectedValue, cmbCategoria.SelectedValue)
 
         For i As Integer = 0 To gridQuestao.Rows.Count - 1
 
