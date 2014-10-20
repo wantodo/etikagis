@@ -22,12 +22,13 @@ Public Class QuestionarioDAL
         End Try
     End Sub
 
-    Sub ExcluiQuestionario(idRepresentante As Integer)
+    Sub ExcluiQuestionario(idRepresentante As Integer, idCategoria As Integer)
         Try
             Dim dal As New BDDAL(COMUM.strConexao, True)
             Dim param() As SqlParameter
 
-            param = {dal.CriarParametro("@cd_representante", SqlDbType.Int, idRepresentante)}
+            param = {dal.CriarParametro("@cd_representante", SqlDbType.Int, idRepresentante), _
+                     dal.CriarParametro("@cd_categoria", SqlDbType.Int, idCategoria)}
 
             dal.ExecuteNonQuery("st_sgs_questionario_d", CommandType.StoredProcedure, param)
 
