@@ -11,15 +11,34 @@
 
             If Not Request.QueryString.Item("editar") Is Nothing Then
                 If Request.QueryString("editar").ToString = "1" Then
+
                     lblQuestao.Text = Request.QueryString("questao").ToString
 
                     If Request.QueryString("tipo").ToString.Equals("I") Then
                         frameResposta.Visible = True
+                        frameItem.Visible = False
+                    ElseIf Request.QueryString("tipo").ToString.Equals("Q") Then
+                        frameResposta.Visible = False
+                        frameItem.Visible = True
+                        carrega_gridItemQuestao(Request.QueryString("codQuestao").ToString)
                     End If
                 End If
             End If
         End If
 
+    End Sub
+
+    Private Sub carrega_gridItemQuestao(codQuestao As Integer)
+        Dim objQuestaoBLL As New BLL.QuestaoBLL
+        Dim ds As DataSet
+        Dim dt As DataTable
+        Dim dv As DataView
+
+        ds = objQuestaoBLL.ListaItemQuestao(codQuestao)
+        dv = ds.Tables(0).DefaultView
+        dt = ds.Tables(0)
+        gridItemQuestao.DataSource = dt
+        gridItemQuestao.DataBind()
     End Sub
 
     Private Sub carregagridQuestao()

@@ -13,6 +13,20 @@ Public Class IndicadorDAL
         End Try
     End Function
 
+    Public Function RetornaIndicador(cd_aspecto As Integer, cd_indicador As Integer) As DataSet
+        Try
+            Dim dal As New BDDAL(COMUM.strConexao, True)
+            Dim param() As SqlParameter
+
+            param = {dal.CriarParametro("@cd_aspecto", SqlDbType.VarChar, cd_aspecto), _
+                     dal.CriarParametro("@cd_indicador", SqlDbType.VarChar, cd_indicador)}
+
+            Return dal.GetDataSet("st_sgs_indicador_s", CommandType.StoredProcedure, param)
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Function
+
     Public Function RetornaStatusIndicador() As DataSet
         Try
             Dim dal As New BDDAL(COMUM.strConexao, True)
