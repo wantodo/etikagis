@@ -24,7 +24,7 @@
                     </AnonymousTemplate>
                     <LoggedInTemplate>
                         Bem Vindo <span class="bold"><asp:LoginName ID="HeadLoginName" runat="server" /></span>!
-                        [ <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="Log Out" LogoutPageUrl="~/"/> ]
+                        [ <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="Log Out" LogoutPageUrl="~/UI/frmLogin.aspx"/> ]
                     </LoggedInTemplate>
                 </asp:LoginView>
             </div>
