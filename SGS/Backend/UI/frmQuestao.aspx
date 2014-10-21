@@ -66,7 +66,14 @@
 								    <tr>
 									    <td>Código</td>
                                         <td>
-                                            <asp:TextBox ID="txtCodigo" runat="server" Enabled="False" Width="103px"></asp:TextBox>
+                                            <asp:UpdatePanel ID="pnlCodigo" runat="server">
+                                                <ContentTemplate >
+                                                    <asp:TextBox ID="txtCodigo" runat="server" Enabled="False" Width="103px"></asp:TextBox>
+                                                </ContentTemplate>
+                                                <Triggers>
+                                                    <asp:AsyncPostBackTrigger ControlID ="btnGravaItem" />
+                                                </Triggers>
+                                            </asp:UpdatePanel>
                                         </td>
 								    </tr>	
                                     
@@ -327,23 +334,30 @@
 					<td colspan="2">
                         <asp:Panel ID="Panel1"  runat="server" ScrollBars="auto" Width="900px" 
                             style="margin-left:10px; margin-top:20px; max-height:366px;">
-						    <asp:GridView ID="gridQuestao" runat="server" 
-                                style="margin-top: 0px; margin-left:auto; margin-right:auto;" 
-                                CellPadding="4" ForeColor="#333333" 
-                                Font-Size="Small">
-                                <AlternatingRowStyle BackColor="White" />
-                                <EditRowStyle BackColor="#7C6F57" />
-                                <FooterStyle BackColor="#1C5E55" ForeColor="White" Font-Bold="True" />
-                                <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" 
-                                    Height="30px" Wrap="False" />
-                                <PagerStyle BackColor="#666666" ForeColor="White" HorizontalAlign="Center" />
-                                <RowStyle BackColor="#E3EAEB" Wrap="False" />
-                                <SelectedRowStyle BackColor="#C5BBAF" Font-Bold="True" ForeColor="#333333" />
-                                <SortedAscendingCellStyle BackColor="#F8FAFA" />
-                                <SortedAscendingHeaderStyle BackColor="#246B61" />
-                                <SortedDescendingCellStyle BackColor="#D4DFE1" />
-                                <SortedDescendingHeaderStyle BackColor="#15524A" />
-                            </asp:GridView>
+                            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                                    <ContentTemplate > 
+						                <asp:GridView ID="gridQuestao" runat="server" 
+                                            style="margin-top: 0px; margin-left:auto; margin-right:auto;" 
+                                            CellPadding="4" ForeColor="#333333" 
+                                            Font-Size="Small">
+                                            <AlternatingRowStyle BackColor="White" />
+                                            <EditRowStyle BackColor="#7C6F57" />
+                                            <FooterStyle BackColor="#1C5E55" ForeColor="White" Font-Bold="True" />
+                                            <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" 
+                                                Height="30px" Wrap="False" />
+                                            <PagerStyle BackColor="#666666" ForeColor="White" HorizontalAlign="Center" />
+                                            <RowStyle BackColor="#E3EAEB" Wrap="False" />
+                                            <SelectedRowStyle BackColor="#C5BBAF" Font-Bold="True" ForeColor="#333333" />
+                                            <SortedAscendingCellStyle BackColor="#F8FAFA" />
+                                            <SortedAscendingHeaderStyle BackColor="#246B61" />
+                                            <SortedDescendingCellStyle BackColor="#D4DFE1" />
+                                            <SortedDescendingHeaderStyle BackColor="#15524A" />
+                                         </asp:GridView>
+                                      </ContentTemplate>
+                                            <Triggers>
+                                                <asp:AsyncPostBackTrigger ControlID ="btnGravaItem" />
+                                            </Triggers>
+                             </asp:UpdatePanel>
                         </asp:Panel>
 					</td>
 				</tr>
