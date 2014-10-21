@@ -29,15 +29,27 @@
     End Sub
 
     Private Sub carrega_gridItemQuestao(codQuestao As Integer)
+        'Dim objQuestaoBLL As New BLL.QuestaoBLL
+        'Dim ds As DataSet
+        'Dim dt As DataTable
+        'Dim dv As DataView
+
+        'ds = objQuestaoBLL.ListaItemQuestao(codQuestao)
+        'dv = ds.Tables(0).DefaultView
+        'dt = ds.Tables(0)
+        'gridItemQuestao.DataSource = dt
+        'gridItemQuestao.DataBind()
         Dim objQuestaoBLL As New BLL.QuestaoBLL
         Dim ds As DataSet
         Dim dt As DataTable
         Dim dv As DataView
 
+        'ds = objQuestionarioBLL.ListaQuestionario(1, 0, 0)
         ds = objQuestaoBLL.ListaItemQuestao(codQuestao)
         dv = ds.Tables(0).DefaultView
         dt = ds.Tables(0)
         gridItemQuestao.DataSource = dt
+
         gridItemQuestao.DataBind()
     End Sub
 
@@ -75,19 +87,27 @@
 
     Private Sub gridItemQuestao_RowDataBound(sender As Object, e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles gridItemQuestao.RowDataBound
         Dim lb As Label
+        Dim tx As TextBox
 
         If e.Row.RowType = DataControlRowType.Header Then
-            e.Row.Cells(0).Visible = False
-            e.Row.Cells(1).Visible = False
+            e.Row.Cells(2).Visible = False
+            e.Row.Cells(3).Visible = False
         End If
 
         If e.Row.RowType = DataControlRowType.DataRow Then
-            lb = e.Row.Cells(0).FindControl("lblItem")
-            lb.Text = e.Row.Cells(0).Text
 
-            e.Row.Cells(0).Visible = False
-            e.Row.Cells(1).Visible = False
+            e.Row.Cells(2).Visible = False
+            e.Row.Cells(3).Visible = False
+
+            lb = e.Row.Cells(0).FindControl("lblItem")
+            lb.Text = e.Row.Cells(3).Text
+
+            tx = e.Row.Cells(0).FindControl("txtResposta")
+            'tx.Text = e.Row.Cells(2).Text
+
+
         End If
 
     End Sub
+
 End Class

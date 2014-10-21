@@ -172,7 +172,7 @@ Public Class QuestaoDAL
 
             param = {dal.CriarParametro("@cd_questao", SqlDbType.Int, codQuestao)}
 
-            Return dal.GetDataSet("st_sgs_item_questao_s", CommandType.StoredProcedure, param)
+            Return dal.GetDataSet("st_sgs_item_resposta_s", CommandType.StoredProcedure, param)
         Catch ex As Exception
             Throw ex
         End Try
