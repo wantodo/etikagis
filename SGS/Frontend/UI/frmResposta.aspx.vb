@@ -16,12 +16,17 @@
 
                     habilitaEdicao()
 
-                    lblCodQuestionario.Text = Request.QueryString("codQuestionario").ToString
+                    'lblCodQuestionario.Text = Request.QueryString("codQuestionario").ToString
                     lblQuestao.Text = Request.QueryString("questao").ToString
 
                     If Request.QueryString("tipo").ToString.Equals("I") Then
                         frameResposta.Visible = True
                         frameItem.Visible = False
+
+                        If Request.QueryString("codStatus").ToString = 5 Then
+                            carrega_resposta(Request.QueryString("codQuestionario").ToString)
+                        End If
+
                     ElseIf Request.QueryString("tipo").ToString.Equals("Q") Then
                         frameResposta.Visible = False
                         frameItem.Visible = True
@@ -47,8 +52,37 @@
         gridItemQuestao.DataBind()
     End Sub
 
+    Private Sub gridItemQuestao_RowDataBound(sender As Object, e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles gridItemQuestao.RowDataBound
+        Dim lb As Label
+        Dim tx As TextBox
+
+        If e.Row.RowType = DataControlRowType.Header Then
+            e.Row.Cells(2).Visible = False
+            e.Row.Cells(3).Visible = False
+            e.Row.Cells(4).Visible = False
+        End If
+
+        If e.Row.RowType = DataControlRowType.DataRow Then
+
+            e.Row.Cells(2).Visible = False
+            e.Row.Cells(3).Visible = False
+            e.Row.Cells(4).Visible = False
+
+            lb = e.Row.Cells(0).FindControl("lblItem")
+            lb.Text = e.Row.Cells(3).Text
+
+            If e.Row.Cells(4).Text <> "&nbsp;" Then
+                tx = e.Row.Cells(0).FindControl("txtResposta")
+                tx.Text = e.Row.Cells(4).Text
+            End If
+
+
+        End If
+
+    End Sub
+
     Private Sub carregagridQuestao()
-        Dim objRespostaBLL As New BLL.RespostaBLL
+        Dim objQuestionarioBLL As New BLL.QuestionarioBLL
         Dim parametros() As String = {"cd_acesso", "cd_usuario", "cd_empresa"}
         Dim ds As DataSet
         Dim dt As DataTable
@@ -57,7 +91,7 @@
         parametros(1) = Session("codUsuario")
         parametros(2) = Session("codEmpresa")
 
-        ds = objRespostaBLL.ListaResposta(parametros)
+        ds = objQuestionarioBLL.RetornaQuestionarioRepresentante(parametros)
         dt = ds.Tables(0)
 
         gridQuestao.DataSource = dt
@@ -71,39 +105,16 @@
             e.Row.Cells(1).Visible = False
             e.Row.Cells(3).Visible = False
             e.Row.Cells(5).Visible = False
+            e.Row.Cells(6).Visible = False
         End If
 
         If e.Row.RowType = DataControlRowType.DataRow Then
-            e.Row.Cells(0).Text = "<a href='frmResposta.aspx?editar=1&codQuestionario=" & e.Row.Cells(1).Text & "&ordem=" & e.Row.Cells(2).Text & "&codQuestao=" & e.Row.Cells(3).Text & "&questao=" & e.Row.Cells(4).Text & "&tipo=" & e.Row.Cells(5).Text & "'><img src='../imagens/edit.png'></a>"
+            e.Row.Cells(0).Text = "<a href='frmResposta.aspx?editar=1&codQuestionario=" & e.Row.Cells(1).Text & "&ordem=" & e.Row.Cells(2).Text & "&codQuestao=" & e.Row.Cells(3).Text & "&questao=" & e.Row.Cells(4).Text & "&tipo=" & e.Row.Cells(5).Text & "&codStatus=" & e.Row.Cells(6).Text & "'><img src='../imagens/edit.png'></a>"
             e.Row.Cells(1).Visible = False
             e.Row.Cells(3).Visible = False
             e.Row.Cells(5).Visible = False
+            e.Row.Cells(6).Visible = False
         End If
-    End Sub
-
-    Private Sub gridItemQuestao_RowDataBound(sender As Object, e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles gridItemQuestao.RowDataBound
-        Dim lb As Label
-        Dim tx As TextBox
-
-        If e.Row.RowType = DataControlRowType.Header Then
-            e.Row.Cells(2).Visible = False
-            e.Row.Cells(3).Visible = False
-        End If
-
-        If e.Row.RowType = DataControlRowType.DataRow Then
-
-            e.Row.Cells(2).Visible = False
-            e.Row.Cells(3).Visible = False
-
-            lb = e.Row.Cells(0).FindControl("lblItem")
-            lb.Text = e.Row.Cells(3).Text
-
-            tx = e.Row.Cells(0).FindControl("txtResposta")
-            'tx.Text = e.Row.Cells(2).Text
-
-
-        End If
-
     End Sub
 
     Private Sub btnGravar_Click(sender As Object, e As System.EventArgs) Handles btnGravar.Click        
@@ -125,7 +136,7 @@
 
             With objResposta
                 .dc_resposta = txtResposta.Text
-                .questionario.cd_questionario = lblCodQuestionario.Text                
+                .questionario.cd_questionario = Request.QueryString("codQuestionario").ToString
                 .no_userid = Session("sessionUser")
             End With
 
@@ -229,5 +240,16 @@
     Private Sub desabilitaCampos()
 
     End Sub
+
+    Private Sub carrega_resposta(codQuestionario As Integer)
+        Dim objRespostaBLL As New BLL.RespostaBLL
+        Dim dt As DataTable
+
+        dt = objRespostaBLL.RetornaResposta(codQuestionario).Tables(0)
+
+        txtResposta.Text = dt.Rows(0)("Resposta").ToString
+    End Sub
+
+
 
 End Class

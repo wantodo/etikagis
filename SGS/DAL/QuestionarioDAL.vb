@@ -11,7 +11,6 @@ Public Class QuestionarioDAL
 
             param = {dal.CriarParametro("@cd_questao", SqlDbType.Int, objQuestionario.questao.cd_questao), _
                      dal.CriarParametro("@cd_representante", SqlDbType.Int, objQuestionario.representante.cd_representante), _
-                     dal.CriarParametro("@cd_status", SqlDbType.Int, objQuestionario.status.cd_status), _
                      dal.CriarParametro("@nm_ordem", SqlDbType.Int, objQuestionario.nm_ordem), _
                      dal.CriarParametro("@no_userid", SqlDbType.VarChar, objQuestionario.no_userid)}
 
@@ -78,16 +77,34 @@ Public Class QuestionarioDAL
         End Try
     End Function
 
-    Public Sub AlteraQuestionario(codRepresentante As Integer)
+    Public Sub AlteraQuestionario(codRepresentante As Integer, codStatus As Integer)
         Try
             Dim dal As New BDDAL(COMUM.strConexao, True)
             Dim param() As SqlParameter
 
-            param = {dal.CriarParametro("@cd_representante", SqlDbType.Int, codRepresentante)}
+            param = {dal.CriarParametro("@cd_status", SqlDbType.Int, codStatus), _
+                     dal.CriarParametro("@cd_questionario", SqlDbType.Int, 0), _
+                     dal.CriarParametro("@cd_representante", SqlDbType.Int, codRepresentante)}
 
             dal.GetDataSet("st_sgs_questionario_u", CommandType.StoredProcedure, param)
         Catch ex As Exception
             Throw ex
         End Try
     End Sub
+
+    Function RetornaQuestionarioRepresentante(parametros As Array) As DataSet
+        Try
+            Dim dal As New BDDAL(COMUM.strConexao, True)
+            Dim param() As SqlParameter
+
+            param = {dal.CriarParametro("@cd_acesso", SqlDbType.Int, parametros(0)), _
+                     dal.CriarParametro("@cd_usuario", SqlDbType.Int, parametros(1)), _
+                     dal.CriarParametro("@cd_empresa", SqlDbType.Int, parametros(2))}
+
+            Return dal.GetDataSet("st_sgs_questionario_representante_s", CommandType.StoredProcedure, param)
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Function
+
 End Class
