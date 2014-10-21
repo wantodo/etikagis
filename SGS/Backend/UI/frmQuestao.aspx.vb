@@ -398,6 +398,9 @@
         btnConsultar.Enabled = False
         btnConsultar.ImageUrl = "../imagens/find_disabled.png"
 
+        gridItemQuestao.DataSource = Nothing
+        gridItemQuestao.DataBind()
+
         pnlMsg.Visible = False
     End Sub
 
@@ -443,6 +446,7 @@
     Protected Sub btnGravaItem_Click(sender As Object, e As System.Web.UI.ImageClickEventArgs) Handles btnGravaItem.Click
         Dim objItemQuestao As New MODEL.ItemQuestao
         Dim objQuestaoBLL As New BLL.QuestaoBLL
+        Dim dt As DataTable
 
         'If txtItem.Text = "" Then
         '    lblMsg.Text = "Informe o item!"
@@ -455,6 +459,10 @@
 
         If txtCodigo.Text = "" Then
             btnGravar_Click(sender, e)
+            gridQuestao.DataBind()
+            dt = gridQuestao.DataSource
+            txtCodigo.Text = dt.Rows(dt.Rows.Count - 1)(2)
+            txtCodigo.AutoPostBack = True
         End If
 
         With objItemQuestao
@@ -604,7 +612,7 @@
             .no_userid = Session("sessionUser")
         End With
 
-        If btnNovo.Enabled = False Or txtCodigo.Text = "" Then
+        If (btnNovo.Enabled = False And txtCodigo.Text = "") Or txtCodigo.Text = "" Then
             objQuestaoBLL.InsereQuestao(objQuestao)
             carrega_gridQuestao()
 
