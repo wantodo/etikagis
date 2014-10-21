@@ -16,4 +16,10 @@ Public Class RespostaBLL
         Return obj.RetornaResposta(codQuestionario)
     End Function
 
+    Function ListaItemResposta(codQuestao As Integer) As DataSet
+        Dim obj As New DAL.RespostaDAL
+
+        Return obj.ListaItemResposta(codQuestao)
+    End Function
+
 End Class
