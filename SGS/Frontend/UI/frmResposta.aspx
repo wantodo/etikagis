@@ -85,14 +85,13 @@
                                             style="margin-left:0px; margin-top:0px; max-height:2    00px; max-width:465px;">
                                                     
                                                     <asp:GridView ID="gridItemQuestao" runat="server" 
-                                                        style="margin-top: 0px; margin-left:auto; margin-right:auto;" 
-                                                        CellPadding="4" ForeColor="#333333" 
-                                                        Font-Size="Small" AutoGenerateColumns="False">
+                                                        style="margin-top: 0px; margin-left:auto; margin-right:auto;" CellPadding="4" ForeColor="#333333" 
+                                                        Font-Size="Small">
                                                         <AlternatingRowStyle BackColor="White" />
-                                                        <Columns> 
+                                                        <Columns>
                                                             <asp:TemplateField HeaderText="Item">
                                                                 <ItemTemplate>
-                                                                    <asp:Label ID="lblItem" runat="server"></asp:Label>
+                                                                    <asp:Label ID="lblItem" runat="server" />
                                                                 </ItemTemplate>
                                                             </asp:TemplateField>
                                                             <asp:TemplateField HeaderText="Resposta">
