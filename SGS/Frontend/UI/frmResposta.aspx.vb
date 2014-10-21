@@ -132,10 +132,6 @@
             objRespostaBLL.InsereResposta(objResposta)
 
         Else
-            Dim dt As DataTable
-
-            dt = gridItemQuestao.DataSource
-
             For i As Integer = 0 To gridItemQuestao.Rows.Count - 1
 
                 tx = gridItemQuestao.Rows(i).Cells(0).FindControl("txtResposta")
