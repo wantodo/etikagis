@@ -132,6 +132,10 @@
             objRespostaBLL.InsereResposta(objResposta)
 
         Else
+            Dim dt As DataTable
+
+            dt = gridItemQuestao.DataSource
+
             For i As Integer = 0 To gridItemQuestao.Rows.Count - 1
 
                 tx = gridItemQuestao.Rows(i).Cells(0).FindControl("txtResposta")
@@ -139,7 +143,7 @@
                 With objResposta
                     .dc_resposta = tx.Text
                     .questionario.cd_questionario = lblCodQuestionario.Text
-                    .item.cd_item_questao =
+                    .item.cd_item_questao = gridItemQuestao.Rows(i).Cells(2).Text
                     .no_userid = Session("sessionUser")
                 End With
 
