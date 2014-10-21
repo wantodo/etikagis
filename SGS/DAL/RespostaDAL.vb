@@ -3,20 +3,6 @@ Imports System.Data.SqlClient
 Imports System.IO
 
 Public Class RespostaDAL
-    Public Function ListaResposta(parametros As Array) As DataSet
-        Try
-            Dim dal As New BDDAL(COMUM.strConexao, True)
-            Dim param() As SqlParameter
-
-            param = {dal.CriarParametro("@cd_acesso", SqlDbType.Int, parametros(0)), _
-                     dal.CriarParametro("@cd_usuario", SqlDbType.Int, parametros(1)), _
-                     dal.CriarParametro("@cd_empresa", SqlDbType.Int, parametros(2))}
-
-            Return dal.GetDataSet("st_sgs_resposta_s", CommandType.StoredProcedure, param)
-        Catch ex As Exception
-            Throw ex
-        End Try
-    End Function
 
     Sub InsereResposta(objResposta As MODEL.Resposta)
         Try
@@ -34,5 +20,18 @@ Public Class RespostaDAL
             Throw ex
         End Try
     End Sub
+
+    Function RetornaResposta(codQuestionario As Integer) As DataSet
+        Try
+            Dim dal As New BDDAL(COMUM.strConexao, True)
+            Dim param() As SqlParameter
+
+            param = {dal.CriarParametro("@cd_questionario", SqlDbType.Int, codQuestionario)}
+
+            Return dal.GetDataSet("st_sgs_resposta_s", CommandType.StoredProcedure, param)
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Function
 
 End Class

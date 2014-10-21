@@ -104,11 +104,18 @@ Public Class QuestionarioBLL
         Return obj.RetornaPontoFocal(codEmpresa)
     End Function
 
-    Public Sub AlteraQuestionario(codRepresentante As Integer)
+    Public Sub AlteraQuestionario(codRepresentante As Integer, codStatus As Integer)
         Dim obj As New DAL.QuestionarioDAL
 
-        obj.AlteraQuestionario(codRepresentante)
+        obj.AlteraQuestionario(codRepresentante, codStatus)
     End Sub
+
+    Function RetornaQuestionarioRepresentante(parametros As Array) As DataSet
+        Dim obj As New DAL.QuestionarioDAL
+
+        Return obj.RetornaQuestionarioRepresentante(parametros)
+    End Function
+
 End Class
 
 
