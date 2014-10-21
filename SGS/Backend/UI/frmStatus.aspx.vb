@@ -230,6 +230,7 @@
 
     Protected Sub btnConsultar_Click(sender As Object, e As System.Web.UI.ImageClickEventArgs) Handles btnConsultar.Click
         carregaGridStatus()
+        gridStatus.Focus()
     End Sub
 
     Private Sub gridStatus_RowDataBound(sender As Object, e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles gridStatus.RowDataBound

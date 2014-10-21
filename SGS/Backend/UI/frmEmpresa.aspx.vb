@@ -331,6 +331,7 @@
 
     Protected Sub btnConsultar_Click(sender As Object, e As System.Web.UI.ImageClickEventArgs) Handles btnConsultar.Click
         carregaGridEmpresa()
+        gridEmpresa.Focus()
     End Sub
 
     Private Sub habilitaCampos()

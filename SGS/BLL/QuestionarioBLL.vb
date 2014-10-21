@@ -39,13 +39,16 @@ Public Class QuestionarioBLL
         Try
 
             sSMTPeMail = "smtp.etikaconsultoria.com.br"
+            'sSMTPeMail = "smtp.duratex.com.br"
 
+            'seMailDestinatario = "diogo.bastos@duratex.com.br" 'objQuestionario.representante.dc_email
             seMailDestinatario = objQuestionario.representante.dc_email
             sNomeDestinatario = objQuestionario.representante.no_representante
 
-            seMailRemetente = "etika@etikaconsultoria.com.br​"
+            seMailRemetente = "mribeiro@etikaconsultoria.com.br​"
+            'seMailRemetente = "cadastro.fornecedores@duratex.com.br​"
             sNomeRemetente = "Etika Consultoria"
-            sAssuntoEmail = "Questionario Finalizado!"
+            sAssuntoEmail = "Questionário Finalizado!"
 
         Catch ex As Exception
             Dim erro As New Exception("Falha ao obter configurações de email.")
