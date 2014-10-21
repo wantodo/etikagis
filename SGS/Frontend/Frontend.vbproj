@@ -92,6 +92,8 @@
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
+    <Content Include="Imagens\accept.png" />
+    <Content Include="Imagens\accept_disabled.png" />
     <Content Include="Imagens\add.ico" />
     <Content Include="Imagens\add_disabled.png" />
     <Content Include="Imagens\edit.png" />

@@ -41,6 +41,15 @@ Partial Public Class frmResposta
     Protected WithEvents btnCancelar As Global.System.Web.UI.WebControls.ImageButton
 
     '''<summary>
+    '''btnFinalizar control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnFinalizar As Global.System.Web.UI.WebControls.ImageButton
+
+    '''<summary>
     '''pnlMsg control.
     '''</summary>
     '''<remarks>
@@ -57,6 +66,24 @@ Partial Public Class frmResposta
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents lblMsg As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''frameQuestao control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents frameQuestao As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
+    '''lblCodQuestionario control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents lblCodQuestionario As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
     '''lblQuestao control.
