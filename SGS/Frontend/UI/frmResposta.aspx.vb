@@ -39,12 +39,12 @@
     End Sub
 
     Private Sub carrega_gridItemQuestao(codQuestao As Integer)
-        Dim objQuestaoBLL As New BLL.QuestaoBLL
+        Dim objRespostaBLL As New BLL.RespostaBLL
         Dim ds As DataSet
         Dim dt As DataTable
         Dim dv As DataView
 
-        ds = objQuestaoBLL.ListaItemQuestao(codQuestao)
+        ds = objRespostaBLL.ListaItemResposta(codQuestao)
         dv = ds.Tables(0).DefaultView
         dt = ds.Tables(0)
         gridItemQuestao.DataSource = dt
