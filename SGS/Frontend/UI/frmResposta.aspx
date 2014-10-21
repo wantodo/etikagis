@@ -24,7 +24,8 @@
                                         ImageUrl="~/Imagens/save_disabled.png" Enabled="False" /></li>
 								<li><asp:ImageButton id="btnCancelar" runat="server" 
                                         ImageUrl="~/Imagens/no_disabled.png" Enabled="False" /></li>
-										
+								<li><asp:ImageButton id="btnFinalizar" runat="server" 
+                                        ImageUrl="~/Imagens/accept_disabled.png" Enabled="False" /></li>				
 								
 							</ul>
 						</nav>
@@ -45,10 +46,13 @@
 				
 				<tr>
 					<td colspan="2">
-                        <fieldset class="frame">	
+                        <fieldset id="frameQuestao" runat="server" visible="false" class="frame">	
 							<legend style="color:#B0C4DE;">Questão</legend>
 							    <table>
-								    <tr>									    
+								    <tr>	
+                                        <td>
+                                            <asp:Label ID="lblCodQuestionario" runat="server" Font-Bold="True" />
+                                        </td>								    
                                         <td>
                                             <asp:Label ID="lblQuestao" runat="server" Font-Bold="True" />
                                         </td>
