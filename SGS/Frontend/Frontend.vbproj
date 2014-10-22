@@ -96,6 +96,7 @@
     <Content Include="Imagens\accept_disabled.png" />
     <Content Include="Imagens\add.ico" />
     <Content Include="Imagens\add_disabled.png" />
+    <Content Include="Imagens\amarelo.png" />
     <Content Include="Imagens\edit.png" />
     <Content Include="Imagens\find.ico" />
     <Content Include="Imagens\find_disabled.png" />

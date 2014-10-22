@@ -114,6 +114,8 @@
                 e.Row.Cells(0).Text = "<img src='../imagens/vermelho.png'>"
             ElseIf e.Row.Cells(7).Text = 5 Then
                 e.Row.Cells(0).Text = "<img src='../imagens/verde.png'>"
+            ElseIf e.Row.Cells(7).Text = 6 Then
+                e.Row.Cells(0).Text = "<img src='../imagens/amarelo.png'>"
             End If
             e.Row.Cells(1).Text = "<a href='frmResposta.aspx?editar=1&codQuestionario=" & e.Row.Cells(2).Text & "&ordem=" & e.Row.Cells(3).Text & "&codQuestao=" & e.Row.Cells(4).Text & "&questao=" & e.Row.Cells(5).Text & "&tipo=" & e.Row.Cells(6).Text & "&codStatus=" & e.Row.Cells(7).Text & "'><img src='../imagens/edit.png'></a>"
             e.Row.Cells(2).Visible = False
@@ -233,7 +235,7 @@
 
         If objQuestionarioBLL.EnviaEmailQuestionarioRespondido(objQuestionario) Then
 
-            objQuestionarioBLL.AlteraQuestionario(objQuestionario.representante.cd_representante, 0, 4)
+            objQuestionarioBLL.AlteraQuestionario(objQuestionario.representante.cd_representante, 0, 6)
 
             lblMsg.Text = "Questionário finalizado com sucesso!"
             lblMsg.ForeColor = Drawing.Color.LightGreen
