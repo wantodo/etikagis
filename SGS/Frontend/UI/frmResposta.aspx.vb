@@ -16,7 +16,7 @@
 
                     habilitaEdicao()
 
-                    'lblCodQuestionario.Text = Request.QueryString("codQuestionario").ToString
+                    lblCodQuestionario.Text = Request.QueryString("ordem").ToString
                     lblQuestao.Text = Request.QueryString("questao").ToString
 
                     If Request.QueryString("tipo").ToString.Equals("I") Then
@@ -102,24 +102,31 @@
     Private Sub gridQuestao_RowDataBound(sender As Object, e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles gridQuestao.RowDataBound
         If e.Row.RowType = DataControlRowType.Header Then
             e.Row.Cells(0).Text = ""
-            e.Row.Cells(1).Visible = False
-            e.Row.Cells(3).Visible = False
-            e.Row.Cells(5).Visible = False
+            e.Row.Cells(1).Text = ""
+            e.Row.Cells(2).Visible = False
+            e.Row.Cells(4).Visible = False
             e.Row.Cells(6).Visible = False
+            e.Row.Cells(7).Visible = False
         End If
 
         If e.Row.RowType = DataControlRowType.DataRow Then
-            e.Row.Cells(0).Text = "<a href='frmResposta.aspx?editar=1&codQuestionario=" & e.Row.Cells(1).Text & "&ordem=" & e.Row.Cells(2).Text & "&codQuestao=" & e.Row.Cells(3).Text & "&questao=" & e.Row.Cells(4).Text & "&tipo=" & e.Row.Cells(5).Text & "&codStatus=" & e.Row.Cells(6).Text & "'><img src='../imagens/edit.png'></a>"
-            e.Row.Cells(1).Visible = False
-            e.Row.Cells(3).Visible = False
-            e.Row.Cells(5).Visible = False
+            If e.Row.Cells(7).Text = 4 Then
+                e.Row.Cells(0).Text = "<img src='../imagens/vermelho.png'>"
+            ElseIf e.Row.Cells(7).Text = 5 Then
+                e.Row.Cells(0).Text = "<img src='../imagens/verde.png'>"
+            End If
+            e.Row.Cells(1).Text = "<a href='frmResposta.aspx?editar=1&codQuestionario=" & e.Row.Cells(2).Text & "&ordem=" & e.Row.Cells(3).Text & "&codQuestao=" & e.Row.Cells(4).Text & "&questao=" & e.Row.Cells(5).Text & "&tipo=" & e.Row.Cells(6).Text & "&codStatus=" & e.Row.Cells(7).Text & "'><img src='../imagens/edit.png'></a>"
+            e.Row.Cells(2).Visible = False
+            e.Row.Cells(4).Visible = False
             e.Row.Cells(6).Visible = False
+            e.Row.Cells(7).Visible = False
         End If
     End Sub
 
     Private Sub btnGravar_Click(sender As Object, e As System.EventArgs) Handles btnGravar.Click        
         Dim tx As TextBox
         Dim objRespostaBLL As New BLL.RespostaBLL
+        Dim objQuestionarioBLL As New BLL.QuestionarioBLL
         Dim objResposta As New MODEL.Resposta
 
         If txtResposta.Visible = True And txtResposta.Text = "" Then
@@ -147,9 +154,17 @@
 
                 tx = gridItemQuestao.Rows(i).Cells(0).FindControl("txtResposta")
 
+                If tx.Text = "" Then
+                    lblMsg.Text = "O preenchimento dos itens é obrigatório!"
+                    lblMsg.ForeColor = Drawing.Color.Red
+                    pnlMsg.Visible = True
+                    Exit Sub
+                End If
+
                 With objResposta
                     .dc_resposta = tx.Text
-                    .questionario.cd_questionario = lblCodQuestionario.Text
+                    '.questionario.cd_questionario = lblCodQuestionario.Text
+                    .questionario.cd_questionario = Request.QueryString("codQuestionario").ToString
                     .item.cd_item_questao = gridItemQuestao.Rows(i).Cells(2).Text
                     .no_userid = Session("sessionUser")
                 End With
@@ -157,6 +172,8 @@
                 objRespostaBLL.InsereResposta(objResposta)
             Next
         End If
+
+        objQuestionarioBLL.AlteraQuestionario(0, Request.QueryString("codQuestionario").ToString, 5)
 
         lblMsg.Text = "Resposta cadastrada com sucesso!"
         lblMsg.ForeColor = Drawing.Color.LightGreen
@@ -211,7 +228,7 @@
         frameQuestao.Visible = False
         frameResposta.Visible = False
         frameItem.Visible = False
-        'carregagridQuestao()
+        carregagridQuestao()
     End Sub
 
     Private Sub habilitaEdicao()        

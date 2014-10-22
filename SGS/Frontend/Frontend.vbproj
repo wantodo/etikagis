@@ -104,6 +104,8 @@
     <Content Include="Imagens\no_disabled.png" />
     <Content Include="Imagens\save.ico" />
     <Content Include="Imagens\save_disabled.png" />
+    <Content Include="Imagens\verde.png" />
+    <Content Include="Imagens\vermelho.png" />
     <Content Include="UI\Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
