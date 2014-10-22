@@ -41,42 +41,6 @@ Partial Public Class frmAnaliseRespostas
     Protected WithEvents btnCancelar As Global.System.Web.UI.WebControls.ImageButton
 
     '''<summary>
-    '''Label1 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents Label1 As Global.System.Web.UI.WebControls.Label
-
-    '''<summary>
-    '''cmbFiltro control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents cmbFiltro As Global.System.Web.UI.WebControls.DropDownList
-
-    '''<summary>
-    '''txtFiltro control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtFiltro As Global.System.Web.UI.WebControls.TextBox
-
-    '''<summary>
-    '''btnConsultar control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents btnConsultar As Global.System.Web.UI.WebControls.ImageButton
-
-    '''<summary>
     '''pnlMsg control.
     '''</summary>
     '''<remarks>
@@ -93,6 +57,24 @@ Partial Public Class frmAnaliseRespostas
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents lblMsg As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''cmbEmpesa control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents cmbEmpesa As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''cmbArea control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents cmbArea As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
     '''txtCabecalho control.
@@ -165,6 +147,15 @@ Partial Public Class frmAnaliseRespostas
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents cmbStatus As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''txtRetorno control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtRetorno As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''pnlExcluir control.

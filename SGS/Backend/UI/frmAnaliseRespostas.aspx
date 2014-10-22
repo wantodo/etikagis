@@ -22,20 +22,7 @@
 								<li><asp:ImageButton id="btnGravar" runat="server" 
                                         ImageUrl="~/Imagens/save_disabled.png" Enabled="False" /></li>
 								<li><asp:ImageButton id="btnCancelar" runat="server" 
-                                        ImageUrl="~/Imagens/no_disabled.png" Enabled="False" /></li>
-								<li><asp:Label ID="Label1" runat="server" Text="Filtro:" />
-                                    <asp:DropDownList id="cmbFiltro" runat="server" Width="180px" >
-                                        <asp:ListItem></asp:ListItem>
-                                        <asp:ListItem>Código</asp:ListItem>
-                                        <asp:ListItem>Questão</asp:ListItem>
-                                        <asp:ListItem>Categoria</asp:ListItem>
-                                        <asp:ListItem>Indicador</asp:ListItem>
-                                        <asp:ListItem>Empresa</asp:ListItem>
-                                        <asp:ListItem>Status</asp:ListItem>
-                                    </asp:DropDownList>
-								    <asp:TextBox runat="server" id="txtFiltro" Width="171px" />                                	
-									    <asp:ImageButton id="btnConsultar" runat="server" ImageUrl="~/Imagens/find.ico" />
-								</li>					
+                                        ImageUrl="~/Imagens/no_disabled.png" Enabled="False" /></li>								
 								
 							</ul>
 						</nav>
@@ -53,7 +40,32 @@
                         </asp:panel>
                     </td>
                 </tr>
-				
+
+                <tr>
+				    <td colspan="2">
+                        <fieldset class="frame">	
+							<legend style="color:#B0C4DE;">Filtro</legend>
+							    <table>
+                                    <tr>
+                                        <td>Empresa*</td>
+                                        <td>                         
+                                            <asp:DropDownList ID="cmbEmpesa" runat="server" Width="402px" Height="17px">
+                                            </asp:DropDownList>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Área*</td>
+                                        <td>                         
+                                            <asp:DropDownList ID="cmbArea" runat="server" Width="402px" Height="17px">
+                                            </asp:DropDownList>
+                                        </td>
+                                    </tr>
+                                </table>
+                        </fieldset>
+                    </td> 
+                </tr>
+
 				<tr>
 					<td colspan="2">
                         <fieldset class="frame">	
@@ -110,6 +122,12 @@
 									    <td>Status*</td> <td>                         
                                         <asp:DropDownList ID="cmbStatus" runat="server" Width="202px">
                                         </asp:DropDownList>
+                                        </td>
+								    </tr>
+
+                                    <tr>
+									    <td>Retorno </td> <td style="margin-left: 40px">                                            
+                                            <asp:TextBox ID="txtRetorno" runat="server" MaxLength="8000" Width="402px" Height="93px" TextMode="MultiLine" Enabled="false"></asp:TextBox>                                                
                                         </td>
 								    </tr>
 							    </table>                            								
