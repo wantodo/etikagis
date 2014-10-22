@@ -12,8 +12,11 @@ Public Class frmLogin
 
     Protected Sub Login1_Authenticate(sender As Object, e As System.Web.UI.WebControls.AuthenticateEventArgs) Handles Login1.Authenticate
         Dim objLoginBLL As New BLL.LoginBLL
+        Dim objRepresentanteBLL As New BLL.RepresentanteBLL
         Dim usuario As New MODEL.Usuario
+        Dim representante As New MODEL.Representante
         Dim dtUsuario As DataTable
+        Dim dtRepresentante As DataTable
 
         usuario.nomeUsuario = Login1.UserName
         usuario.senha = Login1.Password
@@ -35,6 +38,16 @@ Public Class frmLogin
                 Session("sessionPassword") = usuario.senha
                 Session("codUsuario") = usuario.codigo
                 Session("acesso") = usuario.acesso
+
+                dtRepresentante = objRepresentanteBLL.RetornaRepresentante(, usuario.codigo).Tables(0)
+                representante.no_representante = dtRepresentante.Rows(0)("Nome")
+                representante.dc_email = dtRepresentante.Rows(0)("email")
+                representante.dc_area = dtRepresentante.Rows(0)("area")
+
+                Session("email") = representante.dc_email
+                Session("area") = representante.dc_area
+                Session("nome") = representante.no_representante
+
                 FormsAuthentication.RedirectFromLoginPage(Login1.UserName, Login1.RememberMeSet)
                 Exit Select
         End Select

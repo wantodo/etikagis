@@ -140,13 +140,13 @@ Partial Public Class frmResposta
     Protected WithEvents gridItemQuestao As Global.System.Web.UI.WebControls.GridView
 
     '''<summary>
-    '''pnlExcluir control.
+    '''pnlFinalizar control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents pnlExcluir As Global.System.Web.UI.WebControls.Panel
+    Protected WithEvents pnlFinalizar As Global.System.Web.UI.WebControls.Panel
 
     '''<summary>
     '''btnSim control.

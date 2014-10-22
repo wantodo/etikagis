@@ -1,10 +1,10 @@
 ﻿
 Public Class RepresentanteBLL
 
-    Function RetornaRepresentante(codRepresentante As Integer) As Object
+    Function RetornaRepresentante(Optional ByRef codRepresentante As Integer = 0, Optional ByVal codUsuario As Integer = 0) As DataSet
         Dim obj As New DAL.RepresentanteDAL
 
-        Return obj.RetornaRepresentante(codRepresentante)
+        Return obj.RetornaRepresentante(codRepresentante, codUsuario)
     End Function
 
     Function ListaRepresentante() As Object

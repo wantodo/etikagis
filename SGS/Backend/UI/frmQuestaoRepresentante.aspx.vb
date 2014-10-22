@@ -294,7 +294,7 @@
         objQuestionario.representante.no_representante = dt.Rows(0)("no_representante").ToString
         objQuestionario.representante.dc_area = cmbArea.SelectedItem.ToString
 
-        If objQuestionarioBLL.EnviaEmailFinalizar(objQuestionario) Then
+        If objQuestionarioBLL.EnviaEmailQuestionadioLiberado(objQuestionario) Then
 
             objQuestionarioBLL.AlteraQuestionario(objQuestionario.representante.cd_representante, 0, 4)
 
