@@ -129,11 +129,11 @@
             <table  border="0" cellpadding="0" cellspacing="0" width="800" height="100%">	
                 <tr>
                     <td colspan="2">
-                        <asp:Panel runat="server" ID="pnlExcluir" Visible="false" Height="44px">
+                        <asp:Panel runat="server" ID="pnlFinalizar" Visible="false" Height="44px">
                             <table width="99%" style="background-color:#FFDAB9; height: 41px; border:1px solid #CD3333; margin-left:10px;">
                                 <tr>
                                     <td class="style3">
-                                        <span style="margin-left:200px; font-size:medium; color:#CD3333;">Deseja excluir esse registro?</span>
+                                        <span style="margin-left:200px; font-size:medium; color:#CD3333;">Deseja finalizar o questionário?</span>
                                     </td> 
                                     <td>
                                         <asp:Button ID="btnSim" runat="server" Text="SIM" Width="76px" />

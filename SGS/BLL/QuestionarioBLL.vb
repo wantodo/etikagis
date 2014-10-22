@@ -26,8 +26,25 @@ Public Class QuestionarioBLL
         Return obj.RetornaStatusQuestionario
     End Function
 
+    Public Function RetornaPontoFocal(codEmpresa As Integer) As DataSet
+        Dim obj As New DAL.QuestionarioDAL
 
-    Public Function EnviaEmailFinalizar(objQuestionario As MODEL.Questionario)
+        Return obj.RetornaPontoFocal(codEmpresa)
+    End Function
+
+    Public Sub AlteraQuestionario(codRepresentante As Integer, codQuestionario As Integer, codStatus As Integer)
+        Dim obj As New DAL.QuestionarioDAL
+
+        obj.AlteraQuestionario(codRepresentante, codQuestionario, codStatus)
+    End Sub
+
+    Function RetornaQuestionarioRepresentante(parametros As Array) As DataSet
+        Dim obj As New DAL.QuestionarioDAL
+
+        Return obj.RetornaQuestionarioRepresentante(parametros)
+    End Function
+
+    Public Function EnviaEmailQuestionadioLiberado(objQuestionario As MODEL.Questionario)
         Dim obj As New DAL.QuestionarioDAL
         Dim sSMTPeMail As String = ""
         Dim sNomeDestinatario As String = ""
@@ -46,12 +63,14 @@ Public Class QuestionarioBLL
             sNomeDestinatario = objQuestionario.representante.no_representante
 
             'seMailRemetente = "mribeiro@etikaconsultoria.com.br​"
-            seMailRemetente = "cadastro.fornecedores@duratex.com.br​"
+            seMailRemetente = "diogo.bastos@duratex.com.br​"
             sNomeRemetente = "Etika Consultoria"
-            sAssuntoEmail = "Questionário Finalizado!"
+            sAssuntoEmail = "Questionário Liberado!"
 
         Catch ex As Exception
             Dim erro As New Exception("Falha ao obter configurações de email.")
+
+            EnviaEmailQuestionadioLiberado = False
         End Try
 
         Dim sEmailDest As String = seMailDestinatario
@@ -77,27 +96,63 @@ Public Class QuestionarioBLL
         mSmtpCliente.Send(Mailmsg)
         Mailmsg.Attachments.Dispose()
         Mailmsg.Dispose()
-        EnviaEmailFinalizar = True
+        EnviaEmailQuestionadioLiberado = True
 
     End Function
 
-
-    Public Function RetornaPontoFocal(codEmpresa As Integer) As DataSet
+    Function EnviaEmailQuestionarioRespondido(objQuestionario As MODEL.Questionario) As Boolean
         Dim obj As New DAL.QuestionarioDAL
+        Dim sSMTPeMail As String = ""
+        Dim sNomeDestinatario As String = ""
+        Dim seMailDestinatario As String = ""
+        Dim seMailRemetente As String = ""
+        Dim sNomeRemetente As String = ""
+        Dim sAssuntoEmail As String = ""
 
-        Return obj.RetornaPontoFocal(codEmpresa)
-    End Function
+        Try
 
-    Public Sub AlteraQuestionario(codRepresentante As Integer, codQuestionario As Integer, codStatus As Integer)
-        Dim obj As New DAL.QuestionarioDAL
+            'sSMTPeMail = "smtp.etikaconsultoria.com.br"
+            sSMTPeMail = "smtp.duratex.com.br"
 
-        obj.AlteraQuestionario(codRepresentante, codQuestionario, codStatus)
-    End Sub
+            'seMailDestinatario = "diogo.bastos@duratex.com.br" 'objQuestionario.representante.dc_email
+            seMailRemetente = objQuestionario.representante.dc_email
+            sNomeRemetente = objQuestionario.representante.no_representante
 
-    Function RetornaQuestionarioRepresentante(parametros As Array) As DataSet
-        Dim obj As New DAL.QuestionarioDAL
+            'seMailRemetente = "mribeiro@etikaconsultoria.com.br​"
+            seMailDestinatario = "diogo.bastos@duratex.com.br​"
+            sNomeDestinatario = "Etika Consultoria"
+            sAssuntoEmail = "Questionário Respondido!"
 
-        Return obj.RetornaQuestionarioRepresentante(parametros)
+        Catch ex As Exception
+            Dim erro As New Exception("Falha ao obter configurações de email.")
+
+            EnviaEmailQuestionarioRespondido = False
+        End Try
+
+        Dim sEmailDest As String = seMailDestinatario
+
+        Dim Mensagem As MailMessage = New MailMessage()
+        Dim Mailmsg As New System.Net.Mail.MailMessage()
+        Dim mSmtpCliente As New SmtpClient(sSMTPeMail)
+
+        Mailmsg.From = New MailAddress(seMailRemetente, sNomeRemetente)
+
+        Mailmsg.Subject = sAssuntoEmail
+        Mailmsg.BodyEncoding = System.Text.Encoding.UTF8
+        Mailmsg.IsBodyHtml = True
+
+        Mailmsg.Body = "<HTML>"
+        Mailmsg.Body += "O representante " & objQuestionario.representante.dc_area & " respondeu seu questionário!"
+        Mailmsg.Body += "</HTML>"
+
+        Mailmsg.To.Add(New MailAddress(seMailDestinatario, sNomeDestinatario))
+
+        Mailmsg.Attachments.Clear()
+
+        mSmtpCliente.Send(Mailmsg)
+        Mailmsg.Attachments.Dispose()
+        Mailmsg.Dispose()
+        EnviaEmailQuestionarioRespondido = True
     End Function
 
 End Class

@@ -128,6 +128,7 @@
         Dim objRespostaBLL As New BLL.RespostaBLL
         Dim objQuestionarioBLL As New BLL.QuestionarioBLL
         Dim objResposta As New MODEL.Resposta
+        Dim respondido As Boolean
 
         If txtResposta.Visible = True And txtResposta.Text = "" Then
 
@@ -180,10 +181,71 @@
         pnlMsg.Visible = True
         btnCancelar_Click(sender, e)
 
+        For i = 0 To gridQuestao.Rows.Count - 1
+            If gridQuestao.Rows(i).Cells(7).Text <> 5 Then
+                respondido = False
+                Exit For
+            Else
+                respondido = True
+            End If
+        Next
+
+        If respondido Then
+            pnlFinalizar.Visible = True
+        End If
+
     End Sub
 
     Protected Sub btnFinalizar_Click(sender As Object, e As System.Web.UI.ImageClickEventArgs) Handles btnFinalizar.Click
-       
+        If gridQuestao.Rows.Count <= 0 Then
+            Exit Sub
+        End If
+
+        For i = 0 To gridQuestao.Rows.Count - 1
+            If gridQuestao.Rows(i).Cells(7).Text <> 5 Then
+
+                lblMsg.Text = "O questionário deve ser todo respondido!"
+                lblMsg.ForeColor = Drawing.Color.Red
+                pnlMsg.Visible = True
+                Exit Sub
+            Else
+                pnlMsg.Visible = False
+
+                pnlFinalizar.Visible = True
+            End If
+        Next
+    End Sub
+
+    Protected Sub btnNao_Click(sender As Object, e As EventArgs) Handles btnNao.Click
+        pnlMsg.Visible = False
+        pnlFinalizar.Visible = False
+    End Sub
+
+    Protected Sub btnSim_Click(sender As Object, e As EventArgs) Handles btnSim.Click        
+        Dim objQuestionario As New MODEL.Questionario
+        Dim objQuestionarioBLL As New BLL.QuestionarioBLL
+
+        pnlFinalizar.Visible = False
+
+        objQuestionario.representante.dc_email = Session("email")
+        objQuestionario.representante.no_representante = Session("nome")
+        objQuestionario.representante.dc_area = Session("area")
+
+        If objQuestionarioBLL.EnviaEmailQuestionarioRespondido(objQuestionario) Then
+
+            objQuestionarioBLL.AlteraQuestionario(objQuestionario.representante.cd_representante, 0, 4)
+
+            lblMsg.Text = "Questionário finalizado com sucesso!"
+            lblMsg.ForeColor = Drawing.Color.LightGreen
+            pnlMsg.Visible = True
+        Else
+            lblMsg.Text = "Não foi possível finalizar o questionário."
+            lblMsg.ForeColor = Drawing.Color.Red
+            pnlMsg.Visible = True
+        End If
+
+        limpaCampos()
+        desabilitaCampos()
     End Sub
 
     Protected Sub btnNovo_Click(sender As Object, e As System.Web.UI.ImageClickEventArgs) Handles btnNovo.Click

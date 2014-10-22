@@ -4,15 +4,14 @@ Imports System.IO
 
 Public Class RepresentanteDAL
 
-    Function RetornaRepresentante(codRepresentante As Integer) As Object
+    Function RetornaRepresentante(Optional ByRef codRepresentante As Integer = 0, Optional ByVal codUsuario As Integer = 0) As DataSet
         Try
             Dim dal As New BDDAL(COMUM.strConexao, True)
 
             Dim param() As SqlParameter
 
-            param = {dal.CriarParametro("@cd_empresa", SqlDbType.Int, 0), _
-                     dal.CriarParametro("@dc_area", SqlDbType.VarChar, Nothing), _
-                     dal.CriarParametro("@cd_representante", SqlDbType.Int, codRepresentante)}
+            param = {dal.CriarParametro("@cd_representante", SqlDbType.Int, codRepresentante), _
+                     dal.CriarParametro("@cd_usuario", SqlDbType.Int, codUsuario)}
 
             Return dal.GetDataSet("st_sgs_representante_s", CommandType.StoredProcedure, param)
         Catch ex As Exception
