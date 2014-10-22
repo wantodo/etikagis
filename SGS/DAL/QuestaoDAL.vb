@@ -68,6 +68,19 @@ Public Class QuestaoDAL
         End Try
     End Function
 
+    Public Function ListaItemQuestao(codQuestao As Integer) As DataSet
+        Try
+            Dim dal As New BDDAL(COMUM.strConexao, True)
+            Dim param() As SqlParameter
+
+            param = {dal.CriarParametro("@cd_questao", SqlDbType.Int, codQuestao)}
+
+            Return dal.GetDataSet("st_sgs_item_questao_s", CommandType.StoredProcedure, param)
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Function
+
     Public Sub InsereQuestao(questao As MODEL.Questao)
         Try
             Dim dal As New BDDAL(COMUM.strConexao, True)
