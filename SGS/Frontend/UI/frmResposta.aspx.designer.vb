@@ -68,6 +68,24 @@ Partial Public Class frmResposta
     Protected WithEvents lblMsg As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
+    '''Panel1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Panel1 As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
+    '''gridQuestao control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents gridQuestao As Global.System.Web.UI.WebControls.GridView
+
+    '''<summary>
     '''frameQuestao control.
     '''</summary>
     '''<remarks>
@@ -165,22 +183,4 @@ Partial Public Class frmResposta
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents btnNao As Global.System.Web.UI.WebControls.Button
-
-    '''<summary>
-    '''Panel1 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents Panel1 As Global.System.Web.UI.WebControls.Panel
-
-    '''<summary>
-    '''gridQuestao control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents gridQuestao As Global.System.Web.UI.WebControls.GridView
 End Class
