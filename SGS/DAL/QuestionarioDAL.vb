@@ -11,6 +11,7 @@ Public Class QuestionarioDAL
 
             param = {dal.CriarParametro("@cd_questao", SqlDbType.Int, objQuestionario.questao.cd_questao), _
                      dal.CriarParametro("@cd_representante", SqlDbType.Int, objQuestionario.representante.cd_representante), _
+                     dal.CriarParametro("@cd_status", SqlDbType.Int, objQuestionario.status.cd_status), _
                      dal.CriarParametro("@nm_ordem", SqlDbType.Int, objQuestionario.nm_ordem), _
                      dal.CriarParametro("@no_userid", SqlDbType.VarChar, objQuestionario.no_userid)}
 
