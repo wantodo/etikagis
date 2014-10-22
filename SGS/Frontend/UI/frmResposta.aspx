@@ -43,30 +43,6 @@
                         </asp:panel>
                     </td>
                 </tr>
-
-                <tr>
-					<td colspan="2">
-                        <asp:Panel ID="Panel1"  runat="server" ScrollBars="Vertical"  
-                            style="margin-left:10px; margin-top:20px; max-height:366px; max-width:900px;">
-						    <asp:GridView ID="gridQuestao" runat="server" 
-                                style="margin-top: 0px; margin-left:auto; margin-right:auto;" CellPadding="4" ForeColor="#333333" 
-                                Font-Size="Small" Height="215px">
-                                <AlternatingRowStyle BackColor="White" />
-                                <EditRowStyle BackColor="#7C6F57" />
-                                <FooterStyle BackColor="#1C5E55" ForeColor="White" Font-Bold="True" />
-                                <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" 
-                                    Height="30px" Wrap="False" />
-                                <PagerStyle BackColor="#666666" ForeColor="White" HorizontalAlign="Center" />
-                                <RowStyle BackColor="#E3EAEB" Wrap="False" />
-                                <SelectedRowStyle BackColor="#C5BBAF" Font-Bold="True" ForeColor="#333333" />
-                                <SortedAscendingCellStyle BackColor="#F8FAFA" />
-                                <SortedAscendingHeaderStyle BackColor="#246B61" />
-                                <SortedDescendingCellStyle BackColor="#D4DFE1" />
-                                <SortedDescendingHeaderStyle BackColor="#15524A" />
-                            </asp:GridView>
-                        </asp:Panel>
-					</td>
-				</tr>
 				
 				<tr>
 					<td colspan="2">
@@ -168,7 +144,31 @@
                             </table>
                         </asp:Panel>
                     </td>
-                </tr>				
+                </tr>
+
+				<tr>
+					<td colspan="2">
+                        <asp:Panel ID="Panel1"  runat="server" ScrollBars="Vertical"  
+                            style="margin-left:10px; margin-top:20px; max-height:366px; max-width:900px;">
+						    <asp:GridView ID="gridQuestao" runat="server" 
+                                style="margin-top: 0px; margin-left:auto; margin-right:auto;" CellPadding="4" ForeColor="#333333" 
+                                Font-Size="Small" Height="215px">
+                                <AlternatingRowStyle BackColor="White" />
+                                <EditRowStyle BackColor="#7C6F57" />
+                                <FooterStyle BackColor="#1C5E55" ForeColor="White" Font-Bold="True" />
+                                <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" 
+                                    Height="30px" Wrap="False" />
+                                <PagerStyle BackColor="#666666" ForeColor="White" HorizontalAlign="Center" />
+                                <RowStyle BackColor="#E3EAEB" Wrap="False" />
+                                <SelectedRowStyle BackColor="#C5BBAF" Font-Bold="True" ForeColor="#333333" />
+                                <SortedAscendingCellStyle BackColor="#F8FAFA" />
+                                <SortedAscendingHeaderStyle BackColor="#246B61" />
+                                <SortedDescendingCellStyle BackColor="#D4DFE1" />
+                                <SortedDescendingHeaderStyle BackColor="#15524A" />
+                            </asp:GridView>
+                        </asp:Panel>
+					</td>
+				</tr>
 
                 <tr>
 					<td valign="top" height="100%">
