@@ -277,20 +277,6 @@
             pnlFinalizar.Visible = True
         End If
 
-
-
-
-
-        'Dim objRepresentanteBLL As New BLL.RepresentanteBLL
-        'Dim objQuestionarioBLL As New BLL.QuestionarioBLL
-        'Dim objQuestionario As New MODEL.Questionario
-
-        'objRepresentanteBLL.RetornaRepresentante(objQuestionario.representante.cd_representante)
-
-        'objQuestionarioBLL.EnviaEmailFinalizar(objQuestionario)
-        'lblMsg.Text = "Seu questionario foi enviado para o Ponto Focal!"
-        'lblMsg.ForeColor = Drawing.Color.Red
-        'pnlMsg.Visible = True
     End Sub
 
     Protected Sub btnNao_Click(sender As Object, e As EventArgs) Handles btnNao.Click
@@ -308,11 +294,18 @@
         objQuestionario.representante.no_representante = dt.Rows(0)("no_representante").ToString
         objQuestionario.representante.dc_area = cmbArea.SelectedItem.ToString
 
-        objQuestionarioBLL.EnviaEmailFinalizar(objQuestionario)
+        If objQuestionarioBLL.EnviaEmailFinalizar(objQuestionario) Then
 
-        lblMsg.Text = "Questionário finalizado com sucesso!"
-        lblMsg.ForeColor = Drawing.Color.LightGreen
-        pnlMsg.Visible = True
+            objQuestionarioBLL.AlteraQuestionario(objQuestionario.representante.cd_representante, 0, 4)
+
+            lblMsg.Text = "Questionário finalizado com sucesso!"
+            lblMsg.ForeColor = Drawing.Color.LightGreen
+            pnlMsg.Visible = True
+        Else
+            lblMsg.Text = "Não foi possível finalizar o questionário. Favor verificar o email de cadastro do Ponto Focal."
+            lblMsg.ForeColor = Drawing.Color.Red
+            pnlMsg.Visible = True
+        End If
 
         limpaCampos()
         desabilitaCampos()

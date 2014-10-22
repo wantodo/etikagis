@@ -38,15 +38,15 @@ Public Class QuestionarioBLL
 
         Try
 
-            sSMTPeMail = "smtp.etikaconsultoria.com.br"
-            'sSMTPeMail = "smtp.duratex.com.br"
+            'sSMTPeMail = "smtp.etikaconsultoria.com.br"
+            sSMTPeMail = "smtp.duratex.com.br"
 
             'seMailDestinatario = "diogo.bastos@duratex.com.br" 'objQuestionario.representante.dc_email
             seMailDestinatario = objQuestionario.representante.dc_email
             sNomeDestinatario = objQuestionario.representante.no_representante
 
-            seMailRemetente = "mribeiro@etikaconsultoria.com.br​"
-            'seMailRemetente = "cadastro.fornecedores@duratex.com.br​"
+            'seMailRemetente = "mribeiro@etikaconsultoria.com.br​"
+            seMailRemetente = "cadastro.fornecedores@duratex.com.br​"
             sNomeRemetente = "Etika Consultoria"
             sAssuntoEmail = "Questionário Finalizado!"
 
@@ -79,22 +79,6 @@ Public Class QuestionarioBLL
         Mailmsg.Dispose()
         EnviaEmailFinalizar = True
 
-        'Try
-        '    Try
-        '        mSmtpCliente.Send(Mailmsg)
-        '        EnviaEmailFinalizar = True
-        '    Catch ex As Exception
-        '        EnviaEmailFinalizar = False
-        '        Dim erro As New Exception("Houve um problema ao enviar seu email. Tente Novamente.")
-        '        Throw erro
-        '    End Try
-        '    Mailmsg.Attachments.Dispose()
-        '    Mailmsg.Dispose()
-        'Catch ex As Exception
-        '    EnviaEmailFinalizar = False
-        '    Dim erro As New Exception("Houve um problema ao enviar seu email. Tente Novamente.")
-        '    Throw erro
-        'End Try
     End Function
 
 
@@ -104,10 +88,10 @@ Public Class QuestionarioBLL
         Return obj.RetornaPontoFocal(codEmpresa)
     End Function
 
-    Public Sub AlteraQuestionario(codRepresentante As Integer, codStatus As Integer)
+    Public Sub AlteraQuestionario(codRepresentante As Integer, codQuestionario As Integer, codStatus As Integer)
         Dim obj As New DAL.QuestionarioDAL
 
-        obj.AlteraQuestionario(codRepresentante, codStatus)
+        obj.AlteraQuestionario(codRepresentante, codQuestionario, codStatus)
     End Sub
 
     Function RetornaQuestionarioRepresentante(parametros As Array) As DataSet

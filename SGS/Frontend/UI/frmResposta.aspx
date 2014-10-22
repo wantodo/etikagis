@@ -50,10 +50,9 @@
 							<legend style="color:#B0C4DE;">Questão</legend>
 							    <table>
 								    <tr>	
-                                        <td>
-                                            <asp:Label ID="lblCodQuestionario" runat="server" Font-Bold="True" />
-                                        </td>								    
-                                        <td>
+                                        <td> 
+                                            <asp:Label ID="lblCodQuestionario" runat="server" Font-Bold="True" />						    
+                                             - 
                                             <asp:Label ID="lblQuestao" runat="server" Font-Bold="True" />
                                         </td>
 								    </tr>                                                                          			    	                                   
