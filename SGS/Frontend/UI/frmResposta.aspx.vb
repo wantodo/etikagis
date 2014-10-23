@@ -30,7 +30,7 @@
                     ElseIf Request.QueryString("tipo").ToString.Equals("Q") Then
                         frameResposta.Visible = False
                         frameItem.Visible = True
-                        carrega_gridItemQuestao(Request.QueryString("codQuestao").ToString)
+                        carrega_gridItemQuestao(Request.QueryString("codQuestionario").ToString)
                     End If
                 End If
             End If
@@ -38,13 +38,13 @@
 
     End Sub
 
-    Private Sub carrega_gridItemQuestao(codQuestao As Integer)
+    Private Sub carrega_gridItemQuestao(codQuestionario As Integer)
         Dim objRespostaBLL As New BLL.RespostaBLL
         Dim ds As DataSet
         Dim dt As DataTable
         Dim dv As DataView
 
-        ds = objRespostaBLL.ListaItemResposta(codQuestao)
+        ds = objRespostaBLL.ListaItemResposta(codQuestionario)
         dv = ds.Tables(0).DefaultView
         dt = ds.Tables(0)
         gridItemQuestao.DataSource = dt
