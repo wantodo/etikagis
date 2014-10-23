@@ -104,7 +104,7 @@
 								    </tr>
 
                                     <tr>
-                                        <td><asp:Label runat="server" ID="lblItem">Item</asp:Label></td>
+                                        <td><asp:Label runat="server" ID="lblItem" Visible="False">Item</asp:Label></td>
 
                                          <td style="margin-left: 40px"> 
                                             <asp:Panel ID="pnlGridItem"  runat="server" ScrollBars="Auto"                                                 

@@ -116,6 +116,10 @@
     <Content Include="Imagens\edit.png" />
     <Content Include="Imagens\find.ico" />
     <Content Include="Imagens\find_disabled.png" />
+    <Content Include="Imagens\Flag_amarela.png" />
+    <Content Include="Imagens\Flag_azul.png" />
+    <Content Include="Imagens\Flag_verde.png" />
+    <Content Include="Imagens\Flag_vermelha.png" />
     <Content Include="Imagens\footer_2.jpg" />
     <Content Include="Imagens\fundo_topo.jpg" />
     <Content Include="Imagens\login_bg.png" />

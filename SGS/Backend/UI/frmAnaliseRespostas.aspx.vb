@@ -61,4 +61,36 @@
     Protected Sub cmbArea_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbArea.SelectedIndexChanged
         carregaGridQuestao()
     End Sub
+
+    Private Sub gridQuestao_RowDataBound(sender As Object, e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles gridQuestao.RowDataBound
+        If e.Row.RowType = DataControlRowType.Header Then
+            e.Row.Cells(0).Text = ""
+            e.Row.Cells(1).Text = ""
+            e.Row.Cells(7).Visible = False
+            e.Row.Cells(8).Visible = False
+        End If
+
+        If e.Row.RowType = DataControlRowType.DataRow Then
+            If e.Row.Cells(8).Text = 6 Then
+                e.Row.Cells(0).Text = "<img src='../imagens/Flag_vermelha.png'>"
+            End If
+
+            If e.Row.Cells(8).Text = 7 Then
+                e.Row.Cells(0).Text = "<img src='../imagens/Flag_amarela.png'>"
+            End If
+
+            If e.Row.Cells(8).Text = 8 Then
+                e.Row.Cells(0).Text = "<img src='../imagens/Flag_verde.png'>"
+            End If
+
+            If e.Row.Cells(8).Text = 9 Then
+                e.Row.Cells(0).Text = "<img src='../imagens/Flag_azul.png'>"
+            End If
+
+            e.Row.Cells(1).Text = "<a href='frmAnaliseRespostas.aspx?editar=1&cd_questionario=" & e.Row.Cells(2).Text & "&cd_questao=" & e.Row.Cells(4).Text & "&nm_indicador=" & e.Row.Cells(5).Text & "&dc_questao=" & e.Row.Cells(6).Text & "&xx_tipo=" & e.Row.Cells(7).Text & "&cd_status=" & e.Row.Cells(8).Text & "'><img src='../imagens/edit.png'></a>"
+            e.Row.Cells(7).Visible = False
+            e.Row.Cells(8).Visible = False
+        End If
+    End Sub
+
 End Class
