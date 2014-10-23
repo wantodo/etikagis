@@ -4,17 +4,17 @@ Imports System.IO
 
 Public Class RespostaBLL
 
-    Sub InsereResposta(objResposta As MODEL.Resposta)
+    Function InsereResposta(objResposta As MODEL.Resposta) As Boolean
         Dim obj As New DAL.RespostaDAL
 
-        obj.InsereResposta(objResposta)
-    End Sub
+        Return obj.InsereResposta(objResposta)
+    End Function
 
-    Sub AlteraResposta(objResposta As MODEL.Resposta)
+    Function AlteraResposta(objResposta As MODEL.Resposta) As Boolean
         Dim obj As New DAL.RespostaDAL
 
-        obj.AlteraResposta(objResposta)
-    End Sub
+        Return obj.AlteraResposta(objResposta)
+    End Function
 
     Function RetornaResposta(codQuestionario As Integer) As DataSet
         Dim obj As New DAL.RespostaDAL

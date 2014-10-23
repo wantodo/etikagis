@@ -4,7 +4,7 @@ Imports System.IO
 
 Public Class RespostaDAL
 
-    Sub InsereResposta(objResposta As MODEL.Resposta)
+    Function InsereResposta(objResposta As MODEL.Resposta) As Boolean
         Try
             Dim dal As New BDDAL(COMUM.strConexao, True)
             Dim param() As SqlParameter
@@ -16,12 +16,16 @@ Public Class RespostaDAL
 
             dal.ExecuteNonQuery("st_sgs_resposta_i", CommandType.StoredProcedure, param)
 
+            InsereResposta = True
+
         Catch ex As Exception
             Throw ex
-        End Try
-    End Sub
 
-    Sub AlteraResposta(objResposta As MODEL.Resposta)
+            InsereResposta = False
+        End Try
+    End Function
+
+    Function AlteraResposta(objResposta As MODEL.Resposta) As Boolean
         Try
             Dim dal As New BDDAL(COMUM.strConexao, True)
             Dim param() As SqlParameter
@@ -33,10 +37,14 @@ Public Class RespostaDAL
 
             dal.ExecuteNonQuery("st_sgs_resposta_u", CommandType.StoredProcedure, param)
 
+            AlteraResposta = True
+
         Catch ex As Exception
             Throw ex
+
+            AlteraResposta = False
         End Try
-    End Sub
+    End Function
 
     Public Function ListaItemResposta(codQuestionario As Integer) As DataSet
         Try
