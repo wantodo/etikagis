@@ -150,7 +150,11 @@
                 .no_userid = Session("sessionUser")
             End With
 
-            objRespostaBLL.InsereResposta(objResposta)
+            If Request.QueryString("codQuestionario").ToString = 4 Then
+                objRespostaBLL.InsereResposta(objResposta)
+            ElseIf Request.QueryString("codQuestionario").ToString = 5 Then
+                objRespostaBLL.AlteraResposta(objResposta)
+            End If
 
         Else
             For i As Integer = 0 To gridItemQuestao.Rows.Count - 1
@@ -166,13 +170,16 @@
 
                 With objResposta
                     .dc_resposta = tx.Text
-                    '.questionario.cd_questionario = lblCodQuestionario.Text
                     .questionario.cd_questionario = Request.QueryString("codQuestionario").ToString
                     .item.cd_item_questao = gridItemQuestao.Rows(i).Cells(2).Text
                     .no_userid = Session("sessionUser")
                 End With
 
-                objRespostaBLL.InsereResposta(objResposta)
+                If Request.QueryString("codQuestionario").ToString = 4 Then
+                    objRespostaBLL.InsereResposta(objResposta)
+                ElseIf Request.QueryString("codQuestionario").ToString = 5 Then
+                    objRespostaBLL.AlteraResposta(objResposta)
+                End If
             Next
         End If
 
@@ -229,6 +236,7 @@
 
         pnlFinalizar.Visible = False
 
+        objQuestionario.representante.cd_representante = Session("codRepresentante")
         objQuestionario.representante.dc_email = Session("email")
         objQuestionario.representante.no_representante = Session("nome")
         objQuestionario.representante.dc_area = Session("area")

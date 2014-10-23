@@ -40,10 +40,12 @@ Public Class frmLogin
                 Session("acesso") = usuario.acesso
 
                 dtRepresentante = objRepresentanteBLL.RetornaRepresentante(, usuario.codigo).Tables(0)
+                representante.cd_representante = dtRepresentante.Rows(0)("Código")
                 representante.no_representante = dtRepresentante.Rows(0)("Nome")
                 representante.dc_email = dtRepresentante.Rows(0)("email")
                 representante.dc_area = dtRepresentante.Rows(0)("area")
 
+                Session("codRepresentante") = representante.cd_representante
                 Session("email") = representante.dc_email
                 Session("area") = representante.dc_area
                 Session("nome") = representante.no_representante
