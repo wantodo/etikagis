@@ -22,10 +22,10 @@ Public Class RespostaBLL
         Return obj.RetornaResposta(codQuestionario)
     End Function
 
-    Function ListaItemResposta(codQuestao As Integer) As DataSet
+    Function ListaItemResposta(codQuestionario As Integer) As DataSet
         Dim obj As New DAL.RespostaDAL
 
-        Return obj.ListaItemResposta(codQuestao)
+        Return obj.ListaItemResposta(codQuestionario)
     End Function
 
 End Class

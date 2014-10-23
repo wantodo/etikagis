@@ -35,7 +35,6 @@ Public Class frmLogin
                 Session("codEmpresa") = dtUsuario.Rows(0)("cd_empresa")
 
                 Session("sessionUser") = usuario.nomeUsuario
-                Session("sessionPassword") = usuario.senha
                 Session("codUsuario") = usuario.codigo
                 Session("acesso") = usuario.acesso
 

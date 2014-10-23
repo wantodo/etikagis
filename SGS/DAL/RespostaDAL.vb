@@ -38,12 +38,12 @@ Public Class RespostaDAL
         End Try
     End Sub
 
-    Public Function ListaItemResposta(codQuestao As Integer) As DataSet
+    Public Function ListaItemResposta(codQuestionario As Integer) As DataSet
         Try
             Dim dal As New BDDAL(COMUM.strConexao, True)
             Dim param() As SqlParameter
 
-            param = {dal.CriarParametro("@cd_questao", SqlDbType.Int, codQuestao)}
+            param = {dal.CriarParametro("@cd_questionario", SqlDbType.Int, codQuestionario)}
 
             Return dal.GetDataSet("st_sgs_item_resposta_s", CommandType.StoredProcedure, param)
         Catch ex As Exception

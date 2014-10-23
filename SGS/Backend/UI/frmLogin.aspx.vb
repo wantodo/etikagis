@@ -31,7 +31,6 @@ Public Class frmLogin
                 usuario.acesso = dtUsuario.Rows(0)("cd_acesso")
 
                 Session("sessionUser") = usuario.nomeUsuario
-                Session("sessionPassword") = usuario.senha
                 Session("codUsuario") = usuario.codigo
                 Session("acesso") = usuario.acesso
                 FormsAuthentication.RedirectFromLoginPage(Login1.UserName, Login1.RememberMeSet)
