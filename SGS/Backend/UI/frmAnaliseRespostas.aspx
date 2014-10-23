@@ -8,8 +8,8 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-   <%-- <asp:ScriptManager ID="ScriptManager2" runat="server">
-    </asp:ScriptManager>--%>
+     <asp:ScriptManager ID="ScriptManager2" runat="server">
+    </asp:ScriptManager>
     <table border="0" cellpadding="0" cellspacing="0" width="800" height="100%">
 				
 				
@@ -48,17 +48,31 @@
 							    <table>
                                     <tr>
                                         <td>Empresa*</td>
-                                        <td>                         
-                                            <asp:DropDownList ID="cmbEmpesa" runat="server" Width="402px" Height="17px">
-                                            </asp:DropDownList>
+                                        <td>    
+                                            <asp:UpdatePanel ID="pnlEmpresa" runat="server">
+                                                <ContentTemplate >                     
+                                                    <asp:DropDownList AutoPostBack="true" ID="cmbEmpresa" runat="server" Width="269px" Height="17px">
+                                                    </asp:DropDownList>
+                                                </ContentTemplate>
+                                                <Triggers>
+                                                    <asp:AsyncPostBackTrigger ControlID ="cmbEmpresa" />
+                                                </Triggers>
+                                            </asp:UpdatePanel>
                                         </td>
                                     </tr>
 
                                     <tr>
                                         <td>Área*</td>
                                         <td>                         
-                                            <asp:DropDownList ID="cmbArea" runat="server" Width="402px" Height="17px">
-                                            </asp:DropDownList>
+                                            <asp:UpdatePanel ID="pnlArea" runat="server">
+                                                    <ContentTemplate >                     
+                                                        <asp:DropDownList ID="cmbArea" AutoPostBack="true" runat="server" Width="269px" Height="22px" Enabled="false">
+                                                        </asp:DropDownList>
+                                                    </ContentTemplate>
+                                                    <Triggers>
+                                                        <asp:AsyncPostBackTrigger ControlID ="cmbArea" />
+                                                    </Triggers>
+                                                </asp:UpdatePanel>
                                         </td>
                                     </tr>
                                 </table>
@@ -180,23 +194,31 @@
 					<td colspan="2">
                         <asp:Panel ID="Panel1"  runat="server" ScrollBars="auto" Width="900px" 
                             style="margin-left:10px; margin-top:20px; max-height:366px;">
-						    <asp:GridView ID="gridQuestao" runat="server" 
-                                style="margin-top: 0px; margin-left:auto; margin-right:auto;" 
-                                CellPadding="4" ForeColor="#333333" 
-                                Font-Size="Small">
-                                <AlternatingRowStyle BackColor="White" />
-                                <EditRowStyle BackColor="#7C6F57" />
-                                <FooterStyle BackColor="#1C5E55" ForeColor="White" Font-Bold="True" />
-                                <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" 
-                                    Height="30px" Wrap="False" />
-                                <PagerStyle BackColor="#666666" ForeColor="White" HorizontalAlign="Center" />
-                                <RowStyle BackColor="#E3EAEB" Wrap="False" />
-                                <SelectedRowStyle BackColor="#C5BBAF" Font-Bold="True" ForeColor="#333333" />
-                                <SortedAscendingCellStyle BackColor="#F8FAFA" />
-                                <SortedAscendingHeaderStyle BackColor="#246B61" />
-                                <SortedDescendingCellStyle BackColor="#D4DFE1" />
-                                <SortedDescendingHeaderStyle BackColor="#15524A" />
-                            </asp:GridView>
+
+                            <asp:UpdatePanel ID="pnlQuestao" runat="server">
+                                <ContentTemplate >
+						            <asp:GridView ID="gridQuestao" runat="server" 
+                                        style="margin-top: 0px; margin-left:auto; margin-right:auto;" 
+                                        CellPadding="4" ForeColor="#333333" 
+                                        Font-Size="Small">
+                                        <AlternatingRowStyle BackColor="White" />
+                                        <EditRowStyle BackColor="#7C6F57" />
+                                        <FooterStyle BackColor="#1C5E55" ForeColor="White" Font-Bold="True" />
+                                        <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" 
+                                            Height="30px" Wrap="False" />
+                                        <PagerStyle BackColor="#666666" ForeColor="White" HorizontalAlign="Center" />
+                                        <RowStyle BackColor="#E3EAEB" Wrap="False" />
+                                        <SelectedRowStyle BackColor="#C5BBAF" Font-Bold="True" ForeColor="#333333" />
+                                        <SortedAscendingCellStyle BackColor="#F8FAFA" />
+                                        <SortedAscendingHeaderStyle BackColor="#246B61" />
+                                        <SortedDescendingCellStyle BackColor="#D4DFE1" />
+                                        <SortedDescendingHeaderStyle BackColor="#15524A" />
+                                    </asp:GridView>
+                                </ContentTemplate>     
+                                <Triggers>
+                                    <asp:AsyncPostBackTrigger ControlID ="cmbArea" />
+                                </Triggers>
+                            </asp:UpdatePanel>
                         </asp:Panel>
 					</td>
 				</tr>

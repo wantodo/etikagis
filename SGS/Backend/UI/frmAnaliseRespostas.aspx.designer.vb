@@ -14,6 +14,15 @@ Option Explicit On
 Partial Public Class frmAnaliseRespostas
 
     '''<summary>
+    '''ScriptManager2 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ScriptManager2 As Global.System.Web.UI.ScriptManager
+
+    '''<summary>
     '''btnNovo control.
     '''</summary>
     '''<remarks>
@@ -59,13 +68,31 @@ Partial Public Class frmAnaliseRespostas
     Protected WithEvents lblMsg As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''cmbEmpesa control.
+    '''pnlEmpresa control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents cmbEmpesa As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents pnlEmpresa As Global.System.Web.UI.UpdatePanel
+
+    '''<summary>
+    '''cmbEmpresa control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents cmbEmpresa As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''pnlArea control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents pnlArea As Global.System.Web.UI.UpdatePanel
 
     '''<summary>
     '''cmbArea control.
@@ -219,6 +246,15 @@ Partial Public Class frmAnaliseRespostas
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents Panel1 As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
+    '''pnlQuestao control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents pnlQuestao As Global.System.Web.UI.UpdatePanel
 
     '''<summary>
     '''gridQuestao control.
