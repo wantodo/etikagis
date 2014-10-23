@@ -60,6 +60,7 @@
             e.Row.Cells(2).Visible = False
             e.Row.Cells(3).Visible = False
             e.Row.Cells(4).Visible = False
+            e.Row.Cells(5).Visible = False
         End If
 
         If e.Row.RowType = DataControlRowType.DataRow Then
@@ -67,6 +68,7 @@
             e.Row.Cells(2).Visible = False
             e.Row.Cells(3).Visible = False
             e.Row.Cells(4).Visible = False
+            e.Row.Cells(5).Visible = False
 
             lb = e.Row.Cells(0).FindControl("lblItem")
             lb.Text = e.Row.Cells(3).Text
@@ -145,15 +147,31 @@
         If txtResposta.Visible = True Then
 
             With objResposta
+                If Session("codResposta") <> "" Then
+                    .cd_resposta = Session("codResposta")
+                End If
+
                 .dc_resposta = txtResposta.Text
                 .questionario.cd_questionario = Request.QueryString("codQuestionario").ToString
                 .no_userid = Session("sessionUser")
             End With
 
-            If Request.QueryString("codQuestionario").ToString = 4 Then
-                objRespostaBLL.InsereResposta(objResposta)
-            ElseIf Request.QueryString("codQuestionario").ToString = 5 Then
-                objRespostaBLL.AlteraResposta(objResposta)
+            If Request.QueryString("codStatus").ToString = 4 Then
+                If objRespostaBLL.InsereResposta(objResposta) Then
+                    objQuestionarioBLL.AlteraQuestionario(0, Request.QueryString("codQuestionario").ToString, 5)
+
+                    lblMsg.Text = "Resposta cadastrada com sucesso!"
+                    lblMsg.ForeColor = Drawing.Color.LightGreen
+                    pnlMsg.Visible = True
+                    btnCancelar_Click(sender, e)
+                End If
+            ElseIf Request.QueryString("codStatus").ToString = 5 Then
+                If objRespostaBLL.AlteraResposta(objResposta) Then
+                    lblMsg.Text = "Resposta alterada com sucesso!"
+                    lblMsg.ForeColor = Drawing.Color.LightGreen
+                    pnlMsg.Visible = True
+                    btnCancelar_Click(sender, e)
+                End If
             End If
 
         Else
@@ -169,26 +187,34 @@
                 End If
 
                 With objResposta
+                    If gridItemQuestao.Rows(i).Cells(5).Text <> "" Then
+                        .cd_resposta = gridItemQuestao.Rows(i).Cells(5).Text
+                    End If
                     .dc_resposta = tx.Text
                     .questionario.cd_questionario = Request.QueryString("codQuestionario").ToString
                     .item.cd_item_questao = gridItemQuestao.Rows(i).Cells(2).Text
                     .no_userid = Session("sessionUser")
                 End With
 
-                If Request.QueryString("codQuestionario").ToString = 4 Then
-                    objRespostaBLL.InsereResposta(objResposta)
-                ElseIf Request.QueryString("codQuestionario").ToString = 5 Then
-                    objRespostaBLL.AlteraResposta(objResposta)
+                If Request.QueryString("codStatus").ToString = 4 Then
+                    If objRespostaBLL.InsereResposta(objResposta) Then
+                        objQuestionarioBLL.AlteraQuestionario(0, Request.QueryString("codQuestionario").ToString, 5)
+
+                        lblMsg.Text = "Resposta cadastrada com sucesso!"
+                        lblMsg.ForeColor = Drawing.Color.LightGreen
+                        pnlMsg.Visible = True
+                        btnCancelar_Click(sender, e)
+                    End If
+                ElseIf Request.QueryString("codStatus").ToString = 5 Then
+                    If objRespostaBLL.AlteraResposta(objResposta) Then
+                        lblMsg.Text = "Resposta alterada com sucesso!"
+                        lblMsg.ForeColor = Drawing.Color.LightGreen
+                        pnlMsg.Visible = True
+                        btnCancelar_Click(sender, e)
+                    End If
                 End If
             Next
         End If
-
-        objQuestionarioBLL.AlteraQuestionario(0, Request.QueryString("codQuestionario").ToString, 5)
-
-        lblMsg.Text = "Resposta cadastrada com sucesso!"
-        lblMsg.ForeColor = Drawing.Color.LightGreen
-        pnlMsg.Visible = True
-        btnCancelar_Click(sender, e)
 
         For i = 0 To gridQuestao.Rows.Count - 1
             If gridQuestao.Rows(i).Cells(7).Text <> 5 Then
@@ -200,6 +226,8 @@
         Next
 
         If respondido Then
+            pnlMsg.Visible = False
+
             pnlFinalizar.Visible = True
         End If
 
@@ -337,6 +365,8 @@
         dt = objRespostaBLL.RetornaResposta(codQuestionario).Tables(0)
 
         txtResposta.Text = dt.Rows(0)("Resposta").ToString
+        Session("codResposta") = dt.Rows(0)("codResposta").ToString
+
     End Sub
 
 
