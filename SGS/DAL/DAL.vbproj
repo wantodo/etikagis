@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AcessoDAL.vb" />
+    <Compile Include="AnaliseQuestaoDAL.vb" />
     <Compile Include="AspectoDAL.vb" />
     <Compile Include="BDDAL.vb" />
     <Compile Include="CategoriaDAL.vb" />

@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AcessoBLL.vb" />
+    <Compile Include="AnaliseQuestaoBLL.vb" />
     <Compile Include="AspectoBLL.vb" />
     <Compile Include="CategoriaBLL.vb" />
     <Compile Include="EmpresaBLL.vb" />
