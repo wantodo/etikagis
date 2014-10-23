@@ -10,6 +10,12 @@ Public Class RespostaBLL
         obj.InsereResposta(objResposta)
     End Sub
 
+    Sub AlteraResposta(objResposta As MODEL.Resposta)
+        Dim obj As New DAL.RespostaDAL
+
+        obj.AlteraResposta(objResposta)
+    End Sub
+
     Function RetornaResposta(codQuestionario As Integer) As DataSet
         Dim obj As New DAL.RespostaDAL
 
