@@ -8,6 +8,30 @@
 
         If Not IsPostBack Then
             carrega_cmbEmpresa()
+
+            If Not Request.QueryString.Item("editar") Is Nothing Then
+                If Request.QueryString("editar").ToString = "1" Then
+
+                    habilitaEdicao()
+
+                    lblCodQuestionario.Text = Request.QueryString("ordem").ToString
+                    lblQuestao.Text = Request.QueryString("questao").ToString
+
+                    If Request.QueryString("tipo").ToString.Equals("I") Then
+                        frameResposta.Visible = True
+                        frameItem.Visible = False
+
+                        If Request.QueryString("codStatus").ToString = 5 Then
+                            carrega_resposta(Request.QueryString("codQuestionario").ToString)
+                        End If
+
+                    ElseIf Request.QueryString("tipo").ToString.Equals("Q") Then
+                        frameResposta.Visible = False
+                        frameItem.Visible = True
+                        carrega_gridItemQuestao(Request.QueryString("codQuestionario").ToString)
+                    End If
+                End If
+            End If
         End If
     End Sub
 

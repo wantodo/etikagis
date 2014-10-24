@@ -135,13 +135,17 @@
                                     <tr>
 									    <td>Status*</td> <td>                         
                                         <asp:DropDownList ID="cmbStatus" runat="server" Width="202px">
+                                            <asp:ListItem Value="0">&lt;Selecione&gt;</asp:ListItem>
+                                            <asp:ListItem Value="8">Aprovado</asp:ListItem>
+                                            <asp:ListItem Value="7">Recusado</asp:ListItem>
                                         </asp:DropDownList>
                                         </td>
 								    </tr>
 
                                     <tr>
 									    <td>Retorno </td> <td style="margin-left: 40px">                                            
-                                            <asp:TextBox ID="txtRetorno" runat="server" MaxLength="8000" Width="402px" Height="93px" TextMode="MultiLine" Enabled="false"></asp:TextBox>                                                
+                                            <asp:TextBox ID="txtRetorno" runat="server" MaxLength="8000" Width="402px" 
+                                                Height="93px" TextMode="MultiLine"></asp:TextBox>                                                
                                         </td>
 								    </tr>
 							    </table>                            								
