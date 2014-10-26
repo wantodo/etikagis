@@ -8,4 +8,10 @@ Public Class AnaliseQuestaoBLL
 
         Return obj.ListaAnaliseQuestao(cd_representante)
     End Function
+
+    Public Sub AlteraAnaliseQuestao(cd_questionario As Integer, cd_status As Integer)
+        Dim obj As New DAL.AnaliseQuestaoDAL
+
+        obj.AlteraAnaliseQuestao(cd_questionario, cd_status)
+    End Sub
 End Class
