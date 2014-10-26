@@ -17,8 +17,8 @@
 					<td colspan="2">
 						<nav id="navToolBar"> 
 							<ul>
-                                <li><asp:ImageButton id="btnNovo" runat="server" ImageUrl="~/Imagens/add.ico" 
-                                        style="margin-top:5px;" EnableTheming="True" /> </li>
+                                <%--<li><asp:ImageButton id="btnNovo" runat="server" ImageUrl="~/Imagens/add.ico" 
+                                        style="margin-top:5px;" EnableTheming="True" /> </li>--%>
 								<li><asp:ImageButton id="btnGravar" runat="server" 
                                         ImageUrl="~/Imagens/save_disabled.png" Enabled="False" /></li>
 								<li><asp:ImageButton id="btnCancelar" runat="server" 
@@ -66,7 +66,8 @@
                                         <td>                         
                                             <asp:UpdatePanel ID="pnlArea" runat="server">
                                                     <ContentTemplate >                     
-                                                        <asp:DropDownList ID="cmbArea" AutoPostBack="true" runat="server" Width="269px" Height="22px" Enabled="false">
+                                                        <asp:DropDownList ID="cmbArea" AutoPostBack="true" runat="server" Width="269px" 
+                                                            Height="22px">
                                                         </asp:DropDownList>
                                                     </ContentTemplate>
                                                     <Triggers>
@@ -134,7 +135,7 @@
 
                                     <tr>
 									    <td>Status*</td> <td>                         
-                                        <asp:DropDownList ID="cmbStatus" runat="server" Width="202px">
+                                        <asp:DropDownList ID="cmbStatus" runat="server" Width="202px" Enabled="False">
                                             <asp:ListItem Value="0">&lt;Selecione&gt;</asp:ListItem>
                                             <asp:ListItem Value="8">Aprovado</asp:ListItem>
                                             <asp:ListItem Value="7">Recusado</asp:ListItem>
@@ -145,7 +146,7 @@
                                     <tr>
 									    <td>Retorno </td> <td style="margin-left: 40px">                                            
                                             <asp:TextBox ID="txtRetorno" runat="server" MaxLength="8000" Width="402px" 
-                                                Height="93px" TextMode="MultiLine"></asp:TextBox>                                                
+                                                Height="93px" TextMode="MultiLine" Enabled="False"></asp:TextBox>                                                
                                         </td>
 								    </tr>
 							    </table>                            								

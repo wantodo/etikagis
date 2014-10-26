@@ -15,6 +15,10 @@
                     cmbStatus.Enabled = True
                     txtRetorno.Enabled = True
 
+                    cmbEmpresa.SelectedValue = Request.QueryString("cd_empresa").ToString
+                    carrega_cmbArea()
+                    cmbArea.SelectedValue = Request.QueryString("cd_representante").ToString
+                    carregaGridQuestao()
 
                     txtCabecalho.Text = Request.QueryString("dc_questao").ToString
 
@@ -38,6 +42,8 @@
                         carrega_gridItemQuestao(Request.QueryString("cd_questionario").ToString)
                     End If
 
+                    btnGravar.Enabled = True
+                    btnCancelar.Enabled = True
                 End If
             End If
 
@@ -118,6 +124,7 @@
 
     Protected Sub cmbArea_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbArea.SelectedIndexChanged
         carregaGridQuestao()
+        gridQuestao.Focus()
     End Sub
 
     Private Sub gridQuestao_RowDataBound(sender As Object, e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles gridQuestao.RowDataBound
@@ -146,7 +153,7 @@
                 e.Row.Cells(0).Text = "<img src='../imagens/Flag_azul.png'>"
             End If
 
-            e.Row.Cells(1).Text = "<a href='frmAnaliseRespostas.aspx?editar=1&cd_questionario=" & e.Row.Cells(2).Text & "&cd_questao=" & e.Row.Cells(4).Text & "&nm_indicador=" & e.Row.Cells(5).Text & "&dc_questao=" & e.Row.Cells(6).Text & "&xx_tipo=" & e.Row.Cells(7).Text & "&cd_status=" & e.Row.Cells(8).Text & "&dc_retorno=" & e.Row.Cells(9).Text & "'><img src='../imagens/edit.png'></a>"
+            e.Row.Cells(1).Text = "<a href='frmAnaliseRespostas.aspx?editar=1&cd_questionario=" & e.Row.Cells(2).Text & "&cd_questao=" & e.Row.Cells(4).Text & "&nm_indicador=" & e.Row.Cells(5).Text & "&dc_questao=" & e.Row.Cells(6).Text & "&xx_tipo=" & e.Row.Cells(7).Text & "&cd_status=" & e.Row.Cells(8).Text & "&dc_retorno=" & e.Row.Cells(9).Text & "&cd_empresa=" & e.Row.Cells(10).Text & "&cd_representante=" & e.Row.Cells(11).Text & "'><img src='../imagens/edit.png'></a>"
             e.Row.Cells(7).Visible = False
             e.Row.Cells(8).Visible = False
             e.Row.Cells(9).Visible = False
