@@ -23,15 +23,6 @@ Partial Public Class frmAnaliseRespostas
     Protected WithEvents ScriptManager2 As Global.System.Web.UI.ScriptManager
 
     '''<summary>
-    '''btnNovo control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents btnNovo As Global.System.Web.UI.WebControls.ImageButton
-
-    '''<summary>
     '''btnGravar control.
     '''</summary>
     '''<remarks>
