@@ -8,9 +8,12 @@
 
         If Not IsPostBack Then
             carrega_cmbEmpresa()
+            pnlMsg.Visible = False
 
             If Not Request.QueryString.Item("editar") Is Nothing Then
                 If Request.QueryString("editar").ToString = "1" Then
+
+
 
                     cmbStatus.Enabled = True
                     txtRetorno.Enabled = True
@@ -43,7 +46,9 @@
                     End If
 
                     btnGravar.Enabled = True
+                    btnGravar.ImageUrl = "../imagens/save.ico"
                     btnCancelar.Enabled = True
+                    btnCancelar.ImageUrl = "../imagens/no.ico"
                 End If
             End If
 
@@ -134,6 +139,8 @@
             e.Row.Cells(7).Visible = False
             e.Row.Cells(8).Visible = False
             e.Row.Cells(9).Visible = False
+            e.Row.Cells(10).Visible = False
+            e.Row.Cells(11).Visible = False
         End If
 
         If e.Row.RowType = DataControlRowType.DataRow Then
@@ -157,6 +164,8 @@
             e.Row.Cells(7).Visible = False
             e.Row.Cells(8).Visible = False
             e.Row.Cells(9).Visible = False
+            e.Row.Cells(10).Visible = False
+            e.Row.Cells(11).Visible = False
         End If
     End Sub
 
@@ -172,4 +181,37 @@
         End If
     End Sub
 
+    Private Sub limpaCampos()
+        txtCabecalho.Text = ""
+        txtResposta.Text = ""
+
+    End Sub
+
+    Protected Sub btnGravar_Click(sender As Object, e As System.Web.UI.ImageClickEventArgs) Handles btnGravar.Click
+        Dim objAnaliseQuestao As New BLL.AnaliseQuestaoBLL
+
+        If cmbStatus.SelectedValue = 0 Then
+            lblMsg.Text = "Informe o status da analise!"
+            lblMsg.ForeColor = Drawing.Color.Red
+            pnlMsg.Visible = True
+            cmbStatus.Focus()
+            Exit Sub
+        End If
+
+        objAnaliseQuestao.AlteraAnaliseQuestao(Request.QueryString("cd_questionario").ToString, cmbStatus.SelectedValue)
+
+        carregaGridQuestao()
+
+        lblMsg.Text = "Análise gravada com sucesso!"
+        lblMsg.ForeColor = Drawing.Color.LightGreen
+        pnlMsg.Visible = True
+
+        btnGravar.Enabled = False
+        btnGravar.ImageUrl = "../imagens/save_disabled.png"
+
+        btnCancelar.Enabled = False
+        btnCancelar.ImageUrl = "../imagens/no_disabled.png"
+
+        gridQuestao.Focus()
+    End Sub
 End Class
