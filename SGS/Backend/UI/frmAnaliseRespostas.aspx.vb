@@ -12,27 +12,61 @@
             If Not Request.QueryString.Item("editar") Is Nothing Then
                 If Request.QueryString("editar").ToString = "1" Then
 
-                    habilitaEdicao()
+                    cmbStatus.Enabled = True
+                    txtRetorno.Enabled = True
 
-                    lblCodQuestionario.Text = Request.QueryString("ordem").ToString
-                    lblQuestao.Text = Request.QueryString("questao").ToString
 
-                    If Request.QueryString("tipo").ToString.Equals("I") Then
-                        frameResposta.Visible = True
-                        frameItem.Visible = False
+                    txtCabecalho.Text = Request.QueryString("dc_questao").ToString
 
-                        If Request.QueryString("codStatus").ToString = 5 Then
-                            carrega_resposta(Request.QueryString("codQuestionario").ToString)
+                    If Request.QueryString("xx_tipo").ToString = "I" Then
+                        carrega_resposta(Request.QueryString("cd_questionario").ToString)
+                        pnlGridItem.Visible = False
+                        lblItem.Visible = False
+
+                        If Request.QueryString("cd_status").ToString = 7 Or Request.QueryString("cd_status").ToString = 8 Then
+                            cmbStatus.SelectedValue = Request.QueryString("cd_status").ToString
+                        Else
+                            cmbStatus.SelectedValue = 0
                         End If
 
-                    ElseIf Request.QueryString("tipo").ToString.Equals("Q") Then
-                        frameResposta.Visible = False
-                        frameItem.Visible = True
-                        carrega_gridItemQuestao(Request.QueryString("codQuestionario").ToString)
+                        txtRetorno.Text = Request.QueryString("dc_retorno").ToString
+                    Else
+                        txtResposta.Visible = False
+                        lblResposta.Visible = False
+                        lblItem.Visible = True
+                        gridItemQuestao.Visible = True
+                        carrega_gridItemQuestao(Request.QueryString("cd_questionario").ToString)
                     End If
+
                 End If
             End If
+
         End If
+    End Sub
+
+    Private Sub carrega_gridItemQuestao(codQuestionario As Integer)
+        Dim objRespostaBLL As New BLL.RespostaBLL
+        Dim ds As DataSet
+        Dim dt As DataTable
+        Dim dv As DataView
+
+        ds = objRespostaBLL.ListaItemResposta(codQuestionario)
+        dv = ds.Tables(0).DefaultView
+        dt = ds.Tables(0)
+        gridItemQuestao.DataSource = dt
+
+        gridItemQuestao.DataBind()
+    End Sub
+
+    Private Sub carrega_resposta(codQuestionario As Integer)
+        Dim objRespostaBLL As New BLL.RespostaBLL
+        Dim dt As DataTable
+
+        dt = objRespostaBLL.RetornaResposta(codQuestionario).Tables(0)
+
+        txtResposta.Text = dt.Rows(0)("Resposta").ToString
+        Session("codResposta") = dt.Rows(0)("codResposta").ToString
+
     End Sub
 
     Private Sub carrega_cmbEmpresa()
@@ -92,6 +126,7 @@
             e.Row.Cells(1).Text = ""
             e.Row.Cells(7).Visible = False
             e.Row.Cells(8).Visible = False
+            e.Row.Cells(9).Visible = False
         End If
 
         If e.Row.RowType = DataControlRowType.DataRow Then
@@ -111,9 +146,22 @@
                 e.Row.Cells(0).Text = "<img src='../imagens/Flag_azul.png'>"
             End If
 
-            e.Row.Cells(1).Text = "<a href='frmAnaliseRespostas.aspx?editar=1&cd_questionario=" & e.Row.Cells(2).Text & "&cd_questao=" & e.Row.Cells(4).Text & "&nm_indicador=" & e.Row.Cells(5).Text & "&dc_questao=" & e.Row.Cells(6).Text & "&xx_tipo=" & e.Row.Cells(7).Text & "&cd_status=" & e.Row.Cells(8).Text & "'><img src='../imagens/edit.png'></a>"
+            e.Row.Cells(1).Text = "<a href='frmAnaliseRespostas.aspx?editar=1&cd_questionario=" & e.Row.Cells(2).Text & "&cd_questao=" & e.Row.Cells(4).Text & "&nm_indicador=" & e.Row.Cells(5).Text & "&dc_questao=" & e.Row.Cells(6).Text & "&xx_tipo=" & e.Row.Cells(7).Text & "&cd_status=" & e.Row.Cells(8).Text & "&dc_retorno=" & e.Row.Cells(9).Text & "'><img src='../imagens/edit.png'></a>"
             e.Row.Cells(7).Visible = False
             e.Row.Cells(8).Visible = False
+            e.Row.Cells(9).Visible = False
+        End If
+    End Sub
+
+    Private Sub gridItemQuestao_RowDataBound(sender As Object, e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles gridItemQuestao.RowDataBound
+        If e.Row.RowType = DataControlRowType.Header Then
+            e.Row.Cells(0).Visible = False
+            e.Row.Cells(3).Visible = False
+        End If
+
+        If e.Row.RowType = DataControlRowType.DataRow Then
+            e.Row.Cells(0).Visible = False
+            e.Row.Cells(3).Visible = False
         End If
     End Sub
 
