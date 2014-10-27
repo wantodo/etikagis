@@ -132,7 +132,6 @@
         End If
 
         gridQuestao.DataSource = dt
-
         gridQuestao.DataBind()
     End Sub
 
@@ -143,6 +142,8 @@
     End Sub
 
     Private Sub gridQuestao_RowDataBound(sender As Object, e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles gridQuestao.RowDataBound
+        Dim temp As String
+
         If e.Row.RowType = DataControlRowType.Header Then
             e.Row.Cells(0).Text = ""
             e.Row.Cells(1).Text = ""
@@ -155,6 +156,10 @@
         End If
 
         If e.Row.RowType = DataControlRowType.DataRow Then
+            temp = e.Row.Cells(6).Text
+
+            e.Row.Cells(6).Text = "<div style='width:610px; white-space:pre-wrap;'>" & temp & "</div>"
+
             If e.Row.Cells(8).Text = 6 Then
                 e.Row.Cells(0).Text = "<img src='../imagens/Flag_vermelha.png'>"
             End If
@@ -171,7 +176,7 @@
                 e.Row.Cells(0).Text = "<img src='../imagens/Flag_azul.png'>"
             End If
 
-            e.Row.Cells(1).Text = "<a href='frmAnaliseRespostas.aspx?editar=1&cd_questionario=" & e.Row.Cells(2).Text & "&cd_questao=" & e.Row.Cells(4).Text & "&nm_indicador=" & e.Row.Cells(5).Text & "&dc_questao=" & e.Row.Cells(6).Text & "&xx_tipo=" & e.Row.Cells(7).Text & "&cd_status=" & e.Row.Cells(8).Text & "&dc_retorno=" & e.Row.Cells(9).Text & "&cd_empresa=" & e.Row.Cells(10).Text & "&cd_representante=" & e.Row.Cells(11).Text & "'><img src='../imagens/edit.png'></a>"
+            e.Row.Cells(1).Text = "<a href='frmAnaliseRespostas.aspx?editar=1&cd_questionario=" & e.Row.Cells(2).Text & "&cd_questao=" & e.Row.Cells(4).Text & "&nm_indicador=" & e.Row.Cells(5).Text & "&dc_questao=" & temp & "&xx_tipo=" & e.Row.Cells(7).Text & "&cd_status=" & e.Row.Cells(8).Text & "&dc_retorno=" & e.Row.Cells(9).Text & "&cd_empresa=" & e.Row.Cells(10).Text & "&cd_representante=" & e.Row.Cells(11).Text & "'><img src='../imagens/edit.png'></a>"
 
             e.Row.Cells(2).Visible = False
             e.Row.Cells(7).Visible = False
@@ -179,7 +184,6 @@
             e.Row.Cells(9).Visible = False
             e.Row.Cells(10).Visible = False
             e.Row.Cells(11).Visible = False
-
         End If
     End Sub
 
