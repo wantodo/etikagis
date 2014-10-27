@@ -182,9 +182,15 @@
     End Sub
 
     Private Sub limpaCampos()
+        carrega_cmbEmpresa()
+        cmbArea.Items.Clear()
+        cmbArea.Enabled = False
         txtCabecalho.Text = ""
         txtResposta.Text = ""
-
+        lblItem.Visible = False
+        gridItemQuestao.Visible = False
+        gridQuestao.DataSource = Nothing
+        gridQuestao.DataBind()
     End Sub
 
     Protected Sub btnGravar_Click(sender As Object, e As System.Web.UI.ImageClickEventArgs) Handles btnGravar.Click
@@ -213,5 +219,70 @@
         btnCancelar.ImageUrl = "../imagens/no_disabled.png"
 
         gridQuestao.Focus()
+    End Sub
+
+    Protected Sub btnFinalizar_Click(sender As Object, e As System.Web.UI.ImageClickEventArgs) Handles btnFinalizar.Click
+        Dim objAnaliseQuestao As New BLL.AnaliseQuestaoBLL
+        Dim dt As DataTable
+        Dim objQuestionario As New MODEL.Questionario
+        Dim objQuestionarioBLL As New BLL.QuestionarioBLL
+        Dim objRepresentante As New BLL.RepresentanteBLL
+        Dim j As Integer = 0
+
+        If gridQuestao.Rows.Count <= 0 Then
+            Exit Sub
+        End If
+
+        For i = 0 To gridQuestao.Rows.Count - 1
+            If gridQuestao.Rows(i).Cells(8).Text = 6 Then
+                j += 1
+            End If
+        Next
+
+        If gridQuestao.Rows.Count - 1 = j Then
+            lblMsg.Text = "Nenhuma questão foi analisada!"
+            lblMsg.ForeColor = Drawing.Color.Red
+            pnlMsg.Visible = True
+
+            Exit Sub
+        End If
+
+        For i = 0 To gridQuestao.Rows.Count - 1
+            If gridQuestao.Rows(i).Cells(8).Text = 7 Then
+
+                dt = objRepresentante.RetornaRepresentante(gridQuestao.Rows(i).Cells(11).Text, 0).Tables(0)
+                objQuestionario.representante.dc_email = dt.Rows(0)("email").ToString
+                objQuestionario.representante.no_representante = dt.Rows(0)("Nome").ToString
+                objQuestionario.representante.dc_area = dt.Rows(0)("Area").ToString
+
+                If objQuestionarioBLL.EnviaEmailAnaliseQuestao(objQuestionario) Then
+
+                    'objQuestionarioBLL.AlteraQuestionario(objQuestionario.representante.cd_representante, 0, 4)
+
+                    lblMsg.Text = "Questionário finalizado com sucesso!"
+                    lblMsg.ForeColor = Drawing.Color.LightGreen
+                    pnlMsg.Visible = True
+                Else
+                    lblMsg.Text = "Não foi possível finalizar o questionário. Favor verificar o email de cadastro do Representante."
+                    lblMsg.ForeColor = Drawing.Color.Red
+                    pnlMsg.Visible = True
+                End If
+
+                Exit Sub
+            End If
+        Next
+
+        For i = 0 To gridQuestao.Rows.Count - 1
+            If gridQuestao.Rows(i).Cells(8).Text = 8 Then
+                objAnaliseQuestao.AlteraAnaliseQuestao(gridQuestao.Rows(i).Cells(1).Text, 9)
+            End If
+        Next
+
+        lblMsg.Text = "Questionário finalizado com sucesso!"
+        lblMsg.ForeColor = Drawing.Color.LightGreen
+        pnlMsg.Visible = True
+
+        limpaCampos()
+
     End Sub
 End Class
