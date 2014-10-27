@@ -157,7 +157,6 @@
 
         If e.Row.RowType = DataControlRowType.DataRow Then
             temp = e.Row.Cells(6).Text
-
             e.Row.Cells(6).Text = "<div style='width:610px; white-space:pre-wrap;'>" & temp & "</div>"
 
             If e.Row.Cells(8).Text = 6 Then
