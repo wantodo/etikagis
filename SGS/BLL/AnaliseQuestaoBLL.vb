@@ -9,9 +9,9 @@ Public Class AnaliseQuestaoBLL
         Return obj.ListaAnaliseQuestao(cd_representante)
     End Function
 
-    Public Sub AlteraAnaliseQuestao(cd_questionario As Integer, cd_status As Integer)
+    Public Sub AlteraAnaliseQuestao(cd_questionario As Integer, cd_status As Integer, dc_retorno As String)
         Dim obj As New DAL.AnaliseQuestaoDAL
 
-        obj.AlteraAnaliseQuestao(cd_questionario, cd_status)
+        obj.AlteraAnaliseQuestao(cd_questionario, cd_status, dc_retorno)
     End Sub
 End Class

@@ -24,10 +24,10 @@
 								<li><asp:ImageButton id="btnCancelar" runat="server" 
                                         ImageUrl="~/Imagens/no_disabled.png" Enabled="False" /></li>
                                 <li><asp:ImageButton id="btnFinalizar" runat="server" 
-                                        ImageUrl="~/Imagens/accept_disabled.png" /></li>								
+                                        ImageUrl="~/Imagens/accept.png" /></li>								
 								
 							</ul>
-						/</nav>
+						</nav>
 					</td>					
 				</tr>
 
@@ -85,7 +85,7 @@
 
 				<tr>
 					<td colspan="2">
-                        <fieldset class="frame">	
+                        <fieldset id="pnlQuestionario" runat="server" visible="false" class="frame">	
 							<legend style="color:#B0C4DE;">Questão</legend>
 							    <table>		                                    
 
@@ -161,7 +161,7 @@
 			
             
             <table  border="0" cellpadding="0" cellspacing="0" width="800" height="100%">	
-                <tr>
+                <%--<tr>
                     <td colspan="2">
                         <asp:Panel runat="server" ID="pnlExcluir" Visible="false" Height="44px">
                             <table width="99%" style="background-color:#FFDAB9; height: 41px; border:1px solid #CD3333; margin-left:10px;">
@@ -195,15 +195,27 @@
                             </table>
                         </asp:Panel>
                     </td>
-                </tr>
+                </tr>--%>
 
+               
 				<tr>
 					<td colspan="2">
                         <asp:Panel ID="Panel1"  runat="server" ScrollBars="auto" Width="900px" 
                             style="margin-left:10px; margin-top:20px; max-height:366px;">
-
+                                                       
                             <asp:UpdatePanel ID="pnlQuestao" runat="server">
-                                <ContentTemplate >
+                            <ContentTemplate >
+                                    
+                                    <div id="divLegenda" runat="server" visible="false">
+                                        <ul style="margin-left:-4%;">
+                                            <li style="display:inline; margin-right:10px;"><img src="../imagens/Flag_verde.png"><span>Aprovado</span></li>
+                                            <li style="display:inline; margin-right:10px;"><img src="../imagens/Flag_amarela.png"><span>Recusado</span></li>
+                                            <li style="display:inline; margin-right:10px;"><img src="../imagens/Flag_vermelha.png"><span>Aguardando análise</span></li>
+                                            <li style="display:inline; margin-right:10px;"><img src="../imagens/Flag_azul.png"><span>Finalizado</span></li>
+                                        </ul>
+                                    </div>
+                                
+
 						            <asp:GridView ID="gridQuestao" runat="server" 
                                         style="margin-top: 0px; margin-left:auto; margin-right:auto;" 
                                         CellPadding="4" ForeColor="#333333" 
