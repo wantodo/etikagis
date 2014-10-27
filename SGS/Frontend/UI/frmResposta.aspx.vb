@@ -102,6 +102,8 @@
     End Sub
 
     Private Sub gridQuestao_RowDataBound(sender As Object, e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles gridQuestao.RowDataBound
+        Dim temp As String
+
         If e.Row.RowType = DataControlRowType.Header Then
             e.Row.Cells(0).Text = ""
             e.Row.Cells(1).Text = ""
@@ -112,14 +114,22 @@
         End If
 
         If e.Row.RowType = DataControlRowType.DataRow Then
-            If e.Row.Cells(7).Text = 4 Then
-                e.Row.Cells(0).Text = "<img src='../imagens/vermelho.png'>"
-            ElseIf e.Row.Cells(7).Text = 5 Then
-                e.Row.Cells(0).Text = "<img src='../imagens/verde.png'>"
-            ElseIf e.Row.Cells(7).Text = 6 Then
-                e.Row.Cells(0).Text = "<img src='../imagens/amarelo.png'>"
-            End If
-            e.Row.Cells(1).Text = "<a href='frmResposta.aspx?editar=1&codQuestionario=" & e.Row.Cells(2).Text & "&ordem=" & e.Row.Cells(3).Text & "&codQuestao=" & e.Row.Cells(4).Text & "&questao=" & e.Row.Cells(5).Text & "&tipo=" & e.Row.Cells(6).Text & "&codStatus=" & e.Row.Cells(7).Text & "'><img src='../imagens/edit.png'></a>"
+            temp = e.Row.Cells(5).Text
+
+            e.Row.Cells(5).Text = "<div style='width:610px; white-space:pre-wrap;'>" & temp & "</div>"
+
+            Select Case e.Row.Cells(7).Text
+                Case 4 Or 7
+                    e.Row.Cells(0).Text = "<img src='../imagens/Flag_vermelha.png'>"
+                Case 5
+                    e.Row.Cells(0).Text = "<img src='../imagens/Flag_verde.png'>"
+                Case 6
+                    e.Row.Cells(0).Text = "<img src='../imagens/Flag_amarela.png'>"
+                Case 9
+                    e.Row.Cells(0).Text = "<img src='../imagens/Flag_azul.png'>"
+            End Select
+
+            e.Row.Cells(1).Text = "<a href='frmResposta.aspx?editar=1&codQuestionario=" & e.Row.Cells(2).Text & "&ordem=" & e.Row.Cells(3).Text & "&codQuestao=" & e.Row.Cells(4).Text & "&questao=" & temp & "&tipo=" & e.Row.Cells(6).Text & "&codStatus=" & e.Row.Cells(7).Text & "'><img src='../imagens/edit.png'></a>"
             e.Row.Cells(2).Visible = False
             e.Row.Cells(4).Visible = False
             e.Row.Cells(6).Visible = False
@@ -217,7 +227,7 @@
         End If
 
         For i = 0 To gridQuestao.Rows.Count - 1
-            If gridQuestao.Rows(i).Cells(7).Text <> 5 Then
+            If gridQuestao.Rows(i).Cells(7).Text = 4 Or gridQuestao.Rows(i).Cells(7).Text = 7 Then
                 respondido = False
                 Exit For
             Else
@@ -239,7 +249,7 @@
         End If
 
         For i = 0 To gridQuestao.Rows.Count - 1
-            If gridQuestao.Rows(i).Cells(7).Text <> 5 Then
+            If gridQuestao.Rows(i).Cells(7).Text = 4 Or gridQuestao.Rows(i).Cells(7).Text = 7 Then
 
                 lblMsg.Text = "O questionário deve ser todo respondido!"
                 lblMsg.ForeColor = Drawing.Color.Red
