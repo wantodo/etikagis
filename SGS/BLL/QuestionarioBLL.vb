@@ -155,6 +155,61 @@ Public Class QuestionarioBLL
         EnviaEmailQuestionarioRespondido = True
     End Function
 
+    Public Function EnviaEmailAnaliseQuestao(objQuestionario As MODEL.Questionario)
+        Dim obj As New DAL.QuestionarioDAL
+        Dim sSMTPeMail As String = ""
+        Dim sNomeDestinatario As String = ""
+        Dim seMailDestinatario As String = ""
+        Dim seMailRemetente As String = ""
+        Dim sNomeRemetente As String = ""
+        Dim sAssuntoEmail As String = ""
+
+        Try
+
+            'sSMTPeMail = "smtp.etikaconsultoria.com.br"
+            sSMTPeMail = "smtp.duratex.com.br"
+
+            'seMailDestinatario = "diogo.bastos@duratex.com.br" 'objQuestionario.representante.dc_email
+            seMailDestinatario = objQuestionario.representante.dc_email
+            sNomeDestinatario = objQuestionario.representante.no_representante
+
+            'seMailRemetente = "mribeiro@etikaconsultoria.com.br​"
+            seMailRemetente = "diogo.bastos@duratex.com.br​"
+            sNomeRemetente = "Etika Consultoria"
+            sAssuntoEmail = "Questionário Análisado!"
+
+        Catch ex As Exception
+            Dim erro As New Exception("Falha ao obter configurações de email.")
+
+            EnviaEmailAnaliseQuestao = False
+        End Try
+
+        Dim sEmailDest As String = seMailDestinatario
+
+        Dim Mensagem As MailMessage = New MailMessage()
+        Dim Mailmsg As New System.Net.Mail.MailMessage()
+        Dim mSmtpCliente As New SmtpClient(sSMTPeMail)
+
+        Mailmsg.From = New MailAddress(seMailRemetente, sNomeRemetente)
+
+        Mailmsg.Subject = sAssuntoEmail
+        Mailmsg.BodyEncoding = System.Text.Encoding.UTF8
+        Mailmsg.IsBodyHtml = True
+
+        Mailmsg.Body = "<HTML>"
+        Mailmsg.Body += "Questionário Análisado, verificar as questões marcadas em amarelo.  " & objQuestionario.representante.dc_area
+        Mailmsg.Body += "</HTML>"
+
+        Mailmsg.To.Add(New MailAddress(seMailDestinatario, sNomeDestinatario))
+
+        Mailmsg.Attachments.Clear()
+
+        mSmtpCliente.Send(Mailmsg)
+        Mailmsg.Attachments.Dispose()
+        Mailmsg.Dispose()
+        EnviaEmailAnaliseQuestao = True
+
+    End Function
 End Class
 
 
