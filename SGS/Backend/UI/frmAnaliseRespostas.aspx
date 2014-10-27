@@ -22,10 +22,12 @@
 								<li><asp:ImageButton id="btnGravar" runat="server" 
                                         ImageUrl="~/Imagens/save_disabled.png" Enabled="False" /></li>
 								<li><asp:ImageButton id="btnCancelar" runat="server" 
-                                        ImageUrl="~/Imagens/no_disabled.png" Enabled="False" /></li>								
+                                        ImageUrl="~/Imagens/no_disabled.png" Enabled="False" /></li>
+                                <li><asp:ImageButton id="btnFinalizar" runat="server" 
+                                        ImageUrl="~/Imagens/accept_disabled.png" Enabled="False" /></li>								
 								
 							</ul>
-						</nav>
+						/</nav>
 					</td>					
 				</tr>
 
