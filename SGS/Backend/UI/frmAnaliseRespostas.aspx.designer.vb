@@ -104,6 +104,15 @@ Partial Public Class frmAnaliseRespostas
     Protected WithEvents cmbArea As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
+    '''pnlQuestionario control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents pnlQuestionario As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
     '''txtCabecalho control.
     '''</summary>
     '''<remarks>
@@ -185,60 +194,6 @@ Partial Public Class frmAnaliseRespostas
     Protected WithEvents txtRetorno As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''pnlExcluir control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents pnlExcluir As Global.System.Web.UI.WebControls.Panel
-
-    '''<summary>
-    '''btnSim control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents btnSim As Global.System.Web.UI.WebControls.Button
-
-    '''<summary>
-    '''btnNao control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents btnNao As Global.System.Web.UI.WebControls.Button
-
-    '''<summary>
-    '''pnlExcluirItem control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents pnlExcluirItem As Global.System.Web.UI.WebControls.Panel
-
-    '''<summary>
-    '''btnSimItem control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents btnSimItem As Global.System.Web.UI.WebControls.Button
-
-    '''<summary>
-    '''btnNaoItem control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents btnNaoItem As Global.System.Web.UI.WebControls.Button
-
-    '''<summary>
     '''Panel1 control.
     '''</summary>
     '''<remarks>
@@ -255,6 +210,15 @@ Partial Public Class frmAnaliseRespostas
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents pnlQuestao As Global.System.Web.UI.UpdatePanel
+
+    '''<summary>
+    '''divLegenda control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents divLegenda As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
     '''gridQuestao control.

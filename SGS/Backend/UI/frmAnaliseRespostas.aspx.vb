@@ -13,7 +13,7 @@
             If Not Request.QueryString.Item("editar") Is Nothing Then
                 If Request.QueryString("editar").ToString = "1" Then
 
-
+                    pnlQuestionario.Visible = True
 
                     cmbStatus.Enabled = True
                     txtRetorno.Enabled = True
@@ -24,6 +24,7 @@
                     carregaGridQuestao()
 
                     txtCabecalho.Text = Request.QueryString("dc_questao").ToString
+                    txtRetorno.Text = Request.QueryString("dc_retorno").ToString
 
                     If Request.QueryString("xx_tipo").ToString = "I" Then
                         carrega_resposta(Request.QueryString("cd_questionario").ToString)
@@ -36,7 +37,7 @@
                             cmbStatus.SelectedValue = 0
                         End If
 
-                        txtRetorno.Text = Request.QueryString("dc_retorno").ToString
+
                     Else
                         txtResposta.Visible = False
                         lblResposta.Visible = False
@@ -113,6 +114,7 @@
         cmbArea.Enabled = True
     End Sub
 
+
     Private Sub carregaGridQuestao()
         Dim objAnaliseQuestaoBLL As New BLL.AnaliseQuestaoBLL
         Dim ds As DataSet
@@ -122,6 +124,13 @@
         ds = objAnaliseQuestaoBLL.ListaAnaliseQuestao(cmbArea.SelectedValue)
         dv = ds.Tables(0).DefaultView
         dt = ds.Tables(0)
+
+        If dt.Rows.Count > 0 Then
+            divLegenda.Visible = True
+        Else
+            divLegenda.Visible = False
+        End If
+
         gridQuestao.DataSource = dt
 
         gridQuestao.DataBind()
@@ -129,13 +138,15 @@
 
     Protected Sub cmbArea_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbArea.SelectedIndexChanged
         carregaGridQuestao()
-        gridQuestao.Focus()
+
+        'gridQuestao.Focus()
     End Sub
 
     Private Sub gridQuestao_RowDataBound(sender As Object, e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles gridQuestao.RowDataBound
         If e.Row.RowType = DataControlRowType.Header Then
             e.Row.Cells(0).Text = ""
             e.Row.Cells(1).Text = ""
+            e.Row.Cells(2).Visible = False
             e.Row.Cells(7).Visible = False
             e.Row.Cells(8).Visible = False
             e.Row.Cells(9).Visible = False
@@ -161,11 +172,14 @@
             End If
 
             e.Row.Cells(1).Text = "<a href='frmAnaliseRespostas.aspx?editar=1&cd_questionario=" & e.Row.Cells(2).Text & "&cd_questao=" & e.Row.Cells(4).Text & "&nm_indicador=" & e.Row.Cells(5).Text & "&dc_questao=" & e.Row.Cells(6).Text & "&xx_tipo=" & e.Row.Cells(7).Text & "&cd_status=" & e.Row.Cells(8).Text & "&dc_retorno=" & e.Row.Cells(9).Text & "&cd_empresa=" & e.Row.Cells(10).Text & "&cd_representante=" & e.Row.Cells(11).Text & "'><img src='../imagens/edit.png'></a>"
+
+            e.Row.Cells(2).Visible = False
             e.Row.Cells(7).Visible = False
             e.Row.Cells(8).Visible = False
             e.Row.Cells(9).Visible = False
             e.Row.Cells(10).Visible = False
             e.Row.Cells(11).Visible = False
+
         End If
     End Sub
 
@@ -182,15 +196,10 @@
     End Sub
 
     Private Sub limpaCampos()
-        carrega_cmbEmpresa()
-        cmbArea.Items.Clear()
-        cmbArea.Enabled = False
         txtCabecalho.Text = ""
         txtResposta.Text = ""
         lblItem.Visible = False
         gridItemQuestao.Visible = False
-        gridQuestao.DataSource = Nothing
-        gridQuestao.DataBind()
     End Sub
 
     Protected Sub btnGravar_Click(sender As Object, e As System.Web.UI.ImageClickEventArgs) Handles btnGravar.Click
@@ -204,7 +213,7 @@
             Exit Sub
         End If
 
-        objAnaliseQuestao.AlteraAnaliseQuestao(Request.QueryString("cd_questionario").ToString, cmbStatus.SelectedValue)
+        objAnaliseQuestao.AlteraAnaliseQuestao(Request.QueryString("cd_questionario").ToString, cmbStatus.SelectedValue, txtRetorno.Text)
 
         carregaGridQuestao()
 
@@ -248,6 +257,12 @@
         End If
 
         For i = 0 To gridQuestao.Rows.Count - 1
+            If gridQuestao.Rows(i).Cells(8).Text = 8 Then
+                objAnaliseQuestao.AlteraAnaliseQuestao(gridQuestao.Rows(i).Cells(2).Text, 9, txtRetorno.Text)
+            End If
+        Next
+
+        For i = 0 To gridQuestao.Rows.Count - 1
             If gridQuestao.Rows(i).Cells(8).Text = 7 Then
 
                 dt = objRepresentante.RetornaRepresentante(gridQuestao.Rows(i).Cells(11).Text, 0).Tables(0)
@@ -268,21 +283,13 @@
                     pnlMsg.Visible = True
                 End If
 
-                Exit Sub
+
             End If
         Next
 
-        For i = 0 To gridQuestao.Rows.Count - 1
-            If gridQuestao.Rows(i).Cells(8).Text = 8 Then
-                objAnaliseQuestao.AlteraAnaliseQuestao(gridQuestao.Rows(i).Cells(1).Text, 9)
-            End If
-        Next
-
-        lblMsg.Text = "Questionário finalizado com sucesso!"
-        lblMsg.ForeColor = Drawing.Color.LightGreen
-        pnlMsg.Visible = True
 
         limpaCampos()
-
+        pnlQuestionario.Visible = False
+        carregaGridQuestao()
     End Sub
 End Class
