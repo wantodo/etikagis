@@ -1,8 +1,8 @@
 ﻿
 Public Class Representante
     Public cd_representante As Integer
-    Public empresa As Empresa
-    Public perfil As PerfilRepresentante
+    Public empresa As New Empresa
+    Public perfil As New PerfilRepresentante
     Public no_representante As String
     Public dc_usuario As String
     Public dc_senha As String
