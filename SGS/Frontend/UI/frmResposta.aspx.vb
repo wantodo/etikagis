@@ -19,6 +19,11 @@
                     lblCodQuestionario.Text = Request.QueryString("ordem").ToString
                     lblQuestao.Text = Request.QueryString("questao").ToString
 
+                    If Request.QueryString("retorno").ToString <> " " Then
+                        frameRetorno.Visible = True
+                        lblRetorno.Text = Request.QueryString("retorno").ToString
+                    End If
+
                     If Request.QueryString("tipo").ToString.Equals("I") Then
                         frameResposta.Visible = True
                         frameItem.Visible = False
@@ -129,7 +134,7 @@
                     e.Row.Cells(0).Text = "<img src='../imagens/Flag_azul.png'>"
             End Select
 
-            e.Row.Cells(1).Text = "<a href='frmResposta.aspx?editar=1&codQuestionario=" & e.Row.Cells(2).Text & "&ordem=" & e.Row.Cells(3).Text & "&codQuestao=" & e.Row.Cells(4).Text & "&questao=" & temp & "&tipo=" & e.Row.Cells(6).Text & "&codStatus=" & e.Row.Cells(7).Text & "'><img src='../imagens/edit.png'></a>"
+            e.Row.Cells(1).Text = "<a href='frmResposta.aspx?editar=1&codQuestionario=" & e.Row.Cells(2).Text & "&ordem=" & e.Row.Cells(3).Text & "&codQuestao=" & e.Row.Cells(4).Text & "&questao=" & temp & "&tipo=" & e.Row.Cells(6).Text & "&codStatus=" & e.Row.Cells(7).Text & "&retorno=" & e.Row.Cells(8).Text & "'><img src='../imagens/edit.png'></a>"
             e.Row.Cells(2).Visible = False
             e.Row.Cells(4).Visible = False
             e.Row.Cells(6).Visible = False
@@ -335,7 +340,9 @@
     Private Sub limpaCampos()
         lblQuestao.Text = ""
         txtResposta.Text = ""
+        lblRetorno.Text = ""
         frameQuestao.Visible = False
+        frameRetorno.Visible = False
         frameResposta.Visible = False
         frameItem.Visible = False
         carregagridQuestao()
@@ -343,7 +350,7 @@
 
     Private Sub habilitaEdicao()        
         limpaCampos()
-        frameQuestao.Visible = True
+        frameQuestao.Visible = True        
 
         btnNovo.Enabled = False
         btnNovo.ImageUrl = "../imagens/add_disabled.png"
