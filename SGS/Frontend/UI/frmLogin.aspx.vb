@@ -43,11 +43,13 @@ Public Class frmLogin
                 representante.no_representante = dtRepresentante.Rows(0)("Nome")
                 representante.dc_email = dtRepresentante.Rows(0)("email")
                 representante.dc_area = dtRepresentante.Rows(0)("area")
+                representante.perfil.cd_perfil_representante = dtRepresentante.Rows(0)("Cod. Perfil")
 
                 Session("codRepresentante") = representante.cd_representante
                 Session("email") = representante.dc_email
                 Session("area") = representante.dc_area
                 Session("nome") = representante.no_representante
+                Session("perfil") = representante.perfil.cd_perfil_representante
 
                 FormsAuthentication.RedirectFromLoginPage(Login1.UserName, Login1.RememberMeSet)
                 Exit Select
