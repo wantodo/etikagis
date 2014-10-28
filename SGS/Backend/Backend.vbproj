@@ -137,6 +137,7 @@
     <Content Include="Imagens\topo_form2.jpg" />
     <Content Include="Imagens\topo_form_olho.jpg" />
     <Content Include="Imagens\topo_sustentabilidade.jpg" />
+    <Content Include="Relatorios\RelatorioQuestionario.aspx" />
     <Content Include="Styles\css_template_form.css" />
     <Content Include="Styles\Site.css" />
     <Content Include="UI\Default.aspx" />
@@ -199,6 +200,13 @@
     </Compile>
     <Compile Include="Account\Register.aspx.vb">
       <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Relatorios\RelatorioQuestionario.aspx.designer.vb">
+      <DependentUpon>RelatorioQuestionario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\RelatorioQuestionario.aspx.vb">
+      <DependentUpon>RelatorioQuestionario.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="UI\Default.aspx.vb">
@@ -362,6 +370,35 @@
       <Project>{F99E123D-3AC8-46F9-8B22-BF642D20099F}</Project>
       <Name>MODEL</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>5</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Word">
+      <Guid>{00020905-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>8</VersionMajor>
+      <VersionMinor>5</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
