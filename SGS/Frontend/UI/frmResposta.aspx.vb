@@ -150,6 +150,12 @@
         ds = objQuestionarioBLL.RetornaQuestionarioRepresentante(parametros)
         dt = ds.Tables(0)
 
+        If dt.Rows.Count > 0 Then
+            divLegenda.Visible = True
+        Else
+            divLegenda.Visible = False
+        End If
+
         gridQuestao.DataSource = dt
 
         gridQuestao.DataBind()
