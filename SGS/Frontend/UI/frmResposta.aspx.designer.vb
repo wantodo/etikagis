@@ -113,6 +113,24 @@ Partial Public Class frmResposta
     Protected WithEvents txtResposta As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
+    '''frameRetorno control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents frameRetorno As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
+    '''lblRetorno control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents lblRetorno As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
     '''frameItem control.
     '''</summary>
     '''<remarks>

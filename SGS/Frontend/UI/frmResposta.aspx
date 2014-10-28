@@ -78,6 +78,21 @@
 				</tr>
 
                 <tr>
+					<td colspan="2">
+                        <fieldset id="frameRetorno" runat="server" visible="false" class="frame">	
+							<legend style="color:#B0C4DE;">Retorno</legend>
+							    <table>                                    
+                                    <tr>									    
+                                        <td>
+                                            <asp:Label ID="lblRetorno" runat="server" Font-Bold="True" />
+                                        </td>
+								    </tr>			    	                                   
+							    </table>                            								
+						</fieldset>                            
+					</td>
+				</tr>
+
+                <tr>
 					<td colspan="2">                      
                         <fieldset id="frameItem" runat="server" visible="false" class="frame">	
 						    <legend style="color:#B0C4DE;">Item Questão</legend>
