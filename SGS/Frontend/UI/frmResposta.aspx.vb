@@ -101,6 +101,7 @@
     Private Sub gridItemQuestao_RowDataBound(sender As Object, e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles gridItemQuestao.RowDataBound
         Dim lb As Label
         Dim tx As TextBox
+        Dim temp As String
 
         If e.Row.RowType = DataControlRowType.Header Then
             e.Row.Cells(2).Visible = False
@@ -109,15 +110,15 @@
             e.Row.Cells(5).Visible = False
         End If
 
-        If e.Row.RowType = DataControlRowType.DataRow Then
-
+        If e.Row.RowType = DataControlRowType.DataRow Then            
             e.Row.Cells(2).Visible = False
             e.Row.Cells(3).Visible = False
             e.Row.Cells(4).Visible = False
             e.Row.Cells(5).Visible = False
 
+            temp = e.Row.Cells(3).Text            
             lb = e.Row.Cells(0).FindControl("lblItem")
-            lb.Text = e.Row.Cells(3).Text
+            lb.Text = "<div style='width:192px; white-space:pre-wrap;'>" & temp & "</div>"
 
             If e.Row.Cells(4).Text <> "&nbsp;" Then
                 tx = e.Row.Cells(0).FindControl("txtResposta")
