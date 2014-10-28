@@ -39,6 +39,36 @@
                     End If
                 End If
             End If
+
+
+            If Not Request.QueryString.Item("pesquisar") Is Nothing Then
+                If Request.QueryString("pesquisar").ToString = "1" Then
+
+                    habilitaPesquisa()
+
+                    lblCodQuestionario.Text = Request.QueryString("ordem").ToString
+                    lblQuestao.Text = Request.QueryString("questao").ToString
+
+                    If Request.QueryString("retorno").ToString <> " " Then
+                        frameRetorno.Visible = True
+                        lblRetorno.Text = Request.QueryString("retorno").ToString
+                    End If
+
+                    If Request.QueryString("tipo").ToString.Equals("I") Then
+                        frameResposta.Visible = True
+                        frameItem.Visible = False
+
+                        If Request.QueryString("codStatus").ToString = 5 Then
+                            carrega_resposta(Request.QueryString("codQuestionario").ToString)
+                        End If
+
+                    ElseIf Request.QueryString("tipo").ToString.Equals("Q") Then
+                        frameResposta.Visible = False
+                        frameItem.Visible = True
+                        carrega_gridItemQuestao(Request.QueryString("codQuestionario").ToString)
+                    End If
+                End If
+            End If
         End If
 
     End Sub
@@ -81,6 +111,9 @@
             If e.Row.Cells(4).Text <> "&nbsp;" Then
                 tx = e.Row.Cells(0).FindControl("txtResposta")
                 tx.Text = e.Row.Cells(4).Text
+                If Not Request.QueryString.Item("pesquisar") Is Nothing Then
+                    tx.Enabled = False
+                End If
             End If
 
 
@@ -124,17 +157,20 @@
             e.Row.Cells(5).Text = "<div style='width:610px; white-space:pre-wrap;'>" & temp & "</div>"
 
             Select Case e.Row.Cells(7).Text
-                Case 4 Or 7
+                Case 4 Or 7 'Aguardando Resposta ou Aguardando Retorno
                     e.Row.Cells(0).Text = "<img src='../imagens/Flag_vermelha.png'>"
-                Case 5
+                    e.Row.Cells(1).Text = "<a href='frmResposta.aspx?editar=1&codQuestionario=" & e.Row.Cells(2).Text & "&ordem=" & e.Row.Cells(3).Text & "&codQuestao=" & e.Row.Cells(4).Text & "&questao=" & temp & "&tipo=" & e.Row.Cells(6).Text & "&codStatus=" & e.Row.Cells(7).Text & "&retorno=" & e.Row.Cells(8).Text & "'><img src='../imagens/edit.png'></a>"
+                Case 5 'Respondido
                     e.Row.Cells(0).Text = "<img src='../imagens/Flag_verde.png'>"
-                Case 6
+                    e.Row.Cells(1).Text = "<a href='frmResposta.aspx?editar=1&codQuestionario=" & e.Row.Cells(2).Text & "&ordem=" & e.Row.Cells(3).Text & "&codQuestao=" & e.Row.Cells(4).Text & "&questao=" & temp & "&tipo=" & e.Row.Cells(6).Text & "&codStatus=" & e.Row.Cells(7).Text & "&retorno=" & e.Row.Cells(8).Text & "'><img src='../imagens/edit.png'></a>"
+                Case 6 'Aguardando Analise
                     e.Row.Cells(0).Text = "<img src='../imagens/Flag_amarela.png'>"
-                Case 9
+                    e.Row.Cells(1).Text = "<a href='frmResposta.aspx?pesquisar=1&codQuestionario=" & e.Row.Cells(2).Text & "&ordem=" & e.Row.Cells(3).Text & "&codQuestao=" & e.Row.Cells(4).Text & "&questao=" & temp & "&tipo=" & e.Row.Cells(6).Text & "&codStatus=" & e.Row.Cells(7).Text & "&retorno=" & e.Row.Cells(8).Text & "'><img src='../imagens/find.ico'></a>"
+                Case 9 'Finalizado
                     e.Row.Cells(0).Text = "<img src='../imagens/Flag_azul.png'>"
+                    e.Row.Cells(1).Text = "<a href='frmResposta.aspx?pesquisar=1&codQuestionario=" & e.Row.Cells(2).Text & "&ordem=" & e.Row.Cells(3).Text & "&codQuestao=" & e.Row.Cells(4).Text & "&questao=" & temp & "&tipo=" & e.Row.Cells(6).Text & "&codStatus=" & e.Row.Cells(7).Text & "&retorno=" & e.Row.Cells(8).Text & "'><img src='../imagens/find.ico'></a>"
             End Select
 
-            e.Row.Cells(1).Text = "<a href='frmResposta.aspx?editar=1&codQuestionario=" & e.Row.Cells(2).Text & "&ordem=" & e.Row.Cells(3).Text & "&codQuestao=" & e.Row.Cells(4).Text & "&questao=" & temp & "&tipo=" & e.Row.Cells(6).Text & "&codStatus=" & e.Row.Cells(7).Text & "&retorno=" & e.Row.Cells(8).Text & "'><img src='../imagens/edit.png'></a>"
             e.Row.Cells(2).Visible = False
             e.Row.Cells(4).Visible = False
             e.Row.Cells(6).Visible = False
@@ -350,7 +386,9 @@
 
     Private Sub habilitaEdicao()        
         limpaCampos()
-        frameQuestao.Visible = True        
+        frameQuestao.Visible = True
+
+        txtResposta.Enabled = True
 
         btnNovo.Enabled = False
         btnNovo.ImageUrl = "../imagens/add_disabled.png"
@@ -363,6 +401,21 @@
 
         btnFinalizar.Enabled = True
         btnFinalizar.ImageUrl = "../imagens/accept.png"
+
+        pnlMsg.Visible = False
+    End Sub
+
+    Private Sub habilitaPesquisa()
+        limpaCampos()
+        frameQuestao.Visible = True
+
+        txtResposta.Enabled = False
+
+        btnNovo.Enabled = False
+        btnNovo.ImageUrl = "../imagens/add_disabled.png"
+
+        btnCancelar.Enabled = True
+        btnCancelar.ImageUrl = "../imagens/no.ico"
 
         pnlMsg.Visible = False
     End Sub
