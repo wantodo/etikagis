@@ -9,26 +9,28 @@
     </style>
 
 </asp:Content>
- 
+
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <table border="0" cellpadding="0" cellspacing="0" width="800" height="100%">
 				
 				
 				<tr>
 					<td colspan="2">
-						<nav id="navToolBar">
-							<ul style="margin-left:45%;">
-                                <li><asp:ImageButton id="btnNovo" runat="server" ImageUrl="~/Imagens/add.ico" 
-                                        style="margin-top:5px;" EnableTheming="True" /> </li>
-								<li><asp:ImageButton id="btnGravar" runat="server" 
-                                        ImageUrl="~/Imagens/save_disabled.png" Enabled="False" /></li>
-								<li><asp:ImageButton id="btnCancelar" runat="server" 
-                                        ImageUrl="~/Imagens/no_disabled.png" Enabled="False" /></li>
-								<li><asp:ImageButton id="btnFinalizar" runat="server" 
-                                        ImageUrl="~/Imagens/accept_disabled.png" Enabled="False" /></li>				
+                        <asp:Panel id="panelBotoes" runat="server">
+						    <nav id="navToolBar">
+							    <ul style="margin-left:45%;">
+                                    <li><asp:ImageButton id="btnNovo" runat="server" ImageUrl="~/Imagens/add.ico" 
+                                            style="margin-top:5px;" EnableTheming="True" /> </li>
+								    <li><asp:ImageButton id="btnGravar" runat="server" 
+                                            ImageUrl="~/Imagens/save_disabled.png" Enabled="False" /></li>
+								    <li><asp:ImageButton id="btnCancelar" runat="server" 
+                                            ImageUrl="~/Imagens/no_disabled.png" Enabled="False" /></li>
+								    <li><asp:ImageButton id="btnFinalizar" runat="server" 
+                                            ImageUrl="~/Imagens/accept_disabled.png" Enabled="False" /></li>				
 								
-							</ul>
-						</nav>
+							    </ul>
+						    </nav>
+                        </asp:Panel>
 					</td>					
 				</tr>
 
@@ -42,6 +44,26 @@
                                     Font-Size="Small" ForeColor="Black" /></p>
                         </asp:panel>
                     </td>
+                </tr>
+
+                <tr>
+				    <td colspan="2">
+                        <fieldset id="frameFiltro" runat="server" visible="false" class="frame">
+							<legend style="color:#B0C4DE;">Filtro</legend>
+							    <table>                                    
+                                    <tr>
+                                        <td>Área*</td>
+                                        <td>                         
+        
+                                                        <asp:DropDownList ID="cmbArea" AutoPostBack="true" runat="server" Width="269px" 
+                                                            Height="22px">
+                                                        </asp:DropDownList>
+
+                                        </td>
+                                    </tr>
+                                </table>
+                        </fieldset>
+                    </td> 
                 </tr>
 				
 				<tr>

@@ -98,9 +98,10 @@ Public Class QuestionarioDAL
             Dim dal As New BDDAL(COMUM.strConexao, True)
             Dim param() As SqlParameter
 
-            param = {dal.CriarParametro("@cd_acesso", SqlDbType.Int, parametros(0)), _
+            param = {dal.CriarParametro("@cd_perfil", SqlDbType.Int, parametros(0)), _
                      dal.CriarParametro("@cd_usuario", SqlDbType.Int, parametros(1)), _
-                     dal.CriarParametro("@cd_empresa", SqlDbType.Int, parametros(2))}
+                     dal.CriarParametro("@cd_empresa", SqlDbType.Int, parametros(2)), _
+                     dal.CriarParametro("@cd_representante", SqlDbType.Int, parametros(3))}
 
             Return dal.GetDataSet("st_sgs_questionario_representante_s", CommandType.StoredProcedure, param)
         Catch ex As Exception
