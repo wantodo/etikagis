@@ -14,6 +14,15 @@ Option Explicit On
 Partial Public Class frmResposta
 
     '''<summary>
+    '''panelBotoes control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents panelBotoes As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
     '''btnNovo control.
     '''</summary>
     '''<remarks>
@@ -66,6 +75,24 @@ Partial Public Class frmResposta
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents lblMsg As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''frameFiltro control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents frameFiltro As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
+    '''cmbArea control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents cmbArea As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
     '''frameQuestao control.

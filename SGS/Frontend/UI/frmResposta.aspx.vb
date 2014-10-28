@@ -9,7 +9,14 @@
         desabilitaCampos()
 
         If Not IsPostBack Then
+
             carregagridQuestao()
+
+            If Session("codPerfil") = 2 Then
+                frameFiltro.Visible = True
+                carrega_cmbArea()            
+                panelBotoes.Visible = False
+            End If
 
             If Not Request.QueryString.Item("editar") Is Nothing Then
                 If Request.QueryString("editar").ToString = "1" Then
@@ -45,6 +52,10 @@
                 If Request.QueryString("pesquisar").ToString = "1" Then
 
                     habilitaPesquisa()
+
+                    cmbArea.SelectedValue = Request.QueryString("area").ToString
+
+                    carregagridQuestao()
 
                     lblCodQuestionario.Text = Request.QueryString("ordem").ToString
                     lblQuestao.Text = Request.QueryString("questao").ToString
@@ -123,13 +134,18 @@
 
     Private Sub carregagridQuestao()
         Dim objQuestionarioBLL As New BLL.QuestionarioBLL
-        Dim parametros() As String = {"cd_acesso", "cd_usuario", "cd_empresa"}
+        Dim parametros() As String = {"cd_perfil", "cd_usuario", "cd_empresa", "cd_representante"}
         Dim ds As DataSet
         Dim dt As DataTable
 
-        parametros(0) = Session("acesso")
+        parametros(0) = Session("codPerfil")
         parametros(1) = Session("codUsuario")
         parametros(2) = Session("codEmpresa")
+        If cmbArea.SelectedValue <> "" Then
+            parametros(3) = cmbArea.SelectedValue
+        Else
+            parametros(3) = 0
+        End If
 
         ds = objQuestionarioBLL.RetornaQuestionarioRepresentante(parametros)
         dt = ds.Tables(0)
@@ -156,20 +172,40 @@
 
             e.Row.Cells(5).Text = "<div style='width:610px; white-space:pre-wrap;'>" & temp & "</div>"
 
-            Select Case e.Row.Cells(7).Text
-                Case 4 Or 7 'Aguardando Resposta ou Aguardando Retorno
-                    e.Row.Cells(0).Text = "<img src='../imagens/Flag_vermelha.png'>"
-                    e.Row.Cells(1).Text = "<a href='frmResposta.aspx?editar=1&codQuestionario=" & e.Row.Cells(2).Text & "&ordem=" & e.Row.Cells(3).Text & "&codQuestao=" & e.Row.Cells(4).Text & "&questao=" & temp & "&tipo=" & e.Row.Cells(6).Text & "&codStatus=" & e.Row.Cells(7).Text & "&retorno=" & e.Row.Cells(8).Text & "'><img src='../imagens/edit.png'></a>"
-                Case 5 'Respondido
-                    e.Row.Cells(0).Text = "<img src='../imagens/Flag_verde.png'>"
-                    e.Row.Cells(1).Text = "<a href='frmResposta.aspx?editar=1&codQuestionario=" & e.Row.Cells(2).Text & "&ordem=" & e.Row.Cells(3).Text & "&codQuestao=" & e.Row.Cells(4).Text & "&questao=" & temp & "&tipo=" & e.Row.Cells(6).Text & "&codStatus=" & e.Row.Cells(7).Text & "&retorno=" & e.Row.Cells(8).Text & "'><img src='../imagens/edit.png'></a>"
-                Case 6 'Aguardando Analise
-                    e.Row.Cells(0).Text = "<img src='../imagens/Flag_amarela.png'>"
-                    e.Row.Cells(1).Text = "<a href='frmResposta.aspx?pesquisar=1&codQuestionario=" & e.Row.Cells(2).Text & "&ordem=" & e.Row.Cells(3).Text & "&codQuestao=" & e.Row.Cells(4).Text & "&questao=" & temp & "&tipo=" & e.Row.Cells(6).Text & "&codStatus=" & e.Row.Cells(7).Text & "&retorno=" & e.Row.Cells(8).Text & "'><img src='../imagens/find.ico'></a>"
-                Case 9 'Finalizado
-                    e.Row.Cells(0).Text = "<img src='../imagens/Flag_azul.png'>"
-                    e.Row.Cells(1).Text = "<a href='frmResposta.aspx?pesquisar=1&codQuestionario=" & e.Row.Cells(2).Text & "&ordem=" & e.Row.Cells(3).Text & "&codQuestao=" & e.Row.Cells(4).Text & "&questao=" & temp & "&tipo=" & e.Row.Cells(6).Text & "&codStatus=" & e.Row.Cells(7).Text & "&retorno=" & e.Row.Cells(8).Text & "'><img src='../imagens/find.ico'></a>"
-            End Select
+            If Session("codPerfil") = 1 Then
+                Select Case e.Row.Cells(7).Text
+                    Case 4 'Aguardando Resposta 
+                        e.Row.Cells(0).Text = "<img src='../imagens/Flag_vermelha.png'>"
+                        e.Row.Cells(1).Text = "<a href='frmResposta.aspx?editar=1&codQuestionario=" & e.Row.Cells(2).Text & "&ordem=" & e.Row.Cells(3).Text & "&codQuestao=" & e.Row.Cells(4).Text & "&questao=" & temp & "&tipo=" & e.Row.Cells(6).Text & "&codStatus=" & e.Row.Cells(7).Text & "&retorno=" & e.Row.Cells(8).Text & "'><img src='../imagens/edit.png'></a>"
+                    Case 7 'Aguardando Retorno
+                        e.Row.Cells(0).Text = "<img src='../imagens/Flag_vermelha.png'>"
+                        e.Row.Cells(1).Text = "<a href='frmResposta.aspx?editar=1&codQuestionario=" & e.Row.Cells(2).Text & "&ordem=" & e.Row.Cells(3).Text & "&codQuestao=" & e.Row.Cells(4).Text & "&questao=" & temp & "&tipo=" & e.Row.Cells(6).Text & "&codStatus=" & e.Row.Cells(7).Text & "&retorno=" & e.Row.Cells(8).Text & "'><img src='../imagens/edit.png'></a>"
+                    Case 5 'Respondido
+                        e.Row.Cells(0).Text = "<img src='../imagens/Flag_verde.png'>"
+                        e.Row.Cells(1).Text = "<a href='frmResposta.aspx?editar=1&codQuestionario=" & e.Row.Cells(2).Text & "&ordem=" & e.Row.Cells(3).Text & "&codQuestao=" & e.Row.Cells(4).Text & "&questao=" & temp & "&tipo=" & e.Row.Cells(6).Text & "&codStatus=" & e.Row.Cells(7).Text & "&retorno=" & e.Row.Cells(8).Text & "'><img src='../imagens/edit.png'></a>"
+                    Case 6 'Aguardando Analise
+                        e.Row.Cells(0).Text = "<img src='../imagens/Flag_amarela.png'>"
+                        e.Row.Cells(1).Text = "<a href='frmResposta.aspx?pesquisar=1&codQuestionario=" & e.Row.Cells(2).Text & "&ordem=" & e.Row.Cells(3).Text & "&codQuestao=" & e.Row.Cells(4).Text & "&questao=" & temp & "&tipo=" & e.Row.Cells(6).Text & "&codStatus=" & e.Row.Cells(7).Text & "&retorno=" & e.Row.Cells(8).Text & "'><img src='../imagens/find.ico'></a>"
+                    Case 9 'Finalizado
+                        e.Row.Cells(0).Text = "<img src='../imagens/Flag_azul.png'>"
+                        e.Row.Cells(1).Text = "<a href='frmResposta.aspx?pesquisar=1&codQuestionario=" & e.Row.Cells(2).Text & "&ordem=" & e.Row.Cells(3).Text & "&codQuestao=" & e.Row.Cells(4).Text & "&questao=" & temp & "&tipo=" & e.Row.Cells(6).Text & "&codStatus=" & e.Row.Cells(7).Text & "&retorno=" & e.Row.Cells(8).Text & "'><img src='../imagens/find.ico'></a>"
+                End Select
+            Else
+                Select Case e.Row.Cells(7).Text
+                    Case 4 'Aguardando Resposta 
+                        e.Row.Cells(0).Text = "<img src='../imagens/Flag_vermelha.png'>"                        
+                    Case 7 'Aguardando Retorno
+                        e.Row.Cells(0).Text = "<img src='../imagens/Flag_vermelha.png'>"                        
+                    Case 5 'Respondido
+                        e.Row.Cells(0).Text = "<img src='../imagens/Flag_verde.png'>"                        
+                    Case 6 'Aguardando Analise
+                        e.Row.Cells(0).Text = "<img src='../imagens/Flag_amarela.png'>"                        
+                    Case 9 'Finalizado
+                        e.Row.Cells(0).Text = "<img src='../imagens/Flag_azul.png'>"                        
+                End Select
+
+                e.Row.Cells(1).Text = "<a href='frmResposta.aspx?pesquisar=1&codQuestionario=" & e.Row.Cells(2).Text & "&ordem=" & e.Row.Cells(3).Text & "&codQuestao=" & e.Row.Cells(4).Text & "&questao=" & temp & "&tipo=" & e.Row.Cells(6).Text & "&codStatus=" & e.Row.Cells(7).Text & "&retorno=" & e.Row.Cells(8).Text & "&area=" & cmbArea.SelectedValue & "'><img src='../imagens/find.ico'></a>"
+            End If
 
             e.Row.Cells(2).Visible = False
             e.Row.Cells(4).Visible = False
@@ -439,6 +475,22 @@
 
     End Sub
 
+    Private Sub carrega_cmbArea()
+        Dim objRepresentanteBLL As New BLL.RepresentanteBLL
+        Dim lista As New ListItem
 
+        cmbArea.DataTextField = "Area"
+        cmbArea.DataValueField = "Cod. Representante"
+        cmbArea.DataSource = objRepresentanteBLL.ListaArea(Session("codEmpresa")).Tables(0)
+        cmbArea.DataBind()
+
+        lista.Text = "<Selecione>"
+        lista.Value = 0
+        cmbArea.Items.Insert(0, lista)
+    End Sub
+
+    Protected Sub cmbArea_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbArea.SelectedIndexChanged
+        carregagridQuestao()
+    End Sub
 
 End Class

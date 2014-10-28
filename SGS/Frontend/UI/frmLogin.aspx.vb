@@ -35,8 +35,7 @@ Public Class frmLogin
                 Session("codEmpresa") = dtUsuario.Rows(0)("cd_empresa")
 
                 Session("sessionUser") = usuario.nomeUsuario
-                Session("codUsuario") = usuario.codigo
-                Session("acesso") = usuario.acesso
+                Session("codUsuario") = usuario.codigo                
 
                 dtRepresentante = objRepresentanteBLL.RetornaRepresentante(, usuario.codigo).Tables(0)
                 representante.cd_representante = dtRepresentante.Rows(0)("Código")
@@ -49,7 +48,7 @@ Public Class frmLogin
                 Session("email") = representante.dc_email
                 Session("area") = representante.dc_area
                 Session("nome") = representante.no_representante
-                Session("perfil") = representante.perfil.cd_perfil_representante
+                Session("codPerfil") = representante.perfil.cd_perfil_representante
 
                 FormsAuthentication.RedirectFromLoginPage(Login1.UserName, Login1.RememberMeSet)
                 Exit Select
