@@ -16,7 +16,7 @@
 				<tr>
 					<td colspan="2">
 						<nav id="navToolBar"> 
-							<ul>
+							<ul style="margin-left:45%; padding-left:50;">
                                 <%--<li><asp:ImageButton id="btnNovo" runat="server" ImageUrl="~/Imagens/add.ico" 
                                         style="margin-top:5px;" EnableTheming="True" /> </li>--%>
 								<li><asp:ImageButton id="btnGravar" runat="server" 

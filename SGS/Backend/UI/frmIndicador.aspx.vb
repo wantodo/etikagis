@@ -148,6 +148,8 @@
     End Sub
 
     Private Sub gridIndicador_RowDataBound(sender As Object, e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles gridIndicador.RowDataBound
+        Dim temp As String
+
         If e.Row.RowType = DataControlRowType.Header Then
             e.Row.Cells(0).Text = ""
             e.Row.Cells(1).Text = ""
@@ -156,8 +158,11 @@
         End If
 
         If e.Row.RowType = DataControlRowType.DataRow Then
-            e.Row.Cells(0).Text = "<a href='frmIndicador.aspx?editar=1&codigo=" & e.Row.Cells(2).Text & "&indicador=" & e.Row.Cells(3).Text & "&descricao=" & e.Row.Cells(4).Text & "&cd_aspecto=" & e.Row.Cells(5).Text & "&aspecto=" & e.Row.Cells(6).Text & "&cd_status=" & e.Row.Cells(7).Text & "&status=" & e.Row.Cells(8).Text & "'><img src='../imagens/edit.png'></a>"
-            e.Row.Cells(1).Text = "<a href='frmIndicador.aspx?excluir=1&codigo=" & e.Row.Cells(2).Text & "&indicador=" & e.Row.Cells(3).Text & "&descricao=" & e.Row.Cells(4).Text & "&cd_aspecto=" & e.Row.Cells(5).Text & "&aspecto=" & e.Row.Cells(6).Text & "&cd_status=" & e.Row.Cells(7).Text & "&status=" & e.Row.Cells(8).Text & "'><img src='../imagens/delete.png'></a>"
+            temp = e.Row.Cells(4).Text
+            e.Row.Cells(4).Text = "<div style='width:575px; white-space:pre-wrap;'>" & temp & "</div>"
+
+            e.Row.Cells(0).Text = "<a href='frmIndicador.aspx?editar=1&codigo=" & e.Row.Cells(2).Text & "&indicador=" & e.Row.Cells(3).Text & "&descricao=" & temp & "&cd_aspecto=" & e.Row.Cells(5).Text & "&aspecto=" & e.Row.Cells(6).Text & "&cd_status=" & e.Row.Cells(7).Text & "&status=" & e.Row.Cells(8).Text & "'><img src='../imagens/edit.png'></a>"
+            e.Row.Cells(1).Text = "<a href='frmIndicador.aspx?excluir=1&codigo=" & e.Row.Cells(2).Text & "&indicador=" & e.Row.Cells(3).Text & "&descricao=" & temp & "&cd_aspecto=" & e.Row.Cells(5).Text & "&aspecto=" & e.Row.Cells(6).Text & "&cd_status=" & e.Row.Cells(7).Text & "&status=" & e.Row.Cells(8).Text & "'><img src='../imagens/delete.png'></a>"
             e.Row.Cells(4).Wrap = True
             e.Row.Cells(5).Visible = False
             e.Row.Cells(7).Visible = False
