@@ -113,6 +113,15 @@ Partial Public Class frmResposta
     Protected WithEvents lblCodQuestionario As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
+    '''lblOrdem control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents lblOrdem As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
     '''lblQuestao control.
     '''</summary>
     '''<remarks>
@@ -129,6 +138,15 @@ Partial Public Class frmResposta
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents frameResposta As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
+    '''lblCodigoResposta control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents lblCodigoResposta As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
     '''txtResposta control.
@@ -167,6 +185,42 @@ Partial Public Class frmResposta
     Protected WithEvents frameItem As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
+    '''lblCodigoItem control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents lblCodigoItem As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''cmbItemQuestao control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents cmbItemQuestao As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''txtRespostaItem control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtRespostaItem As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''ImageButton1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ImageButton1 As Global.System.Web.UI.WebControls.ImageButton
+
+    '''<summary>
     '''pnlGridItem control.
     '''</summary>
     '''<remarks>
@@ -176,13 +230,13 @@ Partial Public Class frmResposta
     Protected WithEvents pnlGridItem As Global.System.Web.UI.WebControls.Panel
 
     '''<summary>
-    '''gridItemQuestao control.
+    '''gridItemResposta control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents gridItemQuestao As Global.System.Web.UI.WebControls.GridView
+    Protected WithEvents gridItemResposta As Global.System.Web.UI.WebControls.GridView
 
     '''<summary>
     '''pnlFinalizar control.
@@ -212,15 +266,6 @@ Partial Public Class frmResposta
     Protected WithEvents btnNao As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
-    '''Panel1 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents Panel1 As Global.System.Web.UI.WebControls.Panel
-
-    '''<summary>
     '''divLegenda control.
     '''</summary>
     '''<remarks>
@@ -228,6 +273,15 @@ Partial Public Class frmResposta
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents divLegenda As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
+    '''Panel1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Panel1 As Global.System.Web.UI.WebControls.Panel
 
     '''<summary>
     '''gridQuestao control.

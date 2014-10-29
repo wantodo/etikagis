@@ -96,7 +96,7 @@
     <Content Include="Imagens\accept_disabled.png" />
     <Content Include="Imagens\add.ico" />
     <Content Include="Imagens\add_disabled.png" />
-    <Content Include="Imagens\amarelo.png" />
+    <Content Include="Imagens\delete.png" />
     <Content Include="Imagens\edit.png" />
     <Content Include="Imagens\find.ico" />
     <Content Include="Imagens\find_disabled.png" />
@@ -109,8 +109,6 @@
     <Content Include="Imagens\no_disabled.png" />
     <Content Include="Imagens\save.ico" />
     <Content Include="Imagens\save_disabled.png" />
-    <Content Include="Imagens\verde.png" />
-    <Content Include="Imagens\vermelho.png" />
     <Content Include="UI\Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />

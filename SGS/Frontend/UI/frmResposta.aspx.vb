@@ -23,10 +23,12 @@
 
                     habilitaEdicao()
 
-                    lblCodQuestionario.Text = Request.QueryString("ordem").ToString
+                    lblCodQuestionario.Text = Request.QueryString("codQuestionario").ToString
+
+                    lblOrdem.Text = Request.QueryString("ordem").ToString
                     lblQuestao.Text = Request.QueryString("questao").ToString
 
-                    If Request.QueryString("retorno").ToString <> " " Then
+                    If Request.QueryString("retorno").ToString <> "" Then
                         frameRetorno.Visible = True
                         lblRetorno.Text = Request.QueryString("retorno").ToString
                     End If
@@ -35,14 +37,21 @@
                         frameResposta.Visible = True
                         frameItem.Visible = False
 
-                        If Request.QueryString("codStatus").ToString = 5 Then
-                            carrega_resposta(Request.QueryString("codQuestionario").ToString)
-                        End If
+                        carrega_resposta(Request.QueryString("codQuestionario").ToString)
 
                     ElseIf Request.QueryString("tipo").ToString.Equals("Q") Then
                         frameResposta.Visible = False
                         frameItem.Visible = True
-                        carrega_gridItemQuestao(Request.QueryString("codQuestionario").ToString)
+                        'carrega_gridItemQuestao(Request.QueryString("codQuestionario").ToString)
+                        carrega_cmbItemQuestao(lblCodQuestionario.Text)
+
+                        carrega_gridItemResposta(lblCodQuestionario.Text)
+
+                        If Not Request.QueryString.Item("coditem") Is Nothing Then
+                            lblCodigoItem.Text = Request.QueryString.Item("coditem").ToString
+                            txtRespostaItem.Text = Request.QueryString.Item("respostaitem").ToString
+                            cmbItemQuestao.SelectedValue = Request.QueryString.Item("coditemresposta").ToString
+                        End If
                     End If
                 End If
             End If
@@ -53,11 +62,15 @@
 
                     habilitaPesquisa()
 
-                    cmbArea.SelectedValue = Request.QueryString("area").ToString
+                    If Request.QueryString("area").ToString <> 0 Then
+                        cmbArea.SelectedValue = Request.QueryString("area").ToString
+                    End If
 
                     carregagridQuestao()
 
-                    lblCodQuestionario.Text = Request.QueryString("ordem").ToString
+                    lblCodQuestionario.Text = Request.QueryString("codQuestionario").ToString
+
+                    lblOrdem.Text = Request.QueryString("ordem").ToString
                     lblQuestao.Text = Request.QueryString("questao").ToString
 
                     If Request.QueryString("retorno").ToString <> " " Then
@@ -69,14 +82,21 @@
                         frameResposta.Visible = True
                         frameItem.Visible = False
 
-                        If Request.QueryString("codStatus").ToString = 5 Then
-                            carrega_resposta(Request.QueryString("codQuestionario").ToString)
-                        End If
+                        carrega_resposta(Request.QueryString("codQuestionario").ToString)
 
                     ElseIf Request.QueryString("tipo").ToString.Equals("Q") Then
                         frameResposta.Visible = False
                         frameItem.Visible = True
-                        carrega_gridItemQuestao(Request.QueryString("codQuestionario").ToString)
+                        'carrega_gridItemQuestao(Request.QueryString("codQuestionario").ToString)
+                        carrega_cmbItemQuestao(lblCodQuestionario.Text)
+
+                        carrega_gridItemResposta(lblCodQuestionario.Text)
+
+                        If Not Request.QueryString.Item("coditem") Is Nothing Then
+                            lblCodigoItem.Text = Request.QueryString.Item("coditem").ToString
+                            txtRespostaItem.Text = Request.QueryString.Item("respostaitem").ToString
+                            cmbItemQuestao.SelectedValue = Request.QueryString.Item("coditemresposta").ToString
+                        End If
                     End If
                 End If
             End If
@@ -84,7 +104,21 @@
 
     End Sub
 
-    Private Sub carrega_gridItemQuestao(codQuestionario As Integer)
+    Private Sub carrega_cmbItemQuestao(codQuestionario As Integer)
+        Dim objQuestaoBLL As New BLL.QuestaoBLL
+        Dim lista As New ListItem
+
+        cmbItemQuestao.DataTextField = "Item"
+        cmbItemQuestao.DataValueField = "Codigo"
+        cmbItemQuestao.DataSource = objQuestaoBLL.ListaItemQuestao(0, codQuestionario)
+        cmbItemQuestao.DataBind()
+
+        lista.Text = "<Selecione>"
+        lista.Value = 0
+        cmbArea.Items.Insert(0, lista)
+    End Sub
+
+    Private Sub carrega_gridItemResposta(codQuestionario As Integer)
         Dim objRespostaBLL As New BLL.RespostaBLL
         Dim ds As DataSet
         Dim dt As DataTable
@@ -93,45 +127,77 @@
         ds = objRespostaBLL.ListaItemResposta(codQuestionario)
         dv = ds.Tables(0).DefaultView
         dt = ds.Tables(0)
-        gridItemQuestao.DataSource = dt
-
-        gridItemQuestao.DataBind()
+        gridItemResposta.DataSource = dt
+        gridItemResposta.DataBind()
     End Sub
 
-    Private Sub gridItemQuestao_RowDataBound(sender As Object, e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles gridItemQuestao.RowDataBound
-        Dim lb As Label
-        Dim tx As TextBox
-        Dim temp As String
-
+    Private Sub gridItemResposta_RowDataBound(sender As Object, e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles gridItemResposta.RowDataBound
         If e.Row.RowType = DataControlRowType.Header Then
+            e.Row.Cells(0).Text = ""
+            e.Row.Cells(1).Text = ""
             e.Row.Cells(2).Visible = False
-            e.Row.Cells(3).Visible = False
             e.Row.Cells(4).Visible = False
-            e.Row.Cells(5).Visible = False
+            e.Row.Cells(6).Visible = False
         End If
 
-        If e.Row.RowType = DataControlRowType.DataRow Then            
+        If e.Row.RowType = DataControlRowType.DataRow Then
+            e.Row.Cells(0).Text = "<a href='frmResposta.aspx?editar=1&coditem=" & e.Row.Cells(2).Text & "&item=" & e.Row.Cells(3).Text & "&coditemresposta=" & e.Row.Cells(4).Text & "&respostaitem=" & e.Row.Cells(5).Text & "&codQuestionario=" & e.Row.Cells(6).Text & "&ordem=" & lblOrdem.Text & "&questao=" & lblQuestao.Text & "&retorno=" & lblRetorno.Text & "&tipo=Q" & "'><img src='../imagens/edit.png'></a>"
+            e.Row.Cells(1).Text = "<a href='frmResposta.aspx?excluir=1&coditem=" & e.Row.Cells(2).Text & "&item=" & e.Row.Cells(3).Text & "&coditemresposta=" & e.Row.Cells(4).Text & "&respostaitem=" & e.Row.Cells(5).Text & "&codQuestionario=" & e.Row.Cells(6).Text & "&ordem=" & lblOrdem.Text & "&questao=" & lblQuestao.Text & "&retorno=" & lblRetorno.Text & "&tipo=Q" & "'><img src='../imagens/delete.png'></a>"
             e.Row.Cells(2).Visible = False
-            e.Row.Cells(3).Visible = False
             e.Row.Cells(4).Visible = False
-            e.Row.Cells(5).Visible = False
-
-            temp = e.Row.Cells(3).Text            
-            lb = e.Row.Cells(0).FindControl("lblItem")
-            lb.Text = "<div style='width:192px; white-space:pre-wrap;'>" & temp & "</div>"
-
-            If e.Row.Cells(4).Text <> "&nbsp;" Then
-                tx = e.Row.Cells(0).FindControl("txtResposta")
-                tx.Text = e.Row.Cells(4).Text
-                If Not Request.QueryString.Item("pesquisar") Is Nothing Then
-                    tx.Enabled = False
-                End If
-            End If
-
-
+            e.Row.Cells(6).Visible = False
         End If
 
     End Sub
+
+    'Private Sub carrega_gridItemQuestao(codQuestionario As Integer)
+    '    Dim objRespostaBLL As New BLL.RespostaBLL
+    '    Dim ds As DataSet
+    '    Dim dt As DataTable
+    '    Dim dv As DataView
+
+    '    ds = objRespostaBLL.ListaItemResposta(codQuestionario)
+    '    dv = ds.Tables(0).DefaultView
+    '    dt = ds.Tables(0)
+    '    gridItemQuestao.DataSource = dt
+
+    '    gridItemQuestao.DataBind()
+    'End Sub
+
+    'Private Sub gridItemQuestao_RowDataBound(sender As Object, e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles gridItemQuestao.RowDataBound
+    '    Dim lb As Label
+    '    Dim tx As TextBox
+    '    Dim temp As String
+
+    '    If e.Row.RowType = DataControlRowType.Header Then
+    '        e.Row.Cells(2).Visible = False
+    '        e.Row.Cells(3).Visible = False
+    '        e.Row.Cells(4).Visible = False
+    '        e.Row.Cells(5).Visible = False
+    '    End If
+
+    '    If e.Row.RowType = DataControlRowType.DataRow Then            
+    '        e.Row.Cells(2).Visible = False
+    '        e.Row.Cells(3).Visible = False
+    '        e.Row.Cells(4).Visible = False
+    '        e.Row.Cells(5).Visible = False
+
+    '        temp = e.Row.Cells(3).Text            
+    '        lb = e.Row.Cells(0).FindControl("lblItem")
+    '        lb.Text = "<div style='width:192px; white-space:pre-wrap;'>" & temp & "</div>"
+
+    '        If e.Row.Cells(4).Text <> "&nbsp;" Then
+    '            tx = e.Row.Cells(0).FindControl("txtResposta")
+    '            tx.Text = e.Row.Cells(4).Text
+    '            If Not Request.QueryString.Item("pesquisar") Is Nothing Then
+    '                tx.Enabled = False
+    '            End If
+    '        End If
+
+
+    '    End If
+
+    'End Sub
 
     Private Sub carregagridQuestao()
         Dim objQuestionarioBLL As New BLL.QuestionarioBLL
@@ -183,32 +249,32 @@
                 Select Case e.Row.Cells(7).Text
                     Case 4 'Aguardando Resposta 
                         e.Row.Cells(0).Text = "<img src='../imagens/Flag_vermelha.png'>"
-                        e.Row.Cells(1).Text = "<a href='frmResposta.aspx?editar=1&codQuestionario=" & e.Row.Cells(2).Text & "&ordem=" & e.Row.Cells(3).Text & "&codQuestao=" & e.Row.Cells(4).Text & "&questao=" & temp & "&tipo=" & e.Row.Cells(6).Text & "&codStatus=" & e.Row.Cells(7).Text & "&retorno=" & e.Row.Cells(8).Text & "'><img src='../imagens/edit.png'></a>"
+                        e.Row.Cells(1).Text = "<a href='frmResposta.aspx?editar=1&codQuestionario=" & e.Row.Cells(2).Text & "&ordem=" & e.Row.Cells(3).Text & "&codQuestao=" & e.Row.Cells(4).Text & "&questao=" & temp & "&tipo=" & e.Row.Cells(6).Text & "&codStatus=" & e.Row.Cells(7).Text & "&retorno=" & "&area=" & 0 & "'><img src='../imagens/edit.png'></a>"
                     Case 7 'Aguardando Retorno
                         e.Row.Cells(0).Text = "<img src='../imagens/Flag_vermelha.png'>"
-                        e.Row.Cells(1).Text = "<a href='frmResposta.aspx?editar=1&codQuestionario=" & e.Row.Cells(2).Text & "&ordem=" & e.Row.Cells(3).Text & "&codQuestao=" & e.Row.Cells(4).Text & "&questao=" & temp & "&tipo=" & e.Row.Cells(6).Text & "&codStatus=" & e.Row.Cells(7).Text & "&retorno=" & e.Row.Cells(8).Text & "'><img src='../imagens/edit.png'></a>"
+                        e.Row.Cells(1).Text = "<a href='frmResposta.aspx?editar=1&codQuestionario=" & e.Row.Cells(2).Text & "&ordem=" & e.Row.Cells(3).Text & "&codQuestao=" & e.Row.Cells(4).Text & "&questao=" & temp & "&tipo=" & e.Row.Cells(6).Text & "&codStatus=" & e.Row.Cells(7).Text & "&retorno=" & "&area=" & 0 & "'><img src='../imagens/edit.png'></a>"
                     Case 5 'Respondido
                         e.Row.Cells(0).Text = "<img src='../imagens/Flag_verde.png'>"
-                        e.Row.Cells(1).Text = "<a href='frmResposta.aspx?editar=1&codQuestionario=" & e.Row.Cells(2).Text & "&ordem=" & e.Row.Cells(3).Text & "&codQuestao=" & e.Row.Cells(4).Text & "&questao=" & temp & "&tipo=" & e.Row.Cells(6).Text & "&codStatus=" & e.Row.Cells(7).Text & "&retorno=" & e.Row.Cells(8).Text & "'><img src='../imagens/edit.png'></a>"
+                        e.Row.Cells(1).Text = "<a href='frmResposta.aspx?editar=1&codQuestionario=" & e.Row.Cells(2).Text & "&ordem=" & e.Row.Cells(3).Text & "&codQuestao=" & e.Row.Cells(4).Text & "&questao=" & temp & "&tipo=" & e.Row.Cells(6).Text & "&codStatus=" & e.Row.Cells(7).Text & "&retorno=" & "&area=" & 0 & "'><img src='../imagens/edit.png'></a>"
                     Case 6 'Aguardando Analise
                         e.Row.Cells(0).Text = "<img src='../imagens/Flag_amarela.png'>"
-                        e.Row.Cells(1).Text = "<a href='frmResposta.aspx?pesquisar=1&codQuestionario=" & e.Row.Cells(2).Text & "&ordem=" & e.Row.Cells(3).Text & "&codQuestao=" & e.Row.Cells(4).Text & "&questao=" & temp & "&tipo=" & e.Row.Cells(6).Text & "&codStatus=" & e.Row.Cells(7).Text & "&retorno=" & e.Row.Cells(8).Text & "'><img src='../imagens/find.ico'></a>"
+                        e.Row.Cells(1).Text = "<a href='frmResposta.aspx?pesquisar=1&codQuestionario=" & e.Row.Cells(2).Text & "&ordem=" & e.Row.Cells(3).Text & "&codQuestao=" & e.Row.Cells(4).Text & "&questao=" & temp & "&tipo=" & e.Row.Cells(6).Text & "&codStatus=" & e.Row.Cells(7).Text & "&retorno=" & "&area=" & 0 & "'><img src='../imagens/find.ico'></a>"
                     Case 9 'Finalizado
                         e.Row.Cells(0).Text = "<img src='../imagens/Flag_azul.png'>"
-                        e.Row.Cells(1).Text = "<a href='frmResposta.aspx?pesquisar=1&codQuestionario=" & e.Row.Cells(2).Text & "&ordem=" & e.Row.Cells(3).Text & "&codQuestao=" & e.Row.Cells(4).Text & "&questao=" & temp & "&tipo=" & e.Row.Cells(6).Text & "&codStatus=" & e.Row.Cells(7).Text & "&retorno=" & e.Row.Cells(8).Text & "'><img src='../imagens/find.ico'></a>"
+                        e.Row.Cells(1).Text = "<a href='frmResposta.aspx?pesquisar=1&codQuestionario=" & e.Row.Cells(2).Text & "&ordem=" & e.Row.Cells(3).Text & "&codQuestao=" & e.Row.Cells(4).Text & "&questao=" & temp & "&tipo=" & e.Row.Cells(6).Text & "&codStatus=" & e.Row.Cells(7).Text & "&retorno=" & e.Row.Cells(8).Text & "&area=" & 0 & "'><img src='../imagens/find.ico'></a>"
                 End Select
             Else
                 Select Case e.Row.Cells(7).Text
                     Case 4 'Aguardando Resposta 
-                        e.Row.Cells(0).Text = "<img src='../imagens/Flag_vermelha.png'>"                        
+                        e.Row.Cells(0).Text = "<img src='../imagens/Flag_vermelha.png'>"
                     Case 7 'Aguardando Retorno
-                        e.Row.Cells(0).Text = "<img src='../imagens/Flag_vermelha.png'>"                        
+                        e.Row.Cells(0).Text = "<img src='../imagens/Flag_vermelha.png'>"
                     Case 5 'Respondido
-                        e.Row.Cells(0).Text = "<img src='../imagens/Flag_verde.png'>"                        
+                        e.Row.Cells(0).Text = "<img src='../imagens/Flag_verde.png'>"
                     Case 6 'Aguardando Analise
-                        e.Row.Cells(0).Text = "<img src='../imagens/Flag_amarela.png'>"                        
+                        e.Row.Cells(0).Text = "<img src='../imagens/Flag_amarela.png'>"
                     Case 9 'Finalizado
-                        e.Row.Cells(0).Text = "<img src='../imagens/Flag_azul.png'>"                        
+                        e.Row.Cells(0).Text = "<img src='../imagens/Flag_azul.png'>"
                 End Select
 
                 e.Row.Cells(1).Text = "<a href='frmResposta.aspx?pesquisar=1&codQuestionario=" & e.Row.Cells(2).Text & "&ordem=" & e.Row.Cells(3).Text & "&codQuestao=" & e.Row.Cells(4).Text & "&questao=" & temp & "&tipo=" & e.Row.Cells(6).Text & "&codStatus=" & e.Row.Cells(7).Text & "&retorno=" & e.Row.Cells(8).Text & "&area=" & cmbArea.SelectedValue & "'><img src='../imagens/find.ico'></a>"
@@ -221,7 +287,7 @@
         End If
     End Sub
 
-    Private Sub btnGravar_Click(sender As Object, e As System.EventArgs) Handles btnGravar.Click        
+    Private Sub btnGravar_Click(sender As Object, e As System.EventArgs) Handles btnGravar.Click
         Dim tx As TextBox
         Dim objRespostaBLL As New BLL.RespostaBLL
         Dim objQuestionarioBLL As New BLL.QuestionarioBLL
@@ -241,8 +307,8 @@
         If txtResposta.Visible = True Then
 
             With objResposta
-                If Session("codResposta") <> "" Then
-                    .cd_resposta = Session("codResposta")
+                If lblCodigoResposta.Text <> "" Then
+                    .cd_resposta = lblCodigoResposta.Text
                 End If
 
                 .dc_resposta = txtResposta.Text
@@ -269,45 +335,45 @@
             End If
 
         Else
-            For i As Integer = 0 To gridItemQuestao.Rows.Count - 1
+            'For i As Integer = 0 To gridItemQuestao.Rows.Count - 1
 
-                tx = gridItemQuestao.Rows(i).Cells(0).FindControl("txtResposta")
+            '    tx = gridItemQuestao.Rows(i).Cells(0).FindControl("txtResposta")
 
-                If tx.Text = "" Then
-                    lblMsg.Text = "O preenchimento dos itens é obrigatório!"
-                    lblMsg.ForeColor = Drawing.Color.Red
-                    pnlMsg.Visible = True
-                    Exit Sub
-                End If
+            '    If tx.Text = "" Then
+            '        lblMsg.Text = "O preenchimento dos itens é obrigatório!"
+            '        lblMsg.ForeColor = Drawing.Color.Red
+            '        pnlMsg.Visible = True
+            '        Exit Sub
+            '    End If
 
-                With objResposta
-                    If gridItemQuestao.Rows(i).Cells(5).Text <> "" Then
-                        .cd_resposta = gridItemQuestao.Rows(i).Cells(5).Text
-                    End If
-                    .dc_resposta = tx.Text
-                    .questionario.cd_questionario = Request.QueryString("codQuestionario").ToString
-                    .item.cd_item_questao = gridItemQuestao.Rows(i).Cells(2).Text
-                    .no_userid = Session("sessionUser")
-                End With
+            '    With objResposta
+            '        If gridItemQuestao.Rows(i).Cells(5).Text <> "" Then
+            '            .cd_resposta = gridItemQuestao.Rows(i).Cells(5).Text
+            '        End If
+            '        .dc_resposta = tx.Text
+            '        .questionario.cd_questionario = Request.QueryString("codQuestionario").ToString
+            '        .item.cd_item_questao = gridItemQuestao.Rows(i).Cells(2).Text
+            '        .no_userid = Session("sessionUser")
+            '    End With
 
-                If Request.QueryString("codStatus").ToString = 4 Then
-                    If objRespostaBLL.InsereResposta(objResposta) Then
-                        objQuestionarioBLL.AlteraQuestionario(0, Request.QueryString("codQuestionario").ToString, 5)
+            '    If Request.QueryString("codStatus").ToString = 4 Then
+            '        If objRespostaBLL.InsereResposta(objResposta) Then
+            '            objQuestionarioBLL.AlteraQuestionario(0, Request.QueryString("codQuestionario").ToString, 5)
 
-                        lblMsg.Text = "Resposta cadastrada com sucesso!"
-                        lblMsg.ForeColor = Drawing.Color.LightGreen
-                        pnlMsg.Visible = True
-                        btnCancelar_Click(sender, e)
-                    End If
-                ElseIf Request.QueryString("codStatus").ToString = 5 Then
-                    If objRespostaBLL.AlteraResposta(objResposta) Then
-                        lblMsg.Text = "Resposta alterada com sucesso!"
-                        lblMsg.ForeColor = Drawing.Color.LightGreen
-                        pnlMsg.Visible = True
-                        btnCancelar_Click(sender, e)
-                    End If
-                End If
-            Next
+            '            lblMsg.Text = "Resposta cadastrada com sucesso!"
+            '            lblMsg.ForeColor = Drawing.Color.LightGreen
+            '            pnlMsg.Visible = True
+            '            btnCancelar_Click(sender, e)
+            '        End If
+            '    ElseIf Request.QueryString("codStatus").ToString = 5 Then
+            '        If objRespostaBLL.AlteraResposta(objResposta) Then
+            '            lblMsg.Text = "Resposta alterada com sucesso!"
+            '            lblMsg.ForeColor = Drawing.Color.LightGreen
+            '            pnlMsg.Visible = True
+            '            btnCancelar_Click(sender, e)
+            '        End If
+            '    End If
+            'Next
         End If
 
         For i = 0 To gridQuestao.Rows.Count - 1
@@ -352,7 +418,7 @@
         pnlFinalizar.Visible = False
     End Sub
 
-    Protected Sub btnSim_Click(sender As Object, e As EventArgs) Handles btnSim.Click        
+    Protected Sub btnSim_Click(sender As Object, e As EventArgs) Handles btnSim.Click
         Dim objQuestionario As New MODEL.Questionario
         Dim objQuestionarioBLL As New BLL.QuestionarioBLL
 
@@ -427,7 +493,7 @@
         carregagridQuestao()
     End Sub
 
-    Private Sub habilitaEdicao()        
+    Private Sub habilitaEdicao()
         limpaCampos()
         frameQuestao.Visible = True
 
@@ -478,7 +544,7 @@
         dt = objRespostaBLL.RetornaResposta(codQuestionario).Tables(0)
 
         txtResposta.Text = dt.Rows(0)("Resposta").ToString
-        Session("codResposta") = dt.Rows(0)("codResposta").ToString
+        lblCodigoResposta.Text = dt.Rows(0)("codResposta").ToString
 
     End Sub
 
