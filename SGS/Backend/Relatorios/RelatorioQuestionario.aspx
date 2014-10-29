@@ -13,6 +13,14 @@
 
     <table border="0" cellpadding="0" cellspacing="0" width="800" height="100%">
         <tr>
+            <td colspan="2">
+                <asp:Panel runat="server" ID="pnlMsg" Visible=False style="width: 64%; margin-left: 25%; margin-top: 10px; background-color:#FFFACD; height: 34px; border:1px solid #FFE4B5;" HorizontalAlign="Center">
+                    <p style="margin-top:7px;"><asp:Label runat="server" ID="lblMsg" Font-Bold="True" Font-Size="Small" ForeColor="Black" /></p>
+                </asp:panel>
+            </td>
+        </tr>
+                
+        <tr>
 		    <td colspan="2">
                 <fieldset class="frame" style="width:60%;">	
 							<legend style="color:#B0C4DE;">Filtro</legend>

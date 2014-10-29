@@ -408,8 +408,12 @@ div.accountInfo
 /* Formatação do Relatório
 -----------------------------------------------------------------------*/
 
-#teste
+.tblItem
 {
-	border:1px solid black;
+    border:1px solid black; 
 }
-	
+
+.colunaItem
+{
+    border:1px solid black;
+}
