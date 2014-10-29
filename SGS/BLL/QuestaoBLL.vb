@@ -51,10 +51,10 @@ Public Class QuestaoBLL
         obj.InsereItemQuestao(itemQuestao)
     End Sub
 
-    Public Function ListaItemQuestao(codQuestao As Integer) As DataSet
+    Public Function ListaItemQuestao(codQuestao As Integer, Optional ByVal codQuestionario As Integer = 0) As DataSet
         Dim obj As New DAL.QuestaoDAL
 
-        Return obj.ListaItemQuestao(codQuestao)
+        Return obj.ListaItemQuestao(codQuestao, codQuestionario)
     End Function
 
     Public Sub AlteraItemQuestao(itemQuestao As MODEL.ItemQuestao)

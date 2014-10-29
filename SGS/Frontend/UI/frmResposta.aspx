@@ -10,7 +10,7 @@
 
 </asp:Content>
 
-<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">    
     <table border="0" cellpadding="0" cellspacing="0" width="800" height="100%">
 				
 				
@@ -53,12 +53,10 @@
 							    <table>                                    
                                     <tr>
                                         <td>Área*</td>
-                                        <td>                         
-        
-                                                        <asp:DropDownList ID="cmbArea" AutoPostBack="true" runat="server" Width="269px" 
-                                                            Height="22px">
-                                                        </asp:DropDownList>
-
+                                        <td>                                 
+                                            <asp:DropDownList ID="cmbArea" AutoPostBack="true" runat="server" Width="269px" 
+                                                Height="22px">
+                                            </asp:DropDownList>
                                         </td>
                                     </tr>
                                 </table>
@@ -73,7 +71,8 @@
 							    <table>
 								    <tr>	
                                         <td> 
-                                            <asp:Label ID="lblCodQuestionario" runat="server" Font-Bold="True" />						    
+                                            <asp:Label ID="lblCodQuestionario" runat="server" Visible="False"></asp:Label>   
+                                            <asp:Label ID="lblOrdem" runat="server" Font-Bold="True" />						    
                                              - 
                                             <asp:Label ID="lblQuestao" runat="server" Font-Bold="True" />
                                         </td>
@@ -90,6 +89,7 @@
 							    <table>                                    
                                     <tr>									    
                                         <td>
+                                            <asp:Label ID="lblCodigoResposta" runat="server" Visible="False"></asp:Label>
                                             <asp:TextBox ID="txtResposta" runat="server" MaxLength="8000" Width="439px" 
                                                         Height="137px" TextMode="MultiLine" style="margin-left:15px;"></asp:TextBox>
                                         </td>
@@ -115,49 +115,56 @@
 				</tr>
 
                 <tr>
-					<td colspan="2">                      
-                        <fieldset id="frameItem" runat="server" visible="false" class="frame">	
-						    <legend style="color:#B0C4DE;">Item Questão</legend>
-							<table>                                           
-                                <tr>
-                                    <td colspan="3">
-                                        <asp:Panel ID="pnlGridItem"  runat="server" ScrollBars="Auto"                                                 
-                                            style="margin-left:0px; margin-top:0px; max-height:2    00px; max-width:465px;">
+					<td colspan="2">                                                    
+                            <fieldset id="frameItem" runat="server" visible="false" class="frame">	
+							    <legend style="color:#B0C4DE;">Item Questão</legend>
+							        <table>   
+                                        <tr>
+									        <td>Item</td> <td class="style4"> 
+                                                <asp:Label ID="lblCodigoItem" runat="server" Visible="False"></asp:Label>                                                
+                                                <asp:DropDownList ID="cmbItemQuestao" AutoPostBack="true" runat="server" Width="404px" Height="22px">
+                                                </asp:DropDownList>
+                                            </td>
+								        </tr>
+
+                                        <tr>									    
+                                            <td></td> <td class="style4"> 
+                                                <asp:TextBox ID="txtRespostaItem" runat="server" Width="404px"></asp:TextBox>
+                                            </td>
+                                            <td>                                            
+                                                <asp:ImageButton ID="ImageButton1" runat="server"
+                                                    ImageUrl="~/Imagens/save.ico" />                                            
+                                            </td>
+								        </tr>
+
+                                        <tr>
+                                            <td colspan="3">
+                                                <asp:Panel ID="pnlGridItem"  runat="server" ScrollBars="Auto"                                                 
+                                                    style="margin-left:0px; margin-top:0px; max-height:2    00px; max-width:465px;">
                                                     
-                                                    <asp:GridView ID="gridItemQuestao" runat="server" 
-                                                        style="margin-top: 0px; margin-left:auto; margin-right:auto;" CellPadding="4" ForeColor="#333333" 
-                                                        Font-Size="Small">
-                                                        <AlternatingRowStyle BackColor="White" />
-                                                        <Columns>
-                                                            <asp:TemplateField HeaderText="Item">
-                                                                <ItemTemplate>
-                                                                    <asp:Label ID="lblItem" runat="server" />
-                                                                </ItemTemplate>
-                                                            </asp:TemplateField>
-                                                            <asp:TemplateField HeaderText="Resposta">
-                                                                <ItemTemplate>
-                                                                    <asp:TextBox ID="txtResposta" runat="server" Width="250px"/>
-                                                                </ItemTemplate>
-                                                            </asp:TemplateField>
-                                                        </Columns>
-                                                        <EditRowStyle BackColor="#7C6F57" />
-                                                        <FooterStyle BackColor="#1C5E55" ForeColor="White" Font-Bold="True" />
-                                                        <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" 
-                                                            Height="30px" Wrap="False" />
-                                                        <PagerStyle BackColor="#666666" ForeColor="White" HorizontalAlign="Center" />
-                                                        <RowStyle BackColor="#E3EAEB" Wrap="False" />
-                                                        <SelectedRowStyle BackColor="#C5BBAF" Font-Bold="True" ForeColor="#333333" />
-                                                        <SortedAscendingCellStyle BackColor="#F8FAFA" />
-                                                        <SortedAscendingHeaderStyle BackColor="#246B61" />
-                                                        <SortedDescendingCellStyle BackColor="#D4DFE1" />
-                                                        <SortedDescendingHeaderStyle BackColor="#15524A" />
-                                                    </asp:GridView>
+                                                            <asp:GridView ID="gridItemResposta" runat="server" 
+                                                                style="margin-top: 0px; margin-left:auto; margin-right:auto;" 
+                                                                CellPadding="4" ForeColor="#333333" 
+                                                                Font-Size="Small">
+                                                                <AlternatingRowStyle BackColor="White" />
+                                                                <EditRowStyle BackColor="#7C6F57" />
+                                                                <FooterStyle BackColor="#1C5E55" ForeColor="White" Font-Bold="True" />
+                                                                <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" 
+                                                                    Height="30px" Wrap="False" />
+                                                                <PagerStyle BackColor="#666666" ForeColor="White" HorizontalAlign="Center" />
+                                                                <RowStyle BackColor="#E3EAEB" Wrap="False" />
+                                                                <SelectedRowStyle BackColor="#C5BBAF" Font-Bold="True" ForeColor="#333333" />
+                                                                <SortedAscendingCellStyle BackColor="#F8FAFA" />
+                                                                <SortedAscendingHeaderStyle BackColor="#246B61" />
+                                                                <SortedDescendingCellStyle BackColor="#D4DFE1" />
+                                                                <SortedDescendingHeaderStyle BackColor="#15524A" />
+                                                            </asp:GridView>
                                                          
-                                        </asp:Panel>
-                                    </td> 
-                                </tr>                                                                 
-							</table>                            								
-						</fieldset>                          
+                                                </asp:Panel>
+                                            </td> 
+                                        </tr>                                                                    
+						            </table>                            								
+					    </fieldset>                          
 					</td>
 				</tr>
             </table>
@@ -184,17 +191,17 @@
 
 				<tr>
 					<td colspan="2">
-                        <asp:Panel ID="Panel1"  runat="server" ScrollBars="Vertical"  
-                            style="margin-left:10px; margin-top:20px; max-height:366px; max-width:900px;">
+                        <div id="divLegenda" runat="server" visible="false">
+                            <ul style="margin-left:-4%;">
+                                <li style="display:inline; margin-right:10px;"><img src="../imagens/Flag_verde.png"><span>Respondido</span></li>
+                                <li style="display:inline; margin-right:10px;"><img src="../imagens/Flag_amarela.png"><span>Aguardando Analise</span></li>
+                                <li style="display:inline; margin-right:10px;"><img src="../imagens/Flag_vermelha.png"><span>Aguardando Resposta/Recusado</span></li>
+                                <li style="display:inline; margin-right:10px;"><img src="../imagens/Flag_azul.png"><span>Finalizado</span></li>
+                            </ul>
+                        </div>
 
-                            <div id="divLegenda" runat="server" visible="false">
-                                <ul style="margin-left:-4%;">
-                                    <li style="display:inline; margin-right:10px;"><img src="../imagens/Flag_verde.png"><span>Respondido</span></li>
-                                    <li style="display:inline; margin-right:10px;"><img src="../imagens/Flag_amarela.png"><span>Aguardando Analise</span></li>
-                                    <li style="display:inline; margin-right:10px;"><img src="../imagens/Flag_vermelha.png"><span>Aguardando Resposta/Recusado</span></li>
-                                    <li style="display:inline; margin-right:10px;"><img src="../imagens/Flag_azul.png"><span>Finalizado</span></li>
-                                </ul>
-                            </div>
+                        <asp:Panel ID="Panel1"  runat="server" ScrollBars="Vertical"  
+                            style="margin-left:10px; margin-top:20px; max-height:366px; max-width:900px;">                            
 
 						    <asp:GridView ID="gridQuestao" runat="server" 
                                 style="margin-top: 0px; margin-left:auto; margin-right:auto;" CellPadding="4" ForeColor="#333333" 
