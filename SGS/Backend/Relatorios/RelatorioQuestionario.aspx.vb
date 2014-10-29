@@ -12,6 +12,7 @@ Public Class RelatorioQuestionario
 
         If Not IsPostBack Then
             carrega_cmbEmpresa()
+            pnlMsg.Visible = False
         End If
 
 
@@ -48,11 +49,70 @@ Public Class RelatorioQuestionario
     Protected Sub btnConsultar_Click(sender As Object, e As EventArgs) Handles btnConsultar.Click
         Dim sb1 As New System.Text.StringBuilder
         Dim label1 As New Label
+        Dim objRelatorioBLL As New BLL.RelatorioBLL
+        Dim objRespostaBLL As New BLL.RespostaBLL
+        Dim dtQuestao As System.Data.DataTable
+        Dim dtResposta As System.Data.DataTable
+        Dim i As Integer
+        Dim j As Integer
+        Dim area As String
 
+
+        If cmbEmpresa.SelectedValue = 0 Then
+            lblMsg.Text = "Informe a empresa!"
+            lblMsg.ForeColor = Drawing.Color.Red
+            pnlMsg.Visible = True
+            Exit Sub
+        End If
+
+
+        dtQuestao = objRelatorioBLL.RelatorioQuestao(cmbEmpresa.SelectedValue).Tables(0)
+
+        If dtQuestao.Rows.Count <= 0 Then
+            lblMsg.Text = "Nenhuma questão foi finalizada para essa empresa!"
+            lblMsg.ForeColor = Drawing.Color.Red
+            pnlMsg.Visible = True
+            Exit Sub
+        End If
+
+        'Aqui vai a lógica do html do relatório
+        area = dtQuestao.Rows(0)("dc_area")
+
+        sb1.Append("<div class='divArea'><b>Area:&nbsp;</b>" & area & "</div>")
+
+        For i = 0 To dtQuestao.Rows.Count - 1
+            If dtQuestao.Rows(i)("dc_area") <> area Then
+                sb1.Append("<div class='divArea'><b>Area:&nbsp;</b> " & dtQuestao.Rows(i)("dc_area") & "</div>")
+                area = dtQuestao.Rows(i)("dc_area")
+            End If
+
+            'Monta cabeçalho da questão
+            sb1.Append("<div class='divQuestao'><b>" & dtQuestao.Rows(i)("nm_ordem") & ".&nbsp;</b>" & dtQuestao.Rows(i)("dc_questao") & "<br>")
+
+            'Monta resposta dentro da mesma div da questao
+            If dtQuestao.Rows(i)("xx_tipo") = "I" Then
+                dtResposta = objRespostaBLL.RetornaResposta(dtQuestao.Rows(i)("cd_questionario")).Tables(0)
+                sb1.Append("<b>R.:&nbsp;</b><span class='Resposta'>" & dtResposta.Rows(0)("Resposta") & "</span></div>")
+            End If
+
+            If dtQuestao.Rows(i)("xx_tipo") = "Q" Then
+                dtResposta = objRespostaBLL.ListaItemResposta(dtQuestao.Rows(i)("cd_questionario")).Tables(0)
+
+                sb1.Append("<table class='tblItem'>")
+                For j = 0 To dtResposta.Rows.Count - 1
+                    sb1.Append("    <tr>")
+                    sb1.Append("        <td class='colunaItem'>" & dtResposta.Rows(j)("Item") & "</td>")
+                    sb1.Append("        <td class='colunaItem'>" & dtResposta.Rows(j)("Resposta") & "</td>")
+                    sb1.Append("    </tr>")
+                Next
+                sb1.Append("</table></div><br>")
+
+            End If
+        Next
 
 
         'Aqui vai a lógica do html do relatório
-        sb1.Append("<div id='teste'>Hellow word!!!</div>")
+        'sb1.Append("<div id='teste'>Hellow word!!!</div>")
 
 
 
@@ -65,7 +125,7 @@ Public Class RelatorioQuestionario
         Response.ContentEncoding = System.Text.Encoding.UTF8
         Response.Cache.SetCacheability(HttpCacheability.NoCache)
         Response.ContentType = "application /msword.doc"
-        Response.AddHeader("content-disposition", "attachment; filename =" & "Relatório.doc")
+        Response.AddHeader("content-disposition", "attachment; filename =" & "Relatorio.doc")
         Dim sw As New System.IO.StringWriter
         Dim htw As New HtmlTextWriter(sw)
         label1.RenderControl(htw)
@@ -85,7 +145,7 @@ Public Class RelatorioQuestionario
         Response.End()
 
 
-       
+
     End Sub
 
 

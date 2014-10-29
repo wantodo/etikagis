@@ -23,6 +23,24 @@ Partial Public Class RelatorioQuestionario
     Protected WithEvents ScriptManager2 As Global.System.Web.UI.ScriptManager
 
     '''<summary>
+    '''pnlMsg control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents pnlMsg As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
+    '''lblMsg control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents lblMsg As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
     '''pnlEmpresa control.
     '''</summary>
     '''<remarks>

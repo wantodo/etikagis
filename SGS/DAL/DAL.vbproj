@@ -90,6 +90,7 @@
     <Compile Include="PerfilRepresentanteDAL.vb" />
     <Compile Include="QuestaoDAL.vb" />
     <Compile Include="QuestionarioDAL.vb" />
+    <Compile Include="RelatorioDAL.vb" />
     <Compile Include="RepresentanteDAL.vb" />
     <Compile Include="RespostaDAL.vb" />
     <Compile Include="StatusDAL.vb" />
