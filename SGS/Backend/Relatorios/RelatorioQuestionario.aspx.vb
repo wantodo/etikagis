@@ -80,21 +80,21 @@ Public Class RelatorioQuestionario
         'Aqui vai a lógica do html do relatório
         area = dtQuestao.Rows(0)("dc_area")
 
-        sb1.Append("<div class='divArea'><b>Area:&nbsp;</b>" & area & "</div>")
+        sb1.Append("<div class='divArea'>" & area & "</div>")
 
         For i = 0 To dtQuestao.Rows.Count - 1
             If dtQuestao.Rows(i)("dc_area") <> area Then
-                sb1.Append("<div class='divArea'><b>Area:&nbsp;</b> " & dtQuestao.Rows(i)("dc_area") & "</div>")
+                sb1.Append("<div class='divArea'>" & dtQuestao.Rows(i)("dc_area") & "</div>")
                 area = dtQuestao.Rows(i)("dc_area")
             End If
 
             'Monta cabeçalho da questão
-            sb1.Append("<div class='divQuestao'><b>" & dtQuestao.Rows(i)("nm_ordem") & ".&nbsp;</b>" & dtQuestao.Rows(i)("dc_questao") & "<br>")
+            sb1.Append("<div class='divQuestao'><b>" & dtQuestao.Rows(i)("nm_ordem") & ".&nbsp;" & dtQuestao.Rows(i)("dc_questao") & "</b><br>")
 
             'Monta resposta dentro da mesma div da questao
             If dtQuestao.Rows(i)("xx_tipo") = "I" Then
                 dtResposta = objRespostaBLL.RetornaResposta(dtQuestao.Rows(i)("cd_questionario")).Tables(0)
-                sb1.Append("<b>R.:&nbsp;</b><span class='Resposta'>" & dtResposta.Rows(0)("Resposta") & "</span></div>")
+                sb1.Append("<span class='resposta'>" & dtResposta.Rows(0)("Resposta") & "</span></div>")
             End If
 
             If dtQuestao.Rows(i)("xx_tipo") = "Q" Then
@@ -116,14 +116,14 @@ Public Class RelatorioQuestionario
                     Next
                     sb1.Append("    </tr>")
                 End If
-                
+
 
                 'Monta linhas com valores
                 For j = 0 To dtResposta.Rows.Count - 1
                     sb1.Append("    <tr>")
                     For col = 0 To dtResposta.Columns.Count - 1
                         If dtResposta.Columns.Count = 1 And dtResposta.Rows.Count = 1 Then
-                            sb1.Append("        <td class='colunaListaItem'>" & dtResposta.Columns(col).ColumnName & "</td>")
+                            sb1.Append("        <td class='colunaListaItem'>" & dtResposta.Columns(col).ColumnName & ":</td>")
                             sb1.Append("        <td class='colunaListaValor'>" & dtResposta.Rows(j)(col) & "</td>")
                         Else
                             sb1.Append("        <td class='colunaItemValor'>" & dtResposta.Rows(j)(col) & "</td>")
