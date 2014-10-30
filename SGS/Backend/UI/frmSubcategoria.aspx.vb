@@ -89,8 +89,12 @@
             dv.RowFilter = "Código = '" & txtFiltro.Text & "'"
         End If
 
-        If cmbFiltro.Text = "Perfil" Then
-            dv.RowFilter = "[Perfil] like '%" & txtFiltro.Text & "%'"
+        If cmbFiltro.Text = "SubCategoria" Then
+            dv.RowFilter = "[SubCategoria] like '%" & txtFiltro.Text & "%'"
+        End If
+
+        If cmbFiltro.Text = "Categoria" Then
+            dv.RowFilter = "[Categoria] like '%" & txtFiltro.Text & "%'"
         End If
 
         If cmbFiltro.Text = "Status" Then

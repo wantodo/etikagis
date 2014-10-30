@@ -39,14 +39,14 @@
                             <asp:MenuItem Text="Empresas" Value="Empresas" 
                                 NavigateUrl="~/UI/frmEmpresa.aspx"></asp:MenuItem>
                             <asp:MenuItem Text="Representante" Value="Representante" NavigateUrl="~/UI/frmRepresentante.aspx"></asp:MenuItem>
-                            <asp:MenuItem Text="Indicador" Value="Indicador" 
-                                NavigateUrl="~/UI/frmIndicador.aspx"></asp:MenuItem>
                             <asp:MenuItem NavigateUrl="~/UI/frmCategoria.aspx" Text="Categoria" 
                                 Value="Categoria"></asp:MenuItem>
                             <asp:MenuItem NavigateUrl="~/UI/frmSubcategoria.aspx" Text="Subcategoria" 
                                 Value="Subcategoria"></asp:MenuItem>
                             <asp:MenuItem NavigateUrl="~/UI/frmAspecto.aspx" Text="Aspecto" 
                                 Value="Aspecto"></asp:MenuItem>
+                            <asp:MenuItem Text="Indicador" Value="Indicador" 
+                                NavigateUrl="~/UI/frmIndicador.aspx"></asp:MenuItem>
                             <asp:MenuItem NavigateUrl="~/UI/frmQuestao.aspx" Text="Questão" Value="Questão">
                             </asp:MenuItem>
                         </asp:MenuItem>
