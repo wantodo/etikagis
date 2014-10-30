@@ -116,7 +116,7 @@
 
                 <tr>
 					<td colspan="2">                                                    
-                            <fieldset id="frameItem" runat="server" visible="false" class="frame">	
+                            <fieldset id="frameItem" runat="server" class="frame">	
 							    <legend style="color:#B0C4DE;">Item Questão</legend>
 							        <table>   
                                         <tr>

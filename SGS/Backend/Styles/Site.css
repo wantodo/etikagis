@@ -408,6 +408,14 @@ div.accountInfo
 /* Formatação do Relatório
 -----------------------------------------------------------------------*/
 
+.divArea
+{
+	background-color:Blue;
+	color:White;
+	font-size:18px;
+}
+
+
 .tblItem
 {
     border:1px solid black; 
