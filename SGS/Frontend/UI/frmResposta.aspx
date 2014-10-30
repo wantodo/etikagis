@@ -134,7 +134,7 @@
 					<td colspan="2">    
                         <asp:UpdatePanel ID="pnlItens" runat="server">
                             <ContentTemplate >                                                
-                                <fieldset id="frameItem" runat="server" class="frame">	
+                                <fieldset id="frameItem" runat="server" visible="false" class="frame">	
 							        <legend style="color:#B0C4DE;">Item Questão</legend>
 							            <table>   
                                             <tr>
@@ -198,7 +198,7 @@
 					        </fieldset>
                         </ContentTemplate>
                             <Triggers>
-                                <asp:AsyncPostBackTrigger ControlID ="cmbItemQuestao" />
+                                <asp:AsyncPostBackTrigger ControlID ="gridItemResposta" />
                             </Triggers>
                        </asp:UpdatePanel>                          
 					</td>

@@ -6,7 +6,8 @@
             Response.Redirect("frmLogin.aspx")
         End If
 
-        desabilitaCampos()
+        'desabilitaCampos()
+
 
         If Not IsPostBack Then
 
@@ -145,7 +146,7 @@
 
         cmbItemQuestao.DataTextField = "Item"
         cmbItemQuestao.DataValueField = "Codigo"
-        cmbItemQuestao.DataSource = objQuestaoBLL.ListaItemQuestao(0, codQuestionario)
+        cmbItemQuestao.DataSource = objQuestaoBLL.ListaItemQuestao(0, codQuestionario).Tables(0)
         cmbItemQuestao.DataBind()
 
         lista.Text = "<Selecione>"
@@ -465,6 +466,9 @@
             End If
         End If
 
+        txtRespostaItem.Text = ""
+        carrega_gridItemResposta(lblCodQuestionario.Text)
+
         For i = 0 To gridQuestao.Rows.Count - 1
             If gridQuestao.Rows(i).Cells(7).Text = 4 Or gridQuestao.Rows(i).Cells(7).Text = 7 Then
                 respondido = False
@@ -593,7 +597,9 @@
     Private Sub limpaCampos()
         lblQuestao.Text = ""
         txtResposta.Text = ""
+        txtRespostaItem.Text = ""
         lblRetorno.Text = ""
+        'cmbItemQuestao.SelectedValue = 0
         frameQuestao.Visible = False
         frameRetorno.Visible = False
         frameResposta.Visible = False
@@ -642,7 +648,7 @@
     End Sub
 
     Private Sub desabilitaCampos()
-        frameItem.Visible = False
+        'frameItem.Visible = False
     End Sub
 
     Private Sub carrega_resposta(codQuestionario As Integer)
