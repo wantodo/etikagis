@@ -99,7 +99,7 @@ Public Class RelatorioQuestionario
             If dtQuestao.Rows(i)("xx_tipo") = "Q" Then
                 dtResposta = objRelatorioBLL.RelatorioQuestaoItem(dtQuestao.Rows(i)("cd_questionario")).Tables(0)
 
-                If dtResposta.Columns.Count > 1 And dtResposta.Rows.Count > 1 Then
+                If Not (dtResposta.Columns.Count = 1 And dtResposta.Rows.Count = 1) Then
                     sb1.Append("<table class='tblItem'>")
                 Else
                     sb1.Append("<table>")
