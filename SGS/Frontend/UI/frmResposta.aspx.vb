@@ -15,7 +15,7 @@
 
             If Session("codPerfil") = 2 Then
                 frameFiltro.Visible = True
-                carrega_cmbArea()            
+                carrega_cmbArea()
                 panelBotoes.Visible = False
             End If
 
@@ -353,7 +353,7 @@
 
             If Request.QueryString("codStatus").ToString = 4 Then
                 If objRespostaBLL.InsereResposta(objResposta) Then
-                    objQuestionarioBLL.AlteraQuestionario(0, Request.QueryString("codQuestionario").ToString, 5)
+                    objQuestionarioBLL.AlteraQuestionario(Request.QueryString("codQuestionario").ToString, 5)
 
                     lblMsg.Text = "Resposta cadastrada com sucesso!"
                     lblMsg.ForeColor = Drawing.Color.LightGreen
@@ -448,7 +448,7 @@
 
         If lblCodigoItem.Text = "" Then
             If objRespostaBLL.InsereItemResposta(objItemResposta) Then
-                objQuestionarioBLL.AlteraQuestionario(0, Request.QueryString("codQuestionario").ToString, 5)
+                objQuestionarioBLL.AlteraQuestionario(Request.QueryString("codQuestionario").ToString, 5)
 
                 lblMsg.Text = "Item de Resposta cadastrado com sucesso!"
                 lblMsg.ForeColor = Drawing.Color.LightGreen
@@ -538,7 +538,7 @@
 
         If objQuestionarioBLL.EnviaEmailQuestionarioRespondido(objQuestionario) Then
 
-            objQuestionarioBLL.AlteraQuestionario(objQuestionario.representante.cd_representante, 0, 6)
+            objQuestionarioBLL.AlteraQuestionario(objQuestionario.cd_questionario, 6)
 
             lblMsg.Text = "Questionário finalizado com sucesso!"
             lblMsg.ForeColor = Drawing.Color.LightGreen
@@ -641,7 +641,7 @@
     End Sub
 
     Private Sub desabilitaCampos()
-
+        frameItem.Visible = False
     End Sub
 
     Private Sub carrega_resposta(codQuestionario As Integer)

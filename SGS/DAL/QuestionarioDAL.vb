@@ -78,14 +78,13 @@ Public Class QuestionarioDAL
         End Try
     End Function
 
-    Public Sub AlteraQuestionario(codRepresentante As Integer, codQuestionario As Integer, codStatus As Integer)
+    Public Sub AlteraQuestionario(codQuestionario As Integer, codStatus As Integer)
         Try
             Dim dal As New BDDAL(COMUM.strConexao, True)
             Dim param() As SqlParameter
 
             param = {dal.CriarParametro("@cd_status", SqlDbType.Int, codStatus), _
-                     dal.CriarParametro("@cd_questionario", SqlDbType.Int, codQuestionario), _
-                     dal.CriarParametro("@cd_representante", SqlDbType.Int, codRepresentante)}
+                     dal.CriarParametro("@cd_questionario", SqlDbType.Int, codQuestionario)}
 
             dal.GetDataSet("st_sgs_questionario_u", CommandType.StoredProcedure, param)
         Catch ex As Exception

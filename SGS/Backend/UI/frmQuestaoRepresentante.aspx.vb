@@ -296,7 +296,7 @@
 
         If objQuestionarioBLL.EnviaEmailQuestionadioLiberado(objQuestionario) Then
 
-            objQuestionarioBLL.AlteraQuestionario(objQuestionario.representante.cd_representante, 0, 4)
+            objQuestionarioBLL.AlteraQuestionario(objQuestionario.cd_questionario, 4)
 
             lblMsg.Text = "Questionário finalizado com sucesso!"
             lblMsg.ForeColor = Drawing.Color.LightGreen
