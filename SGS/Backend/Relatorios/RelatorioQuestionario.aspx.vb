@@ -55,6 +55,7 @@ Public Class RelatorioQuestionario
         Dim dtResposta As System.Data.DataTable
         Dim i As Integer
         Dim j As Integer
+        Dim col As Integer
         Dim area As String
 
 
@@ -96,13 +97,38 @@ Public Class RelatorioQuestionario
             End If
 
             If dtQuestao.Rows(i)("xx_tipo") = "Q" Then
-                dtResposta = objRespostaBLL.ListaItemResposta(dtQuestao.Rows(i)("cd_questionario")).Tables(0)
+                dtResposta = objRelatorioBLL.RelatorioQuestaoItem(dtQuestao.Rows(i)("cd_questionario")).Tables(0)
 
-                sb1.Append("<table class='tblItem'>")
+                If dtResposta.Columns.Count > 1 And dtResposta.Rows.Count > 1 Then
+                    sb1.Append("<table class='tblItem'>")
+                Else
+                    sb1.Append("<table>")
+                End If
+
+
+                'Monta linha dos titulos das colunas
+
+                If Not (dtResposta.Columns.Count = 1 And dtResposta.Rows.Count = 1) Then
+                    sb1.Append("    <tr>")
+                    For col = 0 To dtResposta.Columns.Count - 1
+                        sb1.Append("        <td class='colunaItemTitulo'>" & dtResposta.Columns(col).ColumnName & "</td>")
+                    Next
+                    sb1.Append("    </tr>")
+                End If
+                
+
+                'Monta linhas com valores
                 For j = 0 To dtResposta.Rows.Count - 1
                     sb1.Append("    <tr>")
-                    sb1.Append("        <td class='colunaItem'>" & dtResposta.Rows(j)("Item") & "</td>")
-                    sb1.Append("        <td class='colunaItem'>" & dtResposta.Rows(j)("Resposta") & "</td>")
+                    For col = 0 To dtResposta.Columns.Count - 1
+                        If dtResposta.Columns.Count = 1 And dtResposta.Rows.Count = 1 Then
+                            sb1.Append("        <td class='colunaListaItem'>" & dtResposta.Columns(col).ColumnName & "</td>")
+                            sb1.Append("        <td class='colunaListaValor'>" & dtResposta.Rows(j)(col) & "</td>")
+                        Else
+                            sb1.Append("        <td class='colunaItemValor'>" & dtResposta.Rows(j)(col) & "</td>")
+                        End If
+
+                    Next
                     sb1.Append("    </tr>")
                 Next
                 sb1.Append("</table></div><br>")

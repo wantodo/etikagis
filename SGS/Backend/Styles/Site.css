@@ -413,7 +413,23 @@ div.accountInfo
     border:1px solid black; 
 }
 
-.colunaItem
+.colunaItemTitulo
 {
     border:1px solid black;
+}
+
+.colunaItemValor
+{
+    border:1px solid black;
+}
+
+.colunaListaItem
+{
+    font-weight:bold;
+    padding:5px; 
+}
+
+.colunaListaValor
+{
+    padding:5px; 
 }
