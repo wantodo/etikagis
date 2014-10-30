@@ -149,7 +149,7 @@ Public Class RelatorioQuestionario
 
         Response.Clear()
         Response.Charset = ""
-        Response.ContentEncoding = System.Text.Encoding.UTF8
+        Response.ContentEncoding = System.Text.Encoding.GetEncoding("iso-8859-1")
         Response.Cache.SetCacheability(HttpCacheability.NoCache)
         Response.ContentType = "application /msword.doc"
         Response.AddHeader("content-disposition", "attachment; filename =" & "Relatorio.doc")
