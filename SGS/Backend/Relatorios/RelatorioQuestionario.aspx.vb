@@ -59,6 +59,7 @@ Public Class RelatorioQuestionario
         Dim area As String
 
 
+
         If cmbEmpresa.SelectedValue = 0 Then
             lblMsg.Text = "Informe a empresa!"
             lblMsg.ForeColor = Drawing.Color.Red
