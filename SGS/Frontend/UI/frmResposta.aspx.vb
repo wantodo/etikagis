@@ -100,6 +100,38 @@
                     End If
                 End If
             End If
+
+            If Not Request.QueryString.Item("excluir") Is Nothing Then
+                If Request.QueryString("excluir").ToString = "1" Then
+
+                    lblCodQuestionario.Text = Request.QueryString("codQuestionario").ToString
+
+                    lblOrdem.Text = Request.QueryString("ordem").ToString
+                    lblQuestao.Text = Request.QueryString("questao").ToString
+
+                    If Request.QueryString("retorno").ToString <> " " Then
+                        frameRetorno.Visible = True
+                        lblRetorno.Text = Request.QueryString("retorno").ToString
+                    End If
+
+                    If Not Request.QueryString.Item("coditem") Is Nothing Then
+                        lblCodigoItem.Text = Request.QueryString.Item("coditem").ToString
+                        txtRespostaItem.Text = Request.QueryString.Item("respostaitem").ToString
+                        cmbItemQuestao.SelectedValue = Request.QueryString.Item("coditemresposta").ToString
+
+                        pnlMsg.Visible = False
+
+                        pnlExcluirItem.Visible = True
+                        pnlExcluirItem.Focus()
+
+                        carrega_gridItemResposta(lblCodQuestionario.Text)
+
+                        habilitaCampos()
+
+                        Exit Sub
+                    End If
+                End If
+            End If
         End If
 
     End Sub
@@ -393,6 +425,61 @@
 
     End Sub
 
+    Protected Sub btnGravaItem_Click(sender As Object, e As System.Web.UI.ImageClickEventArgs) Handles btnGravaItem.Click
+        Dim objItemResposta As New MODEL.ItemResposta
+        Dim objRespostaBLL As New BLL.RespostaBLL
+        Dim objQuestionarioBLL As New BLL.QuestionarioBLL
+        Dim dt As DataTable
+
+        With objItemResposta
+            If lblCodigoItem.Text <> "" Then
+                .cd_item_resposta = lblCodigoItem.Text
+            End If
+
+            .questionario.cd_questionario = lblCodQuestionario.Text
+            .itemQuestao.cd_item_questao = cmbItemQuestao.SelectedValue
+            .dc_resposta_item = txtRespostaItem.Text
+            .no_userid = Session("sessionUser")
+        End With
+
+        If lblCodigoItem.Text = "" Then
+            If objRespostaBLL.InsereItemResposta(objItemResposta) Then
+                objQuestionarioBLL.AlteraQuestionario(0, Request.QueryString("codQuestionario").ToString, 5)
+
+                lblMsg.Text = "Item de Resposta cadastrado com sucesso!"
+                lblMsg.ForeColor = Drawing.Color.LightGreen
+                pnlMsg.Visible = True
+                btnCancelar_Click(sender, e)
+            End If
+        Else
+            If objRespostaBLL.AlteraItemResposta(objItemResposta) Then
+                lblMsg.Text = "Item de Resposta alterado com sucesso!"
+                lblMsg.ForeColor = Drawing.Color.LightGreen
+                pnlMsg.Visible = True
+                btnCancelar_Click(sender, e)
+            End If
+        End If
+    End Sub
+
+    Protected Sub btnNaoItem_Click(sender As Object, e As EventArgs) Handles btnNaoItem.Click
+        lblCodigoItem.Text = ""
+        txtRespostaItem.Text = ""
+        carrega_cmbItemQuestao(lblCodQuestionario.Text)
+        pnlExcluirItem.Visible = False
+        gridItemResposta.Focus()
+    End Sub
+
+    Protected Sub btnSimItem_Click(sender As Object, e As EventArgs) Handles btnSimItem.Click
+        Dim objItemRespostaBLL As New BLL.RespostaBLL
+
+        objItemRespostaBLL.ExcluirItemQuestao(CInt(lblCodigoItem.Text))
+        carrega_cmbItemQuestao(lblCodQuestionario.Text)
+        pnlExcluirItem.Visible = False
+        lblCodigoItem.Text = ""
+        txtRespostaItem.Text = ""
+        gridItemResposta.Focus()
+    End Sub
+
     Protected Sub btnFinalizar_Click(sender As Object, e As System.Web.UI.ImageClickEventArgs) Handles btnFinalizar.Click
         If gridQuestao.Rows.Count <= 0 Then
             Exit Sub
@@ -565,5 +652,4 @@
     Protected Sub cmbArea_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbArea.SelectedIndexChanged
         carregagridQuestao()
     End Sub
-
 End Class

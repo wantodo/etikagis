@@ -132,7 +132,7 @@
                                                 <asp:TextBox ID="txtRespostaItem" runat="server" Width="404px"></asp:TextBox>
                                             </td>
                                             <td>                                            
-                                                <asp:ImageButton ID="ImageButton1" runat="server"
+                                                <asp:ImageButton ID="btnGravaItem" runat="server"
                                                     ImageUrl="~/Imagens/save.ico" />                                            
                                             </td>
 								        </tr>
@@ -182,6 +182,24 @@
                                     <td>
                                         <asp:Button ID="btnSim" runat="server" Text="SIM" Width="76px" />
                                         <asp:Button ID="btnNao" runat="server" Text="NÃO" Width="76px" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </asp:Panel>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="2">
+                        <asp:Panel runat="server" ID="pnlExcluirItem" Visible="false" Height="44px">
+                            <table width="99%" style="background-color:#FFDAB9; height: 41px; border:1px solid #CD3333; margin-left:10px;">
+                                <tr>
+                                    <td class="style3">
+                                        <span style="margin-left:200px; font-size:medium; color:#CD3333;">Deseja excluir esse item?</span>
+                                    </td> 
+                                    <td>
+                                        <asp:Button ID="btnSimItem" runat="server" Text="SIM" Width="76px" />
+                                        <asp:Button ID="btnNaoItem" runat="server" Text="NÃO" Width="76px" />
                                     </td>
                                 </tr>
                             </table>

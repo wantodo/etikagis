@@ -69,6 +69,7 @@
     <Compile Include="Empresa.vb" />
     <Compile Include="Indicador.vb" />
     <Compile Include="ItemQuestao.vb" />
+    <Compile Include="ItemResposta.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
