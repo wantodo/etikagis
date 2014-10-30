@@ -212,13 +212,13 @@ Partial Public Class frmResposta
     Protected WithEvents txtRespostaItem As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''ImageButton1 control.
+    '''btnGravaItem control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ImageButton1 As Global.System.Web.UI.WebControls.ImageButton
+    Protected WithEvents btnGravaItem As Global.System.Web.UI.WebControls.ImageButton
 
     '''<summary>
     '''pnlGridItem control.
@@ -264,6 +264,33 @@ Partial Public Class frmResposta
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents btnNao As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''pnlExcluirItem control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents pnlExcluirItem As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
+    '''btnSimItem control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnSimItem As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''btnNaoItem control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnNaoItem As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
     '''divLegenda control.

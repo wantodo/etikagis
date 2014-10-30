@@ -28,4 +28,22 @@ Public Class RespostaBLL
         Return obj.ListaItemResposta(codQuestionario)
     End Function
 
+    Function InsereItemResposta(objItemResposta As MODEL.ItemResposta) As Boolean
+        Dim obj As New DAL.RespostaDAL
+
+        Return obj.InsereItemResposta(objItemResposta)
+    End Function
+
+    Function AlteraItemResposta(objItemResposta As MODEL.ItemResposta) As Boolean
+        Dim obj As New DAL.RespostaDAL
+
+        Return obj.AlteraItemResposta(objItemResposta)
+    End Function
+
+    Sub ExcluirItemQuestao(codItem As Integer)
+        Dim obj As New DAL.RespostaDAL
+
+        obj.ExcluirItemQuestao(codItem)
+    End Sub
+
 End Class
