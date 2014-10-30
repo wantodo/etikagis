@@ -8,4 +8,10 @@ Public Class RelatorioBLL
 
         Return obj.RelatorioQuestao(cd_empresa)
     End Function
+
+    Public Function RelatorioQuestaoItem(cd_questionario As Integer) As DataSet
+        Dim obj As New DAL.RelatorioDAL
+
+        Return obj.RelatorioQuestaoItem(cd_questionario)
+    End Function
 End Class
