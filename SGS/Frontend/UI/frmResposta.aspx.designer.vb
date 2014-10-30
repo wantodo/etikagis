@@ -14,6 +14,15 @@ Option Explicit On
 Partial Public Class frmResposta
 
     '''<summary>
+    '''ScriptManager2 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ScriptManager2 As Global.System.Web.UI.ScriptManager
+
+    '''<summary>
     '''panelBotoes control.
     '''</summary>
     '''<remarks>
@@ -86,6 +95,15 @@ Partial Public Class frmResposta
     Protected WithEvents frameFiltro As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
+    '''pnlArea control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents pnlArea As Global.System.Web.UI.UpdatePanel
+
+    '''<summary>
     '''cmbArea control.
     '''</summary>
     '''<remarks>
@@ -149,6 +167,15 @@ Partial Public Class frmResposta
     Protected WithEvents lblCodigoResposta As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
+    '''pnlResposta control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents pnlResposta As Global.System.Web.UI.UpdatePanel
+
+    '''<summary>
     '''txtResposta control.
     '''</summary>
     '''<remarks>
@@ -176,6 +203,15 @@ Partial Public Class frmResposta
     Protected WithEvents lblRetorno As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
+    '''pnlItens control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents pnlItens As Global.System.Web.UI.UpdatePanel
+
+    '''<summary>
     '''frameItem control.
     '''</summary>
     '''<remarks>
@@ -194,6 +230,15 @@ Partial Public Class frmResposta
     Protected WithEvents lblCodigoItem As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
+    '''pnlItemQuestao control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents pnlItemQuestao As Global.System.Web.UI.UpdatePanel
+
+    '''<summary>
     '''cmbItemQuestao control.
     '''</summary>
     '''<remarks>
@@ -210,6 +255,15 @@ Partial Public Class frmResposta
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents txtRespostaItem As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''pnlGravaItem control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents pnlGravaItem As Global.System.Web.UI.UpdatePanel
 
     '''<summary>
     '''btnGravaItem control.
@@ -293,15 +347,6 @@ Partial Public Class frmResposta
     Protected WithEvents btnNaoItem As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
-    '''divLegenda control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents divLegenda As Global.System.Web.UI.HtmlControls.HtmlGenericControl
-
-    '''<summary>
     '''Panel1 control.
     '''</summary>
     '''<remarks>
@@ -309,6 +354,24 @@ Partial Public Class frmResposta
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents Panel1 As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
+    '''UpdatePanel1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents UpdatePanel1 As Global.System.Web.UI.UpdatePanel
+
+    '''<summary>
+    '''divLegenda control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents divLegenda As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
     '''gridQuestao control.

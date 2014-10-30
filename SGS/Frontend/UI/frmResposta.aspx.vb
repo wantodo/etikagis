@@ -457,6 +457,7 @@
             End If
         Else
             If objRespostaBLL.AlteraItemResposta(objItemResposta) Then
+                objQuestionarioBLL.AlteraQuestionario(Request.QueryString("codQuestionario").ToString, 5)
                 lblMsg.Text = "Item de Resposta alterado com sucesso!"
                 lblMsg.ForeColor = Drawing.Color.LightGreen
                 pnlMsg.Visible = True
@@ -538,7 +539,7 @@
 
         If objQuestionarioBLL.EnviaEmailQuestionarioRespondido(objQuestionario) Then
 
-            objQuestionarioBLL.AlteraQuestionario(objQuestionario.cd_questionario, 6)
+            objQuestionarioBLL.AlteraQuestionario(0, 6, objQuestionario.representante.cd_representante)
 
             lblMsg.Text = "Questionário finalizado com sucesso!"
             lblMsg.ForeColor = Drawing.Color.LightGreen
