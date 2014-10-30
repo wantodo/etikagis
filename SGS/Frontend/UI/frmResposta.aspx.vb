@@ -113,10 +113,12 @@
                     lblOrdem.Text = Request.QueryString("ordem").ToString
                     lblQuestao.Text = Request.QueryString("questao").ToString
 
-                    If Request.QueryString("retorno").ToString <> " " Then
+                    If Request.QueryString("retorno").ToString <> "" Then
                         frameRetorno.Visible = True
                         lblRetorno.Text = Request.QueryString("retorno").ToString
                     End If
+
+                    carrega_cmbItemQuestao(lblCodQuestionario.Text)
 
                     If Not Request.QueryString.Item("coditem") Is Nothing Then
                         lblCodigoItem.Text = Request.QueryString.Item("coditem").ToString
@@ -128,6 +130,8 @@
                         pnlExcluirItem.Visible = True
                         pnlExcluirItem.Focus()
 
+                        frameQuestao.Visible = True
+                        frameItem.Visible = True
                         carrega_gridItemResposta(lblCodQuestionario.Text)
 
                         habilitaCampos()
@@ -185,55 +189,6 @@
         End If
 
     End Sub
-
-    'Private Sub carrega_gridItemQuestao(codQuestionario As Integer)
-    '    Dim objRespostaBLL As New BLL.RespostaBLL
-    '    Dim ds As DataSet
-    '    Dim dt As DataTable
-    '    Dim dv As DataView
-
-    '    ds = objRespostaBLL.ListaItemResposta(codQuestionario)
-    '    dv = ds.Tables(0).DefaultView
-    '    dt = ds.Tables(0)
-    '    gridItemQuestao.DataSource = dt
-
-    '    gridItemQuestao.DataBind()
-    'End Sub
-
-    'Private Sub gridItemQuestao_RowDataBound(sender As Object, e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles gridItemQuestao.RowDataBound
-    '    Dim lb As Label
-    '    Dim tx As TextBox
-    '    Dim temp As String
-
-    '    If e.Row.RowType = DataControlRowType.Header Then
-    '        e.Row.Cells(2).Visible = False
-    '        e.Row.Cells(3).Visible = False
-    '        e.Row.Cells(4).Visible = False
-    '        e.Row.Cells(5).Visible = False
-    '    End If
-
-    '    If e.Row.RowType = DataControlRowType.DataRow Then            
-    '        e.Row.Cells(2).Visible = False
-    '        e.Row.Cells(3).Visible = False
-    '        e.Row.Cells(4).Visible = False
-    '        e.Row.Cells(5).Visible = False
-
-    '        temp = e.Row.Cells(3).Text            
-    '        lb = e.Row.Cells(0).FindControl("lblItem")
-    '        lb.Text = "<div style='width:192px; white-space:pre-wrap;'>" & temp & "</div>"
-
-    '        If e.Row.Cells(4).Text <> "&nbsp;" Then
-    '            tx = e.Row.Cells(0).FindControl("txtResposta")
-    '            tx.Text = e.Row.Cells(4).Text
-    '            If Not Request.QueryString.Item("pesquisar") Is Nothing Then
-    '                tx.Enabled = False
-    '            End If
-    '        End If
-
-
-    '    End If
-
-    'End Sub
 
     Private Sub carregagridQuestao()
         Dim objQuestionarioBLL As New BLL.QuestionarioBLL
@@ -369,63 +324,35 @@
                     btnCancelar_Click(sender, e)
                 End If
             End If
-
         Else
-            'For i As Integer = 0 To gridItemQuestao.Rows.Count - 1
+            If gridItemResposta.Rows.Count > 0 Then
+                objQuestionarioBLL.AlteraQuestionario(Request.QueryString("codQuestionario").ToString, 5)
 
-            '    tx = gridItemQuestao.Rows(i).Cells(0).FindControl("txtResposta")
-
-            '    If tx.Text = "" Then
-            '        lblMsg.Text = "O preenchimento dos itens é obrigatório!"
-            '        lblMsg.ForeColor = Drawing.Color.Red
-            '        pnlMsg.Visible = True
-            '        Exit Sub
-            '    End If
-
-            '    With objResposta
-            '        If gridItemQuestao.Rows(i).Cells(5).Text <> "" Then
-            '            .cd_resposta = gridItemQuestao.Rows(i).Cells(5).Text
-            '        End If
-            '        .dc_resposta = tx.Text
-            '        .questionario.cd_questionario = Request.QueryString("codQuestionario").ToString
-            '        .item.cd_item_questao = gridItemQuestao.Rows(i).Cells(2).Text
-            '        .no_userid = Session("sessionUser")
-            '    End With
-
-            '    If Request.QueryString("codStatus").ToString = 4 Then
-            '        If objRespostaBLL.InsereResposta(objResposta) Then
-            '            objQuestionarioBLL.AlteraQuestionario(0, Request.QueryString("codQuestionario").ToString, 5)
-
-            '            lblMsg.Text = "Resposta cadastrada com sucesso!"
-            '            lblMsg.ForeColor = Drawing.Color.LightGreen
-            '            pnlMsg.Visible = True
-            '            btnCancelar_Click(sender, e)
-            '        End If
-            '    ElseIf Request.QueryString("codStatus").ToString = 5 Then
-            '        If objRespostaBLL.AlteraResposta(objResposta) Then
-            '            lblMsg.Text = "Resposta alterada com sucesso!"
-            '            lblMsg.ForeColor = Drawing.Color.LightGreen
-            '            pnlMsg.Visible = True
-            '            btnCancelar_Click(sender, e)
-            '        End If
-            '    End If
-            'Next
-        End If
-
-        For i = 0 To gridQuestao.Rows.Count - 1
-            If gridQuestao.Rows(i).Cells(7).Text = 4 Or gridQuestao.Rows(i).Cells(7).Text = 7 Then
-                respondido = False
-                Exit For
+                lblMsg.Text = "Resposta cadastrada com sucesso!"
+                lblMsg.ForeColor = Drawing.Color.LightGreen
+                pnlMsg.Visible = True
+                btnCancelar_Click(sender, e)
             Else
-                respondido = True
+                lblMsg.Text = "O questionário deve ser todo respondido!"
+                lblMsg.ForeColor = Drawing.Color.Red
+                pnlMsg.Visible = True
             End If
-        Next
-
-        If respondido Then
-            pnlMsg.Visible = False
-
-            pnlFinalizar.Visible = True
         End If
+
+            For i = 0 To gridQuestao.Rows.Count - 1
+                If gridQuestao.Rows(i).Cells(7).Text = 4 Or gridQuestao.Rows(i).Cells(7).Text = 7 Then
+                    respondido = False
+                    Exit For
+                Else
+                    respondido = True
+                End If
+            Next
+
+            If respondido Then
+                pnlMsg.Visible = False
+
+                pnlFinalizar.Visible = True
+            End If
 
     End Sub
 
@@ -448,21 +375,16 @@
         End With
 
         If lblCodigoItem.Text = "" Then
-            If objRespostaBLL.InsereItemResposta(objItemResposta) Then
-                objQuestionarioBLL.AlteraQuestionario(Request.QueryString("codQuestionario").ToString, 5)
-
+            If objRespostaBLL.InsereItemResposta(objItemResposta) Then                
                 lblMsg.Text = "Item de Resposta cadastrado com sucesso!"
                 lblMsg.ForeColor = Drawing.Color.LightGreen
                 pnlMsg.Visible = True
-                btnCancelar_Click(sender, e)
             End If
         Else
-            If objRespostaBLL.AlteraItemResposta(objItemResposta) Then
-                objQuestionarioBLL.AlteraQuestionario(Request.QueryString("codQuestionario").ToString, 5)
+            If objRespostaBLL.AlteraItemResposta(objItemResposta) Then                
                 lblMsg.Text = "Item de Resposta alterado com sucesso!"
                 lblMsg.ForeColor = Drawing.Color.LightGreen
                 pnlMsg.Visible = True
-                btnCancelar_Click(sender, e)
             End If
         End If
 
@@ -497,8 +419,8 @@
     Protected Sub btnSimItem_Click(sender As Object, e As EventArgs) Handles btnSimItem.Click
         Dim objItemRespostaBLL As New BLL.RespostaBLL
 
-        objItemRespostaBLL.ExcluirItemQuestao(CInt(lblCodigoItem.Text))
-        carrega_cmbItemQuestao(lblCodQuestionario.Text)
+        objItemRespostaBLL.ExcluirItemQuestao(CInt(lblCodigoItem.Text))        
+        carrega_gridItemResposta(lblCodQuestionario.Text)
         pnlExcluirItem.Visible = False
         lblCodigoItem.Text = ""
         txtRespostaItem.Text = ""
