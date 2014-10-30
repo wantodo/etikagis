@@ -10,7 +10,6 @@ Public Class RespostaDAL
             Dim param() As SqlParameter
 
             param = {dal.CriarParametro("@cd_questionario", SqlDbType.Int, objResposta.questionario.cd_questionario), _
-                     dal.CriarParametro("@cd_item", SqlDbType.Int, objResposta.item.cd_item_questao), _
                      dal.CriarParametro("@dc_resposta", SqlDbType.VarChar, objResposta.dc_resposta), _
                      dal.CriarParametro("@no_userid_cadastro", SqlDbType.VarChar, objResposta.no_userid)}
 
@@ -31,7 +30,6 @@ Public Class RespostaDAL
             Dim param() As SqlParameter
 
             param = {dal.CriarParametro("@cd_resposta", SqlDbType.Int, objResposta.cd_resposta), _
-                     dal.CriarParametro("@cd_item", SqlDbType.Int, objResposta.item.cd_item_questao), _
                      dal.CriarParametro("@dc_resposta", SqlDbType.VarChar, objResposta.dc_resposta), _
                      dal.CriarParametro("@no_userid", SqlDbType.VarChar, objResposta.no_userid)}
 
