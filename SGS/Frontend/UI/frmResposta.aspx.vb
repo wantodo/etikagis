@@ -37,7 +37,9 @@
                         frameResposta.Visible = True
                         frameItem.Visible = False
 
-                        carrega_resposta(Request.QueryString("codQuestionario").ToString)
+                        If Request.QueryString("codStatus").ToString <> 4 Then
+                            carrega_resposta(Request.QueryString("codQuestionario").ToString)
+                        End If
 
                     ElseIf Request.QueryString("tipo").ToString.Equals("Q") Then
                         frameResposta.Visible = False
@@ -430,6 +432,7 @@
         Dim objRespostaBLL As New BLL.RespostaBLL
         Dim objQuestionarioBLL As New BLL.QuestionarioBLL
         Dim dt As DataTable
+        Dim respondido As Boolean
 
         With objItemResposta
             If lblCodigoItem.Text <> "" Then
@@ -459,6 +462,22 @@
                 btnCancelar_Click(sender, e)
             End If
         End If
+
+        For i = 0 To gridQuestao.Rows.Count - 1
+            If gridQuestao.Rows(i).Cells(7).Text = 4 Or gridQuestao.Rows(i).Cells(7).Text = 7 Then
+                respondido = False
+                Exit For
+            Else
+                respondido = True
+            End If
+        Next
+
+        If respondido Then
+            pnlMsg.Visible = False
+
+            pnlFinalizar.Visible = True
+        End If
+
     End Sub
 
     Protected Sub btnNaoItem_Click(sender As Object, e As EventArgs) Handles btnNaoItem.Click
