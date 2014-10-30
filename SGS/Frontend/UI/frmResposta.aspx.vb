@@ -12,6 +12,7 @@
 
             carregagridQuestao()
 
+
             If Session("codPerfil") = 2 Then
                 frameFiltro.Visible = True
                 carrega_cmbArea()            
@@ -149,7 +150,7 @@
 
         lista.Text = "<Selecione>"
         lista.Value = 0
-        cmbArea.Items.Insert(0, lista)
+        cmbItemQuestao.Items.Insert(0, lista)
     End Sub
 
     Private Sub carrega_gridItemResposta(codQuestionario As Integer)
