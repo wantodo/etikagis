@@ -158,7 +158,7 @@
             e.Row.Cells(1).Text = ""
             e.Row.Cells(5).Visible = False
             e.Row.Cells(7).Visible = False            
-            e.Row.Cells(14).Visible = False
+            e.Row.Cells(15).Visible = False
         End If
 
         If e.Row.RowType = DataControlRowType.DataRow Then
@@ -166,7 +166,7 @@
             e.Row.Cells(1).Text = "<a href='frmRepresentante.aspx?excluir=1&codigo=" & e.Row.Cells(2).Text & "&nome=" & e.Row.Cells(3).Text & "&empresa=" & e.Row.Cells(4).Text & "&codempresa=" & e.Row.Cells(5).Text & "&perfil=" & e.Row.Cells(6).Text & "&codperfil=" & e.Row.Cells(7).Text & "&cargo=" & e.Row.Cells(8).Text & "&area=" & e.Row.Cells(9).Text & "&telefone=" & e.Row.Cells(10).Text & "&usuario=" & e.Row.Cells(11).Text & "&email=" & e.Row.Cells(12).Text & "&status=" & e.Row.Cells(13).Text & "&codstatus=" & e.Row.Cells(14).Text & "'><img src='../imagens/delete.png'></a>"
             e.Row.Cells(5).Visible = False
             e.Row.Cells(7).Visible = False
-            e.Row.Cells(14).Visible = False
+            e.Row.Cells(15).Visible = False
         End If
     End Sub
 

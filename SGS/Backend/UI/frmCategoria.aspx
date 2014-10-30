@@ -28,7 +28,6 @@
                                         <asp:ListItem></asp:ListItem>
                                         <asp:ListItem>Código</asp:ListItem>
                                         <asp:ListItem>Descrição</asp:ListItem>
-                                        <asp:ListItem>Cod. Status</asp:ListItem>
                                         <asp:ListItem>Status</asp:ListItem>
                                     </asp:DropDownList>
 								    <asp:TextBox runat="server" id="txtFiltro" Width="171px" />                                	

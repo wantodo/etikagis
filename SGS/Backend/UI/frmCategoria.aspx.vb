@@ -90,9 +90,9 @@
             dv.RowFilter = "[Descrição] like '%" & txtFiltro.Text & "%'"
         End If
 
-        If cmbFiltro.Text = "Cod. Status" Then
-            dv.RowFilter = "[Cod. Status] = '" & txtFiltro.Text & "'"
-        End If
+        'If cmbFiltro.Text = "Cod. Status" Then
+        '    dv.RowFilter = "[Cod. Status] = '" & txtFiltro.Text & "'"
+        'End If
 
         If cmbFiltro.Text = "Status" Then
             dv.RowFilter = "[Status] like '%" & txtFiltro.Text & "%'"
