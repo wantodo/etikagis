@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="frmAspecto.aspx.vb" Inherits="Backend.frmAspecto" %>
+﻿<%@ Page Title="GIS - Cadastro de Aspecto" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="frmAspecto.aspx.vb" Inherits="Backend.frmAspecto" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
     <style type="text/css">
         .style3

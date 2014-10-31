@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="RelatorioQuestionario.aspx.vb" Inherits="Backend.RelatorioQuestionario" %>
+﻿<%@ Page Title="GIS - Relatório Final" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="RelatorioQuestionario.aspx.vb" Inherits="Backend.RelatorioQuestionario" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
     </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">

@@ -16,8 +16,44 @@
 
 
 
-        If NavigationMenu.Page.Title.ToString = "Empresas" Then
+        If NavigationMenu.Page.Title.ToString = "GIS - Cadastro Empresa" Then
             lblTitulo.Text = "Cadastro de Empresa"
+        End If
+
+        If NavigationMenu.Page.Title.ToString = "GIS - Cadastro de Representante" Then
+            lblTitulo.Text = "Cadastro de Representante"
+        End If
+
+        If NavigationMenu.Page.Title.ToString = "GIS - Cadastro de Categoria" Then
+            lblTitulo.Text = "Cadastro de Categoria"
+        End If
+
+        If NavigationMenu.Page.Title.ToString = "GIS - Cadastro de Subcategoria" Then
+            lblTitulo.Text = "Cadastro de Subcategoria"
+        End If
+
+        If NavigationMenu.Page.Title.ToString = "GIS - Cadastro de Aspecto" Then
+            lblTitulo.Text = "Cadastro de Aspecto"
+        End If
+
+        If NavigationMenu.Page.Title.ToString = "GIS - Cadastro de Indicador" Then
+            lblTitulo.Text = "Cadastro de Indicador"
+        End If
+
+        If NavigationMenu.Page.Title.ToString = "GIS - Cadastro de Questão" Then
+            lblTitulo.Text = "Cadastro de Questão"
+        End If
+
+        If NavigationMenu.Page.Title.ToString = "GIS - Representante X Questões" Then
+            lblTitulo.Text = "Representante X Questões"
+        End If
+
+        If NavigationMenu.Page.Title.ToString = "GIS - Analise de Resposta" Then
+            lblTitulo.Text = "Analise de Resposta"
+        End If
+
+        If NavigationMenu.Page.Title.ToString = "GIS - Relatório Final" Then
+            lblTitulo.Text = "Relatório Final"
         End If
 
 

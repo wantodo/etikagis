@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Representante" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="frmRepresentante.aspx.vb" Inherits="Backend.frmRepresentante" %>
+﻿<%@ Page Title="GIS - Cadastro de Representante" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="frmRepresentante.aspx.vb" Inherits="Backend.frmRepresentante" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
     <style type="text/css">
