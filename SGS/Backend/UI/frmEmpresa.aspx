@@ -1,7 +1,9 @@
-﻿<%@ Page Title="Empresa" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master"
+﻿<%@ Page Title="Empresas" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master"
     CodeBehind="frmEmpresa.aspx.vb" Inherits="Backend.frmEmpresa" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+    
+            
     <style type="text/css">
         .style3
         {

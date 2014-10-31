@@ -14,17 +14,27 @@
     <div class="page">
         <div class="header">
             <div id="divLogo" class="loginDisplay" 
-                style="background-image: url('../Imagens/topo_form2.jpg'); background-repeat: no-repeat;">
+                style="background-image: url('../Imagens/topoLogo.png'); background-repeat: no-repeat; background-position:30px 10px; background-color:#00CD00;">               
+
+                <asp:label ID="lblTitulo" runat="server" 
+                    style="float:left; margin-left:22%; margin-top:6%; text-align:center; font-family:Tahoma; font-weight:bold; font-size:medium;" Width="553px"></asp:label>
+
                 <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
                     <AnonymousTemplate>
                         [ <a href="~/Account/Login.aspx" ID="HeadLoginStatus" runat="server">Log In</a> ]
+                        
                     </AnonymousTemplate>
                     <LoggedInTemplate>
                         Bem vindo <span class="bold"><asp:LoginName ID="HeadLoginName" runat="server" /></span>!
-                        [ <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="Log Out" LogoutPageUrl="~/UI/frmLogin.aspx" /> ]
+                        [ <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="LogOut" LogoutPageUrl="~/UI/frmLogin.aspx" /> ]
                     </LoggedInTemplate>
                 </asp:LoginView>
+
+                
             </div>
+
+            
+
             <div class="clear hideSkiplink" style="background-color: #458B00">
                 <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
                     <Items>

@@ -13,6 +13,15 @@
 
         'menuItens.RemoveAt(0)
 
+
+
+
+        If NavigationMenu.Page.Title.ToString = "Empresas" Then
+            lblTitulo.Text = "Cadastro de Empresa"
+        End If
+
+
+
         Select Case Session("acesso")
             Case 1  ' Admin
                 Exit Sub
@@ -35,7 +44,9 @@
                 NavigationMenu.Items(4).Enabled = False
         End Select
         'NavigationMenu.Items(2).Enabled = False
+
+
     End Sub
 
-
+ 
 End Class
