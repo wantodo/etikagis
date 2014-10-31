@@ -93,7 +93,7 @@ Public Class QuestionarioBLL
 
         Mailmsg.Attachments.Clear()
 
-        mSmtpCliente.Send(Mailmsg)
+        'mSmtpCliente.Send(Mailmsg)
         Mailmsg.Attachments.Dispose()
         Mailmsg.Dispose()
         EnviaEmailQuestionadioLiberado = True
@@ -149,7 +149,7 @@ Public Class QuestionarioBLL
 
         Mailmsg.Attachments.Clear()
 
-        mSmtpCliente.Send(Mailmsg)
+        'mSmtpCliente.Send(Mailmsg)
         Mailmsg.Attachments.Dispose()
         Mailmsg.Dispose()
         EnviaEmailQuestionarioRespondido = True
@@ -204,7 +204,7 @@ Public Class QuestionarioBLL
 
         Mailmsg.Attachments.Clear()
 
-        mSmtpCliente.Send(Mailmsg)
+        'mSmtpCliente.Send(Mailmsg)
         Mailmsg.Attachments.Dispose()
         Mailmsg.Dispose()
         EnviaEmailAnaliseQuestao = True
