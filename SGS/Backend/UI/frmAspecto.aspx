@@ -81,7 +81,7 @@
 								    </tr>    	
 
                                     <tr>
-									    <td>Subcategoria*</td> <td>                         
+									    <td>Subcategoria</td> <td>                         
                                         <asp:DropDownList ID="cmbSubcategoria" runat="server" Width="202px">
                                         </asp:DropDownList>
                                         </td>
