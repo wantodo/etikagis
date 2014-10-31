@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="frmIndicador.aspx.vb" Inherits="Backend.frmIndicador" %>
+﻿<%@ Page Title="GIS - Cadastro de Indicador" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="frmIndicador.aspx.vb" Inherits="Backend.frmIndicador" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
     <style type="text/css">
         .style3
