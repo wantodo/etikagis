@@ -7,6 +7,7 @@
             width: 429px;
         }
     </style>
+    <script language="JavaScript" type="text/javascript" src="../Scripts/MascaraValidacao.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <table border="0" cellpadding="0" cellspacing="0" width="800" height="100%">								
@@ -107,7 +108,7 @@
 
 								        <tr>
 										    <td>Telefone</td> <td>
-                                            <asp:TextBox ID="txtTelefone" runat="server" MaxLength="20" Width="179px"></asp:TextBox>
+                                            <asp:TextBox ID="txtTelefone" runat="server" MaxLength="20" Width="179px" onkeypress="MascaraTelefone(ctl00$MainContent$txtTelefone);"></asp:TextBox>
                                             </td>
 									    </tr>	
 

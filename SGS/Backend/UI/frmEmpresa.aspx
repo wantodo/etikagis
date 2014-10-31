@@ -8,7 +8,7 @@
             width: 429px;
         }
     </style>
-    <%-- <script language="JavaScript" type="text/javascript" src="../Scripts/mascara.js"></script> --%>
+     <script language="JavaScript" type="text/javascript" src="../Scripts/MascaraValidacao.js"></script> 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <asp:ScriptManager ID="ScriptManager2" runat="server">
@@ -87,7 +87,7 @@
                                 CNPJ*
                             </td>
                             <td>
-                                <asp:TextBox ID="txtCNPJ" runat="server" MaxLength="18" Width="202px"></asp:TextBox>
+                                <asp:TextBox ID="txtCNPJ" runat="server" MaxLength="18" Width="202px" onkeyPress="MascaraCNPJ(ctl00$MainContent$txtCNPJ);" onblur="ValidarCNPJ(ctl00$MainContent$txtCNPJ);"></asp:TextBox>
                             </td>
                         </tr>
                         <tr>
@@ -141,7 +141,8 @@
                                 CEP
                             </td>
                             <td>
-                                <asp:TextBox ID="txtCEP" runat="server" MaxLength="9" Width="179px"></asp:TextBox>
+                                <asp:TextBox ID="txtCEP" runat="server" MaxLength="10" Width="179px" 
+                                    onkeypress="MascaraCep(ctl00$MainContent$txtCEP);"> </asp:TextBox>
                             </td>
                         </tr>
                         <tr>
@@ -237,4 +238,5 @@
             </td>
         </tr>
     </table>
+                    </table>
 </asp:Content>
