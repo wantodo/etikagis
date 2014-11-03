@@ -431,22 +431,7 @@
             Exit Sub
         End If
 
-        'For i = 0 To gridQuestao.Rows.Count - 1
-        '    If gridQuestao.Rows(i).Cells(7).Text = 4 Or gridQuestao.Rows(i).Cells(7).Text = 7 Then
-
-        '        lblMsg.Text = "O questionário deve ser todo respondido!"
-        '        lblMsg.ForeColor = Drawing.Color.Red
-        '        pnlMsg.Visible = True
-        '        Exit Sub
-        '    Else
-        '        pnlMsg.Visible = False
-
-        '        pnlFinalizar.Visible = True
-        '    End If
-        'Next
-
         pnlMsg.Visible = False
-
         pnlFinalizar.Visible = True
 
     End Sub
@@ -469,7 +454,11 @@
 
         If objQuestionarioBLL.EnviaEmailQuestionarioRespondido(objQuestionario) Then
 
-            objQuestionarioBLL.AlteraQuestionario(0, 6, objQuestionario.representante.cd_representante)
+            For i = 0 To gridQuestao.Rows.Count - 1                
+                If gridQuestao.Rows(i).Cells(7).Text = 5 Then
+                    objQuestionarioBLL.AlteraQuestionario(gridQuestao.Rows(i).Cells(2).Text, 6)
+                End If
+            Next
 
             lblMsg.Text = "Questionário finalizado com sucesso!"
             lblMsg.ForeColor = Drawing.Color.LightGreen
