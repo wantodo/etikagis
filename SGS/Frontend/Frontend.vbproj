@@ -100,6 +100,13 @@
     <Content Include="Imagens\edit.png" />
     <Content Include="Imagens\find.ico" />
     <Content Include="Imagens\find_disabled.png" />
+    <Content Include="Imagens\Flag-Black.png" />
+    <Content Include="Imagens\Flag-Blue.png" />
+    <Content Include="Imagens\Flag-Checkered.png" />
+    <Content Include="Imagens\Flag-Green.png" />
+    <Content Include="Imagens\Flag-Grey.png" />
+    <Content Include="Imagens\Flag-Red.png" />
+    <Content Include="Imagens\Flag-Yellow.png" />
     <Content Include="Imagens\Flag_amarela.png" />
     <Content Include="Imagens\Flag_azul.png" />
     <Content Include="Imagens\Flag_verde.png" />

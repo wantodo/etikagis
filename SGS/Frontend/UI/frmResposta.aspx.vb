@@ -279,7 +279,6 @@
     End Sub
 
     Private Sub btnGravar_Click(sender As Object, e As System.EventArgs) Handles btnGravar.Click
-        Dim tx As TextBox
         Dim objRespostaBLL As New BLL.RespostaBLL
         Dim objQuestionarioBLL As New BLL.QuestionarioBLL
         Dim objResposta As New MODEL.Resposta
@@ -432,19 +431,24 @@
             Exit Sub
         End If
 
-        For i = 0 To gridQuestao.Rows.Count - 1
-            If gridQuestao.Rows(i).Cells(7).Text = 4 Or gridQuestao.Rows(i).Cells(7).Text = 7 Then
+        'For i = 0 To gridQuestao.Rows.Count - 1
+        '    If gridQuestao.Rows(i).Cells(7).Text = 4 Or gridQuestao.Rows(i).Cells(7).Text = 7 Then
 
-                lblMsg.Text = "O questionário deve ser todo respondido!"
-                lblMsg.ForeColor = Drawing.Color.Red
-                pnlMsg.Visible = True
-                Exit Sub
-            Else
-                pnlMsg.Visible = False
+        '        lblMsg.Text = "O questionário deve ser todo respondido!"
+        '        lblMsg.ForeColor = Drawing.Color.Red
+        '        pnlMsg.Visible = True
+        '        Exit Sub
+        '    Else
+        '        pnlMsg.Visible = False
 
-                pnlFinalizar.Visible = True
-            End If
-        Next
+        '        pnlFinalizar.Visible = True
+        '    End If
+        'Next
+
+        pnlMsg.Visible = False
+
+        pnlFinalizar.Visible = True
+
     End Sub
 
     Protected Sub btnNao_Click(sender As Object, e As EventArgs) Handles btnNao.Click

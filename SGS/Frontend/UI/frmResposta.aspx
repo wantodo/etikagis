@@ -245,19 +245,20 @@
 
 				<tr>
 					<td colspan="2">
+                        <div id="divLegenda" runat="server" visible="false">
+                            <ul style="margin-left:-4%;">
+                                <li style="display:inline; margin-right:10px;"><img src="../imagens/Flag-Red.png"><span>Aguardando Resposta</span></li>
+                                <li style="display:inline; margin-right:10px;"><img src="../imagens/Flag-Blue.png"><span>Gravada</span></li>
+                                <li style="display:inline; margin-right:10px;"><img src="../imagens/Flag-Green.png"><span>Respondido</span></li>
+                                <li style="display:inline; margin-right:10px;"><img src="../imagens/Flag-Yellow.png"><span>Devolvido</span></li>                                
+                                <li style="display:inline; margin-right:10px;"><img src="../imagens/Flag-Checkered.png"><span>Finalizado</span></li>
+                            </ul>
+                        </div>                                                 
+
                         <asp:Panel ID="Panel1"  runat="server" ScrollBars="Vertical"  
                             style="margin-left:10px; margin-top:20px; max-height:366px; max-width:900px;">   
                             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                                <ContentTemplate >
-                                    <div id="divLegenda" runat="server" visible="false">
-                                        <ul style="margin-left:-4%;">
-                                            <li style="display:inline; margin-right:10px;"><img src="../imagens/Flag_verde.png"><span>Respondido</span></li>
-                                            <li style="display:inline; margin-right:10px;"><img src="../imagens/Flag_amarela.png"><span>Aguardando Analise</span></li>
-                                            <li style="display:inline; margin-right:10px;"><img src="../imagens/Flag_vermelha.png"><span>Aguardando Resposta/Recusado</span></li>
-                                            <li style="display:inline; margin-right:10px;"><img src="../imagens/Flag_azul.png"><span>Finalizado</span></li>
-                                        </ul>
-                                    </div>                                                 
-
+                                <ContentTemplate >                                    
 						            <asp:GridView ID="gridQuestao" runat="server" 
                                         style="margin-top: 0px; margin-left:auto; margin-right:auto;" CellPadding="4" ForeColor="#333333" 
                                         Font-Size="Small" Height="215px">
