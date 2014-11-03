@@ -296,15 +296,19 @@
 
         If objQuestionarioBLL.EnviaEmailQuestionadioLiberado(objQuestionario) Then
 
-            objQuestionarioBLL.AlteraQuestionario(objQuestionario.cd_questionario, 4)
+            objQuestionarioBLL.AlteraQuestionario(0, 4, cmbArea.SelectedValue)
 
             lblMsg.Text = "Questionário finalizado com sucesso!"
             lblMsg.ForeColor = Drawing.Color.LightGreen
             pnlMsg.Visible = True
+
+            pnlFinalizar.Visible = False
         Else
             lblMsg.Text = "Não foi possível finalizar o questionário. Favor verificar o email de cadastro do Ponto Focal."
             lblMsg.ForeColor = Drawing.Color.Red
             pnlMsg.Visible = True
+
+            pnlFinalizar.Visible = False
         End If
 
         limpaCampos()
