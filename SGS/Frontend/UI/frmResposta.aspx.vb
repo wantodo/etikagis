@@ -239,33 +239,33 @@
             If Session("codPerfil") = 1 Then
                 Select Case e.Row.Cells(7).Text
                     Case 4 'Aguardando Resposta 
-                        e.Row.Cells(0).Text = "<img src='../imagens/Flag_vermelha.png'>"
+                        e.Row.Cells(0).Text = "<img src='../imagens/Flag-Red.png'>"
                         e.Row.Cells(1).Text = "<a href='frmResposta.aspx?editar=1&codQuestionario=" & e.Row.Cells(2).Text & "&ordem=" & e.Row.Cells(3).Text & "&codQuestao=" & e.Row.Cells(4).Text & "&questao=" & temp & "&tipo=" & e.Row.Cells(6).Text & "&codStatus=" & e.Row.Cells(7).Text & "&retorno=" & "&area=" & 0 & "'><img src='../imagens/edit.png'></a>"
-                    Case 7 'Aguardando Retorno
-                        e.Row.Cells(0).Text = "<img src='../imagens/Flag_vermelha.png'>"
+                    Case 5 'Gravado
+                        e.Row.Cells(0).Text = "<img src='../imagens/Flag-Blue.png'>"
                         e.Row.Cells(1).Text = "<a href='frmResposta.aspx?editar=1&codQuestionario=" & e.Row.Cells(2).Text & "&ordem=" & e.Row.Cells(3).Text & "&codQuestao=" & e.Row.Cells(4).Text & "&questao=" & temp & "&tipo=" & e.Row.Cells(6).Text & "&codStatus=" & e.Row.Cells(7).Text & "&retorno=" & "&area=" & 0 & "'><img src='../imagens/edit.png'></a>"
-                    Case 5 'Respondido
-                        e.Row.Cells(0).Text = "<img src='../imagens/Flag_verde.png'>"
-                        e.Row.Cells(1).Text = "<a href='frmResposta.aspx?editar=1&codQuestionario=" & e.Row.Cells(2).Text & "&ordem=" & e.Row.Cells(3).Text & "&codQuestao=" & e.Row.Cells(4).Text & "&questao=" & temp & "&tipo=" & e.Row.Cells(6).Text & "&codStatus=" & e.Row.Cells(7).Text & "&retorno=" & "&area=" & 0 & "'><img src='../imagens/edit.png'></a>"
-                    Case 6 'Aguardando Analise
-                        e.Row.Cells(0).Text = "<img src='../imagens/Flag_amarela.png'>"
+                    Case 6 'Respondido
+                        e.Row.Cells(0).Text = "<img src='../imagens/Flag-Green.png'>"
                         e.Row.Cells(1).Text = "<a href='frmResposta.aspx?pesquisar=1&codQuestionario=" & e.Row.Cells(2).Text & "&ordem=" & e.Row.Cells(3).Text & "&codQuestao=" & e.Row.Cells(4).Text & "&questao=" & temp & "&tipo=" & e.Row.Cells(6).Text & "&codStatus=" & e.Row.Cells(7).Text & "&retorno=" & "&area=" & 0 & "'><img src='../imagens/find.ico'></a>"
-                    Case 9 'Finalizado
-                        e.Row.Cells(0).Text = "<img src='../imagens/Flag_azul.png'>"
+                    Case 7 'Devolvido
+                        e.Row.Cells(0).Text = "<img src='../imagens/Flag-Yellow.png'>"
+                        e.Row.Cells(1).Text = "<a href='frmResposta.aspx?editar=1&codQuestionario=" & e.Row.Cells(2).Text & "&ordem=" & e.Row.Cells(3).Text & "&codQuestao=" & e.Row.Cells(4).Text & "&questao=" & temp & "&tipo=" & e.Row.Cells(6).Text & "&codStatus=" & e.Row.Cells(7).Text & "&retorno=" & "&area=" & 0 & "'><img src='../imagens/edit.png'></a>"
+                    Case 8 'Finalizado
+                        e.Row.Cells(0).Text = "<img src='../imagens/Flag-Checkered.png'>"
                         e.Row.Cells(1).Text = "<a href='frmResposta.aspx?pesquisar=1&codQuestionario=" & e.Row.Cells(2).Text & "&ordem=" & e.Row.Cells(3).Text & "&codQuestao=" & e.Row.Cells(4).Text & "&questao=" & temp & "&tipo=" & e.Row.Cells(6).Text & "&codStatus=" & e.Row.Cells(7).Text & "&retorno=" & e.Row.Cells(8).Text & "&area=" & 0 & "'><img src='../imagens/find.ico'></a>"
                 End Select
             Else
                 Select Case e.Row.Cells(7).Text
                     Case 4 'Aguardando Resposta 
-                        e.Row.Cells(0).Text = "<img src='../imagens/Flag_vermelha.png'>"
-                    Case 7 'Aguardando Retorno
-                        e.Row.Cells(0).Text = "<img src='../imagens/Flag_vermelha.png'>"
-                    Case 5 'Respondido
-                        e.Row.Cells(0).Text = "<img src='../imagens/Flag_verde.png'>"
-                    Case 6 'Aguardando Analise
-                        e.Row.Cells(0).Text = "<img src='../imagens/Flag_amarela.png'>"
-                    Case 9 'Finalizado
-                        e.Row.Cells(0).Text = "<img src='../imagens/Flag_azul.png'>"
+                        e.Row.Cells(0).Text = "<img src='../imagens/Flag-Red.png'>"
+                    Case 5 'Gravado
+                        e.Row.Cells(0).Text = "<img src='../imagens/Flag-Blue.png'>"
+                    Case 6 'Respondido
+                        e.Row.Cells(0).Text = "<img src='../imagens/Flag-Green.png'>"
+                    Case 7 'Devolvido
+                        e.Row.Cells(0).Text = "<img src='../imagens/Flag-Yellow.png'>"
+                    Case 8 'Finalizado
+                        e.Row.Cells(0).Text = "<img src='../imagens/Flag-Checkered.png'>"
                 End Select
 
                 e.Row.Cells(1).Text = "<a href='frmResposta.aspx?pesquisar=1&codQuestionario=" & e.Row.Cells(2).Text & "&ordem=" & e.Row.Cells(3).Text & "&codQuestao=" & e.Row.Cells(4).Text & "&questao=" & temp & "&tipo=" & e.Row.Cells(6).Text & "&codStatus=" & e.Row.Cells(7).Text & "&retorno=" & e.Row.Cells(8).Text & "&area=" & cmbArea.SelectedValue & "'><img src='../imagens/find.ico'></a>"
