@@ -107,10 +107,6 @@
     <Content Include="Imagens\Flag-Grey.png" />
     <Content Include="Imagens\Flag-Red.png" />
     <Content Include="Imagens\Flag-Yellow.png" />
-    <Content Include="Imagens\Flag_amarela.png" />
-    <Content Include="Imagens\Flag_azul.png" />
-    <Content Include="Imagens\Flag_verde.png" />
-    <Content Include="Imagens\Flag_vermelha.png" />
     <Content Include="Imagens\login_bg.png" />
     <Content Include="Imagens\no.ico" />
     <Content Include="Imagens\no_disabled.png" />
