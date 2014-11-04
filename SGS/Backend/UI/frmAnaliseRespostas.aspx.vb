@@ -189,15 +189,15 @@ Public Class frmAnaliseRespostas
     End Sub
 
     Private Sub gridItemQuestao_RowDataBound(sender As Object, e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles gridItemQuestao.RowDataBound
-        If e.Row.RowType = DataControlRowType.Header Then
-            e.Row.Cells(0).Visible = False
-            e.Row.Cells(3).Visible = False
-        End If
+        'If e.Row.RowType = DataControlRowType.Header Then
+        '    e.Row.Cells(0).Visible = False
+        '    e.Row.Cells(3).Visible = False
+        'End If
 
-        If e.Row.RowType = DataControlRowType.DataRow Then
-            e.Row.Cells(0).Visible = False
-            e.Row.Cells(3).Visible = False
-        End If
+        'If e.Row.RowType = DataControlRowType.DataRow Then
+        '    e.Row.Cells(0).Visible = False
+        '    e.Row.Cells(3).Visible = False
+        'End If
     End Sub
 
     Private Sub limpaCampos()
@@ -296,5 +296,9 @@ Public Class frmAnaliseRespostas
         limpaCampos()
         pnlQuestionario.Visible = False
         carregaGridQuestao()
+    End Sub
+
+    Protected Sub gridItemQuestao_SelectedIndexChanged(sender As Object, e As EventArgs) Handles gridItemQuestao.SelectedIndexChanged
+
     End Sub
 End Class
