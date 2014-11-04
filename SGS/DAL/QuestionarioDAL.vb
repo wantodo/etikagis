@@ -109,4 +109,20 @@ Public Class QuestionarioDAL
         End Try
     End Function
 
+    Function RetornaStatusQuestionario(parametros As Array) As DataSet
+        Try
+            Dim dal As New BDDAL(COMUM.strConexao, True)
+            Dim param() As SqlParameter
+
+            param = {dal.CriarParametro("@cd_empresa", SqlDbType.Int, parametros(0)), _
+                     dal.CriarParametro("@cd_area", SqlDbType.Int, parametros(1)), _
+                     dal.CriarParametro("@cd_indicador", SqlDbType.Int, parametros(2)), _
+                     dal.CriarParametro("@cd_status", SqlDbType.Int, parametros(3))}
+
+            Return dal.GetDataSet("st_sgs_questionario_status_s", CommandType.StoredProcedure, param)
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Function
+
 End Class
