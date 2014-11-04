@@ -38,6 +38,12 @@ Public Class QuestionarioBLL
         obj.AlteraQuestionario(codQuestionario, codStatus, codRepresentante)
     End Sub
 
+    Function RetornaStatusQuestionario(parametros As Array) As DataSet
+        Dim obj As New DAL.QuestionarioDAL
+
+        Return obj.RetornaStatusQuestionario(parametros)
+    End Function
+
     Function RetornaQuestionarioRepresentante(parametros As Array) As DataSet
         Dim obj As New DAL.QuestionarioDAL
 
