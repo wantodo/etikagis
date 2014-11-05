@@ -224,6 +224,10 @@ Public Class frmAnaliseRespostas
 
     Protected Sub btnGravar_Click(sender As Object, e As System.Web.UI.ImageClickEventArgs) Handles btnGravar.Click
         Dim objAnaliseQuestao As New BLL.AnaliseQuestaoBLL
+        Dim objQuestionario As New MODEL.Questionario
+        Dim objQuestionarioBLL As New BLL.QuestionarioBLL
+        Dim dt As DataTable
+        Dim objRepresentante As New BLL.RepresentanteBLL
 
         If cmbStatus.SelectedValue = 0 Then
             lblMsg.Text = "Informe o status da analise!"
@@ -234,6 +238,15 @@ Public Class frmAnaliseRespostas
         End If
 
         objAnaliseQuestao.AlteraAnaliseQuestao(Request.QueryString("cd_questionario").ToString, cmbStatus.SelectedValue, txtRetorno.Text)
+
+        If cmbStatus.SelectedValue = 7 Then
+            dt = objRepresentante.RetornaRepresentante(Request.QueryString("cd_representante").ToString, 0).Tables(0)
+            objQuestionario.representante.dc_email = dt.Rows(0)("email").ToString
+            objQuestionario.representante.no_representante = dt.Rows(0)("Nome").ToString
+            objQuestionario.representante.dc_area = dt.Rows(0)("Area").ToString
+
+            objQuestionarioBLL.EnviaEmailAnaliseQuestao(objQuestionario)
+        End If
 
         carregaGridQuestao()
 

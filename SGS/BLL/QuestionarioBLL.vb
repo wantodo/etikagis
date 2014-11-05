@@ -182,7 +182,7 @@ Public Class QuestionarioBLL
             'seMailRemetente = "mribeiro@etikaconsultoria.com.br​"
             seMailRemetente = "diogo.bastos@duratex.com.br​"
             sNomeRemetente = "Etika Consultoria"
-            sAssuntoEmail = "Questionário Análisado!"
+            sAssuntoEmail = "Questão devolvida!"
 
         Catch ex As Exception
             Dim erro As New Exception("Falha ao obter configurações de email.")
@@ -203,7 +203,7 @@ Public Class QuestionarioBLL
         Mailmsg.IsBodyHtml = True
 
         Mailmsg.Body = "<HTML>"
-        Mailmsg.Body += "Questionário Análisado, verificar as questões marcadas em amarelo.  " & objQuestionario.representante.dc_area
+        Mailmsg.Body += "Questão devolvida, verificar as questões marcadas em amarelo.  " & objQuestionario.representante.dc_area
         Mailmsg.Body += "</HTML>"
 
         Mailmsg.To.Add(New MailAddress(seMailDestinatario, sNomeDestinatario))
