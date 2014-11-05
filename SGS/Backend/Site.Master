@@ -72,6 +72,8 @@
                         <asp:MenuItem Text="Relatórios" Value="Relatórios">
                             <asp:MenuItem Text="Relatório Final" Value="Relatório Final" 
                                 NavigateUrl="~/Relatorios/RelatorioQuestionario.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="Relatório Status Questionarios" Value="Relatório Status Questionarios" 
+                                NavigateUrl="~/Relatorios/frmRelStatusQuestionarios.aspx"></asp:MenuItem>
                         </asp:MenuItem>
                         <asp:MenuItem Text="Sair" Value="Sair" NavigateUrl="~/UI/frmLogin.aspx">
                         </asp:MenuItem>

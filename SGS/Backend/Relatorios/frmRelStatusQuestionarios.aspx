@@ -1,4 +1,4 @@
-﻿<%@ Page Title="GIS - Relatório Final" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="frmRelStatusQuestionarios.aspx.vb" Inherits="Backend.frmRelStatusQuestionarios" %>
+﻿<%@ Page Title="GIS - Relatório Status Questionarios" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="frmRelStatusQuestionarios.aspx.vb" Inherits="Backend.frmRelStatusQuestionarios" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
     </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">

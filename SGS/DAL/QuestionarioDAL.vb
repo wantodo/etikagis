@@ -119,7 +119,7 @@ Public Class QuestionarioDAL
                      dal.CriarParametro("@cd_indicador", SqlDbType.Int, parametros(2)), _
                      dal.CriarParametro("@cd_status", SqlDbType.Int, parametros(3))}
 
-            Return dal.GetDataSet("st_sgs_questionario_status_s", CommandType.StoredProcedure, param)
+            Return dal.GetDataSet("st_sgs_relatorio_status_questionario_s", CommandType.StoredProcedure, param)
         Catch ex As Exception
             Throw ex
         End Try
