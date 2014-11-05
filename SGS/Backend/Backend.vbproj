@@ -144,7 +144,6 @@
     <Content Include="Imagens\topo_form2.jpg" />
     <Content Include="Imagens\topo_form_olho.jpg" />
     <Content Include="Imagens\topo_sustentabilidade.jpg" />
-    <Content Include="Relatorios\Flag-Yellow.png" />
     <Content Include="Relatorios\frmRelStatusQuestionarios.aspx" />
     <Content Include="Relatorios\RelatorioQuestionario.aspx" />
     <Content Include="Scripts\MascaraValidacao.js" />
