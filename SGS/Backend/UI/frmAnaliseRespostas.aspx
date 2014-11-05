@@ -23,8 +23,8 @@
                                         ImageUrl="~/Imagens/save_disabled.png" Enabled="False" /></li>
 								<li><asp:ImageButton id="btnCancelar" runat="server" 
                                         ImageUrl="~/Imagens/no_disabled.png" Enabled="False" /></li>
-                                <li><asp:ImageButton id="btnFinalizar" runat="server" 
-                                        ImageUrl="~/Imagens/accept.png" /></li>								
+                                <%--<li><asp:ImageButton id="btnFinalizar" runat="server" 
+                                        ImageUrl="~/Imagens/accept.png" /></li>	--%>							
 								
 							</ul>
 						</nav>
@@ -114,7 +114,7 @@
                                                     style="margin-left:0px; margin-top:0px; max-height:2    00px; max-width:465px;">
                                                     
                                                             <asp:GridView ID="gridItemQuestao" runat="server" 
-                                                                style="margin-top: 0px; margin-left:auto; margin-right:auto;" 
+                                                                style="margin-top: 0px; margin-left:0px; margin-right:0px;" 
                                                                 CellPadding="4" ForeColor="#333333" 
                                                                 Font-Size="Small">
                                                                 <AlternatingRowStyle BackColor="White" />
@@ -139,8 +139,8 @@
 									    <td>Status*</td> <td>                         
                                         <asp:DropDownList ID="cmbStatus" runat="server" Width="202px" Enabled="False">
                                             <asp:ListItem Value="0">&lt;Selecione&gt;</asp:ListItem>
-                                            <asp:ListItem Value="8">Aprovado</asp:ListItem>
-                                            <asp:ListItem Value="7">Recusado</asp:ListItem>
+                                            <asp:ListItem Value="8">Finalizado</asp:ListItem>
+                                            <asp:ListItem Value="7">Devolvido</asp:ListItem>
                                         </asp:DropDownList>
                                         </td>
 								    </tr>
@@ -208,10 +208,10 @@
                                     
                                     <div id="divLegenda" runat="server" visible="false">
                                         <ul style="margin-left:-4%;">
-                                            <li style="display:inline; margin-right:10px;"><img src="../imagens/Flag_verde.png"><span>Aprovado</span></li>
-                                            <li style="display:inline; margin-right:10px;"><img src="../imagens/Flag_amarela.png"><span>Recusado</span></li>
-                                            <li style="display:inline; margin-right:10px;"><img src="../imagens/Flag_vermelha.png"><span>Aguardando análise</span></li>
-                                            <li style="display:inline; margin-right:10px;"><img src="../imagens/Flag_azul.png"><span>Finalizado</span></li>
+                                            <li style="display:inline; margin-right:10px;"><img src="../imagens/Flag-Red.png"><span>Aguardando Resposta</span></li>                                            
+                                            <li style="display:inline; margin-right:10px;"><img src="../imagens/Flag-Green.png"><span>Respondido</span></li>
+                                            <li style="display:inline; margin-right:10px;"><img src="../imagens/Flag-Yellow.png"><span>Devolvido</span></li>                                
+                                            <li style="display:inline; margin-right:10px;"><img src="../imagens/Flag-Checkered.png"><span>Finalizado</span></li>
                                         </ul>
                                     </div>
                                 

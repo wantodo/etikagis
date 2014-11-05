@@ -41,15 +41,6 @@ Partial Public Class frmAnaliseRespostas
     Protected WithEvents btnCancelar As Global.System.Web.UI.WebControls.ImageButton
 
     '''<summary>
-    '''btnFinalizar control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents btnFinalizar As Global.System.Web.UI.WebControls.ImageButton
-
-    '''<summary>
     '''pnlMsg control.
     '''</summary>
     '''<remarks>
