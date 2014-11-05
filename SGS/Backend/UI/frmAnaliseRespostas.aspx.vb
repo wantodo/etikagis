@@ -48,10 +48,18 @@ Public Class frmAnaliseRespostas
                         carrega_gridItemQuestao(Request.QueryString("cd_questionario").ToString)
                     End If
 
-                    btnGravar.Enabled = True
-                    btnGravar.ImageUrl = "../imagens/save.ico"
-                    btnCancelar.Enabled = True
-                    btnCancelar.ImageUrl = "../imagens/no.ico"
+                    If Request.QueryString("cd_status").ToString = 4 Then
+                        btnGravar.Enabled = False
+                        btnGravar.ImageUrl = "../imagens/save_disabled.png"
+                        btnCancelar.Enabled = False
+                        btnCancelar.ImageUrl = "../imagens/no_disabled.png"
+                    Else
+                        btnGravar.Enabled = True
+                        btnGravar.ImageUrl = "../imagens/save.ico"
+                        btnCancelar.Enabled = True
+                        btnCancelar.ImageUrl = "../imagens/no.ico"
+                    End If
+                    
                 End If
             End If
 
@@ -161,23 +169,30 @@ Public Class frmAnaliseRespostas
             temp = e.Row.Cells(6).Text
             e.Row.Cells(6).Text = "<div style='width:610px; white-space:pre-wrap;'>" & temp & "</div>"
 
+            If e.Row.Cells(8).Text = 4 Then
+                e.Row.Cells(0).Text = "<img src='../imagens/Flag-Red.png'>"
+            End If
+
             If e.Row.Cells(8).Text = 6 Then
-                e.Row.Cells(0).Text = "<img src='../imagens/Flag_vermelha.png'>"
+                e.Row.Cells(0).Text = "<img src='../imagens/Flag-Green.png'>"
             End If
 
             If e.Row.Cells(8).Text = 7 Then
-                e.Row.Cells(0).Text = "<img src='../imagens/Flag_amarela.png'>"
+                e.Row.Cells(0).Text = "<img src='../imagens/Flag-Yellow.png'>"
             End If
 
             If e.Row.Cells(8).Text = 8 Then
-                e.Row.Cells(0).Text = "<img src='../imagens/Flag_verde.png'>"
+                e.Row.Cells(0).Text = "<img src='../imagens/Flag-Checkered.png'>"
             End If
 
-            If e.Row.Cells(8).Text = 9 Then
-                e.Row.Cells(0).Text = "<img src='../imagens/Flag_azul.png'>"
+            If e.Row.Cells(8).Text = 4 Then
+                e.Row.Cells(1).Text = "<a href='frmAnaliseRespostas.aspx?editar=1&cd_questionario=" & e.Row.Cells(2).Text & "&cd_questao=" & e.Row.Cells(4).Text & "&nm_indicador=" & e.Row.Cells(5).Text & "&dc_questao=" & temp & "&xx_tipo=" & e.Row.Cells(7).Text & "&cd_status=" & e.Row.Cells(8).Text & "&dc_retorno=" & e.Row.Cells(9).Text & "&cd_empresa=" & e.Row.Cells(10).Text & "&cd_representante=" & e.Row.Cells(11).Text & "'><img src='../imagens/find.ico'></a>"
+            Else
+                e.Row.Cells(1).Text = "<a href='frmAnaliseRespostas.aspx?editar=1&cd_questionario=" & e.Row.Cells(2).Text & "&cd_questao=" & e.Row.Cells(4).Text & "&nm_indicador=" & e.Row.Cells(5).Text & "&dc_questao=" & temp & "&xx_tipo=" & e.Row.Cells(7).Text & "&cd_status=" & e.Row.Cells(8).Text & "&dc_retorno=" & e.Row.Cells(9).Text & "&cd_empresa=" & e.Row.Cells(10).Text & "&cd_representante=" & e.Row.Cells(11).Text & "'><img src='../imagens/edit.png'></a>"
             End If
 
-            e.Row.Cells(1).Text = "<a href='frmAnaliseRespostas.aspx?editar=1&cd_questionario=" & e.Row.Cells(2).Text & "&cd_questao=" & e.Row.Cells(4).Text & "&nm_indicador=" & e.Row.Cells(5).Text & "&dc_questao=" & temp & "&xx_tipo=" & e.Row.Cells(7).Text & "&cd_status=" & e.Row.Cells(8).Text & "&dc_retorno=" & e.Row.Cells(9).Text & "&cd_empresa=" & e.Row.Cells(10).Text & "&cd_representante=" & e.Row.Cells(11).Text & "'><img src='../imagens/edit.png'></a>"
+
+
 
             e.Row.Cells(2).Visible = False
             e.Row.Cells(7).Visible = False
@@ -235,70 +250,90 @@ Public Class frmAnaliseRespostas
         gridQuestao.Focus()
     End Sub
 
-    Protected Sub btnFinalizar_Click(sender As Object, e As System.Web.UI.ImageClickEventArgs) Handles btnFinalizar.Click
-        Dim objAnaliseQuestao As New BLL.AnaliseQuestaoBLL
-        Dim dt As DataTable
-        Dim objQuestionario As New MODEL.Questionario
-        Dim objQuestionarioBLL As New BLL.QuestionarioBLL
-        Dim objRepresentante As New BLL.RepresentanteBLL
-        Dim j As Integer = 0
+    'Protected Sub btnFinalizar_Click(sender As Object, e As System.Web.UI.ImageClickEventArgs) Handles btnFinalizar.Click
+    '    Dim objAnaliseQuestao As New BLL.AnaliseQuestaoBLL
+    '    Dim dt As DataTable
+    '    Dim objQuestionario As New MODEL.Questionario
+    '    Dim objQuestionarioBLL As New BLL.QuestionarioBLL
+    '    Dim objRepresentante As New BLL.RepresentanteBLL
+    '    Dim j As Integer = 0
 
-        If gridQuestao.Rows.Count <= 0 Then
-            Exit Sub
-        End If
+    '    If gridQuestao.Rows.Count <= 0 Then
+    '        Exit Sub
+    '    End If
 
-        For i = 0 To gridQuestao.Rows.Count - 1
-            If gridQuestao.Rows(i).Cells(8).Text = 6 Then
-                j += 1
-            End If
-        Next
+    '    For i = 0 To gridQuestao.Rows.Count - 1
+    '        If gridQuestao.Rows(i).Cells(8).Text = 6 Then
+    '            j += 1
+    '        End If
+    '    Next
 
-        If gridQuestao.Rows.Count - 1 = j Then
-            lblMsg.Text = "Nenhuma questão foi analisada!"
-            lblMsg.ForeColor = Drawing.Color.Red
-            pnlMsg.Visible = True
+    '    If gridQuestao.Rows.Count - 1 = j Then
+    '        lblMsg.Text = "Nenhuma questão foi analisada!"
+    '        lblMsg.ForeColor = Drawing.Color.Red
+    '        pnlMsg.Visible = True
 
-            Exit Sub
-        End If
+    '        Exit Sub
+    '    End If
 
-        For i = 0 To gridQuestao.Rows.Count - 1
-            If gridQuestao.Rows(i).Cells(8).Text = 8 Then
-                objAnaliseQuestao.AlteraAnaliseQuestao(gridQuestao.Rows(i).Cells(2).Text, 9, txtRetorno.Text)
-            End If
-        Next
+    '    For i = 0 To gridQuestao.Rows.Count - 1
+    '        If gridQuestao.Rows(i).Cells(8).Text = 8 Then
+    '            objAnaliseQuestao.AlteraAnaliseQuestao(gridQuestao.Rows(i).Cells(2).Text, 9, txtRetorno.Text)
+    '        End If
+    '    Next
 
-        For i = 0 To gridQuestao.Rows.Count - 1
-            If gridQuestao.Rows(i).Cells(8).Text = 7 Then
+    '    For i = 0 To gridQuestao.Rows.Count - 1
+    '        If gridQuestao.Rows(i).Cells(8).Text = 7 Then
 
-                dt = objRepresentante.RetornaRepresentante(gridQuestao.Rows(i).Cells(11).Text, 0).Tables(0)
-                objQuestionario.representante.dc_email = dt.Rows(0)("email").ToString
-                objQuestionario.representante.no_representante = dt.Rows(0)("Nome").ToString
-                objQuestionario.representante.dc_area = dt.Rows(0)("Area").ToString
+    '            dt = objRepresentante.RetornaRepresentante(gridQuestao.Rows(i).Cells(11).Text, 0).Tables(0)
+    '            objQuestionario.representante.dc_email = dt.Rows(0)("email").ToString
+    '            objQuestionario.representante.no_representante = dt.Rows(0)("Nome").ToString
+    '            objQuestionario.representante.dc_area = dt.Rows(0)("Area").ToString
 
-                If objQuestionarioBLL.EnviaEmailAnaliseQuestao(objQuestionario) Then
+    '            If objQuestionarioBLL.EnviaEmailAnaliseQuestao(objQuestionario) Then
 
-                    'objQuestionarioBLL.AlteraQuestionario(objQuestionario.representante.cd_representante, 0, 4)
+    '                'objQuestionarioBLL.AlteraQuestionario(objQuestionario.representante.cd_representante, 0, 4)
 
-                    lblMsg.Text = "Questionário finalizado com sucesso!"
-                    lblMsg.ForeColor = Drawing.Color.LightGreen
-                    pnlMsg.Visible = True
-                Else
-                    lblMsg.Text = "Não foi possível finalizar o questionário. Favor verificar o email de cadastro do Representante."
-                    lblMsg.ForeColor = Drawing.Color.Red
-                    pnlMsg.Visible = True
-                End If
-
-
-            End If
-        Next
+    '                lblMsg.Text = "Questionário finalizado com sucesso!"
+    '                lblMsg.ForeColor = Drawing.Color.LightGreen
+    '                pnlMsg.Visible = True
+    '            Else
+    '                lblMsg.Text = "Não foi possível finalizar o questionário. Favor verificar o email de cadastro do Representante."
+    '                lblMsg.ForeColor = Drawing.Color.Red
+    '                pnlMsg.Visible = True
+    '            End If
 
 
+    '        End If
+    '    Next
+
+
+    '    limpaCampos()
+    '    pnlQuestionario.Visible = False
+    '    carregaGridQuestao()
+    'End Sub
+
+    Protected Sub btnCancelar_Click(sender As Object, e As System.Web.UI.ImageClickEventArgs) Handles btnCancelar.Click
         limpaCampos()
         pnlQuestionario.Visible = False
-        carregaGridQuestao()
+        gridQuestao.DataSource = Nothing
+        gridQuestao.DataBind()
+
+        cmbArea.DataSource = Nothing
+        cmbArea.Items.Clear()
+
+        carrega_cmbEmpresa()
+
+        divLegenda.Visible = False
+
+        btnGravar.Enabled = False
+        btnGravar.ImageUrl = "../imagens/save_disabled.png"
+
+        btnCancelar.Enabled = False
+        btnCancelar.ImageUrl = "../imagens/no_disabled.png"
     End Sub
 
-    Protected Sub gridItemQuestao_SelectedIndexChanged(sender As Object, e As EventArgs) Handles gridItemQuestao.SelectedIndexChanged
+    Protected Sub gridQuestao_SelectedIndexChanged(sender As Object, e As EventArgs) Handles gridQuestao.SelectedIndexChanged
 
     End Sub
 End Class
