@@ -22,15 +22,14 @@
     
     <form id="form1" runat="server">
 
-        <div id="topoLogin" 
-            
-            
-            style="background-color:#00CD00; background-image:url('../Imagens/topoLogo.png'); background-repeat:no-repeat; background-position:center; height: 115px;">
+        <div id="topoLogin" style="background-image:url('../Imagens/fundo_topo_login.jpg');">
+            <div style="background-image:url('../Imagens/topoLogo.png'); background-repeat:no-repeat; background-position:center; height: 115px;"></div>
+             
             <%--<span style="margin-top:50px; margin-left:auto;">
                 <img src="../Imagens/topoLogo.png" style="height: 118px; width: 158px;">
             </span>--%>
-        </div>
-         
+        </div> 
+          
         <table style="width: 100%" class="Centraliza">
             <tr> 
                 <td> 

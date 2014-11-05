@@ -129,6 +129,7 @@
     <Content Include="Imagens\Flag_vermelha.png" />
     <Content Include="Imagens\footer_2.jpg" />
     <Content Include="Imagens\fundo_topo.jpg" />
+    <Content Include="Imagens\fundo_topo_login.jpg" />
     <Content Include="Imagens\login_bg.png" />
     <Content Include="Imagens\login_bg2.png" />
     <Content Include="Imagens\menu_bg.png" />
@@ -143,6 +144,7 @@
     <Content Include="Imagens\topoLogo.png" />
     <Content Include="Imagens\topo_form2.jpg" />
     <Content Include="Imagens\topo_form_olho.jpg" />
+    <Content Include="Imagens\topo_logo2.jpg" />
     <Content Include="Imagens\topo_sustentabilidade.jpg" />
     <Content Include="Relatorios\frmRelStatusQuestionarios.aspx" />
     <Content Include="Relatorios\RelatorioQuestionario.aspx" />
