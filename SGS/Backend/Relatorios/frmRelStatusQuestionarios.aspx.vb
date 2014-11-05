@@ -6,7 +6,7 @@
             Response.Redirect("frmLogin.aspx")
         End If
 
-        If Not IsPostBack Then
+        If Not IsPostBack Then            
             carrega_cmbEmpresa()
             carrega_cmbStatus()
         End If
@@ -30,6 +30,8 @@
         carrega_cmbArea()
         carrega_cmbIndicador()
 
+        carregagridQuestao()
+
         cmbArea.Enabled = True
         cmbIndicador.Enabled = True
     End Sub
@@ -48,6 +50,10 @@
         cmbArea.Items.Insert(0, lista)
     End Sub
 
+    Protected Sub cmbArea_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbArea.SelectedIndexChanged
+        carregagridQuestao()
+    End Sub
+
     Private Sub carrega_cmbIndicador()
         Dim objIndicadorBLL As New BLL.IndicadorBLL
         Dim lista As New ListItem
@@ -62,6 +68,10 @@
         cmbIndicador.Items.Insert(0, lista)
     End Sub
 
+    Protected Sub cmbIndicador_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbIndicador.SelectedIndexChanged
+        carregagridQuestao()
+    End Sub
+
     Private Sub carrega_cmbStatus()
         Dim objStatusBLL As New BLL.StatusBLL
         Dim lista As New ListItem
@@ -74,6 +84,10 @@
         lista.Text = "<Selecione>"
         lista.Value = 0
         cmbStatus.Items.Insert(0, lista)
+    End Sub
+
+    Protected Sub cmbStatus_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbStatus.SelectedIndexChanged
+        carregagridQuestao()
     End Sub
 
     Private Sub carregagridQuestao()
@@ -116,6 +130,40 @@
         gridQuestao.DataSource = dt
 
         gridQuestao.DataBind()
+    End Sub
+
+    Private Sub gridQuestao_RowDataBound(sender As Object, e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles gridQuestao.RowDataBound
+        Dim temp As String
+
+        If e.Row.RowType = DataControlRowType.Header Then
+            e.Row.Cells(0).Text = ""
+            e.Row.Cells(1).Visible = False
+            e.Row.Cells(6).Visible = False
+
+        End If
+
+        If e.Row.RowType = DataControlRowType.DataRow Then
+            temp = e.Row.Cells(4).Text
+
+            e.Row.Cells(4).Text = "<div style='width:510px; white-space:pre-wrap;'>" & temp & "</div>"
+
+            Select Case e.Row.Cells(6).Text
+                Case 4 'Aguardando Resposta 
+                    e.Row.Cells(0).Text = "<img src='../imagens/Flag-Red.png'>"
+                Case 5 'Gravado
+                    e.Row.Cells(0).Text = "<img src='../imagens/Flag-Blue.png'>"
+                Case 6 'Respondido
+                    e.Row.Cells(0).Text = "<img src='../imagens/Flag-Green.png'>"
+                Case 7 'Devolvido
+                    e.Row.Cells(0).Text = "<img src='../imagens/Flag-Yellow.png'>"
+                Case 8 'Finalizado
+                    e.Row.Cells(0).Text = "<img src='../imagens/Flag-Checkered.png'>"
+            End Select
+
+            e.Row.Cells(1).Visible = False
+            e.Row.Cells(6).Visible = False
+
+        End If
     End Sub
 
 End Class
