@@ -171,7 +171,7 @@
         Dim dt As DataTable
         Dim dv As DataView
 
-        ds = objRespostaBLL.ListaItemResposta(codQuestionario)
+        ds = objRespostaBLL.ListaItemRespostaTelaResposta(codQuestionario)
         dv = ds.Tables(0).DefaultView
         dt = ds.Tables(0)
         gridItemResposta.DataSource = dt
