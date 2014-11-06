@@ -113,6 +113,7 @@
         Dim parametros() As String = {"cd_empresa", "cd_area", "cd_indicador", "cd_status"}
         Dim ds As DataSet
         Dim dt As DataTable
+        Dim dv As DataView
 
         If cmbEmpresa.SelectedValue <> "" Then
             parametros(0) = cmbEmpresa.SelectedValue
@@ -137,6 +138,7 @@
         
 
         ds = objQuestionarioBLL.RetornaStatusQuestionario(parametros)
+        dv = ds.Tables(0).DefaultView
         dt = ds.Tables(0)
 
         If dt.Rows.Count > 0 Then
@@ -146,6 +148,22 @@
         End If
 
         gridQuestao.DataSource = dt
+
+        'If cmbEmpresa.SelectedValue <> 0 Then
+        '    dv.RowFilter = "[Cod. Empresa] = '" & cmbEmpresa.SelectedValue & "'"
+        'End If
+
+        'If cmbArea.SelectedValue <> 0 Then
+        '    dv.RowFilter = "[Area] = '" & cmbArea.SelectedValue & "'"
+        'End If
+
+        'If cmbIndicador.SelectedValue <> 0 Then
+        '    dv.RowFilter = "[Indicador] = '" & cmbIndicador.SelectedValue & "'"
+        'End If
+
+        'If cmbStatus.SelectedValue <> 0 Then
+        '    dv.RowFilter = "[Cod. Status] = '" & cmbStatus.SelectedValue & "'"
+        'End If
 
         gridQuestao.DataBind()
     End Sub
