@@ -28,6 +28,12 @@ Public Class RespostaBLL
         Return obj.ListaItemResposta(codQuestionario)
     End Function
 
+    Function ListaItemRespostaTelaResposta(codQuestionario As Integer) As DataSet
+        Dim obj As New DAL.RespostaDAL
+
+        Return obj.ListaItemRespostaTelaResposta(codQuestionario)
+    End Function
+
     Function InsereItemResposta(objItemResposta As MODEL.ItemResposta) As Boolean
         Dim obj As New DAL.RespostaDAL
 
