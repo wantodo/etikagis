@@ -51,6 +51,22 @@
                                     </tr>
 
                                     <tr>
+									    <td>Categoria</td> <td> 
+                                        
+                                        <asp:UpdatePanel ID="pnlAspecto" runat="server">
+                                            <ContentTemplate >                                                   
+                                                 <asp:DropDownList ID="cmbAspecto" runat="server" AutoPostBack="true" Width="269px">
+                                                 </asp:DropDownList>                                                
+                                            </ContentTemplate>
+                                            <Triggers>
+                                                <asp:AsyncPostBackTrigger ControlID ="cmbAspecto" />
+                                            </Triggers>
+                                        </asp:UpdatePanel>
+                                            
+                                        </td>
+					<%--			    </tr> 
+
+                                    <tr>--%>
                                         <td>Indicadores</td>
                                         <td>                         
                                             <asp:UpdatePanel ID="pnlIndicador" runat="server">
