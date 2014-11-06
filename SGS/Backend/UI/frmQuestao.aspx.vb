@@ -642,6 +642,7 @@
         If e.Row.RowType = DataControlRowType.Header Then
             e.Row.Cells(0).Text = ""
             e.Row.Cells(1).Text = ""
+            e.Row.Cells(2).Visible = False
             e.Row.Cells(4).Visible = False
             e.Row.Cells(6).Visible = False
             e.Row.Cells(8).Visible = False
@@ -653,11 +654,17 @@
 
         If e.Row.RowType = DataControlRowType.DataRow Then
             temp = e.Row.Cells(3).Text
-            e.Row.Cells(3).Text = "<div style='width:490px; white-space:pre-wrap;'>" & temp & "</div>"
+            e.Row.Cells(3).Text = "<div style='width:335px; white-space:pre-wrap;'>" & temp & "</div>"
 
             e.Row.Cells(0).Text = "<a href='frmQuestao.aspx?editar=1&codigo=" & e.Row.Cells(2).Text & "&questao=" & temp & "&codcategoria=" & e.Row.Cells(4).Text & "&categoria=" & e.Row.Cells(5).Text & "&codindicador=" & e.Row.Cells(6).Text & "&indicador=" & e.Row.Cells(7).Text & "&codempresa=" & e.Row.Cells(8).Text & "&empresa=" & e.Row.Cells(9).Text & "&codstatus=" & e.Row.Cells(10).Text & "&status=" & e.Row.Cells(11).Text & "&tipo=" & e.Row.Cells(12).Text & "&codaspecto=" & e.Row.Cells(13).Text & "&codsubcategoria=" & e.Row.Cells(14).Text & "'><img src='../imagens/edit.png'></a>"
             e.Row.Cells(1).Text = "<a href='frmQuestao.aspx?excluir=1&codigo=" & e.Row.Cells(2).Text & "&questao=" & temp & "&codcategoria=" & e.Row.Cells(4).Text & "&categoria=" & e.Row.Cells(5).Text & "&codindicador=" & e.Row.Cells(6).Text & "&indicador=" & e.Row.Cells(7).Text & "&codempresa=" & e.Row.Cells(8).Text & "&empresa=" & e.Row.Cells(9).Text & "&codstatus=" & e.Row.Cells(10).Text & "&status=" & e.Row.Cells(11).Text & "&tipo=" & e.Row.Cells(12).Text & "&codaspecto=" & e.Row.Cells(13).Text & "&codsubcategoria=" & e.Row.Cells(14).Text & "'><img src='../imagens/delete.png'></a>"
+
+            If e.Row.Cells(7).Text = "" Or e.Row.Cells(7).Text = "&nbsp;" Then
+                e.Row.Cells(7).Text = "P-" & e.Row.Cells(2).Text
+            End If
+
             e.Row.Cells(4).Visible = False
+            e.Row.Cells(2).Visible = False
             e.Row.Cells(6).Visible = False
             e.Row.Cells(8).Visible = False
             e.Row.Cells(10).Visible = False
