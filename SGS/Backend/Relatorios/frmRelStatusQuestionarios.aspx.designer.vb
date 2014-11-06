@@ -77,6 +77,24 @@ Partial Public Class frmRelStatusQuestionarios
     Protected WithEvents cmbArea As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
+    '''pnlAspecto control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents pnlAspecto As Global.System.Web.UI.UpdatePanel
+
+    '''<summary>
+    '''cmbAspecto control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents cmbAspecto As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
     '''pnlIndicador control.
     '''</summary>
     '''<remarks>

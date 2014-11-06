@@ -28,7 +28,7 @@
 
     Protected Sub cmbEmpresa_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbEmpresa.SelectedIndexChanged
         carrega_cmbArea()
-        carrega_cmbIndicador()
+        carrega_cmbAspecto()
 
         carregagridQuestao()
 
@@ -54,13 +54,31 @@
         carregagridQuestao()
     End Sub
 
+    Private Sub carrega_cmbAspecto()
+        Dim objAspectoBLL As New BLL.AspectoBLL
+        Dim lista As New ListItem
+
+        cmbAspecto.DataTextField = "Descrição"
+        cmbAspecto.DataValueField = "Código"
+        cmbAspecto.DataSource = objAspectoBLL.ListaAspecto.Tables(0)
+        cmbAspecto.DataBind()
+
+        lista.Text = "<Selecione>"
+        lista.Value = 0
+        cmbAspecto.Items.Insert(0, lista)
+    End Sub
+
+    Protected Sub cmbAspecto_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbAspecto.SelectedIndexChanged
+        carrega_cmbIndicador()
+    End Sub
+
     Private Sub carrega_cmbIndicador()
         Dim objIndicadorBLL As New BLL.IndicadorBLL
         Dim lista As New ListItem
 
         cmbIndicador.DataTextField = "Indicador"
         cmbIndicador.DataValueField = "Código"
-        cmbIndicador.DataSource = objIndicadorBLL.ListaIndicador.Tables(0)
+        cmbIndicador.DataSource = objIndicadorBLL.RetornaIndicador(cmbAspecto.SelectedValue, 0).Tables(0)
         cmbIndicador.DataBind()
 
         lista.Text = "<Selecione>"
@@ -138,16 +156,16 @@
         If e.Row.RowType = DataControlRowType.Header Then
             e.Row.Cells(0).Text = ""
             e.Row.Cells(1).Visible = False
-            e.Row.Cells(6).Visible = False
+            e.Row.Cells(7).Visible = False
 
         End If
 
         If e.Row.RowType = DataControlRowType.DataRow Then
-            temp = e.Row.Cells(4).Text
+            temp = e.Row.Cells(5).Text
 
-            e.Row.Cells(4).Text = "<div style='width:510px; white-space:pre-wrap;'>" & temp & "</div>"
+            e.Row.Cells(5).Text = "<div style='width:510px; white-space:pre-wrap;'>" & temp & "</div>"
 
-            Select Case e.Row.Cells(6).Text
+            Select Case e.Row.Cells(7).Text
                 Case 4 'Aguardando Resposta 
                     e.Row.Cells(0).Text = "<img src='../imagens/Flag-Red.png'>"
                 Case 5 'Gravado
@@ -161,7 +179,7 @@
             End Select
 
             e.Row.Cells(1).Visible = False
-            e.Row.Cells(6).Visible = False
+            e.Row.Cells(7).Visible = False
 
         End If
     End Sub
