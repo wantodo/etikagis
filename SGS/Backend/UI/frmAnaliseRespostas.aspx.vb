@@ -158,6 +158,7 @@ Public Class frmAnaliseRespostas
             e.Row.Cells(0).Text = ""
             e.Row.Cells(1).Text = ""
             e.Row.Cells(2).Visible = False
+            e.Row.Cells(4).Visible = False
             e.Row.Cells(7).Visible = False
             e.Row.Cells(8).Visible = False
             e.Row.Cells(9).Visible = False
@@ -167,7 +168,7 @@ Public Class frmAnaliseRespostas
 
         If e.Row.RowType = DataControlRowType.DataRow Then
             temp = e.Row.Cells(6).Text
-            e.Row.Cells(6).Text = "<div style='width:610px; white-space:pre-wrap;'>" & temp & "</div>"
+            e.Row.Cells(6).Text = "<div style='width:685px; white-space:pre-wrap;'>" & temp & "</div>"
 
             If e.Row.Cells(8).Text = 4 Then
                 e.Row.Cells(0).Text = "<img src='../imagens/Flag-Red.png'>"
@@ -192,9 +193,12 @@ Public Class frmAnaliseRespostas
             End If
 
 
-
+            If e.Row.Cells(5).Text = "" Or e.Row.Cells(5).Text = "&nbsp;" Then
+                e.Row.Cells(5).Text = "P-" & e.Row.Cells(4).Text
+            End If
 
             e.Row.Cells(2).Visible = False
+            e.Row.Cells(4).Visible = False
             e.Row.Cells(7).Visible = False
             e.Row.Cells(8).Visible = False
             e.Row.Cells(9).Visible = False
