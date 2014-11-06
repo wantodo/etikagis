@@ -206,7 +206,7 @@
         parametros(0) = Session("codPerfil")
         parametros(1) = Session("codUsuario")
         parametros(2) = Session("codEmpresa")
-        If cmbArea.SelectedValue <> "" Then
+        If cmbArea.SelectedValue <> "" And cmbArea.SelectedValue <> "-1" Then
             parametros(3) = cmbArea.SelectedValue
         Else
             parametros(3) = 0
@@ -607,6 +607,9 @@
         lista.Text = "<Selecione>"
         lista.Value = -1
         cmbArea.Items.Insert(0, lista)
+        'lista.Text = "Todos"
+        'lista.Value = 999999
+        'cmbArea.Items.Insert(1, lista)
 
     End Sub
 
