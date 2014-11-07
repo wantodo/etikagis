@@ -182,6 +182,7 @@
 
     Protected Sub btnConsultar_Click(sender As Object, e As System.Web.UI.ImageClickEventArgs) Handles btnConsultar.Click
         carregaGridAspecto()
+        gridAspecto.Focus()
     End Sub
 
     Protected Sub btnSim_Click(sender As Object, e As EventArgs) Handles btnSim.Click

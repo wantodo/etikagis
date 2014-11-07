@@ -262,6 +262,7 @@
 
     Protected Sub btnConsultar_Click(sender As Object, e As System.Web.UI.ImageClickEventArgs) Handles btnConsultar.Click
         carregaGridRepresentante()
+        gridRepresentante.Focus()
     End Sub
 
     Protected Sub btnGravar_Click(sender As Object, e As System.Web.UI.ImageClickEventArgs) Handles btnGravar.Click

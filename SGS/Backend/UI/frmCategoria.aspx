@@ -106,8 +106,9 @@
                         <asp:Panel ID="Panel1"  runat="server" ScrollBars="Vertical"  
                             style="margin-left:10px; margin-top:20px; max-height:366px; max-width:900px;">
 						    <asp:GridView ID="gridCategoria" runat="server" 
-                                style="margin-top: 0px; margin-left:auto; margin-right:auto;" CellPadding="4" ForeColor="#333333" 
-                                Font-Size="Small" Height="215px">
+                                style="margin-top: 0px; margin-left:auto; margin-right:auto;" 
+                                CellPadding="4" ForeColor="#333333" 
+                                Font-Size="Small">
                                 <AlternatingRowStyle BackColor="White" />
                                 <EditRowStyle BackColor="#7C6F57" />
                                 <FooterStyle BackColor="#1C5E55" ForeColor="White" Font-Bold="True" />
