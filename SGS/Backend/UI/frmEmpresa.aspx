@@ -176,7 +176,7 @@
                                 Telefone
                             </td>
                             <td>
-                                <asp:TextBox ID="txtTelefone" runat="server" MaxLength="20" Width="179px"></asp:TextBox>
+                                <asp:TextBox ID="txtTelefone" runat="server" MaxLength="20" Width="179px" onkeypress="MascaraTelefone(ctl00$MainContent$txtTelefone);"></asp:TextBox>
                             </td>
                         </tr>
                         <tr>
