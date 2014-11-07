@@ -224,6 +224,10 @@
             dv.RowFilter = "[Questão] like '%" & txtFiltro.Text & "%'"
         End If
 
+        If cmbFiltro.Text = "Categoria" Then
+            dv.RowFilter = "[Categoria] like '%" & txtFiltro.Text & "%'"
+        End If
+
         If cmbFiltro.Text = "Indicador" Then
             dv.RowFilter = "[Indicador] = '" & txtFiltro.Text & "'"
         End If
@@ -677,6 +681,7 @@
     Protected Sub btnConsultar_Click(sender As Object, e As System.Web.UI.ImageClickEventArgs) Handles btnConsultar.Click
         pnlMsg.Visible = False
         carrega_gridQuestao()
+        gridQuestao.Focus()
     End Sub
 
     Private Sub gridItemQuestao_RowDataBound(sender As Object, e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles gridItemQuestao.RowDataBound

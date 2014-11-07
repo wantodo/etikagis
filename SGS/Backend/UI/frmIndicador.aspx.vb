@@ -149,6 +149,7 @@
 
     Private Sub gridIndicador_RowDataBound(sender As Object, e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles gridIndicador.RowDataBound
         Dim temp As String
+        Dim temp2 As String
 
         If e.Row.RowType = DataControlRowType.Header Then
             e.Row.Cells(0).Text = ""
@@ -159,11 +160,15 @@
 
         If e.Row.RowType = DataControlRowType.DataRow Then
             temp = e.Row.Cells(4).Text
-            e.Row.Cells(4).Text = "<div style='width:575px; white-space:pre-wrap;'>" & temp & "</div>"
+            e.Row.Cells(4).Text = "<div style='width:350px; white-space:pre-wrap;'>" & temp & "</div>"
 
-            e.Row.Cells(0).Text = "<a href='frmIndicador.aspx?editar=1&codigo=" & e.Row.Cells(2).Text & "&indicador=" & e.Row.Cells(3).Text & "&descricao=" & temp & "&cd_aspecto=" & e.Row.Cells(5).Text & "&aspecto=" & e.Row.Cells(6).Text & "&cd_status=" & e.Row.Cells(7).Text & "&status=" & e.Row.Cells(8).Text & "'><img src='../imagens/edit.png'></a>"
-            e.Row.Cells(1).Text = "<a href='frmIndicador.aspx?excluir=1&codigo=" & e.Row.Cells(2).Text & "&indicador=" & e.Row.Cells(3).Text & "&descricao=" & temp & "&cd_aspecto=" & e.Row.Cells(5).Text & "&aspecto=" & e.Row.Cells(6).Text & "&cd_status=" & e.Row.Cells(7).Text & "&status=" & e.Row.Cells(8).Text & "'><img src='../imagens/delete.png'></a>"
+            temp2 = e.Row.Cells(6).Text
+            e.Row.Cells(6).Text = "<div style='width:275px; white-space:pre-wrap;'>" & temp2 & "</div>"
+
+            e.Row.Cells(0).Text = "<a href='frmIndicador.aspx?editar=1&codigo=" & e.Row.Cells(2).Text & "&indicador=" & e.Row.Cells(3).Text & "&descricao=" & temp & "&cd_aspecto=" & e.Row.Cells(5).Text & "&aspecto=" & temp2 & "&cd_status=" & e.Row.Cells(7).Text & "&status=" & e.Row.Cells(8).Text & "'><img src='../imagens/edit.png'></a>"
+            e.Row.Cells(1).Text = "<a href='frmIndicador.aspx?excluir=1&codigo=" & e.Row.Cells(2).Text & "&indicador=" & e.Row.Cells(3).Text & "&descricao=" & temp & "&cd_aspecto=" & e.Row.Cells(5).Text & "&aspecto=" & temp2 & "&cd_status=" & e.Row.Cells(7).Text & "&status=" & e.Row.Cells(8).Text & "'><img src='../imagens/delete.png'></a>"
             e.Row.Cells(4).Wrap = True
+            e.Row.Cells(6).Wrap = True
             e.Row.Cells(5).Visible = False
             e.Row.Cells(7).Visible = False
         End If
@@ -317,5 +322,6 @@
 
     Protected Sub btnConsultar_Click(sender As Object, e As System.Web.UI.ImageClickEventArgs) Handles btnConsultar.Click
         carregarGridIndicador()
+        gridIndicador.Focus()
     End Sub
 End Class
