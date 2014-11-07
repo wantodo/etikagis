@@ -221,51 +221,6 @@ Partial Public Class frmResposta
     Protected WithEvents frameItem As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
-    '''lblCodigoItem control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents lblCodigoItem As Global.System.Web.UI.WebControls.Label
-
-    '''<summary>
-    '''pnlItemQuestao control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents pnlItemQuestao As Global.System.Web.UI.UpdatePanel
-
-    '''<summary>
-    '''cmbItemQuestao control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents cmbItemQuestao As Global.System.Web.UI.WebControls.DropDownList
-
-    '''<summary>
-    '''txtRespostaItem control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtRespostaItem As Global.System.Web.UI.WebControls.TextBox
-
-    '''<summary>
-    '''pnlGravaItem control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents pnlGravaItem As Global.System.Web.UI.UpdatePanel
-
-    '''<summary>
     '''btnGravaItem control.
     '''</summary>
     '''<remarks>
