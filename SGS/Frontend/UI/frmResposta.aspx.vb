@@ -84,7 +84,7 @@
 
                     ElseIf Request.QueryString("tipo").ToString.Equals("Q") Then
                         frameResposta.Visible = False
-                        frameItem.Visible = True                        
+                        frameItem.Visible = True
 
                         carrega_gridItemResposta(lblCodQuestionario.Text)
 
@@ -107,7 +107,7 @@
                         frameRetorno.Visible = False
                     End If
 
-                    If Not Request.QueryString.Item("coditem") Is Nothing Then                        
+                    If Not Request.QueryString.Item("coditem") Is Nothing Then
                         pnlMsg.Visible = False
 
                         pnlExcluirItem.Visible = True
@@ -138,13 +138,23 @@
     End Sub
 
     Private Sub gridItemResposta_RowDataBound(sender As Object, e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles gridItemResposta.RowDataBound
+        
+
         If e.Row.RowType = DataControlRowType.Header Then
 
         End If
 
         If e.Row.RowType = DataControlRowType.DataRow Then
             For i = 0 To e.Row.Cells.Count - 1
-                e.Row.Cells(i).Text = "<input type='text' name='txtItemResposta" & i & "' id='txtItemResposta" & i & "' size='20px' runat='server'>"
+                'e.Row.Cells(i).Text = "<input type='text' name='txtItemResposta" & i & "' id='txtItemResposta" & i & "' size='20px' runat='server'>"
+
+                Dim txt As New TextBox
+                txt.Attributes.Add("runat", "server")
+                txt.Attributes.Add("width", "20")
+                txt.Attributes.Add("id", "txtItemResposta" & i)
+                txt.Attributes.Add("name", "txtItemResposta" & i)
+
+                e.Row.Cells(i).Controls.Add(txt)
             Next
         End If
 
@@ -332,6 +342,8 @@
         Dim objQuestionarioBLL As New BLL.QuestionarioBLL
         Dim tx As TextBox
 
+        gridItemResposta.DataBind()
+
         For i = 0 To gridItemResposta.Rows(0).Cells.Count - 1
             With objItemResposta
                 'If lblCodigoItem.Text <> "" Then
@@ -351,7 +363,7 @@
                 pnlMsg.Visible = True
             End If
         Next
-        
+
 
         'If lblCodigoItem.Text = "" Then
         'If objRespostaBLL.InsereItemResposta(objItemResposta) Then
@@ -381,7 +393,7 @@
 
         'objItemRespostaBLL.ExcluirItemQuestao(CInt(lblCodigoItem.Text))
         carrega_gridItemResposta(lblCodQuestionario.Text)
-        pnlExcluirItem.Visible = False        
+        pnlExcluirItem.Visible = False
         gridItemResposta.Focus()
     End Sub
 
@@ -428,11 +440,11 @@
             pnlMsg.Visible = True
         End If
 
-        limpaCampos()        
+        limpaCampos()
     End Sub
 
     Protected Sub btnNovo_Click(sender As Object, e As System.Web.UI.ImageClickEventArgs) Handles btnNovo.Click
-        limpaCampos()        
+        limpaCampos()
 
         btnNovo.Enabled = False
         btnNovo.ImageUrl = "../imagens/add_disabled.png"
@@ -450,7 +462,7 @@
     End Sub
 
     Protected Sub btnCancelar_Click(sender As Object, e As System.Web.UI.ImageClickEventArgs) Handles btnCancelar.Click
-        limpaCampos()        
+        limpaCampos()
 
         btnNovo.Enabled = True
         btnNovo.ImageUrl = "../imagens/add.ico"
@@ -467,7 +479,7 @@
 
     Private Sub limpaCampos()
         lblQuestao.Text = ""
-        txtResposta.Text = ""        
+        txtResposta.Text = ""
         lblRetorno.Text = ""
 
         frameQuestao.Visible = False

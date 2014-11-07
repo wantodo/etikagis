@@ -150,7 +150,7 @@
                                             <tr>
                                                 <td colspan="3">
                                                     <asp:Panel ID="pnlGridItem"  runat="server" ScrollBars="Auto"                                                 
-                                                        style="margin-left:0px; margin-top:0px; max-height:2    00px; max-width:465px;">
+                                                        style="margin-left:0px; margin-top:0px; max-height:200px; max-width:465px;">
                                                             <asp:GridView ID="gridItemResposta" runat="server" 
                                                                 style="margin-top: 0px; margin-left:auto; margin-right:auto;" 
                                                                 CellPadding="4" ForeColor="#333333" 
