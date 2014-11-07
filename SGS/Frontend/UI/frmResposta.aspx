@@ -6,6 +6,10 @@
         {
             width: 429px;
         }
+        .style4
+        {
+            height: 21px;
+        }
     </style>
 
 </asp:Content>
@@ -137,36 +141,9 @@
                                 <fieldset id="frameItem" runat="server" visible="false" class="frame">	
 							        <legend style="color:#B0C4DE;">Item Questão</legend>
 							            <table>   
-                                            <tr>
-									            <td>Item</td> <td class="style4"> 
-                                                    <asp:Label ID="lblCodigoItem" runat="server" Visible="False"></asp:Label>  
-                                                    <asp:UpdatePanel ID="pnlItemQuestao" runat="server">
-                                                        <ContentTemplate >                                               
-                                                            <asp:DropDownList ID="cmbItemQuestao" AutoPostBack="true" runat="server" Width="404px" Height="22px">
-                                                            </asp:DropDownList>
-                                                        </ContentTemplate>
-                                                        <Triggers>
-                                                            <asp:AsyncPostBackTrigger ControlID ="cmbItemQuestao" />
-                                                        </Triggers>
-                                                    </asp:UpdatePanel>
-
-                                                </td>
-								            </tr>
-
                                             <tr>									    
-                                                <td></td> <td class="style4">    
-                                                    <asp:TextBox ID="txtRespostaItem" runat="server" Width="404px"></asp:TextBox>
-                                                </td>
-                                                <td>
-                                                    <asp:UpdatePanel ID="pnlGravaItem" runat="server">
-                                                        <ContentTemplate >                                            
-                                                            <asp:ImageButton ID="btnGravaItem" runat="server"
-                                                                ImageUrl="~/Imagens/save.ico" />  
-                                                        </ContentTemplate>
-                                                        <Triggers>
-                                                            <asp:AsyncPostBackTrigger ControlID ="btnGravaItem" />
-                                                        </Triggers>
-                                                    </asp:UpdatePanel>                                          
+                                                <td>                                 
+                                                    <asp:ImageButton ID="btnGravaItem" runat="server" ImageUrl="~/Imagens/add.ico" />                                                                                           
                                                 </td>
 								            </tr>
 
