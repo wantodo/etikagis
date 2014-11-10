@@ -51,7 +51,7 @@ Public Class RespostaDAL
 
             param = {dal.CriarParametro("@cd_questionario", SqlDbType.Int, codQuestionario)}
 
-            Return dal.GetDataSet("st_sgs_questao_item_s", CommandType.StoredProcedure, param)
+            Return dal.GetDataSet("st_sgs_item_questao_s", CommandType.StoredProcedure, param)
         Catch ex As Exception
             Throw ex
         End Try
@@ -89,7 +89,7 @@ Public Class RespostaDAL
             Dim param() As SqlParameter
 
             param = {dal.CriarParametro("@cd_questionario", SqlDbType.Int, objItemResposta.questionario.cd_questionario), _
-                     dal.CriarParametro("@dc_item_questao", SqlDbType.VarChar, objItemResposta.itemQuestao.dc_item_questao), _
+                     dal.CriarParametro("@cd_item_questao", SqlDbType.VarChar, objItemResposta.itemQuestao.cd_item_questao), _
                      dal.CriarParametro("@dc_resposta_item", SqlDbType.VarChar, objItemResposta.dc_resposta_item), _
                      dal.CriarParametro("@no_userid", SqlDbType.VarChar, objItemResposta.no_userid)}
 
