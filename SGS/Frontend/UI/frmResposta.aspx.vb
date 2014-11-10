@@ -145,17 +145,7 @@
         End If
 
         If e.Row.RowType = DataControlRowType.DataRow Then
-            For i = 0 To e.Row.Cells.Count - 1
-                'e.Row.Cells(i).Text = "<input type='text' name='txtItemResposta" & i & "' id='txtItemResposta" & i & "' size='20px' runat='server'>"
-
-                Dim txt As New TextBox
-                txt.Attributes.Add("runat", "server")
-                txt.Attributes.Add("width", "20")
-                txt.Attributes.Add("id", "txtItemResposta" & i)
-                txt.Attributes.Add("name", "txtItemResposta" & i)
-
-                e.Row.Cells(i).Controls.Add(txt)
-            Next
+            
         End If
 
     End Sub
@@ -342,25 +332,23 @@
         Dim objQuestionarioBLL As New BLL.QuestionarioBLL
         Dim tx As TextBox
 
-        gridItemResposta.DataBind()
+        For i = 0 To gridItemResposta.Rows.Count - 1            
 
-        For i = 0 To gridItemResposta.Rows(0).Cells.Count - 1
+            tx = gridItemResposta.Rows(i).Cells(0).FindControl("txtItemResposta")
+
             With objItemResposta
-                'If lblCodigoItem.Text <> "" Then
-                '    .cd_item_resposta = lblCodigoItem.Text
-                'End If
-
-                .questionario.cd_questionario = lblCodQuestionario.Text
-                .itemQuestao.dc_item_questao = gridItemResposta.HeaderRow.Cells(i).Text
-                tx = gridItemResposta.Rows(0).Cells(i).FindControl("txtItemResposta" & i)
+                .itemQuestao.cd_item_questao = gridItemResposta.Rows(i).Cells(1).Text
                 .dc_resposta_item = tx.Text
                 .no_userid = Session("sessionUser")
+                .questionario.cd_questionario = Request.QueryString("codQuestionario").ToString
             End With
 
             If objRespostaBLL.InsereItemResposta(objItemResposta) Then
-                lblMsg.Text = "Item de Resposta cadastrado com sucesso!"
-                lblMsg.ForeColor = Drawing.Color.LightGreen
-                pnlMsg.Visible = True
+                If i = gridItemResposta.Rows.Count - 1 Then
+                    lblMsg.Text = "Item de Resposta cadastrado com sucesso!"
+                    lblMsg.ForeColor = Drawing.Color.LightGreen
+                    pnlMsg.Visible = True
+                End If
             End If
         Next
 

@@ -230,13 +230,13 @@ Partial Public Class frmResposta
     Protected WithEvents btnGravaItem As Global.System.Web.UI.WebControls.ImageButton
 
     '''<summary>
-    '''pnlGridItem control.
+    '''pnlGridItemResposta control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents pnlGridItem As Global.System.Web.UI.WebControls.Panel
+    Protected WithEvents pnlGridItemResposta As Global.System.Web.UI.WebControls.Panel
 
     '''<summary>
     '''gridItemResposta control.
@@ -246,6 +246,24 @@ Partial Public Class frmResposta
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents gridItemResposta As Global.System.Web.UI.WebControls.GridView
+
+    '''<summary>
+    '''pnlGridItemRespondida control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents pnlGridItemRespondida As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
+    '''gridItemRespondida control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents gridItemRespondida As Global.System.Web.UI.WebControls.GridView
 
     '''<summary>
     '''pnlFinalizar control.

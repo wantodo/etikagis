@@ -149,9 +149,40 @@
 
                                             <tr>
                                                 <td colspan="3">
-                                                    <asp:Panel ID="pnlGridItem"  runat="server" ScrollBars="Auto"                                                 
+                                                    <asp:Panel ID="pnlGridItemResposta"  runat="server" ScrollBars="Auto"                                                 
                                                         style="margin-left:0px; margin-top:0px; max-height:200px; max-width:465px;">
-                                                            <asp:GridView ID="gridItemResposta" runat="server" 
+                                                           <asp:GridView ID="gridItemResposta" runat="server" 
+                                                                style="margin-top: 0px; margin-left:auto; margin-right:auto;" CellPadding="4" ForeColor="#333333" 
+                                                                Font-Size="Small">
+                                                                <AlternatingRowStyle BackColor="White" />
+                                                                <Columns>
+                                                                    <asp:TemplateField HeaderText="Resposta">
+                                                                        <ItemTemplate>
+                                                                            <asp:TextBox ID="txtItemResposta" runat="server" Width="70px"/>
+                                                                        </ItemTemplate>
+                                                                    </asp:TemplateField>
+                                                                </Columns>
+                                                                <EditRowStyle BackColor="#7C6F57" />
+                                                                <FooterStyle BackColor="#1C5E55" ForeColor="White" Font-Bold="True" />
+                                                                <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" 
+                                                                    Height="30px" Wrap="False" />
+                                                                <PagerStyle BackColor="#666666" ForeColor="White" HorizontalAlign="Center" />
+                                                                <RowStyle BackColor="#E3EAEB" Wrap="False" />
+                                                                <SelectedRowStyle BackColor="#C5BBAF" Font-Bold="True" ForeColor="#333333" />
+                                                                <SortedAscendingCellStyle BackColor="#F8FAFA" />
+                                                                <SortedAscendingHeaderStyle BackColor="#246B61" />
+                                                                <SortedDescendingCellStyle BackColor="#D4DFE1" />
+                                                                <SortedDescendingHeaderStyle BackColor="#15524A" />
+                                                            </asp:GridView>                                                 
+                                                    </asp:Panel>
+                                                </td> 
+                                            </tr>   
+
+                                            <tr>
+                                                <td colspan="3">
+                                                    <asp:Panel ID="pnlGridItemRespondida"  runat="server" ScrollBars="Auto"                                                 
+                                                        style="margin-left:0px; margin-top:0px; max-height:200px; max-width:465px;">
+                                                            <asp:GridView ID="gridItemRespondida" runat="server" 
                                                                 style="margin-top: 0px; margin-left:auto; margin-right:auto;" 
                                                                 CellPadding="4" ForeColor="#333333" 
                                                                 Font-Size="Small">
