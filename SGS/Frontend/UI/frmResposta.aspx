@@ -156,9 +156,14 @@
                                                                 Font-Size="Small">
                                                                 <AlternatingRowStyle BackColor="White" />
                                                                 <Columns>
+                                                                    <asp:TemplateField HeaderText="Item">
+                                                                        <ItemTemplate>
+                                                                            <asp:Label ID="lblItemQuestao" runat="server" />
+                                                                        </ItemTemplate>
+                                                                    </asp:TemplateField>
                                                                     <asp:TemplateField HeaderText="Resposta">
                                                                         <ItemTemplate>
-                                                                            <asp:TextBox ID="txtItemResposta" runat="server" Width="70px"/>
+                                                                            <asp:TextBox ID="txtItemResposta" runat="server" Width="250px"/>
                                                                         </ItemTemplate>
                                                                     </asp:TemplateField>
                                                                 </Columns>
