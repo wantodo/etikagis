@@ -140,32 +140,21 @@
     End Sub
 
     Private Sub gridItemResposta_RowDataBound(sender As Object, e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles gridItemResposta.RowDataBound
-        Dim lb As Label
-        Dim tx As TextBox
+        Dim lb As Label        
         Dim temp As String
 
         If e.Row.RowType = DataControlRowType.Header Then
             e.Row.Cells(2).Visible = False
-            e.Row.Cells(3).Visible = False
-            'e.Row.Cells(4).Visible = False
+            e.Row.Cells(3).Visible = False            
         End If
 
         If e.Row.RowType = DataControlRowType.DataRow Then
             e.Row.Cells(2).Visible = False
-            e.Row.Cells(3).Visible = False
-            'e.Row.Cells(4).Visible = False
+            e.Row.Cells(3).Visible = False            
 
             temp = e.Row.Cells(3).Text
             lb = e.Row.Cells(0).FindControl("lblItemQuestao")
             lb.Text = "<div style='width:192px; white-space:pre-wrap;'>" & temp & "</div>"
-
-            'If e.Row.Cells(4).Text <> "&nbsp;" Then
-            '    tx = e.Row.Cells(0).FindControl("txtItemResposta")
-            '    tx.Text = e.Row.Cells(4).Text
-            '    If Not Request.QueryString.Item("pesquisar") Is Nothing Then
-            '        tx.Enabled = False
-            '    End If
-            'End If
         End If
 
     End Sub
@@ -399,6 +388,7 @@
             End With
 
             If objRespostaBLL.InsereItemResposta(objItemResposta) Then
+                tx.Text = ""
                 If i = gridItemResposta.Rows.Count - 1 Then
                     lblMsg.Text = "Item de Resposta cadastrado com sucesso!"
                     lblMsg.ForeColor = Drawing.Color.LightGreen
