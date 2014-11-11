@@ -173,14 +173,15 @@
     Private Sub carrega_gridItemRespondida(codQuestionario As Integer)
         Dim objRespostaBLL As New BLL.RespostaBLL
         Dim ds As DataSet
-        Dim dt As DataTable
-        Dim dv As DataView
+        Dim dt As DataTable        
 
         ds = objRespostaBLL.ListaItemRespondido(codQuestionario)
-        dv = ds.Tables(0).DefaultView
-        dt = ds.Tables(0)
-        gridItemRespondida.DataSource = dt
-        gridItemRespondida.DataBind()
+        If ds.Tables.Count > 0 Then
+            dt = ds.Tables(0)
+
+            gridItemRespondida.DataSource = dt
+            gridItemRespondida.DataBind()
+        End If
     End Sub
 
     Private Sub gridItemRespondida_RowDataBound(sender As Object, e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles gridItemRespondida.RowDataBound
@@ -377,13 +378,21 @@
         Dim objRespostaBLL As New BLL.RespostaBLL
         Dim objQuestionarioBLL As New BLL.QuestionarioBLL
         Dim tx As TextBox
+        Dim codGrupoItem As Integer
+
+        If gridItemRespondida.Rows.Count > 0 Then
+            codGrupoItem = CInt(gridItemRespondida.Rows(gridItemRespondida.Rows.Count - 1).Cells(0).Text) + 1
+        Else
+            codGrupoItem = 1
+        End If
 
         For i = 0 To gridItemResposta.Rows.Count - 1            
 
             tx = gridItemResposta.Rows(i).Cells(0).FindControl("txtItemResposta")
 
             With objItemResposta
-                .itemQuestao.cd_item_questao = gridItemResposta.Rows(i).Cells(1).Text
+                .cd_grupo_item_resposta = codGrupoItem
+                .itemQuestao.cd_item_questao = gridItemResposta.Rows(i).Cells(2).Text
                 .dc_resposta_item = tx.Text
                 .no_userid = Session("sessionUser")
                 .questionario.cd_questionario = Request.QueryString("codQuestionario").ToString
@@ -397,6 +406,8 @@
                 End If
             End If
         Next
+
+        carrega_gridItemRespondida(Request.QueryString("codQuestionario").ToString)
 
 
         'If lblCodigoItem.Text = "" Then
