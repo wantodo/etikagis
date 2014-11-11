@@ -48,6 +48,7 @@
                         frameItem.Visible = True
 
                         carrega_gridItemResposta(lblCodQuestionario.Text)
+                        carrega_gridItemRespondida(lblCodQuestionario.Text)
                     End If
                 End If
             End If
@@ -87,7 +88,7 @@
                         frameItem.Visible = True
 
                         carrega_gridItemResposta(lblCodQuestionario.Text)
-
+                        carrega_gridItemRespondida(lblCodQuestionario.Text)
                     End If
                 End If
             End If
@@ -116,6 +117,7 @@
                         frameQuestao.Visible = True
                         frameItem.Visible = True
                         carrega_gridItemResposta(lblCodQuestionario.Text)
+                        carrega_gridItemRespondida(lblCodQuestionario.Text)
                         Exit Sub
                     End If
                 End If
@@ -125,12 +127,12 @@
     End Sub
 
     Private Sub carrega_gridItemResposta(codQuestionario As Integer)
-        Dim objRespostaBLL As New BLL.RespostaBLL
+        Dim objQuestaoBLL As New BLL.QuestaoBLL
         Dim ds As DataSet
         Dim dt As DataTable
         Dim dv As DataView
 
-        ds = objRespostaBLL.ListaItemRespostaTelaResposta(codQuestionario)
+        ds = objQuestaoBLL.ListaItemQuestao(0, codQuestionario)
         dv = ds.Tables(0).DefaultView
         dt = ds.Tables(0)
         gridItemResposta.DataSource = dt
@@ -146,6 +148,32 @@
 
         If e.Row.RowType = DataControlRowType.DataRow Then
             
+        End If
+
+    End Sub
+
+    Private Sub carrega_gridItemRespondida(codQuestionario As Integer)
+        Dim objRespostaBLL As New BLL.RespostaBLL
+        Dim ds As DataSet
+        Dim dt As DataTable
+        Dim dv As DataView
+
+        ds = objRespostaBLL.ListaItemRespondido(codQuestionario)
+        dv = ds.Tables(0).DefaultView
+        dt = ds.Tables(0)
+        gridItemRespondida.DataSource = dt
+        gridItemRespondida.DataBind()
+    End Sub
+
+    Private Sub gridItemRespondida_RowDataBound(sender As Object, e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles gridItemRespondida.RowDataBound
+
+
+        If e.Row.RowType = DataControlRowType.Header Then
+
+        End If
+
+        If e.Row.RowType = DataControlRowType.DataRow Then
+
         End If
 
     End Sub
