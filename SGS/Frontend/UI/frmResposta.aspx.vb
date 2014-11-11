@@ -122,18 +122,34 @@
                     End If
                 End If
             End If
-        End If
 
+            If Not Request.QueryString.Item("editarItem") Is Nothing Then
+                If Request.QueryString("editarItem").ToString = "1" Then
+
+                    carrega_gridItemResposta(Request.QueryString("codQuestionario").ToString)
+                    carrega_gridItemRespondida(Request.QueryString("codQuestionario").ToString)
+                    frameItem.Visible = True
+                    frameQuestao.Visible = True
+                End If
+
+            End If
+
+        End If
     End Sub
 
     Private Sub carrega_gridItemResposta(codQuestionario As Integer)
         Dim objQuestaoBLL As New BLL.QuestaoBLL
+        Dim objRespostaBLL As New BLL.RespostaBLL
         Dim ds As DataSet
         Dim dt As DataTable
-        Dim dv As DataView
 
-        ds = objQuestaoBLL.ListaItemQuestao(0, codQuestionario)
-        dv = ds.Tables(0).DefaultView
+
+        If Not Request.QueryString.Item("editarItem") Is Nothing Then
+            ds = objRespostaBLL.EditaListaItem(codQuestionario, Request.QueryString("grupo").ToString)
+        Else
+            ds = objQuestaoBLL.ListaItemQuestao(0, codQuestionario)
+        End If
+
         dt = ds.Tables(0)
         gridItemResposta.DataSource = dt
         gridItemResposta.DataBind()
@@ -142,15 +158,34 @@
     Private Sub gridItemResposta_RowDataBound(sender As Object, e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles gridItemResposta.RowDataBound
         Dim lb As Label        
         Dim temp As String
+        Dim tx As TextBox
 
         If e.Row.RowType = DataControlRowType.Header Then
-            e.Row.Cells(2).Visible = False
-            e.Row.Cells(3).Visible = False            
+            If Not Request.QueryString.Item("editarItem") Is Nothing Then
+                e.Row.Cells(2).Visible = False
+                e.Row.Cells(3).Visible = False
+                e.Row.Cells(4).Visible = False
+            Else
+                e.Row.Cells(2).Visible = False
+                e.Row.Cells(3).Visible = False
+            End If
+            
         End If
 
         If e.Row.RowType = DataControlRowType.DataRow Then
-            e.Row.Cells(2).Visible = False
-            e.Row.Cells(3).Visible = False            
+            If Not Request.QueryString.Item("editarItem") Is Nothing Then
+                e.Row.Cells(2).Visible = False
+                e.Row.Cells(3).Visible = False
+                e.Row.Cells(4).Visible = False
+
+                tx = e.Row.Cells(1).FindControl("txtItemResposta")
+                tx.Text = e.Row.Cells(4).Text
+            Else
+                e.Row.Cells(2).Visible = False
+                e.Row.Cells(3).Visible = False
+            End If
+
+            
 
             temp = e.Row.Cells(3).Text
             lb = e.Row.Cells(0).FindControl("lblItemQuestao")
@@ -181,7 +216,7 @@
         End If
 
         If e.Row.RowType = DataControlRowType.DataRow Then            
-            e.Row.Cells(0).Text = "<a href='frmResposta.aspx?editar=1&grupo=" & e.Row.Cells(1).Text & "'><img src='../imagens/edit.png'></a>"
+            e.Row.Cells(0).Text = "<a href='frmResposta.aspx?editarItem=1&grupo=" & e.Row.Cells(1).Text & "&codQuestionario=" & Request.QueryString("codQuestionario").ToString & "'><img src='../imagens/edit.png'></a>"
         End If
 
     End Sub
@@ -591,5 +626,9 @@
 
     Protected Sub cmbArea_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbArea.SelectedIndexChanged
         carregagridQuestao()
+    End Sub
+
+    Protected Sub gridItemRespondida_SelectedIndexChanged(sender As Object, e As EventArgs) Handles gridItemRespondida.SelectedIndexChanged
+
     End Sub
 End Class

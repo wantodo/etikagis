@@ -52,4 +52,10 @@ Public Class RespostaBLL
         obj.ExcluirItemQuestao(codItem)
     End Sub
 
+    Public Function EditaListaItem(codQuestionario As Integer, codGrupoItemResposta As Integer) As DataSet
+        Dim obj As New DAL.RespostaDAL
+
+        Return obj.EditaListaItem(codQuestionario, codGrupoItemResposta)
+    End Function
+
 End Class
