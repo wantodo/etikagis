@@ -154,7 +154,7 @@
 
             temp = e.Row.Cells(3).Text
             lb = e.Row.Cells(0).FindControl("lblItemQuestao")
-            lb.Text = "<div style='width:192px; white-space:pre-wrap;'>" & temp & "</div>"
+            lb.Text = "<div style='width:150px; white-space:pre-wrap;'>" & temp & "</div>"
         End If
 
     End Sub
@@ -177,11 +177,11 @@
 
 
         If e.Row.RowType = DataControlRowType.Header Then
-
+            e.Row.Cells(0).Text = ""
         End If
 
-        If e.Row.RowType = DataControlRowType.DataRow Then
-
+        If e.Row.RowType = DataControlRowType.DataRow Then            
+            e.Row.Cells(0).Text = "<a href='frmResposta.aspx?editar=1&grupo=" & e.Row.Cells(1).Text & "'><img src='../imagens/edit.png'></a>"
         End If
 
     End Sub
