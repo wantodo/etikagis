@@ -124,8 +124,7 @@ Public Class RespostaDAL
             Dim dal As New BDDAL(COMUM.strConexao, True)
             Dim param() As SqlParameter
 
-            param = {dal.CriarParametro("@cd_item_resposta", SqlDbType.Int, objItemResposta.cd_item_resposta), _
-                     dal.CriarParametro("@cd_questionario", SqlDbType.Int, objItemResposta.questionario.cd_questionario), _
+            param = {dal.CriarParametro("@cd_item_resposta", SqlDbType.Int, objItemResposta.cd_item_resposta),
                      dal.CriarParametro("@cd_item_questao", SqlDbType.Int, objItemResposta.itemQuestao.cd_item_questao), _
                      dal.CriarParametro("@dc_resposta_item", SqlDbType.VarChar, objItemResposta.dc_resposta_item), _
                      dal.CriarParametro("@no_userid", SqlDbType.VarChar, objItemResposta.no_userid)}

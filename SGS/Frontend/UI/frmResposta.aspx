@@ -143,7 +143,8 @@
 							            <table>   
                                             <tr>									    
                                                 <td>                                 
-                                                    <asp:ImageButton ID="btnGravaItem" runat="server" ImageUrl="~/Imagens/add.ico" />                                                                                           
+                                                    <asp:ImageButton ID="btnGravaItem" runat="server" ImageUrl="~/Imagens/add.ico" />           
+                                                    <asp:ImageButton id="btnCancelarItem" runat="server" ImageUrl="~/Imagens/no_disabled.png" Enabled="False" />                                                                                
                                                 </td>
 								            </tr>
 
