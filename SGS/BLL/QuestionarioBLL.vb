@@ -61,15 +61,15 @@ Public Class QuestionarioBLL
 
         Try
 
-            'sSMTPeMail = "smtp.etikaconsultoria.com.br"
-            sSMTPeMail = "smtp.duratex.com.br"
+            sSMTPeMail = "smtp.etikaconsultoria.com.br"
+            'sSMTPeMail = "smtp.duratex.com.br"
 
-            'seMailDestinatario = "diogo.bastos@duratex.com.br" 'objQuestionario.representante.dc_email
+            'seMailDestinatario = "diogo.bastos@duratex.com.br" 
             seMailDestinatario = objQuestionario.representante.dc_email
             sNomeDestinatario = objQuestionario.representante.no_representante
 
-            'seMailRemetente = "mribeiro@etikaconsultoria.com.br​"
-            seMailRemetente = "diogo.bastos@duratex.com.br​"
+            seMailRemetente = "etikaconsultoria@etikaconsultoria.com.br"
+            'seMailRemetente = "diogo.bastos@duratex.com.br​"
             sNomeRemetente = "Etika Consultoria"
             sAssuntoEmail = "Questionário Liberado!"
 
@@ -99,7 +99,7 @@ Public Class QuestionarioBLL
 
         Mailmsg.Attachments.Clear()
 
-        'mSmtpCliente.Send(Mailmsg)
+        mSmtpCliente.Send(Mailmsg)
         Mailmsg.Attachments.Dispose()
         Mailmsg.Dispose()
         EnviaEmailQuestionadioLiberado = True
