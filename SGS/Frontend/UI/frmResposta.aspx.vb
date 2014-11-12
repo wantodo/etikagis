@@ -1,5 +1,6 @@
 ﻿Public Class frmResposta
     Inherits System.Web.UI.Page
+    Public chaveEditarItem As Boolean = False
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         If Session("sessionUser") = "" Or Session("sessionUser") = Nothing Then
@@ -124,13 +125,12 @@
             End If
 
             If Not Request.QueryString.Item("editarItem") Is Nothing Then
-                If Request.QueryString("editarItem").ToString = "1" Then
+                chaveEditarItem = True
 
-                    carrega_gridItemResposta(Request.QueryString("codQuestionario").ToString)
-                    carrega_gridItemRespondida(Request.QueryString("codQuestionario").ToString)
-                    frameItem.Visible = True
-                    frameQuestao.Visible = True
-                End If
+                carrega_gridItemResposta(Request.QueryString("codQuestionario").ToString)
+                carrega_gridItemRespondida(Request.QueryString("codQuestionario").ToString)
+                frameItem.Visible = True
+                frameQuestao.Visible = True
 
             End If
 
@@ -144,7 +144,7 @@
         Dim dt As DataTable
 
 
-        If Not Request.QueryString.Item("editarItem") Is Nothing Then
+        If chaveEditarItem Then
             ds = objRespostaBLL.EditaListaItem(codQuestionario, Request.QueryString("grupo").ToString)
         Else
             ds = objQuestaoBLL.ListaItemQuestao(0, codQuestionario)
@@ -161,7 +161,8 @@
         Dim tx As TextBox
 
         If e.Row.RowType = DataControlRowType.Header Then
-            If Not Request.QueryString.Item("editarItem") Is Nothing Then
+            'If Not Request.QueryString.Item("editarItem") Is Nothing Then
+            If chaveEditarItem Then
                 e.Row.Cells(2).Visible = False
                 e.Row.Cells(3).Visible = False
                 e.Row.Cells(4).Visible = False
@@ -170,11 +171,12 @@
                 e.Row.Cells(2).Visible = False
                 e.Row.Cells(3).Visible = False
             End If
-            
+
         End If
 
         If e.Row.RowType = DataControlRowType.DataRow Then
-            If Not Request.QueryString.Item("editarItem") Is Nothing Then
+            'If Not Request.QueryString.Item("editarItem") Is Nothing Then
+            If chaveEditarItem Then
                 e.Row.Cells(2).Visible = False
                 e.Row.Cells(3).Visible = False
                 e.Row.Cells(4).Visible = False
@@ -406,7 +408,7 @@
         Dim tx As TextBox
         Dim codGrupoItem As Integer
 
-        If Not Request.QueryString.Item("editarItem") Is Nothing Then
+        If chaveEditarItem Then
             codGrupoItem = Request.QueryString("grupo").ToString
         Else
             If gridItemRespondida.Rows.Count > 0 Then
@@ -421,7 +423,7 @@
             tx = gridItemResposta.Rows(i).Cells(0).FindControl("txtItemResposta")
 
             With objItemResposta
-                If Not Request.QueryString.Item("editarItem") Is Nothing Then
+                If chaveEditarItem Then
                     If gridItemResposta.Rows(i).Cells(5).Text <> "" Then
                         .cd_item_resposta = gridItemResposta.Rows(i).Cells(5).Text
                     End If
@@ -434,9 +436,10 @@
                 .questionario.cd_questionario = Request.QueryString("codQuestionario").ToString
             End With
 
-            If Not Request.QueryString.Item("editarItem") Is Nothing Then
+            If chaveEditarItem Then
                 If objRespostaBLL.AlteraItemResposta(objItemResposta) Then
                     tx.Text = ""
+                    chaveEditarItem = False
                     If i = gridItemResposta.Rows.Count - 1 Then
                         lblMsg.Text = "Item de Resposta alterado com sucesso!"
                         lblMsg.ForeColor = Drawing.Color.LightGreen
