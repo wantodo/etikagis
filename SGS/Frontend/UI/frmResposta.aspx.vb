@@ -165,6 +165,7 @@
                 e.Row.Cells(2).Visible = False
                 e.Row.Cells(3).Visible = False
                 e.Row.Cells(4).Visible = False
+                e.Row.Cells(5).Visible = False
             Else
                 e.Row.Cells(2).Visible = False
                 e.Row.Cells(3).Visible = False
@@ -177,6 +178,7 @@
                 e.Row.Cells(2).Visible = False
                 e.Row.Cells(3).Visible = False
                 e.Row.Cells(4).Visible = False
+                e.Row.Cells(5).Visible = False
 
                 tx = e.Row.Cells(1).FindControl("txtItemResposta")
                 tx.Text = e.Row.Cells(4).Text
@@ -184,8 +186,6 @@
                 e.Row.Cells(2).Visible = False
                 e.Row.Cells(3).Visible = False
             End If
-
-            
 
             temp = e.Row.Cells(3).Text
             lb = e.Row.Cells(0).FindControl("lblItemQuestao")
@@ -213,9 +213,11 @@
 
         If e.Row.RowType = DataControlRowType.Header Then
             e.Row.Cells(0).Text = ""
+            e.Row.Cells(1).Visible = False
         End If
 
-        If e.Row.RowType = DataControlRowType.DataRow Then            
+        If e.Row.RowType = DataControlRowType.DataRow Then
+            e.Row.Cells(1).Visible = False
             e.Row.Cells(0).Text = "<a href='frmResposta.aspx?editarItem=1&grupo=" & e.Row.Cells(1).Text & "&codQuestionario=" & Request.QueryString("codQuestionario").ToString & "'><img src='../imagens/edit.png'></a>"
         End If
 
@@ -404,17 +406,27 @@
         Dim tx As TextBox
         Dim codGrupoItem As Integer
 
-        If gridItemRespondida.Rows.Count > 0 Then
-            codGrupoItem = CInt(gridItemRespondida.Rows(gridItemRespondida.Rows.Count - 1).Cells(0).Text) + 1
+        If Not Request.QueryString.Item("editarItem") Is Nothing Then
+            codGrupoItem = Request.QueryString("grupo").ToString
         Else
-            codGrupoItem = 1
+            If gridItemRespondida.Rows.Count > 0 Then
+                codGrupoItem = CInt(gridItemRespondida.Rows(gridItemRespondida.Rows.Count - 1).Cells(1).Text) + 1
+            Else
+                codGrupoItem = 1
+            End If
         End If
 
-        For i = 0 To gridItemResposta.Rows.Count - 1            
+        For i = 0 To gridItemResposta.Rows.Count - 1
 
             tx = gridItemResposta.Rows(i).Cells(0).FindControl("txtItemResposta")
 
             With objItemResposta
+                If Not Request.QueryString.Item("editarItem") Is Nothing Then
+                    If gridItemResposta.Rows(i).Cells(5).Text <> "" Then
+                        .cd_item_resposta = gridItemResposta.Rows(i).Cells(5).Text
+                    End If
+                End If
+
                 .cd_grupo_item_resposta = codGrupoItem
                 .itemQuestao.cd_item_questao = gridItemResposta.Rows(i).Cells(2).Text
                 .dc_resposta_item = tx.Text
@@ -422,34 +434,30 @@
                 .questionario.cd_questionario = Request.QueryString("codQuestionario").ToString
             End With
 
-            If objRespostaBLL.InsereItemResposta(objItemResposta) Then
-                tx.Text = ""
-                If i = gridItemResposta.Rows.Count - 1 Then
-                    lblMsg.Text = "Item de Resposta cadastrado com sucesso!"
-                    lblMsg.ForeColor = Drawing.Color.LightGreen
-                    pnlMsg.Visible = True
+            If Not Request.QueryString.Item("editarItem") Is Nothing Then
+                If objRespostaBLL.AlteraItemResposta(objItemResposta) Then
+                    tx.Text = ""
+                    If i = gridItemResposta.Rows.Count - 1 Then
+                        lblMsg.Text = "Item de Resposta alterado com sucesso!"
+                        lblMsg.ForeColor = Drawing.Color.LightGreen
+                        pnlMsg.Visible = True
+                        carrega_gridItemRespondida(Request.QueryString("codQuestionario").ToString)
+                        btnCancelarItem_Click(sender, e)
+                    End If
+                End If
+            Else
+                If objRespostaBLL.InsereItemResposta(objItemResposta) Then
+                    tx.Text = ""
+                    If i = gridItemResposta.Rows.Count - 1 Then
+                        lblMsg.Text = "Item de Resposta cadastrado com sucesso!"
+                        lblMsg.ForeColor = Drawing.Color.LightGreen
+                        pnlMsg.Visible = True
+                        carrega_gridItemRespondida(Request.QueryString("codQuestionario").ToString)
+                        btnCancelarItem_Click(sender, e)
+                    End If
                 End If
             End If
         Next
-
-        carrega_gridItemRespondida(Request.QueryString("codQuestionario").ToString)
-
-
-        'If lblCodigoItem.Text = "" Then
-        'If objRespostaBLL.InsereItemResposta(objItemResposta) Then
-        '        lblMsg.Text = "Item de Resposta cadastrado com sucesso!"
-        '        lblMsg.ForeColor = Drawing.Color.LightGreen
-        '        pnlMsg.Visible = True
-        '    End If
-        'Else
-        '    If objRespostaBLL.AlteraItemResposta(objItemResposta) Then
-        '        lblMsg.Text = "Item de Resposta alterado com sucesso!"
-        '        lblMsg.ForeColor = Drawing.Color.LightGreen
-        '        pnlMsg.Visible = True
-        '    End If
-        'End If
-
-        'carrega_gridItemResposta(lblCodQuestionario.Text)
 
     End Sub
 
@@ -545,6 +553,16 @@
 
         btnFinalizar.Enabled = True
         btnFinalizar.ImageUrl = "../imagens/accept_disabled.png"
+    End Sub
+
+    Protected Sub btnCancelarItem_Click(sender As Object, e As System.Web.UI.ImageClickEventArgs) Handles btnCancelarItem.Click        
+
+        btnGravaItem.Enabled = True
+        btnGravaItem.ImageUrl = "../imagens/add.ico"
+
+        btnCancelarItem.Enabled = False
+        btnCancelarItem.ImageUrl = "../imagens/no_disabled.png"
+
     End Sub
 
     Private Sub limpaCampos()
