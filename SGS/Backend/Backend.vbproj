@@ -159,6 +159,7 @@
     <Content Include="UI\frmAnaliseRespostas.aspx" />
     <Content Include="UI\frmAspecto.aspx" />
     <Content Include="UI\frmCategoria.aspx" />
+    <Content Include="UI\frmConteudo.aspx" />
     <Content Include="UI\frmEmpresa.aspx" />
     <Content Include="UI\frmIndicador.aspx" />
     <Content Include="UI\frmLogin.aspx" />
@@ -283,6 +284,13 @@
     <Compile Include="UI\frmCategoria.aspx.vb">
       <DependentUpon>frmCategoria.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\frmConteudo.aspx.designer.vb">
+      <DependentUpon>frmConteudo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\frmConteudo.aspx.vb">
+      <DependentUpon>frmConteudo.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="UI\frmEmpresa.aspx.designer.vb">
       <DependentUpon>frmEmpresa.aspx</DependentUpon>

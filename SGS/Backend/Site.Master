@@ -46,6 +46,8 @@
                                 Value="Usuário" NavigateUrl="~/UI/frmUsuario.aspx"></asp:MenuItem>
                             <asp:MenuItem Text="Status" 
                                 Value="Status" NavigateUrl="~/UI/frmStatus.aspx"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/UI/frmConteudo.aspx" Text="Conteúdo" 
+                                Value="Conteúdo"></asp:MenuItem>
                         </asp:MenuItem>
                         <asp:MenuItem Text="Cadastro" Value="Cadastro">
                             <asp:MenuItem Text="Empresas" Value="Empresas" 
