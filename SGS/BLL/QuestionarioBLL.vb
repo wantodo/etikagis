@@ -117,7 +117,8 @@ Public Class QuestionarioBLL
 
             sSMTPeMail = "smtp.etikaconsultoria.com.br"
 
-            seMailRemetente = objQuestionario.representante.dc_email
+            'seMailRemetente = objQuestionario.representante.dc_email
+            seMailRemetente = "etikaconsultoria@etikaconsultoria.com.br"
             sNomeRemetente = objQuestionario.representante.no_representante
 
             seMailDestinatario = "etikaconsultoria@etikaconsultoria.com.br"
