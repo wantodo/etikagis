@@ -62,14 +62,11 @@ Public Class QuestionarioBLL
         Try
 
             sSMTPeMail = "smtp.etikaconsultoria.com.br"
-            'sSMTPeMail = "smtp.duratex.com.br"
-
-            'seMailDestinatario = "diogo.bastos@duratex.com.br" 
+           
             seMailDestinatario = objQuestionario.representante.dc_email
             sNomeDestinatario = objQuestionario.representante.no_representante
 
             seMailRemetente = "etikaconsultoria@etikaconsultoria.com.br"
-            'seMailRemetente = "diogo.bastos@duratex.com.br​"
             sNomeRemetente = "Etika Consultoria"
             sAssuntoEmail = "Questionário Liberado!"
 
@@ -99,6 +96,7 @@ Public Class QuestionarioBLL
 
         Mailmsg.Attachments.Clear()
 
+        mSmtpCliente.Credentials = New System.Net.NetworkCredential(seMailRemetente, "consult@1357")
         mSmtpCliente.Send(Mailmsg)
         Mailmsg.Attachments.Dispose()
         Mailmsg.Dispose()
@@ -117,15 +115,12 @@ Public Class QuestionarioBLL
 
         Try
 
-            'sSMTPeMail = "smtp.etikaconsultoria.com.br"
-            sSMTPeMail = "smtp.duratex.com.br"
+            sSMTPeMail = "smtp.etikaconsultoria.com.br"
 
-            'seMailDestinatario = "diogo.bastos@duratex.com.br" 'objQuestionario.representante.dc_email
             seMailRemetente = objQuestionario.representante.dc_email
             sNomeRemetente = objQuestionario.representante.no_representante
 
-            'seMailRemetente = "mribeiro@etikaconsultoria.com.br​"
-            seMailDestinatario = "diogo.bastos@duratex.com.br​"
+            seMailDestinatario = "etikaconsultoria@etikaconsultoria.com.br"
             sNomeDestinatario = "Etika Consultoria"
             sAssuntoEmail = "Questionário Respondido!"
 
@@ -155,7 +150,8 @@ Public Class QuestionarioBLL
 
         Mailmsg.Attachments.Clear()
 
-        'mSmtpCliente.Send(Mailmsg)
+        mSmtpCliente.Credentials = New System.Net.NetworkCredential(seMailRemetente, "consult@1357")
+        mSmtpCliente.Send(Mailmsg)
         Mailmsg.Attachments.Dispose()
         Mailmsg.Dispose()
         EnviaEmailQuestionarioRespondido = True
@@ -172,15 +168,12 @@ Public Class QuestionarioBLL
 
         Try
 
-            'sSMTPeMail = "smtp.etikaconsultoria.com.br"
-            sSMTPeMail = "smtp.duratex.com.br"
+            sSMTPeMail = "smtp.etikaconsultoria.com.br"
 
-            'seMailDestinatario = "diogo.bastos@duratex.com.br" 'objQuestionario.representante.dc_email
             seMailDestinatario = objQuestionario.representante.dc_email
             sNomeDestinatario = objQuestionario.representante.no_representante
 
-            'seMailRemetente = "mribeiro@etikaconsultoria.com.br​"
-            seMailRemetente = "diogo.bastos@duratex.com.br​"
+            seMailRemetente = "etikaconsultoria@etikaconsultoria.com.br​"
             sNomeRemetente = "Etika Consultoria"
             sAssuntoEmail = "Questão devolvida!"
 
@@ -210,7 +203,8 @@ Public Class QuestionarioBLL
 
         Mailmsg.Attachments.Clear()
 
-        'mSmtpCliente.Send(Mailmsg)
+        mSmtpCliente.Credentials = New System.Net.NetworkCredential(seMailRemetente, "consult@1357")
+        mSmtpCliente.Send(Mailmsg)
         Mailmsg.Attachments.Dispose()
         Mailmsg.Dispose()
         EnviaEmailAnaliseQuestao = True
