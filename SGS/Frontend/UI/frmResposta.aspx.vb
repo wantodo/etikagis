@@ -38,7 +38,8 @@
 
                     If Request.QueryString("tipo").ToString.Equals("I") Then
                         frameResposta.Visible = True
-                        frameItem.Visible = False
+                        frameItemResposta.Visible = False
+                        frameItemRespondida.Visible = False
 
                         If Request.QueryString("codStatus").ToString <> 4 Then
                             carrega_resposta(Request.QueryString("codQuestionario").ToString)
@@ -46,10 +47,13 @@
 
                     ElseIf Request.QueryString("tipo").ToString.Equals("Q") Then
                         frameResposta.Visible = False
-                        frameItem.Visible = True
+                        frameItemResposta.Visible = True
+                        frameItemRespondida.Visible = True
 
                         If Not Request.QueryString("codStatus").ToString = 6 Or Request.QueryString("codStatus").ToString = 7 Then
                             carrega_gridItemResposta(Request.QueryString("codQuestionario").ToString)
+                        Else
+                            pnlItemResposta.Visible = False
                         End If
 
                         carrega_gridItemRespondida(lblCodQuestionario.Text)
@@ -83,16 +87,20 @@
 
                     If Request.QueryString("tipo").ToString.Equals("I") Then
                         frameResposta.Visible = True
-                        frameItem.Visible = False
+                        frameItemResposta.Visible = False
+                        frameItemRespondida.Visible = False
 
                         carrega_resposta(Request.QueryString("codQuestionario").ToString)
 
                     ElseIf Request.QueryString("tipo").ToString.Equals("Q") Then
                         frameResposta.Visible = False
-                        frameItem.Visible = True
+                        frameItemResposta.Visible = True
+                        frameItemRespondida.Visible = True
 
                         If Not Request.QueryString("codStatus").ToString = 6 Or Request.QueryString("codStatus").ToString = 7 Then
                             carrega_gridItemResposta(Request.QueryString("codQuestionario").ToString)
+                        Else
+                            pnlItemResposta.Visible = False
                         End If
 
                         carrega_gridItemRespondida(lblCodQuestionario.Text)
@@ -122,10 +130,13 @@
                         pnlExcluirItem.Focus()
 
                         frameQuestao.Visible = True
-                        frameItem.Visible = True
+                        frameItemResposta.Visible = True
+                        frameItemRespondida.Visible = True
 
                         If Not Request.QueryString("codStatus").ToString = 6 Or Request.QueryString("codStatus").ToString = 7 Then
                             carrega_gridItemResposta(Request.QueryString("codQuestionario").ToString)
+                        Else
+                            pnlItemResposta.Visible = False
                         End If
 
                         carrega_gridItemRespondida(lblCodQuestionario.Text)
@@ -144,11 +155,14 @@
 
                 If Not Request.QueryString("codStatus").ToString = 6 Or Request.QueryString("codStatus").ToString = 7 Then
                     carrega_gridItemResposta(Request.QueryString("codQuestionario").ToString)
+                Else
+                    pnlItemResposta.Visible = False
                 End If
 
                 carrega_gridItemRespondida(Request.QueryString("codQuestionario").ToString)
 
-                frameItem.Visible = True
+                frameItemResposta.Visible = True
+                frameItemRespondida.Visible = True
                 frameQuestao.Visible = True
 
             End If
@@ -504,7 +518,6 @@
     Protected Sub btnSimItem_Click(sender As Object, e As EventArgs) Handles btnSimItem.Click
         Dim objItemRespostaBLL As New BLL.RespostaBLL
 
-        'objItemRespostaBLL.ExcluirItemQuestao(CInt(lblCodigoItem.Text))
         carrega_gridItemResposta(lblCodQuestionario.Text)
         pnlExcluirItem.Visible = False
         gridItemResposta.Focus()
@@ -608,7 +621,8 @@
         frameQuestao.Visible = False
         frameRetorno.Visible = False
         frameResposta.Visible = False
-        frameItem.Visible = False
+        frameItemResposta.Visible = False
+        frameItemRespondida.Visible = False
         carregagridQuestao()
     End Sub
 
