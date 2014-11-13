@@ -513,8 +513,7 @@
                         lblMsg.Text = "Item de Resposta alterado com sucesso!"
                         lblMsg.ForeColor = Drawing.Color.LightGreen
                         pnlMsg.Visible = True
-                        carrega_gridItemRespondida(Request.QueryString("codQuestionario").ToString)
-                        btnCancelarItem_Click(sender, e)
+                        carrega_gridItemRespondida(Request.QueryString("codQuestionario").ToString)                        
                     End If
                 End If
             Else
@@ -525,7 +524,6 @@
                         lblMsg.ForeColor = Drawing.Color.LightGreen
                         pnlMsg.Visible = True
                         carrega_gridItemRespondida(Request.QueryString("codQuestionario").ToString)
-                        btnCancelarItem_Click(sender, e)
                     End If
                 End If
             End If
@@ -624,16 +622,6 @@
 
         btnFinalizar.Enabled = True
         btnFinalizar.ImageUrl = "../imagens/accept_disabled.png"
-    End Sub
-
-    Protected Sub btnCancelarItem_Click(sender As Object, e As System.Web.UI.ImageClickEventArgs) Handles btnCancelarItem.Click        
-
-        btnGravaItem.Enabled = True
-        btnGravaItem.ImageUrl = "../imagens/add.ico"
-
-        btnCancelarItem.Enabled = False
-        btnCancelarItem.ImageUrl = "../imagens/no_disabled.png"
-
     End Sub
 
     Private Sub limpaCampos()

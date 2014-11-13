@@ -221,24 +221,6 @@ Partial Public Class frmResposta
     Protected WithEvents frameItemResposta As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
-    '''btnGravaItem control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents btnGravaItem As Global.System.Web.UI.WebControls.ImageButton
-
-    '''<summary>
-    '''btnCancelarItem control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents btnCancelarItem As Global.System.Web.UI.WebControls.ImageButton
-
-    '''<summary>
     '''pnlGridItemResposta control.
     '''</summary>
     '''<remarks>
@@ -255,6 +237,15 @@ Partial Public Class frmResposta
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents gridItemResposta As Global.System.Web.UI.WebControls.GridView
+
+    '''<summary>
+    '''btnGravaItem control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnGravaItem As Global.System.Web.UI.WebControls.ImageButton
 
     '''<summary>
     '''pnlItemRespondida control.
