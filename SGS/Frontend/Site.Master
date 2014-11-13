@@ -37,9 +37,7 @@
 
             
 
-            <div class="clear hideSkiplink" style="background-color: #458B00">
-                
-            </div>
+            
         </div>
         <div class="main">
             <asp:ContentPlaceHolder ID="MainContent" runat="server" />
