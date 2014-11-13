@@ -49,10 +49,14 @@
                         frameItemResposta.Visible = True
                         frameItemRespondida.Visible = True
 
-                        If Not Request.QueryString("codStatus").ToString = 6 Or Request.QueryString("codStatus").ToString = 7 Then
-                            carrega_gridItemResposta(Request.QueryString("codQuestionario").ToString)
-                        Else
+                        If Session("codPerfil") = 2 Then
                             pnlItemResposta.Visible = False
+                        Else
+                            If Not Request.QueryString("codStatus").ToString = 6 Or Request.QueryString("codStatus").ToString = 7 Then
+                                carrega_gridItemResposta(Request.QueryString("codQuestionario").ToString)
+                            Else
+                                pnlItemResposta.Visible = False
+                            End If
                         End If
 
                         carrega_gridItemRespondida(lblCodQuestionario.Text)
@@ -96,10 +100,14 @@
                         frameItemResposta.Visible = True
                         frameItemRespondida.Visible = True
 
-                        If Not Request.QueryString("codStatus").ToString = 6 Or Request.QueryString("codStatus").ToString = 7 Then
-                            carrega_gridItemResposta(Request.QueryString("codQuestionario").ToString)
-                        Else
+                        If Session("codPerfil") = 2 Then
                             pnlItemResposta.Visible = False
+                        Else
+                            If Not Request.QueryString("codStatus").ToString = 6 Or Request.QueryString("codStatus").ToString = 7 Then
+                                carrega_gridItemResposta(Request.QueryString("codQuestionario").ToString)
+                            Else
+                                pnlItemResposta.Visible = False
+                            End If
                         End If
 
                         carrega_gridItemRespondida(lblCodQuestionario.Text)
@@ -132,10 +140,14 @@
                         frameItemResposta.Visible = True
                         frameItemRespondida.Visible = True
 
-                        If Not Request.QueryString("codStatus").ToString = 6 Or Request.QueryString("codStatus").ToString = 7 Then
-                            carrega_gridItemResposta(Request.QueryString("codQuestionario").ToString)
-                        Else
+                        If Session("codPerfil") = 2 Then
                             pnlItemResposta.Visible = False
+                        Else
+                            If Not Request.QueryString("codStatus").ToString = 6 Or Request.QueryString("codStatus").ToString = 7 Then
+                                carrega_gridItemResposta(Request.QueryString("codQuestionario").ToString)
+                            Else
+                                pnlItemResposta.Visible = False
+                            End If
                         End If
 
                         carrega_gridItemRespondida(lblCodQuestionario.Text)
@@ -152,10 +164,14 @@
                 lblOrdem.Text = Request.QueryString("ordem").ToString
                 lblQuestao.Text = Request.QueryString("questao").ToString
 
-                If Not Request.QueryString("codStatus").ToString = 6 Or Request.QueryString("codStatus").ToString = 7 Then
-                    carrega_gridItemResposta(Request.QueryString("codQuestionario").ToString)
-                Else
+                If Session("codPerfil") = 2 Then
                     pnlItemResposta.Visible = False
+                Else
+                    If Not Request.QueryString("codStatus").ToString = 6 Or Request.QueryString("codStatus").ToString = 7 Then
+                        carrega_gridItemResposta(Request.QueryString("codQuestionario").ToString)
+                    Else
+                        pnlItemResposta.Visible = False
+                    End If
                 End If
 
                 carrega_gridItemRespondida(Request.QueryString("codQuestionario").ToString)
@@ -188,7 +204,7 @@
     End Sub
 
     Private Sub gridItemResposta_RowDataBound(sender As Object, e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles gridItemResposta.RowDataBound
-        Dim lb As Label        
+        Dim lb As Label
         Dim temp As String
         Dim tx As TextBox
 
@@ -231,7 +247,7 @@
     Private Sub carrega_gridItemRespondida(codQuestionario As Integer)
         Dim objRespostaBLL As New BLL.RespostaBLL
         Dim ds As DataSet
-        Dim dt As DataTable        
+        Dim dt As DataTable
 
         ds = objRespostaBLL.ListaItemRespondido(codQuestionario)
         If ds.Tables.Count > 0 Then
@@ -247,26 +263,34 @@
 
         If e.Row.RowType = DataControlRowType.Header Then
 
-            If Request.QueryString("codStatus").ToString = 6 Or Request.QueryString("codStatus").ToString = 7 Then
+            If Session("codPerfil") = 2 Then
                 e.Row.Cells(0).Visible = False
-            Else
-                e.Row.Cells(0).Text = ""
+            Else                            
+                If Request.QueryString("codStatus").ToString = 6 Or Request.QueryString("codStatus").ToString = 7 Then
+                    e.Row.Cells(0).Visible = False
+                Else
+                    e.Row.Cells(0).Text = ""
+                End If
             End If
 
             e.Row.Cells(1).Visible = False
         End If
 
-            If e.Row.RowType = DataControlRowType.DataRow Then
+        If e.Row.RowType = DataControlRowType.DataRow Then
 
-            If Request.QueryString("codStatus").ToString = 6 Or Request.QueryString("codStatus").ToString = 7 Then
+            If Session("codPerfil") = 2 Then
                 e.Row.Cells(0).Visible = False
             Else
-                e.Row.Cells(0).Text = "<a href='frmResposta.aspx?editarItem=1&grupo=" & e.Row.Cells(1).Text & "&codQuestionario=" & Request.QueryString("codQuestionario").ToString & "&questao=" & Request.QueryString("questao").ToString & "&ordem=" & Request.QueryString("ordem").ToString & "&codStatus=" & Request.QueryString("codStatus").ToString & "'><img src='../imagens/edit.png'></a>"
+                If Request.QueryString("codStatus").ToString = 6 Or Request.QueryString("codStatus").ToString = 7 Then
+                    e.Row.Cells(0).Visible = False
+                Else
+                    e.Row.Cells(0).Text = "<a href='frmResposta.aspx?editarItem=1&grupo=" & e.Row.Cells(1).Text & "&codQuestionario=" & Request.QueryString("codQuestionario").ToString & "&questao=" & Request.QueryString("questao").ToString & "&ordem=" & Request.QueryString("ordem").ToString & "&codStatus=" & Request.QueryString("codStatus").ToString & "'><img src='../imagens/edit.png'></a>"
+                End If
             End If
 
-                e.Row.Cells(1).Visible = False
+            e.Row.Cells(1).Visible = False
 
-            End If
+        End If
 
     End Sub
 
