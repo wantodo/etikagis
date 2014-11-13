@@ -149,6 +149,24 @@ Partial Public Class frmQuestaoRepresentante
     Protected WithEvents lblRepresentante As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
+    '''pnlPrazo control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents pnlPrazo As Global.System.Web.UI.UpdatePanel
+
+    '''<summary>
+    '''txtPrazo control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtPrazo As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
     '''pnlFinalizar control.
     '''</summary>
     '''<remarks>

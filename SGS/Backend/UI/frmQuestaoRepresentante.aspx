@@ -110,6 +110,21 @@
                                                 </asp:UpdatePanel>
                                             </td>
 								        </tr>
+
+                                        <tr>
+									        <td>Prazo</td> <td>     
+                                                <asp:UpdatePanel ID="pnlPrazo" runat="server">
+                                                    <ContentTemplate >                     
+                                                        
+                                                        <asp:TextBox ID="txtPrazo" AutoPostBack="true" runat="server"></asp:TextBox>
+                                                        
+                                                    </ContentTemplate>
+                                                    <Triggers>
+                                                        <asp:AsyncPostBackTrigger ControlID ="txtPrazo" />
+                                                    </Triggers>
+                                                </asp:UpdatePanel>
+                                            </td>
+								        </tr>
                                     
                                         <%--<tr>
 									        <td>Status*</td> <td>  
