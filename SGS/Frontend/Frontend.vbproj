@@ -116,6 +116,7 @@
     <Content Include="Imagens\save.ico" />
     <Content Include="Imagens\save_disabled.png" />
     <Content Include="Imagens\topoLogo.png" />
+    <Content Include="Imagens\topo_logo2.jpg" />
     <Content Include="UI\Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
