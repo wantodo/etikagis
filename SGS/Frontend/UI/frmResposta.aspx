@@ -136,10 +136,10 @@
 
                 <tr>
 					<td colspan="2">    
-                        <asp:UpdatePanel ID="pnlItens" runat="server">
+                        <asp:UpdatePanel ID="pnlItemResposta" runat="server">
                             <ContentTemplate >                                                
-                                <fieldset id="frameItem" runat="server" visible="false" class="frame">	
-							        <legend style="color:#B0C4DE;">Item Questão</legend>
+                                <fieldset id="frameItemResposta" runat="server" visible="false" class="frame">	
+							        <legend style="color:#B0C4DE;">Itens</legend>
 							            <table>   
                                             <tr>									    
                                                 <td>                                 
@@ -164,7 +164,7 @@
                                                                     </asp:TemplateField>
                                                                     <asp:TemplateField HeaderText="Resposta">
                                                                         <ItemTemplate>
-                                                                            <asp:TextBox ID="txtItemResposta" runat="server" Width="250px"/>
+                                                                            <asp:TextBox ID="txtItemResposta" runat="server" Width="300px"/>
                                                                         </ItemTemplate>
                                                                     </asp:TemplateField>
                                                                 </Columns>
@@ -180,14 +180,29 @@
                                                                 <SortedDescendingCellStyle BackColor="#D4DFE1" />
                                                                 <SortedDescendingHeaderStyle BackColor="#15524A" />
                                                             </asp:GridView>                                                 
-                                                    </asp:Panel>
-                                                </td> 
-                                            </tr>   
-
+                                                </asp:Panel>
+                                            </td> 
+                                        </tr>  
+                                    </table>  
+                                </fieldset>
+                            </ContentTemplate>
+                            <Triggers>
+                                <asp:AsyncPostBackTrigger ControlID ="gridItemResposta" />
+                            </Triggers>
+                        </asp:UpdatePanel>   
+                    </td>
+				</tr>
+                <tr>
+					<td colspan="2">    
+                        <asp:UpdatePanel ID="pnlItemRespondida" runat="server">
+                            <ContentTemplate >                                                
+                                <fieldset id="frameItemRespondida" runat="server" visible="false" class="frame">	
+							        <legend style="color:#B0C4DE;">Resposta</legend>
+							            <table>
                                             <tr>
                                                 <td colspan="3">
                                                     <asp:Panel ID="pnlGridItemRespondida"  runat="server" ScrollBars="Auto"                                                 
-                                                        style="margin-left:0px; margin-top:20px; max-height:200px; max-width:465px;">
+                                                        style="margin-left:0px; margin-top:0px; max-height:200px; max-width:465px;">
                                                             <asp:GridView ID="gridItemRespondida" runat="server" 
                                                                 style="margin-top: 0px; margin-left:auto; margin-right:auto;" 
                                                                 CellPadding="4" ForeColor="#333333" 
@@ -212,7 +227,7 @@
 					        </fieldset>
                         </ContentTemplate>
                             <Triggers>
-                                <asp:AsyncPostBackTrigger ControlID ="gridItemResposta" />
+                                <asp:AsyncPostBackTrigger ControlID ="gridItemRespondida" />
                             </Triggers>
                        </asp:UpdatePanel>                          
 					</td>
