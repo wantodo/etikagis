@@ -106,15 +106,22 @@
         <table  border="0" cellpadding="0" cellspacing="0" width="800" height="100%">	                
 				<tr>
 					<td colspan="2">
-                        <div id="divLegenda" runat="server" visible="false">
-                            <ul style="margin-left:-4%;">
-                                <li style="display:inline; margin-right:10px;"><img src="../imagens/Flag-Red.png"><span>Aguardando Resposta</span></li>
-                                <li style="display:inline; margin-right:10px;"><img src="../imagens/Flag-Blue.png"><span>Gravada</span></li>
-                                <li style="display:inline; margin-right:10px;"><img src="../imagens/Flag-Green.png"><span>Respondido</span></li>
-                                <li style="display:inline; margin-right:10px;"><img src="../imagens/Flag-Yellow.png"><span>Devolvido</span></li>                                
-                                <li style="display:inline; margin-right:10px;"><img src="../imagens/Flag-Checkered.png"><span>Finalizado</span></li>
-                            </ul>
-                        </div>                                                 
+                        <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                                <ContentTemplate >
+                                    <div id="divLegenda" runat="server" visible="false">
+                                        <ul style="margin-left:-4%;">
+                                            <li style="display:inline; margin-right:10px;"><img src="../imagens/Flag-Red.png"><span>Aguardando Resposta</span></li>
+                                            <li style="display:inline; margin-right:10px;"><img src="../imagens/Flag-Blue.png"><span>Gravada</span></li>
+                                            <li style="display:inline; margin-right:10px;"><img src="../imagens/Flag-Green.png"><span>Respondido</span></li>
+                                            <li style="display:inline; margin-right:10px;"><img src="../imagens/Flag-Yellow.png"><span>Devolvido</span></li>                                
+                                            <li style="display:inline; margin-right:10px;"><img src="../imagens/Flag-Checkered.png"><span>Finalizado</span></li>
+                                        </ul>
+                                    </div>   
+                                </ContentTemplate>     
+                                <Triggers>
+                                    <asp:AsyncPostBackTrigger ControlID ="cmbEmpresa" />
+                                </Triggers>
+                        </asp:UpdatePanel>                                              
 
                         <asp:Panel ID="Panel1"  runat="server" ScrollBars="Vertical"  
                             style="margin-left:10px; margin-top:20px; max-height:366px; max-width:900px;">   
@@ -138,7 +145,7 @@
                                     </asp:GridView>
                                 </ContentTemplate>     
                                 <Triggers>
-                                    <asp:AsyncPostBackTrigger ControlID ="cmbArea" />
+                                    <asp:AsyncPostBackTrigger ControlID ="cmbEmpresa" />
                                 </Triggers>
                             </asp:UpdatePanel>
                         </asp:Panel>
