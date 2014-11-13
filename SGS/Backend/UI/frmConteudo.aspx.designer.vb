@@ -14,6 +14,15 @@ Option Explicit On
 Partial Public Class frmConteudo
 
     '''<summary>
+    '''ScriptManager2 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ScriptManager2 As Global.System.Web.UI.ScriptManager
+
+    '''<summary>
     '''btnGravar control.
     '''</summary>
     '''<remarks>
@@ -21,6 +30,15 @@ Partial Public Class frmConteudo
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents btnGravar As Global.System.Web.UI.WebControls.ImageButton
+
+    '''<summary>
+    '''pnlUpdateMsg control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents pnlUpdateMsg As Global.System.Web.UI.UpdatePanel
 
     '''<summary>
     '''pnlMsg control.
@@ -41,6 +59,15 @@ Partial Public Class frmConteudo
     Protected WithEvents lblMsg As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
+    '''pnlEmpresa control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents pnlEmpresa As Global.System.Web.UI.UpdatePanel
+
+    '''<summary>
     '''cmbEmpresa control.
     '''</summary>
     '''<remarks>
@@ -48,6 +75,15 @@ Partial Public Class frmConteudo
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents cmbEmpresa As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''pnlDescricao control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents pnlDescricao As Global.System.Web.UI.UpdatePanel
 
     '''<summary>
     '''txtDescricao control.

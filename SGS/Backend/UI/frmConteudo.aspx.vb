@@ -8,6 +8,7 @@
 
         If Not IsPostBack Then
             carrega_cmbEmpresa()
+            pnlMsg.Visible = False
         End If
     End Sub
 
@@ -23,5 +24,35 @@
         lista.Text = "<Selecione>"
         lista.Value = 0
         cmbEmpresa.Items.Insert(0, lista)
+    End Sub
+
+    Private Sub carregaConteudoHomeFront()
+        Dim objConteudoBLL As New BLL.ConteudoBLL
+        Dim dt As DataTable
+
+        If cmbEmpresa.SelectedValue = 0 Then
+            txtDescricao.Text = ""
+            Exit Sub
+        End If
+
+        dt = objConteudoBLL.ListaConteudo(cmbEmpresa.SelectedValue).Tables(0)
+
+        txtDescricao.Text = dt.Rows(0)("tx_conteudo_home")
+
+    End Sub
+
+    Protected Sub cmbEmpresa_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbEmpresa.SelectedIndexChanged
+        pnlMsg.Visible = False
+        carregaConteudoHomeFront()
+    End Sub
+
+    Protected Sub btnGravar_Click(sender As Object, e As System.Web.UI.ImageClickEventArgs) Handles btnGravar.Click
+        Dim objConteudoBLL As New BLL.ConteudoBLL
+
+        objConteudoBLL.AlteraConteudo(cmbEmpresa.SelectedValue, txtDescricao.Text)
+
+        lblMsg.Text = "Conteúdo gravado com sucesso!"
+        lblMsg.ForeColor = Drawing.Color.LightGreen
+        pnlMsg.Visible = True
     End Sub
 End Class
