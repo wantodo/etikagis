@@ -48,7 +48,10 @@
                         frameResposta.Visible = False
                         frameItem.Visible = True
 
-                        carrega_gridItemResposta(lblCodQuestionario.Text)
+                        If Not Request.QueryString("codStatus").ToString = 6 Or Request.QueryString("codStatus").ToString = 7 Then
+                            carrega_gridItemResposta(Request.QueryString("codQuestionario").ToString)
+                        End If
+
                         carrega_gridItemRespondida(lblCodQuestionario.Text)
                     End If
                 End If
@@ -88,7 +91,10 @@
                         frameResposta.Visible = False
                         frameItem.Visible = True
 
-                        carrega_gridItemResposta(lblCodQuestionario.Text)
+                        If Not Request.QueryString("codStatus").ToString = 6 Or Request.QueryString("codStatus").ToString = 7 Then
+                            carrega_gridItemResposta(Request.QueryString("codQuestionario").ToString)
+                        End If
+
                         carrega_gridItemRespondida(lblCodQuestionario.Text)
                     End If
                 End If
@@ -117,7 +123,11 @@
 
                         frameQuestao.Visible = True
                         frameItem.Visible = True
-                        carrega_gridItemResposta(lblCodQuestionario.Text)
+
+                        If Not Request.QueryString("codStatus").ToString = 6 Or Request.QueryString("codStatus").ToString = 7 Then
+                            carrega_gridItemResposta(Request.QueryString("codQuestionario").ToString)
+                        End If
+
                         carrega_gridItemRespondida(lblCodQuestionario.Text)
                         Exit Sub
                     End If
@@ -127,8 +137,17 @@
             If Not Request.QueryString.Item("editarItem") Is Nothing Then
                 chaveEditarItem = True
 
-                carrega_gridItemResposta(Request.QueryString("codQuestionario").ToString)
+                lblCodQuestionario.Text = Request.QueryString("codQuestionario").ToString
+
+                lblOrdem.Text = Request.QueryString("ordem").ToString
+                lblQuestao.Text = Request.QueryString("questao").ToString
+
+                If Not Request.QueryString("codStatus").ToString = 6 Or Request.QueryString("codStatus").ToString = 7 Then
+                    carrega_gridItemResposta(Request.QueryString("codQuestionario").ToString)
+                End If
+
                 carrega_gridItemRespondida(Request.QueryString("codQuestionario").ToString)
+
                 frameItem.Visible = True
                 frameQuestao.Visible = True
 
@@ -214,14 +233,27 @@
 
 
         If e.Row.RowType = DataControlRowType.Header Then
-            e.Row.Cells(0).Text = ""
+
+            If Request.QueryString("codStatus").ToString = 6 Or Request.QueryString("codStatus").ToString = 7 Then
+                e.Row.Cells(0).Visible = False
+            Else
+                e.Row.Cells(0).Text = ""
+            End If
+
             e.Row.Cells(1).Visible = False
         End If
 
-        If e.Row.RowType = DataControlRowType.DataRow Then
-            e.Row.Cells(1).Visible = False
-            e.Row.Cells(0).Text = "<a href='frmResposta.aspx?editarItem=1&grupo=" & e.Row.Cells(1).Text & "&codQuestionario=" & Request.QueryString("codQuestionario").ToString & "'><img src='../imagens/edit.png'></a>"
-        End If
+            If e.Row.RowType = DataControlRowType.DataRow Then
+
+            If Request.QueryString("codStatus").ToString = 6 Or Request.QueryString("codStatus").ToString = 7 Then
+                e.Row.Cells(0).Visible = False
+            Else
+                e.Row.Cells(0).Text = "<a href='frmResposta.aspx?editarItem=1&grupo=" & e.Row.Cells(1).Text & "&codQuestionario=" & Request.QueryString("codQuestionario").ToString & "&questao=" & Request.QueryString("questao").ToString & "&ordem=" & Request.QueryString("ordem").ToString & "&codStatus=" & Request.QueryString("codStatus").ToString & "'><img src='../imagens/edit.png'></a>"
+            End If
+
+                e.Row.Cells(1).Visible = False
+
+            End If
 
     End Sub
 
