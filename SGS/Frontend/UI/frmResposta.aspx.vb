@@ -11,7 +11,6 @@
 
             carregagridQuestao()
 
-
             If Session("codPerfil") = 2 Then
                 frameFiltro.Visible = True
                 carrega_cmbArea()
