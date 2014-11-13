@@ -68,6 +68,7 @@
     <Compile Include="AnaliseQuestaoBLL.vb" />
     <Compile Include="AspectoBLL.vb" />
     <Compile Include="CategoriaBLL.vb" />
+    <Compile Include="ConteudoBLL.vb" />
     <Compile Include="EmpresaBLL.vb" />
     <Compile Include="IndicadorBLL.vb" />
     <Compile Include="LoginBLL.vb" />

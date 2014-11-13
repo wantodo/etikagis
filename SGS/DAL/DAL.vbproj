@@ -69,6 +69,7 @@
     <Compile Include="AspectoDAL.vb" />
     <Compile Include="BDDAL.vb" />
     <Compile Include="CategoriaDAL.vb" />
+    <Compile Include="ConteudoDAL.vb" />
     <Compile Include="EmpresaDAL.vb" />
     <Compile Include="IndicadorDAL.vb" />
     <Compile Include="LoginDAL.vb" />
