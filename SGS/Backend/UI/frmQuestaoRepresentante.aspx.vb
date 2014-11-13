@@ -125,6 +125,7 @@
 
         dt = objRepresentanteBLL.RetornaRepresentante(cmbArea.SelectedValue).Tables(0)
         lblRepresentante.Text = dt.Rows(0)("Nome").ToString
+        txtPrazo.Text = dt.Rows(0)("Prazo").ToString
 
         carregaGridQuestionario()
     End Sub
