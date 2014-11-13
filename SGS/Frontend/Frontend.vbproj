@@ -96,6 +96,7 @@
     <Content Include="Imagens\accept_disabled.png" />
     <Content Include="Imagens\add.ico" />
     <Content Include="Imagens\add_disabled.png" />
+    <Content Include="Imagens\botao-responder.png" />
     <Content Include="Imagens\delete.png" />
     <Content Include="Imagens\edit.png" />
     <Content Include="Imagens\find.ico" />

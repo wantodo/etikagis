@@ -14,6 +14,24 @@ Option Explicit On
 Partial Public Class _Default
 
     '''<summary>
+    '''divConteudo control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents divConteudo As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
+    '''lblConteudo control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents lblConteudo As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
     '''lnkResposta control.
     '''</summary>
     '''<remarks>
