@@ -108,11 +108,14 @@
     <Content Include="Imagens\Flag-Grey.png" />
     <Content Include="Imagens\Flag-Red.png" />
     <Content Include="Imagens\Flag-Yellow.png" />
+    <Content Include="Imagens\fundo_topo_login.jpg" />
     <Content Include="Imagens\login_bg.png" />
+    <Content Include="Imagens\login_bg2.png" />
     <Content Include="Imagens\no.ico" />
     <Content Include="Imagens\no_disabled.png" />
     <Content Include="Imagens\save.ico" />
     <Content Include="Imagens\save_disabled.png" />
+    <Content Include="Imagens\topoLogo.png" />
     <Content Include="UI\Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
