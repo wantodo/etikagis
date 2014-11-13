@@ -338,15 +338,6 @@ Partial Public Class frmResposta
     Protected WithEvents btnNaoItem As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
-    '''divLegenda control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents divLegenda As Global.System.Web.UI.HtmlControls.HtmlGenericControl
-
-    '''<summary>
     '''Panel1 control.
     '''</summary>
     '''<remarks>
@@ -356,13 +347,22 @@ Partial Public Class frmResposta
     Protected WithEvents Panel1 As Global.System.Web.UI.WebControls.Panel
 
     '''<summary>
-    '''UpdatePanel1 control.
+    '''pnlQuestao control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents UpdatePanel1 As Global.System.Web.UI.UpdatePanel
+    Protected WithEvents pnlQuestao As Global.System.Web.UI.UpdatePanel
+
+    '''<summary>
+    '''divLegenda control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents divLegenda As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
     '''gridQuestao control.

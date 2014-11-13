@@ -679,8 +679,10 @@
 
         dt = objRespostaBLL.RetornaResposta(codQuestionario).Tables(0)
 
-        txtResposta.Text = dt.Rows(0)("Resposta").ToString
-        lblCodigoResposta.Text = dt.Rows(0)("codResposta").ToString
+        If dt.Rows.Count > 0 Then
+            txtResposta.Text = dt.Rows(0)("Resposta").ToString
+            lblCodigoResposta.Text = dt.Rows(0)("codResposta").ToString
+        End If
 
     End Sub
 
