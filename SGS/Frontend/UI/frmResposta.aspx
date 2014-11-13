@@ -141,17 +141,10 @@
                                 <fieldset id="frameItemResposta" runat="server" visible="false" class="frame">	
 							        <legend style="color:#B0C4DE;">Itens</legend>
 							            <table>   
-                                            <tr>									    
-                                                <td>                                 
-                                                    <asp:ImageButton ID="btnGravaItem" runat="server" ImageUrl="~/Imagens/add.ico" />           
-                                                    <asp:ImageButton id="btnCancelarItem" runat="server" ImageUrl="~/Imagens/no_disabled.png" Enabled="False" />                                                                                
-                                                </td>
-								            </tr>
-
-                                            <tr>
+                                            <tr>									                                                    
                                                 <td colspan="3">
                                                     <asp:Panel ID="pnlGridItemResposta"  runat="server" ScrollBars="Auto"                                                 
-                                                        style="margin-left:0px; margin-top:0px; max-height:200px; max-width:465px;">
+                                                        style="margin-left:0px; margin-top:0px; max-height:300px; width:465px;">
                                                            <asp:GridView ID="gridItemResposta" runat="server" 
                                                                 style="margin-top: 0px; margin-left:auto; margin-right:auto;" CellPadding="4" ForeColor="#333333" 
                                                                 Font-Size="Small">
@@ -164,7 +157,7 @@
                                                                     </asp:TemplateField>
                                                                     <asp:TemplateField HeaderText="Resposta">
                                                                         <ItemTemplate>
-                                                                            <asp:TextBox ID="txtItemResposta" runat="server" Width="300px"/>
+                                                                            <asp:TextBox ID="txtItemResposta" runat="server" Width="250px"/>
                                                                         </ItemTemplate>
                                                                     </asp:TemplateField>
                                                                 </Columns>
@@ -180,52 +173,55 @@
                                                                 <SortedDescendingCellStyle BackColor="#D4DFE1" />
                                                                 <SortedDescendingHeaderStyle BackColor="#15524A" />
                                                             </asp:GridView>                                                 
-                                                </asp:Panel>
-                                            </td> 
-                                        </tr>  
-                                    </table>  
-                                </fieldset>
-                            </ContentTemplate>
-                            <Triggers>
-                                <asp:AsyncPostBackTrigger ControlID ="gridItemResposta" />
-                            </Triggers>
-                        </asp:UpdatePanel>   
-                    </td>
-				</tr>
-                <tr>
-					<td colspan="2">    
-                        <asp:UpdatePanel ID="pnlItemRespondida" runat="server">
-                            <ContentTemplate >                                                
-                                <fieldset id="frameItemRespondida" runat="server" visible="false" class="frame">	
-							        <legend style="color:#B0C4DE;">Resposta</legend>
-							            <table>
-                                            <tr>
-                                                <td colspan="3">
-                                                    <asp:Panel ID="pnlGridItemRespondida"  runat="server" ScrollBars="Auto"                                                 
-                                                        style="margin-left:0px; margin-top:0px; max-height:200px; max-width:465px;">
-                                                            <asp:GridView ID="gridItemRespondida" runat="server" 
-                                                                style="margin-top: 0px; margin-left:auto; margin-right:auto;" 
-                                                                CellPadding="4" ForeColor="#333333" 
-                                                                Font-Size="Small">
-                                                                <AlternatingRowStyle BackColor="White" />
-                                                                <EditRowStyle BackColor="#7C6F57" />
-                                                                <FooterStyle BackColor="#1C5E55" ForeColor="White" Font-Bold="True" />
-                                                                <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" 
-                                                                    Height="30px" Wrap="False" />
-                                                                <PagerStyle BackColor="#666666" ForeColor="White" HorizontalAlign="Center" />
-                                                                <RowStyle BackColor="#E3EAEB" Wrap="False" />
-                                                                <SelectedRowStyle BackColor="#C5BBAF" Font-Bold="True" ForeColor="#333333" />
-                                                                <SortedAscendingCellStyle BackColor="#F8FAFA" />
-                                                                <SortedAscendingHeaderStyle BackColor="#246B61" />
-                                                                <SortedDescendingCellStyle BackColor="#D4DFE1" />
-                                                                <SortedDescendingHeaderStyle BackColor="#15524A" />
-                                                            </asp:GridView>                                                          
                                                     </asp:Panel>
                                                 </td> 
-                                            </tr>                                                                    
-						                </table>                            								
-					        </fieldset>
-                        </ContentTemplate>
+                                                <td>                                 
+                                                    <asp:ImageButton ID="btnGravaItem" runat="server" ImageUrl="~/Imagens/add.ico" />                                                                                                                                   
+                                                </td>
+                                            </tr>  
+                                        </table>  
+                                    </fieldset>
+                                </ContentTemplate>
+                                <Triggers>
+                                    <asp:AsyncPostBackTrigger ControlID ="gridItemResposta" />
+                                </Triggers>
+                            </asp:UpdatePanel>   
+                        </td>                        
+				    </tr>
+                    <tr>
+					    <td colspan="2">    
+                            <asp:UpdatePanel ID="pnlItemRespondida" runat="server">
+                                <ContentTemplate >                                                
+                                    <fieldset id="frameItemRespondida" runat="server" visible="false" class="frame">	
+							            <legend style="color:#B0C4DE;">Resposta</legend>
+							                <table>
+                                                <tr>
+                                                    <td colspan="3">
+                                                        <asp:Panel ID="pnlGridItemRespondida"  runat="server" ScrollBars="Auto"                                                 
+                                                            style="margin-left:0px; margin-top:0px; max-height:300px; max-width:465px;">
+                                                                <asp:GridView ID="gridItemRespondida" runat="server" 
+                                                                    style="margin-top: 0px; margin-left:auto; margin-right:auto;" 
+                                                                    CellPadding="4" ForeColor="#333333" 
+                                                                    Font-Size="Small">
+                                                                    <AlternatingRowStyle BackColor="White" />
+                                                                    <EditRowStyle BackColor="#7C6F57" />
+                                                                    <FooterStyle BackColor="#1C5E55" ForeColor="White" Font-Bold="True" />
+                                                                    <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" 
+                                                                        Height="30px" Wrap="False" />
+                                                                    <PagerStyle BackColor="#666666" ForeColor="White" HorizontalAlign="Center" />
+                                                                    <RowStyle BackColor="#E3EAEB" Wrap="False" />
+                                                                    <SelectedRowStyle BackColor="#C5BBAF" Font-Bold="True" ForeColor="#333333" />
+                                                                    <SortedAscendingCellStyle BackColor="#F8FAFA" />
+                                                                    <SortedAscendingHeaderStyle BackColor="#246B61" />
+                                                                    <SortedDescendingCellStyle BackColor="#D4DFE1" />
+                                                                    <SortedDescendingHeaderStyle BackColor="#15524A" />
+                                                                </asp:GridView>                                                          
+                                                        </asp:Panel>
+                                                    </td> 
+                                                </tr>                                                                    
+						                    </table>                            								
+					            </fieldset>
+                            </ContentTemplate>
                             <Triggers>
                                 <asp:AsyncPostBackTrigger ControlID ="gridItemRespondida" />
                             </Triggers>
@@ -285,7 +281,7 @@
                         </div>                                                 
 
                         <asp:Panel ID="Panel1"  runat="server" ScrollBars="Vertical"  
-                            style="margin-left:10px; margin-top:20px; max-height:366px; max-width:900px;">   
+                            style="margin-left:auto; margin-top:auto; max-height:366px; max-width:900px;">   
                             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                                 <ContentTemplate >                                    
 						            <asp:GridView ID="gridQuestao" runat="server" 
