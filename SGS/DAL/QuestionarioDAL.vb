@@ -125,4 +125,23 @@ Public Class QuestionarioDAL
         End Try
     End Function
 
+    Public Sub AlteraPrazo(cd_representante As Integer, Optional dt_prazo As Date = Nothing)
+        Try
+            Dim dal As New BDDAL(COMUM.strConexao, True)
+            Dim param() As SqlParameter
+
+            If dt_prazo = Nothing Then
+                param = {dal.CriarParametro("@cd_representante", SqlDbType.Int, cd_representante)}
+            Else
+                param = {dal.CriarParametro("@cd_representante", SqlDbType.Int, cd_representante), _
+                     dal.CriarParametro("@dt_prazo", SqlDbType.DateTime, dt_prazo)}
+            End If
+            
+
+            dal.GetDataSet("st_sgs_prazo_u", CommandType.StoredProcedure, param)
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+
 End Class
