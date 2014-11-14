@@ -211,6 +211,12 @@ Public Class QuestionarioBLL
         EnviaEmailAnaliseQuestao = True
 
     End Function
+
+    Public Sub AlteraPrazo(cd_representante As Integer, Optional dt_prazo As Date = Nothing)
+        Dim obj As New DAL.QuestionarioDAL
+
+        obj.AlteraPrazo(cd_representante, dt_prazo)
+    End Sub
 End Class
 
 

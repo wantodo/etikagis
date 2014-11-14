@@ -167,6 +167,15 @@
                 objQuestionarioBLL.InsereQuestionario(objQuestionario)
             End If
         Next
+
+        If txtPrazo.Text = "" Then
+            objQuestionarioBLL.AlteraPrazo(cmbArea.SelectedValue)
+        Else
+            objQuestionarioBLL.AlteraPrazo(cmbArea.SelectedValue, CDate(txtPrazo.Text))
+        End If
+
+
+
         lblMsg.Text = "Questionario criado com sucesso!"
         lblMsg.ForeColor = Drawing.Color.LightGreen
         pnlMsg.Visible = True
@@ -215,6 +224,7 @@
         carrega_cmbEmpresa()
         carrega_cmbCategoria()
         carrega_cmbArea()
+        txtPrazo.Text = ""
         'carrega_cmbStatus()
         carregaGridQuestionario()
     End Sub
@@ -223,6 +233,7 @@
         cmbEmpresa.Enabled = True
         cmbCategoria.Enabled = True
         cmbArea.Enabled = True
+        txtPrazo.Enabled = True
         'cmbStatus.Enabled = True
         gridQuestao.Enabled = True
     End Sub
@@ -231,6 +242,7 @@
         cmbEmpresa.Enabled = False
         cmbCategoria.Enabled = False
         cmbArea.Enabled = False
+        txtPrazo.Enabled = False
         'cmbStatus.Enabled = False
         gridQuestao.Enabled = False
     End Sub
@@ -315,4 +327,5 @@
         limpaCampos()
         desabilitaCampos()
     End Sub
+
 End Class

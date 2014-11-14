@@ -10,6 +10,7 @@
             height: 50px;
         }
     </style>
+    <script language="JavaScript" type="text/javascript" src="../Scripts/MascaraValidacao.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <asp:ScriptManager ID="ScriptManager2" runat="server">
@@ -116,7 +117,8 @@
                                                 <asp:UpdatePanel ID="pnlPrazo" runat="server">
                                                     <ContentTemplate >                     
                                                         
-                                                        <asp:TextBox ID="txtPrazo" AutoPostBack="true" runat="server"></asp:TextBox>
+                                                        <asp:TextBox ID="txtPrazo" AutoPostBack="true" runat="server" 
+                                                            onkeypress="MascaraData(ctl00$MainContent$txtPrazo)" MaxLength="10"></asp:TextBox>
                                                         
                                                     </ContentTemplate>
                                                     <Triggers>
