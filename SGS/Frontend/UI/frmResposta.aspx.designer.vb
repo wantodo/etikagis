@@ -86,6 +86,24 @@ Partial Public Class frmResposta
     Protected WithEvents lblMsg As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
+    '''divPrazo control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents divPrazo As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
+    '''lblDataPrazo control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents lblDataPrazo As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
     '''frameFiltro control.
     '''</summary>
     '''<remarks>

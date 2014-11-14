@@ -12,6 +12,21 @@
 
         dt = objConteudoBLL.ListaConteudo(Session("codEmpresa")).Tables(0)
         lblConteudo.Text = dt.Rows(0)("tx_conteudo_home")
+
+        carrega_prazo()
     End Sub
 
+    Private Sub carrega_prazo()
+        Dim objRepresentanteBLL As New BLL.RepresentanteBLL
+        Dim dt As DataTable
+
+        dt = objRepresentanteBLL.RetornaRepresentante(Session("codRepresentante")).Tables(0)
+        lblDataPrazo.Text = "Você tem até " & dt.Rows(0)("Prazo").ToString & " para responder"
+
+        If lblDataPrazo.Text = "" Then
+            lblDataPrazo.Visible = False
+        Else
+            lblDataPrazo.Visible = True
+        End If
+    End Sub
 End Class

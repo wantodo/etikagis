@@ -18,7 +18,12 @@
     <div ID="divConteudo" runat="server" style="margin-left:auto; margin-right:auto; margin-top:50px; margin-bottom:50px; text-align:justify; font-size:medium;">
         <asp:Label ID="lblConteudo" runat="server"> 
         
-        </asp:Label>
+        </asp:Label>          
+
+    </div>
+        
+    <div ID="divPrazo" runat="server" style="margin-left:auto; margin-right:auto; margin-top:50px; margin-bottom:50px; text-align:center; font-size:medium; color:Red;">
+        <asp:Label ID="lblDataPrazo" runat="server" />
     </div>
 
     <p style="text-align:center;">
