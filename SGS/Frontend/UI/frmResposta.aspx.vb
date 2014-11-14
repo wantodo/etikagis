@@ -7,6 +7,8 @@
             Response.Redirect("frmLogin.aspx")
         End If
 
+        carrega_prazo()
+   
         If Not IsPostBack Then
 
             carregagridQuestao()
@@ -182,6 +184,20 @@
 
             End If
 
+        End If
+    End Sub
+
+    Private Sub carrega_prazo()
+        Dim objRepresentanteBLL As New BLL.RepresentanteBLL
+        Dim dt As DataTable
+
+        dt = objRepresentanteBLL.RetornaRepresentante(Session("codRepresentante")).Tables(0)
+        lblDataPrazo.Text = "Você tem até " & dt.Rows(0)("Prazo").ToString & " para responder"
+
+        If lblDataPrazo.Text = "" Then
+            lblDataPrazo.Visible = False
+        Else
+            lblDataPrazo.Visible = True
         End If
     End Sub
 

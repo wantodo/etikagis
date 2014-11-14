@@ -32,9 +32,10 @@
 								    <li><asp:ImageButton id="btnCancelar" runat="server" 
                                             ImageUrl="~/Imagens/no_disabled.png" Enabled="False" /></li>
 								    <li><asp:ImageButton id="btnFinalizar" runat="server" 
-                                            ImageUrl="~/Imagens/accept_disabled.png" Enabled="False" /></li>				
+                                            ImageUrl="~/Imagens/accept_disabled.png" Enabled="False" /></li>		
 								
 							    </ul>
+                                                                
 						    </nav>
                         </asp:Panel>
 					</td>					
@@ -49,6 +50,14 @@
                                 <asp:Label runat="server" ID="lblMsg" Font-Bold="True" 
                                     Font-Size="Small" ForeColor="Black" /></p>
                         </asp:panel>
+                    </td>
+                </tr>
+
+                <tr>
+				    <td colspan="2">
+                        <div ID="divPrazo" runat="server" style="margin-left:20%; margin-top:20px; margin-bottom:10px; text-align:center; font-size:medium; color:Red;">
+                            <asp:Label ID="lblDataPrazo" runat="server" />
+                        </div>
                     </td>
                 </tr>
 
