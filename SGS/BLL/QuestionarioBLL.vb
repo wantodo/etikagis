@@ -14,10 +14,10 @@ Public Class QuestionarioBLL
         obj.InsereQuestionario(objQuestionario)
     End Sub
 
-    Public Sub ExcluiQuestionario(idRepresentante As Integer, idCategoria As Integer)
+    Public Sub ExcluiQuestionario(codQuestionario As Integer)
         Dim obj As New DAL.QuestionarioDAL
 
-        obj.ExcluiQuestionario(idRepresentante, idCategoria)
+        obj.ExcluiQuestionario(codQuestionario)
     End Sub
 
     Public Function RetornaStatusQuestionario() As DataSet
