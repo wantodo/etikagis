@@ -16,7 +16,7 @@
         End If
     End Sub
 
-    Private Sub carregaGridQuestionario()
+    Private Sub carregaGridQuestao()
         Dim objQuestionarioBLL As New BLL.QuestionarioBLL
         Dim ds As DataSet
         Dim dt As DataTable
@@ -31,39 +31,80 @@
     End Sub
 
     Private Sub gridQuestao_RowDataBound(sender As Object, e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles gridQuestao.RowDataBound
-        Dim cb As CheckBox
-        Dim tx As TextBox
+        'Dim cb As CheckBox
+        'Dim tx As TextBox
 
         If e.Row.RowType = DataControlRowType.Header Then
-            e.Row.Cells(8).Visible = False
-            e.Row.Cells(9).Visible = False
+            'e.Row.Cells(8).Visible = False
+            'e.Row.Cells(9).Visible = False
         End If
 
         If e.Row.RowType = DataControlRowType.DataRow Then
-            e.Row.Cells(8).Visible = False
-            e.Row.Cells(9).Visible = False
+            'e.Row.Cells(8).Visible = False
+            'e.Row.Cells(9).Visible = False
 
-            If e.Row.Cells(8).Text = "S" Then
-                cb = e.Row.Cells(0).FindControl("chkQuestao")
-                cb.Checked = True
-            End If
+            'If e.Row.Cells(8).Text = "S" Then
+            '    cb = e.Row.Cells(0).FindControl("chkQuestao")
+            '    cb.Checked = True
+            'End If
 
-            If e.Row.Cells(9).Text <> 0 Then
-                tx = e.Row.Cells(0).FindControl("txtOrdem")
-                tx.Text = e.Row.Cells(9).Text
-            End If
+            'If e.Row.Cells(9).Text <> 0 Then
+            '    tx = e.Row.Cells(0).FindControl("txtOrdem")
+            '    tx.Text = e.Row.Cells(9).Text
+            'End If
         End If
 
     End Sub
 
-    'Private Sub carrega_cmbStatus()
-    '    Dim objQuestionarioBLL As New BLL.QuestionarioBLL
+    Private Sub carregaGridQuestionario()
+        Dim objQuestionarioBLL As New BLL.QuestionarioBLL
+        Dim parametros() As String = {"cd_perfil", "cd_usuario", "cd_empresa", "cd_representante"}
+        Dim ds As DataSet
+        Dim dt As DataTable
+        Dim dv As DataView
 
-    '    cmbStatus.DataTextField = "dc_status"
-    '    cmbStatus.DataValueField = "cd_status"
-    '    cmbStatus.DataSource = objQuestionarioBLL.RetornaStatusQuestionario.Tables(0)
-    '    cmbStatus.DataBind()
-    'End Sub
+        parametros(0) = 2
+        parametros(1) = 0
+        parametros(2) = cmbEmpresa.SelectedValue
+        parametros(3) = cmbArea.SelectedValue
+
+        ds = objQuestionarioBLL.RetornaQuestionarioRepresentante(parametros)
+        dv = ds.Tables(0).DefaultView
+        dt = ds.Tables(0)
+        gridQuestionario.DataSource = dt
+
+        gridQuestionario.DataBind()
+    End Sub
+
+    Private Sub gridQuestionario_RowDataBound(sender As Object, e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles gridQuestionario.RowDataBound
+        'Dim cb As CheckBox
+        'Dim tx As TextBox
+
+        If e.Row.RowType = DataControlRowType.Header Then
+            e.Row.Cells(0).Text = ""
+            e.Row.Cells(1).Visible = False
+            e.Row.Cells(2).Visible = False
+            e.Row.Cells(4).Visible = False
+            e.Row.Cells(6).Visible = False
+            e.Row.Cells(7).Visible = False
+            e.Row.Cells(8).Visible = False
+            e.Row.Cells(10).Visible = False
+        End If
+
+        If e.Row.RowType = DataControlRowType.DataRow Then
+
+            e.Row.Cells(0).Text = "<a href='frmQuestaoRepresentante.aspx?excluir=1&codigo=" & e.Row.Cells(2).Text & "'><img src='../imagens/delete.png'></a>"
+
+            e.Row.Cells(1).Visible = False
+            e.Row.Cells(2).Visible = False
+            e.Row.Cells(4).Visible = False
+            e.Row.Cells(6).Visible = False
+            e.Row.Cells(7).Visible = False
+            e.Row.Cells(8).Visible = False
+            e.Row.Cells(10).Visible = False
+        End If
+
+    End Sub
 
     Private Sub carrega_cmbEmpresa()
         Dim objEmpresaBLL As New BLL.EmpresaBLL
@@ -112,11 +153,11 @@
         carrega_cmbCategoria()
         carrega_cmbArea()
 
-        carregaGridQuestionario()
+        carregaGridQuestao()
     End Sub
 
     Protected Sub cmbCategoria_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbCategoria.SelectedIndexChanged
-        carregaGridQuestionario()
+        carregaGridQuestao()
     End Sub
 
     Protected Sub cmbArea_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbArea.SelectedIndexChanged
@@ -127,6 +168,7 @@
         lblRepresentante.Text = dt.Rows(0)("Nome").ToString
         txtPrazo.Text = dt.Rows(0)("Prazo").ToString
 
+        carregaGridQuestao()
         carregaGridQuestionario()
     End Sub
 
@@ -147,7 +189,7 @@
             pnlMsg.Visible = False
         End If
 
-        objQuestionarioBLL.ExcluiQuestionario(cmbArea.SelectedValue, cmbCategoria.SelectedValue)
+        'objQuestionarioBLL.ExcluiQuestionario(cmbArea.SelectedValue, cmbCategoria.SelectedValue)
 
         For i As Integer = 0 To gridQuestao.Rows.Count - 1
 
@@ -226,7 +268,7 @@
         carrega_cmbArea()
         txtPrazo.Text = ""
         'carrega_cmbStatus()
-        carregaGridQuestionario()
+        carregaGridQuestao()
     End Sub
 
     Private Sub habilitaCampos()

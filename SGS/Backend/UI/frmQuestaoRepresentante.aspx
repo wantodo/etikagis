@@ -128,19 +128,7 @@
                                             </td>
 								        </tr>
                                     
-                                        <%--<tr>
-									        <td>Status*</td> <td>  
-                                                <asp:UpdatePanel ID="pnlStatus" runat="server">
-                                                    <ContentTemplate >                         
-                                                        <asp:DropDownList ID="cmbStatus" runat="server" Width="406px">
-                                                        </asp:DropDownList>
-                                                    </ContentTemplate>
-                                                    <Triggers>
-                                                        <asp:AsyncPostBackTrigger ControlID ="cmbStatus" />
-                                                    </Triggers>
-                                                </asp:UpdatePanel>
-                                            </td>
-								        </tr>--%>
+
                                     </table>
                             </fieldset>                           
 					</td>
@@ -168,6 +156,36 @@
                         </asp:Panel>
                     </td>
                 </tr>
+
+                <tr>
+					<td colspan="2" class="style4">
+                        <asp:UpdatePanel ID="pnlQuestionario" runat="server">
+                            <ContentTemplate >
+                            <asp:Panel ID="Panel2"  runat="server" ScrollBars="Horizontal" style="margin-left:auto; margin-right:auto; margin-top:20px; max-height:224px;" Width="900px">
+						        <asp:GridView ID="gridQuestionario" runat="server" 
+                                    style="margin-top: 0px; margin-left:auto; margin-right:auto;" CellPadding="4" ForeColor="#333333" 
+                                    Font-Size="Small">
+                                    <AlternatingRowStyle BackColor="White" />
+                                    <EditRowStyle BackColor="#7C6F57" />
+                                    <FooterStyle BackColor="#1C5E55" ForeColor="White" Font-Bold="True" />
+                                    <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" 
+                                        Height="30px" Wrap="False" />
+                                    <PagerStyle BackColor="#666666" ForeColor="White" HorizontalAlign="Center" />
+                                    <RowStyle BackColor="#E3EAEB" Wrap="False" />
+                                    <SelectedRowStyle BackColor="#C5BBAF" Font-Bold="True" ForeColor="#333333" />
+                                    <SortedAscendingCellStyle BackColor="#F8FAFA" />
+                                    <SortedAscendingHeaderStyle BackColor="#246B61" />
+                                    <SortedDescendingCellStyle BackColor="#D4DFE1" />
+                                    <SortedDescendingHeaderStyle BackColor="#15524A" />
+                                </asp:GridView> 
+                            </asp:Panel>
+                            </ContentTemplate>     
+                            <Triggers>
+                                <asp:AsyncPostBackTrigger ControlID ="gridQuestao" />
+                            </Triggers>
+                        </asp:UpdatePanel>                                
+					</td>
+				</tr>
                           
 				<tr>
 					<td colspan="2" class="style4">
@@ -209,7 +227,7 @@
                             </Triggers>
                         </asp:UpdatePanel>                                
 					</td>
-				</tr>
+				</tr>                
                 
                 <tr>
 					<td valign="top" height="100%">

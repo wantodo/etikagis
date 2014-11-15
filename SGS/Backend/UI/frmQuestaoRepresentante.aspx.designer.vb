@@ -194,6 +194,33 @@ Partial Public Class frmQuestaoRepresentante
     Protected WithEvents btnNao As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
+    '''pnlQuestionario control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents pnlQuestionario As Global.System.Web.UI.UpdatePanel
+
+    '''<summary>
+    '''Panel2 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Panel2 As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
+    '''gridQuestionario control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents gridQuestionario As Global.System.Web.UI.WebControls.GridView
+
+    '''<summary>
     '''pnlQuestoes control.
     '''</summary>
     '''<remarks>
