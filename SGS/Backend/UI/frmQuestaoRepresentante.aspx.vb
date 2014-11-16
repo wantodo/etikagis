@@ -12,7 +12,31 @@
 
         If Not IsPostBack Then
             carrega_cmbEmpresa()
-            'carrega_cmbStatus()
+
+            If Not Request.QueryString.Item("excluir") Is Nothing Then
+                If Request.QueryString("excluir").ToString = "1" Then
+
+                    desabilitaCampos()
+
+                    cmbEmpresa.SelectedValue = Request.QueryString("codEmpresa").ToString
+                    'cmbCategoria.SelectedValue = Request.QueryString("codCategoria").ToString
+                    'cmbArea.SelectedValue = Request.QueryString("codArea").ToString
+
+                    btnNovo.Enabled = False
+                    btnNovo.ImageUrl = "../imagens/add_disabled.png"
+
+                    btnGravar.Enabled = False
+                    btnGravar.ImageUrl = "../imagens/save_disabled.png"
+
+                    btnCancelar.Enabled = False
+                    btnCancelar.ImageUrl = "../imagens/no_disabled.png"
+
+                    pnlMsg.Visible = False
+
+                    pnlExcluirQuestionario.Visible = True
+                    pnlExcluirQuestionario.Focus()
+                End If
+            End If
         End If
     End Sub
 
@@ -31,27 +55,13 @@
     End Sub
 
     Private Sub gridQuestao_RowDataBound(sender As Object, e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles gridQuestao.RowDataBound
-        'Dim cb As CheckBox
-        'Dim tx As TextBox
 
         If e.Row.RowType = DataControlRowType.Header Then
-            'e.Row.Cells(8).Visible = False
-            'e.Row.Cells(9).Visible = False
+
         End If
 
         If e.Row.RowType = DataControlRowType.DataRow Then
-            'e.Row.Cells(8).Visible = False
-            'e.Row.Cells(9).Visible = False
 
-            'If e.Row.Cells(8).Text = "S" Then
-            '    cb = e.Row.Cells(0).FindControl("chkQuestao")
-            '    cb.Checked = True
-            'End If
-
-            'If e.Row.Cells(9).Text <> 0 Then
-            '    tx = e.Row.Cells(0).FindControl("txtOrdem")
-            '    tx.Text = e.Row.Cells(9).Text
-            'End If
         End If
 
     End Sub
@@ -93,7 +103,7 @@
 
         If e.Row.RowType = DataControlRowType.DataRow Then
 
-            e.Row.Cells(0).Text = "<a href='frmQuestaoRepresentante.aspx?excluir=1&codigo=" & e.Row.Cells(2).Text & "'><img src='../imagens/delete.png'></a>"
+            e.Row.Cells(0).Text = "<a href='frmQuestaoRepresentante.aspx?excluir=1&codQuestionario=" & e.Row.Cells(2).Text & "&codEmpresa=" & cmbEmpresa.SelectedValue & "&codEmpresa=" & cmbCategoria.SelectedValue & "&codArea=" & cmbArea.SelectedValue & "'><img src='../imagens/delete.png'></a>"
 
             e.Row.Cells(1).Visible = False
             e.Row.Cells(2).Visible = False
@@ -267,7 +277,6 @@
         carrega_cmbCategoria()
         carrega_cmbArea()
         txtPrazo.Text = ""
-        'carrega_cmbStatus()
         carregaGridQuestao()
     End Sub
 
@@ -276,7 +285,6 @@
         cmbCategoria.Enabled = True
         cmbArea.Enabled = True
         txtPrazo.Enabled = True
-        'cmbStatus.Enabled = True
         gridQuestao.Enabled = True
     End Sub
 
@@ -285,8 +293,23 @@
         cmbCategoria.Enabled = False
         cmbArea.Enabled = False
         txtPrazo.Enabled = False
-        'cmbStatus.Enabled = False
         gridQuestao.Enabled = False
+    End Sub
+
+    Protected Sub btnNaoQuestionario_Click(sender As Object, e As EventArgs) Handles btnNaoQuestionario.Click
+        pnlExcluirQuestionario.Visible = False
+        gridQuestao.Focus()
+    End Sub
+
+    Protected Sub btnSimQuestionario_Click(sender As Object, e As EventArgs) Handles btnSimQuestionario.Click
+        Dim objQuestionarioBLL As New BLL.QuestionarioBLL
+
+        objQuestionarioBLL.ExcluiQuestionario(Request.QueryString("codQuestionario").ToString)
+
+        carregaGridQuestao()
+        carregaGridQuestionario()
+        pnlExcluirQuestionario.Visible = False
+        gridQuestao.Focus()
     End Sub
 
     Protected Sub btnFinalizar_Click(sender As Object, e As System.Web.UI.ImageClickEventArgs) Handles btnFinalizar.Click
