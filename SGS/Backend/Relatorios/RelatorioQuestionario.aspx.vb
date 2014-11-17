@@ -79,10 +79,9 @@ Public Class RelatorioQuestionario
 
         'Aqui vai a lógica do html do relatório
 
-
         categoria = dtQuestao.Rows(0)("dc_categoria")
 
-        sb1.Append("<div class='divArea'>" & categoria & "</div>")
+        sb1.Append("<br><div class='divArea'>" & categoria & "</div>")
 
         For i = 0 To dtQuestao.Rows.Count - 1
             If dtQuestao.Rows(i)("dc_categoria") <> categoria Then
