@@ -411,9 +411,10 @@ div.accountInfo
 /* Formatação do Relatório
 -----------------------------------------------------------------------*/
 
+
 .divArea
 {
-	background-color:#00B2EE;
+	background-color:#90EE90;
 	color:White;
 	font-size:medium;
 	font-weight:bold;
@@ -458,3 +459,4 @@ div.accountInfo
 {
     padding:5px; 
 }
+
