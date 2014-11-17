@@ -16,11 +16,11 @@
             If Not Request.QueryString.Item("excluir") Is Nothing Then
                 If Request.QueryString("excluir").ToString = "1" Then
 
-                    desabilitaCampos()
+                    'desabilitaCampos()
 
                     cmbEmpresa.SelectedValue = Request.QueryString("codEmpresa").ToString
-                    'cmbCategoria.SelectedValue = Request.QueryString("codCategoria").ToString
-                    'cmbArea.SelectedValue = Request.QueryString("codArea").ToString
+                    cmbCategoria.SelectedValue = Request.QueryString("codCategoria").ToString
+                    cmbArea.SelectedValue = Request.QueryString("codArea").ToString
 
                     btnNovo.Enabled = False
                     btnNovo.ImageUrl = "../imagens/add_disabled.png"
@@ -46,7 +46,7 @@
         Dim dt As DataTable
         Dim dv As DataView
 
-        ds = objQuestionarioBLL.ListaQuestionario(cmbEmpresa.SelectedValue, cmbCategoria.SelectedValue, cmbArea.SelectedValue)
+        ds = objQuestionarioBLL.ListaQuestionario(cmbEmpresa.SelectedValue, IIf(cmbCategoria.SelectedValue = "", 0, cmbCategoria.SelectedValue), IIf(cmbArea.SelectedValue = "", 0, cmbArea.SelectedValue))
         dv = ds.Tables(0).DefaultView
         dt = ds.Tables(0)
         gridQuestao.DataSource = dt
@@ -103,7 +103,7 @@
 
         If e.Row.RowType = DataControlRowType.DataRow Then
 
-            e.Row.Cells(0).Text = "<a href='frmQuestaoRepresentante.aspx?excluir=1&codQuestionario=" & e.Row.Cells(2).Text & "&codEmpresa=" & cmbEmpresa.SelectedValue & "&codEmpresa=" & cmbCategoria.SelectedValue & "&codArea=" & cmbArea.SelectedValue & "'><img src='../imagens/delete.png'></a>"
+            e.Row.Cells(0).Text = "<a href='frmQuestaoRepresentante.aspx?excluir=1&codQuestionario=" & e.Row.Cells(2).Text & "&codEmpresa=" & cmbEmpresa.SelectedValue & "&codCategoria=" & cmbCategoria.SelectedValue & "&codArea=" & cmbArea.SelectedValue & "'><img src='../imagens/delete.png'></a>"
 
             e.Row.Cells(1).Visible = False
             e.Row.Cells(2).Visible = False
