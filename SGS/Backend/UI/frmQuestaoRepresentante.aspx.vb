@@ -19,17 +19,10 @@
                     'desabilitaCampos()
 
                     cmbEmpresa.SelectedValue = Request.QueryString("codEmpresa").ToString
+                    carrega_cmbCategoria()
                     cmbCategoria.SelectedValue = Request.QueryString("codCategoria").ToString
+                    carrega_cmbArea()
                     cmbArea.SelectedValue = Request.QueryString("codArea").ToString
-
-                    btnNovo.Enabled = False
-                    btnNovo.ImageUrl = "../imagens/add_disabled.png"
-
-                    btnGravar.Enabled = False
-                    btnGravar.ImageUrl = "../imagens/save_disabled.png"
-
-                    btnCancelar.Enabled = False
-                    btnCancelar.ImageUrl = "../imagens/no_disabled.png"
 
                     pnlMsg.Visible = False
 
@@ -226,12 +219,13 @@
             objQuestionarioBLL.AlteraPrazo(cmbArea.SelectedValue, CDate(txtPrazo.Text))
         End If
 
-
-
         lblMsg.Text = "Questionario criado com sucesso!"
         lblMsg.ForeColor = Drawing.Color.LightGreen
         pnlMsg.Visible = True
-        btnCancelar_Click(sender, e)
+
+        carregaGridQuestao()
+        carregaGridQuestionario()
+        'btnCancelar_Click(sender, e)
 
     End Sub
 
