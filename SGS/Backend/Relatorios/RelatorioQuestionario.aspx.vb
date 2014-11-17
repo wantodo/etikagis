@@ -56,7 +56,7 @@ Public Class RelatorioQuestionario
         Dim i As Integer
         Dim j As Integer
         Dim col As Integer
-        Dim area As String
+        Dim categoria As String
 
 
 
@@ -78,14 +78,16 @@ Public Class RelatorioQuestionario
         End If
 
         'Aqui vai a lógica do html do relatório
-        area = dtQuestao.Rows(0)("dc_area")
 
-        sb1.Append("<div class='divArea'>" & area & "</div>")
+
+        categoria = dtQuestao.Rows(0)("dc_categoria")
+
+        sb1.Append("<div class='divArea'>" & categoria & "</div>")
 
         For i = 0 To dtQuestao.Rows.Count - 1
-            If dtQuestao.Rows(i)("dc_area") <> area Then
-                sb1.Append("<div class='divArea'>" & dtQuestao.Rows(i)("dc_area") & "</div>")
-                area = dtQuestao.Rows(i)("dc_area")
+            If dtQuestao.Rows(i)("dc_categoria") <> categoria Then
+                sb1.Append("<div class='divArea'>" & dtQuestao.Rows(i)("dc_categoria") & "</div>")
+                categoria = dtQuestao.Rows(i)("dc_categoria")
             End If
 
             'Monta cabeçalho da questão
