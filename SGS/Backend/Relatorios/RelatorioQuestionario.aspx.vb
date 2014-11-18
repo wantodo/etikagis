@@ -90,7 +90,7 @@ Public Class RelatorioQuestionario
             End If
 
             'Monta cabeçalho da questão
-            sb1.Append("<div class='divQuestao'><b>" & dtQuestao.Rows(i)("nm_ordem") & ".&nbsp;" & dtQuestao.Rows(i)("dc_questao") & "</b><br>")
+            sb1.Append("<div class='divQuestao'><b>" & dtQuestao.Rows(i)("row") & ".&nbsp;" & dtQuestao.Rows(i)("dc_questao") & "&nbsp;(" & dtQuestao.Rows(i)("dc_area") & ")" & "</b><br>")
 
             'Monta resposta dentro da mesma div da questao
             If dtQuestao.Rows(i)("xx_tipo") = "I" Then
