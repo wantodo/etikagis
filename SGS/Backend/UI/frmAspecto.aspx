@@ -20,12 +20,12 @@
 						<nav id="navToolBar">
 							<ul>
                                 <li><asp:ImageButton id="btnNovo" runat="server" ImageUrl="~/Imagens/add.ico" 
-                                        style="margin-top:5px;" EnableTheming="True" /> </li>
+                                        style="margin-top:5px;" EnableTheming="True" ToolTip="Novo" /> </li>
 								<li><asp:ImageButton id="btnGravar" runat="server" 
                                         ImageUrl="~/Imagens/save_disabled.png" Enabled="False" 
-                                        style="height: 24px" /></li>
+                                        style="height: 24px" ToolTip="Gravar" /></li>
 								<li><asp:ImageButton id="btnCancelar" runat="server" 
-                                        ImageUrl="~/Imagens/no_disabled.png" Enabled="False" /></li>
+                                        ImageUrl="~/Imagens/no_disabled.png" Enabled="False" ToolTip="Cancelar" /></li>
 								<li><asp:Label ID="Label1" runat="server" Text="Filtro:" />
                                     <asp:DropDownList id="cmbFiltro" runat="server" Width="180px" >
                                         <asp:ListItem></asp:ListItem>
@@ -35,7 +35,8 @@
                                         <asp:ListItem>Status</asp:ListItem>
                                     </asp:DropDownList>
 								    <asp:TextBox runat="server" id="txtFiltro" Width="171px" />                                	
-									    <asp:ImageButton id="btnConsultar" runat="server" ImageUrl="~/Imagens/find.ico" />
+									    <asp:ImageButton id="btnConsultar" runat="server" 
+                                        ImageUrl="~/Imagens/find.ico" ToolTip="Consultar" />
 								</li>					
 								
 							</ul>

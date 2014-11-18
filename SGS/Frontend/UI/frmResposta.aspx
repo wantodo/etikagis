@@ -26,13 +26,14 @@
 						    <nav id="navToolBar">
 							    <ul style="margin-left:45%;">
                                     <li><asp:ImageButton id="btnNovo" runat="server" ImageUrl="~/Imagens/add.ico" 
-                                            style="margin-top:5px;" EnableTheming="True" /> </li>
+                                            style="margin-top:5px;" EnableTheming="True" ToolTip="Novo" /> </li>
 								    <li><asp:ImageButton id="btnGravar" runat="server" 
-                                            ImageUrl="~/Imagens/save_disabled.png" Enabled="False" /></li>
+                                            ImageUrl="~/Imagens/save_disabled.png" Enabled="False" ToolTip="Gravar" /></li>
 								    <li><asp:ImageButton id="btnCancelar" runat="server" 
-                                            ImageUrl="~/Imagens/no_disabled.png" Enabled="False" /></li>
+                                            ImageUrl="~/Imagens/no_disabled.png" Enabled="False" ToolTip="Cancelar" /></li>
 								    <li><asp:ImageButton id="btnFinalizar" runat="server" 
-                                            ImageUrl="~/Imagens/accept_disabled.png" Enabled="False" /></li>		
+                                            ImageUrl="~/Imagens/accept_disabled.png" Enabled="False" 
+                                            ToolTip="Finalizar" /></li>		
 								
 							    </ul>
                                                                 
@@ -185,7 +186,8 @@
                                                     </asp:Panel>
                                                 </td> 
                                                 <td>                                 
-                                                    <asp:ImageButton ID="btnGravaItem" runat="server" ImageUrl="~/Imagens/add.ico" />                                                                                                                                   
+                                                    <asp:ImageButton ID="btnGravaItem" runat="server" ImageUrl="~/Imagens/add.ico" 
+                                                        ToolTip="Gravar Itens" />                                                                                                                                   
                                                 </td>
                                             </tr>  
                                         </table>  
