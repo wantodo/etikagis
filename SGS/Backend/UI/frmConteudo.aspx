@@ -19,7 +19,8 @@
 							<ul style="margin-left:50%;">
                                 
 								<li><asp:ImageButton id="btnGravar" runat="server" 
-                                        ImageUrl="~/Imagens/save.ico" Enabled="true" style="margin-top:7px;" /></li>													
+                                        ImageUrl="~/Imagens/save.ico" Enabled="true" style="margin-top:7px;" 
+                                        ToolTip="Gravar" /></li>													
 								
 							</ul>
 						</nav>
