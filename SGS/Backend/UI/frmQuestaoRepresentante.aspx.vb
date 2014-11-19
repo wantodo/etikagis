@@ -96,7 +96,7 @@
 
         If e.Row.RowType = DataControlRowType.DataRow Then
 
-            e.Row.Cells(0).Text = "<a href='frmQuestaoRepresentante.aspx?excluir=1&codQuestionario=" & e.Row.Cells(2).Text & "&codEmpresa=" & cmbEmpresa.SelectedValue & "&codCategoria=" & cmbCategoria.SelectedValue & "&codArea=" & cmbArea.SelectedValue & "'><img src='../imagens/delete.png'></a>"
+            e.Row.Cells(0).Text = "<a href='frmQuestaoRepresentante.aspx?excluir=1&codQuestionario=" & e.Row.Cells(2).Text & "&codStatus=" & e.Row.Cells(7).Text & "&codEmpresa=" & cmbEmpresa.SelectedValue & "&codCategoria=" & cmbCategoria.SelectedValue & "&codArea=" & cmbArea.SelectedValue & "'><img src='../imagens/delete.png'></a>"
 
             e.Row.Cells(1).Visible = False
             e.Row.Cells(2).Visible = False
@@ -298,7 +298,14 @@
     Protected Sub btnSimQuestionario_Click(sender As Object, e As EventArgs) Handles btnSimQuestionario.Click
         Dim objQuestionarioBLL As New BLL.QuestionarioBLL
 
-        objQuestionarioBLL.ExcluiQuestionario(Request.QueryString("codQuestionario").ToString)
+        If Request.QueryString("codStatus").ToString > 2 Then
+            objQuestionarioBLL.ExcluiQuestionario(Request.QueryString("codQuestionario").ToString)
+        Else
+            lblMsg.Text = "Este questionario não pode ser excluído!"
+            lblMsg.ForeColor = Drawing.Color.Red
+            pnlMsg.Visible = True
+            Exit Sub
+        End If
 
         carregaGridQuestao()
         carregaGridQuestionario()
