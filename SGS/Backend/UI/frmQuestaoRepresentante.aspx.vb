@@ -28,6 +28,9 @@
 
                     pnlExcluirQuestionario.Visible = True
                     pnlExcluirQuestionario.Focus()
+
+                    carregaGridQuestao()
+                    carregaGridQuestionario()
                 End If
             End If
         End If
@@ -298,13 +301,12 @@
     Protected Sub btnSimQuestionario_Click(sender As Object, e As EventArgs) Handles btnSimQuestionario.Click
         Dim objQuestionarioBLL As New BLL.QuestionarioBLL
 
-        If Request.QueryString("codStatus").ToString > 2 Then
-            objQuestionarioBLL.ExcluiQuestionario(Request.QueryString("codQuestionario").ToString)
-        Else
+        If CInt(Request.QueryString("codStatus").ToString) > 2 Then
             lblMsg.Text = "Este questionario não pode ser excluído!"
             lblMsg.ForeColor = Drawing.Color.Red
             pnlMsg.Visible = True
-            Exit Sub
+        Else
+            objQuestionarioBLL.ExcluiQuestionario(Request.QueryString("codQuestionario").ToString)            
         End If
 
         carregaGridQuestao()
