@@ -322,20 +322,7 @@
         Dim dt As DataTable
         Dim objQuestionarioBLL As New BLL.QuestionarioBLL
 
-        If gridQuestao.Rows.Count <= 0 Then
-            Exit Sub
-        End If
-
-        'Verifico se existe questionário
-        For i = 0 To gridQuestao.Rows.Count - 1
-            cb = gridQuestao.Rows(i).Cells(0).FindControl("chkQuestao")
-
-            If cb.Checked Then
-                cont += 1
-            End If
-        Next
-
-        If cont = 0 Then
+        If gridQuestionario.Rows.Count <= 0 Then
             lblMsg.Text = "Não existe questionário para essa área!"
             lblMsg.ForeColor = Drawing.Color.Red
             pnlMsg.Visible = True
@@ -343,7 +330,6 @@
         Else
             pnlMsg.Visible = False
         End If
-
 
         'Verifico ponto focal
         dt = objQuestionarioBLL.RetornaPontoFocal(cmbEmpresa.SelectedValue).Tables(0)
