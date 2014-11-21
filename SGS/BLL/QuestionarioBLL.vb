@@ -176,7 +176,7 @@ Public Class QuestionarioBLL
             seMailDestinatario = objQuestionario.representante.dc_email
             sNomeDestinatario = objQuestionario.representante.no_representante
 
-            seMailRemetente = "etikaconsultoria@etikaconsultoria.com.br​"
+            seMailRemetente = "etikaconsultoria@etikaconsultoria.com.br"
             sNomeRemetente = "Etika Consultoria"
             sAssuntoEmail = "Questão devolvida!"
 
