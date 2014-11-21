@@ -94,6 +94,8 @@ Public Class QuestionarioBLL
 
         Mailmsg.To.Add(New MailAddress(seMailDestinatario, sNomeDestinatario))
 
+        Mailmsg.CC.Add(New MailAddress("etikaconsultoria@etikaconsultoria.com.br", "Etika Consultoria"))
+
         Mailmsg.Attachments.Clear()
 
         mSmtpCliente.Credentials = New System.Net.NetworkCredential(seMailRemetente, "consult@1357")
@@ -201,6 +203,8 @@ Public Class QuestionarioBLL
         Mailmsg.Body += "</HTML>"
 
         Mailmsg.To.Add(New MailAddress(seMailDestinatario, sNomeDestinatario))
+
+        Mailmsg.CC.Add(New MailAddress("etikaconsultoria@etikaconsultoria.com.br", "Etika Consultoria"))
 
         Mailmsg.Attachments.Clear()
 
