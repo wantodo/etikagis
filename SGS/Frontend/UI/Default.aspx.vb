@@ -21,7 +21,13 @@
         Dim dt As DataTable
 
         dt = objRepresentanteBLL.RetornaRepresentante(Session("codRepresentante")).Tables(0)
-        lblDataPrazo.Text = "Você tem até " & dt.Rows(0)("Prazo").ToString & " para responder"
+
+        If dt.Rows(0)("Prazo").ToString <> "" Then
+            lblDataPrazo.Text = "Você tem até " & dt.Rows(0)("Prazo").ToString & " para responder"
+        Else
+            lblDataPrazo.Text = ""
+        End If
+
 
         If lblDataPrazo.Text = "" Then
             lblDataPrazo.Visible = False
