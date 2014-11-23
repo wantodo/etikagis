@@ -65,6 +65,7 @@ Public Class RespostaDAL
             param = {dal.CriarParametro("@cd_questionario", SqlDbType.Int, codQuestionario)}
 
             Return dal.GetDataSet("st_sgs_relatorio_questao_item_s", CommandType.StoredProcedure, param)
+
         Catch ex As Exception
             Throw ex
         End Try
