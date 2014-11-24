@@ -1,6 +1,5 @@
 ﻿Public Class frmResposta
     Inherits System.Web.UI.Page
-    Public chaveEditarItem As Boolean = False
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         If Session("sessionUser") = "" Or Session("sessionUser") = Nothing Then
@@ -54,7 +53,7 @@
                         If Session("codPerfil") = 2 Then
                             pnlItemResposta.Visible = False
                         Else
-                            If Not Request.QueryString("codStatus").ToString = 6 Or Request.QueryString("codStatus").ToString = 7 Then
+                            If Request.QueryString("codStatus").ToString <> 6 And Request.QueryString("codStatus").ToString <> 8 Then
                                 carrega_gridItemResposta(Request.QueryString("codQuestionario").ToString)
                             Else
                                 pnlItemResposta.Visible = False
@@ -105,7 +104,7 @@
                         If Session("codPerfil") = 2 Then
                             pnlItemResposta.Visible = False
                         Else
-                            If Not Request.QueryString("codStatus").ToString = 6 Or Request.QueryString("codStatus").ToString = 7 Then
+                            If Request.QueryString("codStatus").ToString <> 6 And Request.QueryString("codStatus").ToString <> 8 Then
                                 carrega_gridItemResposta(Request.QueryString("codQuestionario").ToString)
                             Else
                                 pnlItemResposta.Visible = False
@@ -145,7 +144,7 @@
                         If Session("codPerfil") = 2 Then
                             pnlItemResposta.Visible = False
                         Else
-                            If Not Request.QueryString("codStatus").ToString = 6 Or Request.QueryString("codStatus").ToString = 7 Then
+                            If Request.QueryString("codStatus").ToString <> 6 And Request.QueryString("codStatus").ToString <> 8 Then
                                 carrega_gridItemResposta(Request.QueryString("codQuestionario").ToString)
                             Else
                                 pnlItemResposta.Visible = False
@@ -159,7 +158,7 @@
             End If
 
             If Not Request.QueryString.Item("editarItem") Is Nothing Then
-                chaveEditarItem = True
+                lblEditarItem.Text = "1"
 
                 lblCodQuestionario.Text = Request.QueryString("codQuestionario").ToString
 
@@ -169,7 +168,7 @@
                 If Session("codPerfil") = 2 Then
                     pnlItemResposta.Visible = False
                 Else
-                    If Not Request.QueryString("codStatus").ToString = 6 Or Request.QueryString("codStatus").ToString = 7 Then
+                    If Request.QueryString("codStatus").ToString <> 6 And Request.QueryString("codStatus").ToString <> 8 Then
                         carrega_gridItemResposta(Request.QueryString("codQuestionario").ToString)
                     Else
                         pnlItemResposta.Visible = False
@@ -214,7 +213,7 @@
         Dim dt As DataTable
 
 
-        If chaveEditarItem Then
+        If lblEditarItem.Text = "1" Then
             ds = objRespostaBLL.EditaListaItem(codQuestionario, Request.QueryString("grupo").ToString)
         Else
             ds = objQuestaoBLL.ListaItemQuestao(0, codQuestionario)
@@ -232,7 +231,7 @@
 
         If e.Row.RowType = DataControlRowType.Header Then
             'If Not Request.QueryString.Item("editarItem") Is Nothing Then
-            If chaveEditarItem Then
+            If lblEditarItem.Text = "1" Then
                 e.Row.Cells(2).Visible = False
                 e.Row.Cells(3).Visible = False
                 e.Row.Cells(4).Visible = False
@@ -246,7 +245,7 @@
 
         If e.Row.RowType = DataControlRowType.DataRow Then
             'If Not Request.QueryString.Item("editarItem") Is Nothing Then
-            If chaveEditarItem Then
+            If lblEditarItem.Text = "1" Then
                 e.Row.Cells(2).Visible = False
                 e.Row.Cells(3).Visible = False
                 e.Row.Cells(4).Visible = False
@@ -288,10 +287,10 @@
             If Session("codPerfil") = 2 Then
                 e.Row.Cells(0).Visible = False
             Else                            
-                If Request.QueryString("codStatus").ToString = 6 Or Request.QueryString("codStatus").ToString = 7 Then
-                    e.Row.Cells(0).Visible = False
-                Else
+                If Request.QueryString("codStatus").ToString <> 6 And Request.QueryString("codStatus").ToString <> 8 Then
                     e.Row.Cells(0).Text = ""
+                Else
+                    e.Row.Cells(0).Visible = False
                 End If
             End If
 
@@ -303,10 +302,10 @@
             If Session("codPerfil") = 2 Then
                 e.Row.Cells(0).Visible = False
             Else
-                If Request.QueryString("codStatus").ToString = 6 Or Request.QueryString("codStatus").ToString = 8 Then
-                    e.Row.Cells(0).Visible = False
-                Else
+                If Request.QueryString("codStatus").ToString <> 6 And Request.QueryString("codStatus").ToString <> 8 Then
                     e.Row.Cells(0).Text = "<a href='frmResposta.aspx?editarItem=1&grupo=" & e.Row.Cells(1).Text & "&codQuestionario=" & Request.QueryString("codQuestionario").ToString & "&questao=" & Request.QueryString("questao").ToString & "&ordem=" & Request.QueryString("ordem").ToString & "&codStatus=" & Request.QueryString("codStatus").ToString & "'><img src='../imagens/edit.png'></a>"
+                Else
+                    e.Row.Cells(0).Visible = False                    
                 End If
             End If
 
@@ -499,7 +498,7 @@
         Dim tx As TextBox
         Dim codGrupoItem As Integer
 
-        If chaveEditarItem Then
+        If lblEditarItem.Text = "1" Then
             codGrupoItem = Request.QueryString("grupo").ToString
         Else
             If gridItemRespondida.Rows.Count > 0 Then
@@ -514,7 +513,7 @@
             tx = gridItemResposta.Rows(i).Cells(0).FindControl("txtItemResposta")
 
             With objItemResposta
-                If chaveEditarItem Then
+                If lblEditarItem.Text = "1" Then
                     If gridItemResposta.Rows(i).Cells(5).Text <> "" Then
                         .cd_item_resposta = gridItemResposta.Rows(i).Cells(5).Text
                     End If
@@ -527,15 +526,15 @@
                 .questionario.cd_questionario = Request.QueryString("codQuestionario").ToString
             End With
 
-            If chaveEditarItem Then
+            If lblEditarItem.Text = "1" Then
                 If objRespostaBLL.AlteraItemResposta(objItemResposta) Then
                     tx.Text = ""
-                    chaveEditarItem = False
+                    lblEditarItem.Text = ""
                     If i = gridItemResposta.Rows.Count - 1 Then
                         lblMsg.Text = "Item de Resposta alterado com sucesso!"
                         lblMsg.ForeColor = Drawing.Color.LightGreen
                         pnlMsg.Visible = True
-                        carrega_gridItemRespondida(Request.QueryString("codQuestionario").ToString)                        
+                        carrega_gridItemRespondida(Request.QueryString("codQuestionario").ToString)
                     End If
                 End If
             Else

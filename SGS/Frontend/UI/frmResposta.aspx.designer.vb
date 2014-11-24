@@ -239,6 +239,15 @@ Partial Public Class frmResposta
     Protected WithEvents frameItemResposta As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
+    '''lblEditarItem control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents lblEditarItem As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
     '''pnlGridItemResposta control.
     '''</summary>
     '''<remarks>
