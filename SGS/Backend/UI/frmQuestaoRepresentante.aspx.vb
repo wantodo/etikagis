@@ -53,11 +53,15 @@
     Private Sub gridQuestao_RowDataBound(sender As Object, e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles gridQuestao.RowDataBound
 
         If e.Row.RowType = DataControlRowType.Header Then
-
+            e.Row.Cells(2).Visible = False
         End If
 
         If e.Row.RowType = DataControlRowType.DataRow Then
+            If e.Row.Cells(3).Text = "" Or e.Row.Cells(3).Text = "&nbsp;" Then
+                e.Row.Cells(3).Text = "P-" & e.Row.Cells(2).Text
+            End If
 
+            e.Row.Cells(2).Visible = False
         End If
 
     End Sub
