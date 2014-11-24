@@ -175,6 +175,7 @@
             e.Row.Cells(0).Text = ""
             e.Row.Cells(1).Visible = False
             e.Row.Cells(7).Visible = False
+            e.Row.Cells(8).Visible = False
 
         End If
 
@@ -196,8 +197,13 @@
                     e.Row.Cells(0).Text = "<img src='../imagens/Flag-Checkered.png'>"
             End Select
 
+            If e.Row.Cells(4).Text = "" Or e.Row.Cells(4).Text = "&nbsp;" Then
+                e.Row.Cells(4).Text = "P-" & e.Row.Cells(8).Text
+            End If
+
             e.Row.Cells(1).Visible = False
             e.Row.Cells(7).Visible = False
+            e.Row.Cells(8).Visible = False
 
         End If
     End Sub
