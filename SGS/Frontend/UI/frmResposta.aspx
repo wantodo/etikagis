@@ -153,6 +153,7 @@
 							            <table>   
                                             <tr>									                                                    
                                                 <td colspan="3">
+                                                    <asp:Label ID="lblEditarItem" runat="server" Visible="False"></asp:Label>   
                                                     <asp:Panel ID="pnlGridItemResposta"  runat="server" ScrollBars="Auto"                                                 
                                                         style="margin-left:0px; margin-top:0px; max-height:300px; width:465px;">
                                                            <asp:GridView ID="gridItemResposta" runat="server" 
