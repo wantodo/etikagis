@@ -303,7 +303,7 @@
             If Session("codPerfil") = 2 Then
                 e.Row.Cells(0).Visible = False
             Else
-                If Request.QueryString("codStatus").ToString = 6 Or Request.QueryString("codStatus").ToString = 7 Then
+                If Request.QueryString("codStatus").ToString = 6 Or Request.QueryString("codStatus").ToString = 8 Then
                     e.Row.Cells(0).Visible = False
                 Else
                     e.Row.Cells(0).Text = "<a href='frmResposta.aspx?editarItem=1&grupo=" & e.Row.Cells(1).Text & "&codQuestionario=" & Request.QueryString("codQuestionario").ToString & "&questao=" & Request.QueryString("questao").ToString & "&ordem=" & Request.QueryString("ordem").ToString & "&codStatus=" & Request.QueryString("codStatus").ToString & "'><img src='../imagens/edit.png'></a>"
