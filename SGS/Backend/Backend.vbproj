@@ -165,7 +165,7 @@
     <Content Include="UI\frmLogin.aspx" />
     <Content Include="UI\frmPerfilRepresentante.aspx" />
     <Content Include="UI\frmQuestao.aspx" />
-    <Content Include="UI\frmQuestaoRepresentante.aspx" />
+    <Content Include="UI\frmQuestionario.aspx" />
     <Content Include="UI\frmRepresentante.aspx" />
     <Content Include="UI\frmStatus.aspx" />
     <Content Include="UI\frmSubcategoria.aspx" />
@@ -327,11 +327,11 @@
       <DependentUpon>frmQuestao.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="UI\frmQuestaoRepresentante.aspx.designer.vb">
-      <DependentUpon>frmQuestaoRepresentante.aspx</DependentUpon>
+    <Compile Include="UI\frmQuestionario.aspx.designer.vb">
+      <DependentUpon>frmQuestionario.aspx</DependentUpon>
     </Compile>
-    <Compile Include="UI\frmQuestaoRepresentante.aspx.vb">
-      <DependentUpon>frmQuestaoRepresentante.aspx</DependentUpon>
+    <Compile Include="UI\frmQuestionario.aspx.vb">
+      <DependentUpon>frmQuestionario.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="UI\frmRepresentante.aspx.designer.vb">
