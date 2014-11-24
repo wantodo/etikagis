@@ -64,9 +64,9 @@
                                         </asp:UpdatePanel>
                                             
                                         </td>
-					<%--			    </tr> 
+								    </tr> 
 
-                                    <tr>--%>
+                                    <tr>
                                         <td>Indicadores</td>
                                         <td>                         
                                             <asp:UpdatePanel ID="pnlIndicador" runat="server">
