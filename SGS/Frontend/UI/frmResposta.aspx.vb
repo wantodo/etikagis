@@ -365,7 +365,7 @@
             If Session("codPerfil") = 1 Then
                 temp = e.Row.Cells(5).Text
 
-                e.Row.Cells(5).Text = "<div style='width:610px; white-space:pre-wrap;'>" & temp & "</div>"
+                e.Row.Cells(5).Text = "<div style='width:410px; white-space:pre-wrap;'>" & temp & "</div>"
 
                 Select Case e.Row.Cells(7).Text
                     Case 4 'Aguardando Resposta 

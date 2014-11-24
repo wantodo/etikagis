@@ -289,7 +289,7 @@
                             <ContentTemplate >
                                     
                                     <div id="divLegenda" runat="server" visible="false">
-                                        <ul style="margin-left:1%;">
+                                        <ul style="margin-left:4%;">
                                             <li style="display:inline; margin-right:10px;"><img src="../imagens/Flag-Red.png"><span>Aguardando Resposta</span></li>
                                             <li style="display:inline; margin-right:10px;"><img src="../imagens/Flag-Blue.png"><span>Gravado</span></li>                                            
                                             <li style="display:inline; margin-right:10px;"><img src="../imagens/Flag-Green.png"><span>Respondido</span></li>
