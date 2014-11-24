@@ -65,7 +65,7 @@
                             </asp:MenuItem>
                         </asp:MenuItem>
                         <asp:MenuItem Text="Operação" Value="Operação">
-                            <asp:MenuItem Text="Questionario" Value="Questionario" 
+                            <asp:MenuItem Text="Questionário" Value="Questionário" 
                                 NavigateUrl="~/UI/frmQuestionario.aspx">
                             </asp:MenuItem>
                             <asp:MenuItem NavigateUrl="~/UI/frmAnaliseRespostas.aspx" 

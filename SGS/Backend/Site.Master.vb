@@ -44,8 +44,8 @@
             lblTitulo.Text = "Cadastro de Questão"
         End If
 
-        If NavigationMenu.Page.Title.ToString = "GIS - Questionario" Then
-            lblTitulo.Text = "Questionario"
+        If NavigationMenu.Page.Title.ToString = "GIS - Questionário" Then
+            lblTitulo.Text = "Questionário"
         End If
 
         If NavigationMenu.Page.Title.ToString = "GIS - Analise de Resposta" Then

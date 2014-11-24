@@ -1,4 +1,4 @@
-﻿<%@ Page Title="GIS - Representante X Questões" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="frmQuestionario.aspx.vb" Inherits="Backend.frmQuestaoRepresentante" %>
+﻿<%@ Page Title="GIS - Questionário" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="frmQuestionario.aspx.vb" Inherits="Backend.frmQuestionario" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
      <style type="text/css">
         .style3

@@ -11,7 +11,7 @@ Option Strict On
 Option Explicit On
 
 
-Partial Public Class frmQuestaoRepresentante
+Partial Public Class frmQuestionario
 
     '''<summary>
     '''ScriptManager2 control.
