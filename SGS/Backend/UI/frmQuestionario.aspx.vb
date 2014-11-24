@@ -1,4 +1,4 @@
-﻿Public Class frmQuestaoRepresentante
+﻿Public Class frmQuestionario
     Inherits System.Web.UI.Page
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
@@ -103,7 +103,7 @@
 
         If e.Row.RowType = DataControlRowType.DataRow Then
 
-            e.Row.Cells(0).Text = "<a href='frmQuestaoRepresentante.aspx?excluir=1&codQuestionario=" & e.Row.Cells(2).Text & "&codStatus=" & e.Row.Cells(7).Text & "&codEmpresa=" & cmbEmpresa.SelectedValue & "&codCategoria=" & cmbCategoria.SelectedValue & "&codArea=" & cmbArea.SelectedValue & "'><img src='../imagens/delete.png'></a>"
+            e.Row.Cells(0).Text = "<a href='frmQuestionario.aspx?excluir=1&codQuestionario=" & e.Row.Cells(2).Text & "&codStatus=" & e.Row.Cells(7).Text & "&codEmpresa=" & cmbEmpresa.SelectedValue & "&codCategoria=" & cmbCategoria.SelectedValue & "&codArea=" & cmbArea.SelectedValue & "'><img src='../imagens/delete.png'></a>"
 
             e.Row.Cells(1).Visible = False
             e.Row.Cells(2).Visible = False
@@ -206,6 +206,15 @@
             cb = gridQuestao.Rows(i).Cells(0).FindControl("chkQuestao")
 
             tx = gridQuestao.Rows(i).Cells(0).FindControl("txtOrdem")
+
+            For j As Integer = 0 To gridQuestionario.Rows.Count - 1
+                If tx.Text <= gridQuestionario.Rows(j).Cells(3).Text Then
+                    lblMsg.Text = "A ordem não pode ser repetida nem menor que a atual!"
+                    lblMsg.ForeColor = Drawing.Color.Red
+                    pnlMsg.Visible = True
+                    Exit Sub
+                End If
+            Next
 
             If cb.Checked Then
                 With objQuestionario
@@ -310,7 +319,7 @@
             lblMsg.ForeColor = Drawing.Color.Red
             pnlMsg.Visible = True
         Else
-            objQuestionarioBLL.ExcluiQuestionario(Request.QueryString("codQuestionario").ToString)            
+            objQuestionarioBLL.ExcluiQuestionario(Request.QueryString("codQuestionario").ToString)
         End If
 
         carregaGridQuestao()
