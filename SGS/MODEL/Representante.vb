@@ -12,4 +12,5 @@ Public Class Representante
     Public dc_email As String
     Public cd_status As String
     Public no_userid As String
+    Public recebe_email As Integer
 End Class

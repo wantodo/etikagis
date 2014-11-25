@@ -94,7 +94,16 @@
 									    <td>Area</td> <td>
                                         <asp:TextBox ID="txtArea" runat="server" MaxLength="200" Width="386px"></asp:TextBox>
                                         </td>
-								    </tr>								    
+								    </tr>	
+                                    
+                                    <tr>
+									    <td>Recebe email?*</td> <td>                         
+                                        <asp:DropDownList ID="cmbRecebeEmail" runat="server" Width="202px">
+                                            <asp:ListItem Value="1">Sim</asp:ListItem>
+                                            <asp:ListItem Value="0">Não</asp:ListItem>
+                                        </asp:DropDownList>
+                                        </td>
+								    </tr>							    
 							    </table>
                             </fieldset>
                             <fieldset class="frame">	
