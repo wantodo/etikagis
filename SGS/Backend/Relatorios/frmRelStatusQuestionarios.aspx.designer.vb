@@ -131,6 +131,15 @@ Partial Public Class frmRelStatusQuestionarios
     Protected WithEvents cmbStatus As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
+    '''btnExportar control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnExportar As Global.System.Web.UI.WebControls.ImageButton
+
+    '''<summary>
     '''UpdatePanel2 control.
     '''</summary>
     '''<remarks>
