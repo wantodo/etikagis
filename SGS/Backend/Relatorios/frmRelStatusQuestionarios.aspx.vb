@@ -1,4 +1,7 @@
-﻿Public Class frmRelStatusQuestionarios
+﻿Imports System.IO
+Imports System.Drawing
+
+Public Class frmRelStatusQuestionarios
     Inherits System.Web.UI.Page
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
@@ -6,7 +9,7 @@
             Response.Redirect("frmLogin.aspx")
         End If
 
-        If Not IsPostBack Then            
+        If Not IsPostBack Then
             carrega_cmbEmpresa()
             carrega_cmbStatus()
         End If
@@ -135,7 +138,7 @@
         Else
             parametros(3) = 0
         End If
-        
+
 
         ds = objQuestionarioBLL.RetornaStatusQuestionario(parametros)
         dv = ds.Tables(0).DefaultView
@@ -206,6 +209,21 @@
             e.Row.Cells(8).Visible = False
 
         End If
+    End Sub
+
+    Protected Sub ExportToExcel(sender As Object, e As System.Web.UI.ImageClickEventArgs) Handles btnExportar.Click
+       Dim oResponse As System.Web.HttpResponse = System.Web.HttpContext.Current.Response
+        oResponse.Clear()
+        oResponse.AddHeader("Content-Disposition", "attachment; filename=Relatorio_" + Guid.NewGuid.ToString + ".xls")
+        oResponse.ContentType = "application/vnd.ms-excel"
+        Dim stringWrite As New System.IO.StringWriter
+        Dim htmlWrite As New System.Web.UI.HtmlTextWriter(stringWrite)
+        gridQuestao.RenderControl(htmlWrite)
+        oResponse.Write(stringWrite.ToString)
+        oResponse.End()
+    End Sub
+
+    Public Overrides Sub VerifyRenderingInServerForm(ByVal control As Control)
     End Sub
 
 End Class

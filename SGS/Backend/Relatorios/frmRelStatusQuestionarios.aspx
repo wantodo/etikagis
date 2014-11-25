@@ -16,7 +16,7 @@
                 
         <tr>
 		    <td colspan="2">
-                <fieldset class="frame" style="width:60%;">	
+                <fieldset class="frame" style="width:60%;" runat="server">	
 							<legend style="color:#B0C4DE;">Filtro</legend>
 							    <table>
                                     <tr>
@@ -64,6 +64,7 @@
                                         </asp:UpdatePanel>
                                             
                                         </td>
+                                        
 								    </tr> 
 
                                     <tr>
@@ -99,11 +100,15 @@
                                     </tr>
                                 </table>
                         </fieldset>
-            </td>
+
+                                <td><asp:ImageButton ID="btnExportar" runat="server" 
+                                                ImageUrl="~/Imagens/excel.png" OnClick = "ExportToExcel" /></td>
+
+            </td>            
         </tr>
         </table>
 
-        <table  border="0" cellpadding="0" cellspacing="0" width="800" height="100%">	                
+        <table  border="0" cellpadding="0" cellspacing="0" width="800" height="100%" runat="server">	                
 				<tr>
 					<td colspan="2">
                         <asp:UpdatePanel ID="UpdatePanel2" runat="server">
@@ -129,7 +134,7 @@
                                 <ContentTemplate >                                    
 						            <asp:GridView ID="gridQuestao" runat="server" 
                                         style="margin-top: 0px; margin-left:auto; margin-right:auto;" CellPadding="4" ForeColor="#333333" 
-                                        Font-Size="Small" Height="215px">
+                                        Font-Size="Small" Height="215px" >
                                         <AlternatingRowStyle BackColor="White" />
                                         <EditRowStyle BackColor="#7C6F57" />
                                         <FooterStyle BackColor="#1C5E55" ForeColor="White" Font-Bold="True" />
@@ -141,7 +146,7 @@
                                         <SortedAscendingCellStyle BackColor="#F8FAFA" />
                                         <SortedAscendingHeaderStyle BackColor="#246B61" />
                                         <SortedDescendingCellStyle BackColor="#D4DFE1" />
-                                        <SortedDescendingHeaderStyle BackColor="#15524A" />
+                                        <SortedDescendingHeaderStyle BackColor="#15524A" />                                        
                                     </asp:GridView>
                                 </ContentTemplate>     
                                 <Triggers>

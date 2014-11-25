@@ -114,6 +114,7 @@
     <Content Include="Imagens\defaul_bg.jpg" />
     <Content Include="Imagens\delete.png" />
     <Content Include="Imagens\edit.png" />
+    <Content Include="Imagens\excel.png" />
     <Content Include="Imagens\find.ico" />
     <Content Include="Imagens\find_disabled.png" />
     <Content Include="Imagens\Flag-Black.png" />
