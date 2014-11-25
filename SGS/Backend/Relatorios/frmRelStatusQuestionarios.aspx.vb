@@ -212,13 +212,40 @@ Public Class frmRelStatusQuestionarios
     End Sub
 
     Protected Sub ExportToExcel(sender As Object, e As System.Web.UI.ImageClickEventArgs) Handles btnExportar.Click
-       Dim oResponse As System.Web.HttpResponse = System.Web.HttpContext.Current.Response
+        Dim oResponse As System.Web.HttpResponse = System.Web.HttpContext.Current.Response
+        Dim gv As New GridView
+
         oResponse.Clear()
         oResponse.AddHeader("Content-Disposition", "attachment; filename=Relatorio_" + Guid.NewGuid.ToString + ".xls")
         oResponse.ContentType = "application/vnd.ms-excel"
         Dim stringWrite As New System.IO.StringWriter
         Dim htmlWrite As New System.Web.UI.HtmlTextWriter(stringWrite)
-        gridQuestao.RenderControl(htmlWrite)
+        gv = gridQuestao
+
+        For i = 0 To gridQuestao.Rows.Count - 1
+            If gridQuestao.Rows(i).Cells(7).Text = "4" Then
+                gv.Rows(i).Cells(0).Text = "Aguardando resposta"
+            End If
+
+            If gridQuestao.Rows(i).Cells(7).Text = "5" Then
+                gv.Rows(i).Cells(0).Text = "Gravado"
+            End If
+
+            If gridQuestao.Rows(i).Cells(7).Text = "6" Then
+                gv.Rows(i).Cells(0).Text = "Respondido"
+            End If
+
+            If gridQuestao.Rows(i).Cells(7).Text = "7" Then
+                gv.Rows(i).Cells(0).Text = "Devolvido"
+            End If
+
+            If gridQuestao.Rows(i).Cells(7).Text = "8" Then
+                gv.Rows(i).Cells(0).Text = "Finalizado"
+            End If
+        Next
+
+        gv.RenderControl(htmlWrite)
+
         oResponse.Write(stringWrite.ToString)
         oResponse.End()
     End Sub
