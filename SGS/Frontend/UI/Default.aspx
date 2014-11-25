@@ -11,7 +11,7 @@
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
     <center><h2>
-        Bem Vindo ao Questionario!
+        Bem Vindo!
         
     </h2></center>
 
