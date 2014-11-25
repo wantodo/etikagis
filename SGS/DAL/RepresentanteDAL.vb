@@ -71,7 +71,8 @@ Public Class RepresentanteDAL
                      dal.CriarParametro("@nm_telefone", SqlDbType.VarChar, objRepresentante.nm_telefone), _
                      dal.CriarParametro("@dc_email", SqlDbType.VarChar, objRepresentante.dc_email), _
                      dal.CriarParametro("@cd_status", SqlDbType.Int, objRepresentante.cd_status), _
-                     dal.CriarParametro("@no_userid_cadastro", SqlDbType.VarChar, objRepresentante.no_userid)}
+                     dal.CriarParametro("@no_userid_cadastro", SqlDbType.VarChar, objRepresentante.no_userid), _
+                     dal.CriarParametro("@xx_recebe_email", SqlDbType.Int, objRepresentante.recebe_email)}
 
             dal.ExecuteNonQuery("st_sgs_representante_i", CommandType.StoredProcedure, param)
 
@@ -96,7 +97,8 @@ Public Class RepresentanteDAL
                      dal.CriarParametro("@nm_telefone", SqlDbType.VarChar, objRepresentante.nm_telefone), _
                      dal.CriarParametro("@dc_email", SqlDbType.VarChar, objRepresentante.dc_email), _
                      dal.CriarParametro("@cd_status", SqlDbType.Int, objRepresentante.cd_status), _
-                     dal.CriarParametro("@no_userid", SqlDbType.VarChar, objRepresentante.no_userid)}
+                     dal.CriarParametro("@no_userid", SqlDbType.VarChar, objRepresentante.no_userid), _
+                     dal.CriarParametro("@xx_recebe_email", SqlDbType.Int, objRepresentante.recebe_email)}
 
             dal.ExecuteNonQuery("st_sgs_representante_u", CommandType.StoredProcedure, param)
 
