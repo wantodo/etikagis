@@ -253,8 +253,6 @@ Public Class frmAnaliseRespostas
 
                 objQuestionarioBLL.EnviaEmailAnaliseQuestao(objQuestionario)
             End If
-            
-
 
 
             'Envia email ponto focal
