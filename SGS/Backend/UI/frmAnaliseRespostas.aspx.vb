@@ -244,13 +244,32 @@ Public Class frmAnaliseRespostas
         objAnaliseQuestao.AlteraAnaliseQuestao(Request.QueryString("cd_questionario").ToString, cmbStatus.SelectedValue, txtRetorno.Text)
 
         If cmbStatus.SelectedValue = 7 Then
+            'Envia email representante            
             dt = objRepresentante.RetornaRepresentante(Request.QueryString("cd_representante").ToString, 0).Tables(0)
-            objQuestionario.representante.dc_email = dt.Rows(0)("email").ToString
-            objQuestionario.representante.no_representante = dt.Rows(0)("Nome").ToString
-            objQuestionario.representante.dc_area = dt.Rows(0)("Area").ToString
+            If dt.Rows(0)("xx_recebe_email") = 1 Then
+                objQuestionario.representante.dc_email = dt.Rows(0)("email").ToString
+                objQuestionario.representante.no_representante = dt.Rows(0)("Nome").ToString
+                objQuestionario.representante.dc_area = dt.Rows(0)("Area").ToString
 
-            objQuestionarioBLL.EnviaEmailAnaliseQuestao(objQuestionario)
+                objQuestionarioBLL.EnviaEmailAnaliseQuestao(objQuestionario)
+            End If
+            
+
+
+
+            'Envia email ponto focal
+            If dt.Rows.Count > 0 Then
+                dt = objQuestionarioBLL.RetornaPontoFocal(cmbEmpresa.SelectedValue).Tables(0)
+                objQuestionario.representante.dc_email = dt.Rows(0)("dc_email").ToString
+                objQuestionario.representante.no_representante = dt.Rows(0)("no_representante").ToString
+                objQuestionario.representante.dc_area = cmbArea.SelectedItem.ToString
+
+                objQuestionarioBLL.EnviaEmailAnaliseQuestao(objQuestionario)
+            End If
+            
         End If
+
+
 
         carregaGridQuestao()
 
