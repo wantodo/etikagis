@@ -44,7 +44,8 @@
                                 TitleText="Gestão de Indicadores de Sustentabilidade" UserNameLabelText="Usuário &nbsp;" 
                                 UserNameRequiredErrorMessage="Digite seu nome de usuário!" Height="204px" 
                                 style="margin-top: 0px; margin-left:0px; position:inherit; top: 0px; left: 0px;" 
-                                Font-Names="Arial" Font-Overline="False" Width="391px">
+                                Font-Names="Arial" Font-Overline="False" Width="391px" 
+                                    DestinationPageUrl="~/UI/Default.aspx">
                                 <LoginButtonStyle Width="80px" />
                                 <TextBoxStyle Width="250px" Font-Bold="True" />  
                                 <TitleTextStyle Font-Bold="True" Font-Names="Tahoma" Font-Size="Larger" 
