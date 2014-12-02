@@ -44,8 +44,6 @@
                         <asp:MenuItem Text="Sistema" Value="Sistema">
                             <asp:MenuItem Text="Usuário" 
                                 Value="Usuário" NavigateUrl="~/UI/frmUsuario.aspx"></asp:MenuItem>
-                            <asp:MenuItem Text="Status" 
-                                Value="Status" NavigateUrl="~/UI/frmStatus.aspx"></asp:MenuItem>
                             <asp:MenuItem NavigateUrl="~/UI/frmConteudo.aspx" Text="Conteúdo" 
                                 Value="Conteúdo"></asp:MenuItem>
                         </asp:MenuItem>
