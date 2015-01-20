@@ -12,6 +12,7 @@
             carrega_cmbEmpresa()
             carrega_cmbCategoria()
             carrega_cmbStatus()
+            carrega_cmbCompetencia()
             desabilitaCampos()
 
             If Not Request.QueryString.Item("editar") Is Nothing Then
@@ -240,6 +241,10 @@
             dv.RowFilter = "[Status] like '%" & txtFiltro.Text & "%'"
         End If
 
+        If cmbFiltro.Text = "Competência" Then
+            dv.RowFilter = "[Ano] like '%" & txtFiltro.Text & "%'"
+        End If
+
         gridQuestao.DataBind()
     End Sub
 
@@ -330,6 +335,18 @@
         cmbCategoria.Items.Insert(0, lista)
     End Sub
 
+    Private Sub carrega_cmbCompetencia()
+        Dim StartDate, EndDate As Date
+
+        StartDate = New Date(2014, 12, 31)
+        EndDate = New Date(2050, 12, 31)
+
+        While StartDate <= EndDate
+            cmbCompetencia.Items.Add(StartDate.Year.ToString())
+            StartDate = StartDate.AddYears(1)
+        End While
+    End Sub
+
     Private Sub carrega_cmbStatus()
         Dim objCategoriaBLL As New BLL.CategoriaBLL
 
@@ -342,6 +359,7 @@
     Private Sub habilitaCampos()
         cmbEmpresa.Enabled = True
         cmbCategoria.Enabled = True
+        cmbCompetencia.Enabled = True
         rdbIndicador.Checked = True
         rdbIndicador.Enabled = True
         rdbNovaQustao.Checked = False
@@ -363,6 +381,7 @@
     Private Sub desabilitaCampos()
         cmbEmpresa.Enabled = False
         cmbCategoria.Enabled = False
+        cmbCompetencia.Enabled = False
         rdbIndicador.Checked = True
         rdbIndicador.Enabled = False
         rdbNovaQustao.Checked = False
@@ -554,7 +573,7 @@
        
 
         If cmbEmpresa.SelectedItem.Text = "" Or cmbEmpresa.SelectedItem.Text = "<Selecione>" Or _
-              cmbCategoria.SelectedItem.Text = "" Or cmbCategoria.SelectedItem.Text = "<Selecione>" Then
+              cmbCategoria.SelectedItem.Text = "" Or cmbCategoria.SelectedItem.Text = "<Selecione>" Or cmbCompetencia.SelectedItem.Text = "" Then
 
             lblMsg.Text = "Os campos com * são de preenchimento obrigatório!"
             lblMsg.ForeColor = Drawing.Color.Red
@@ -614,6 +633,7 @@
             .cd_status = cmbStatus.SelectedValue
             .dc_questao = txtQuestao.Text
             .no_userid = Session("sessionUser")
+            .dt_competencia = cmbCompetencia.SelectedValue
         End With
 
         If (btnNovo.Enabled = False And txtCodigo.Text = "") Or txtCodigo.Text = "" Then
@@ -658,7 +678,7 @@
 
         If e.Row.RowType = DataControlRowType.DataRow Then
             temp = e.Row.Cells(3).Text
-            e.Row.Cells(3).Text = "<div style='width:335px; white-space:pre-wrap;'>" & temp & "</div>"
+            e.Row.Cells(3).Text = "<div style='width:323px; white-space:pre-wrap;'>" & temp & "</div>"
 
             e.Row.Cells(0).Text = "<a href='frmQuestao.aspx?editar=1&codigo=" & e.Row.Cells(2).Text & "&questao=" & temp & "&codcategoria=" & e.Row.Cells(4).Text & "&categoria=" & e.Row.Cells(5).Text & "&codindicador=" & e.Row.Cells(6).Text & "&indicador=" & e.Row.Cells(7).Text & "&codempresa=" & e.Row.Cells(8).Text & "&empresa=" & e.Row.Cells(9).Text & "&codstatus=" & e.Row.Cells(10).Text & "&status=" & e.Row.Cells(11).Text & "&tipo=" & e.Row.Cells(12).Text & "&codaspecto=" & e.Row.Cells(13).Text & "&codsubcategoria=" & e.Row.Cells(14).Text & "'><img src='../imagens/edit.png'></a>"
             e.Row.Cells(1).Text = "<a href='frmQuestao.aspx?excluir=1&codigo=" & e.Row.Cells(2).Text & "&questao=" & temp & "&codcategoria=" & e.Row.Cells(4).Text & "&categoria=" & e.Row.Cells(5).Text & "&codindicador=" & e.Row.Cells(6).Text & "&indicador=" & e.Row.Cells(7).Text & "&codempresa=" & e.Row.Cells(8).Text & "&empresa=" & e.Row.Cells(9).Text & "&codstatus=" & e.Row.Cells(10).Text & "&status=" & e.Row.Cells(11).Text & "&tipo=" & e.Row.Cells(12).Text & "&codaspecto=" & e.Row.Cells(13).Text & "&codsubcategoria=" & e.Row.Cells(14).Text & "'><img src='../imagens/delete.png'></a>"
