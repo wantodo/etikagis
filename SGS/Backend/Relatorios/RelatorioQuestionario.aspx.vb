@@ -12,10 +12,23 @@ Public Class RelatorioQuestionario
 
         If Not IsPostBack Then
             carrega_cmbEmpresa()
+            carrega_cmbCompetencia()
             pnlMsg.Visible = False
         End If
 
 
+    End Sub
+
+    Private Sub carrega_cmbCompetencia()
+        Dim StartDate, EndDate As Date
+
+        StartDate = New Date(2014, 12, 31)
+        EndDate = New Date(2050, 12, 31)
+
+        While StartDate <= EndDate
+            cmbCompetencia.Items.Add(StartDate.Year.ToString())
+            StartDate = StartDate.AddYears(1)
+        End While
     End Sub
 
     Private Sub carrega_cmbEmpresa()
@@ -68,7 +81,7 @@ Public Class RelatorioQuestionario
         End If
 
 
-        dtQuestao = objRelatorioBLL.RelatorioQuestao(cmbEmpresa.SelectedValue).Tables(0)
+        dtQuestao = objRelatorioBLL.RelatorioQuestao(cmbEmpresa.SelectedValue, cmbCompetencia.SelectedValue).Tables(0)
 
         If dtQuestao.Rows.Count <= 0 Then
             lblMsg.Text = "Nenhuma questão foi finalizada para essa empresa!"

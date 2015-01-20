@@ -59,6 +59,24 @@ Partial Public Class RelatorioQuestionario
     Protected WithEvents cmbEmpresa As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
+    '''UpdatePanel1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents UpdatePanel1 As Global.System.Web.UI.UpdatePanel
+
+    '''<summary>
+    '''cmbCompetencia control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents cmbCompetencia As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
     '''pnlArea control.
     '''</summary>
     '''<remarks>
