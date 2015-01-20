@@ -65,6 +65,12 @@
                                             </Triggers>
                                         </asp:UpdatePanel>
                                         </td>
+								    </tr> 
+                                    
+                                    <tr>
+									    <td>Competência*</td> <td>                      
+                                            <asp:DropDownList ID="cmbCompetencia" AutoPostBack="true" runat="server" Width="476px" Height="19px">
+                                        </td>
 								    </tr>  
 
                                     <tr>

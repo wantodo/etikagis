@@ -13,7 +13,8 @@ Public Class QuestionarioDAL
                      dal.CriarParametro("@cd_representante", SqlDbType.Int, objQuestionario.representante.cd_representante), _
                      dal.CriarParametro("@cd_status", SqlDbType.Int, objQuestionario.status.cd_status), _
                      dal.CriarParametro("@nm_ordem", SqlDbType.Int, objQuestionario.nm_ordem), _
-                     dal.CriarParametro("@no_userid", SqlDbType.VarChar, objQuestionario.no_userid)}
+                     dal.CriarParametro("@no_userid", SqlDbType.VarChar, objQuestionario.no_userid), _
+                     dal.CriarParametro("@dt_competencia", SqlDbType.VarChar, objQuestionario.dt_competencia)}
 
             dal.ExecuteNonQuery("st_sgs_questionario_i", CommandType.StoredProcedure, param)
 
@@ -36,14 +37,15 @@ Public Class QuestionarioDAL
         End Try
     End Sub
 
-    Public Function ListaQuestionario(codEmpresa As Integer, codCategoria As Integer, codRepresentante As Integer) As DataSet
+    Public Function ListaQuestionario(codEmpresa As Integer, codCategoria As Integer, codRepresentante As Integer, dtCompetencia As String) As DataSet
         Try
             Dim dal As New BDDAL(COMUM.strConexao, True)
             Dim param() As SqlParameter
 
             param = {dal.CriarParametro("@cd_empresa", SqlDbType.Int, codEmpresa), _
                      dal.CriarParametro("@cd_categoria", SqlDbType.Int, codCategoria), _
-                     dal.CriarParametro("@cd_representante", SqlDbType.Int, codRepresentante)}
+                     dal.CriarParametro("@cd_representante", SqlDbType.Int, codRepresentante), _
+                     dal.CriarParametro("@dt_competencia", SqlDbType.VarChar, dtCompetencia)}
 
             Return dal.GetDataSet("st_sgs_questionario_s", CommandType.StoredProcedure, param)
         Catch ex As Exception
@@ -77,14 +79,15 @@ Public Class QuestionarioDAL
         End Try
     End Function
 
-    Public Sub AlteraQuestionario(codQuestionario As Integer, codStatus As Integer, codRepresentante As Integer)
+    Public Sub AlteraQuestionario(codQuestionario As Integer, codStatus As Integer, codRepresentante As Integer, dt_competencia As String)
         Try
             Dim dal As New BDDAL(COMUM.strConexao, True)
             Dim param() As SqlParameter
 
             param = {dal.CriarParametro("@cd_status", SqlDbType.Int, codStatus), _
                      dal.CriarParametro("@cd_questionario", SqlDbType.Int, codQuestionario), _
-                     dal.CriarParametro("@cd_representante", SqlDbType.Int, codRepresentante)}
+                     dal.CriarParametro("@cd_representante", SqlDbType.Int, codRepresentante), _
+                     dal.CriarParametro("@dt_competencia", SqlDbType.VarChar, dt_competencia)}
 
             dal.GetDataSet("st_sgs_questionario_u", CommandType.StoredProcedure, param)
         Catch ex As Exception
@@ -100,7 +103,9 @@ Public Class QuestionarioDAL
             param = {dal.CriarParametro("@cd_perfil", SqlDbType.Int, parametros(0)), _
                      dal.CriarParametro("@cd_usuario", SqlDbType.Int, parametros(1)), _
                      dal.CriarParametro("@cd_empresa", SqlDbType.Int, parametros(2)), _
-                     dal.CriarParametro("@cd_representante", SqlDbType.Int, parametros(3))}
+                     dal.CriarParametro("@cd_representante", SqlDbType.Int, parametros(3)), _
+                     dal.CriarParametro("@dt_competencia", SqlDbType.Int, parametros(4))}
+
 
             Return dal.GetDataSet("st_sgs_questionario_representante_s", CommandType.StoredProcedure, param)
         Catch ex As Exception
