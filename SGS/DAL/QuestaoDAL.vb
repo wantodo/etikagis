@@ -93,7 +93,8 @@ Public Class QuestaoDAL
                      dal.CriarParametro("@cd_empresa", SqlDbType.Int, questao.empresa.cd_empresa), _
                      dal.CriarParametro("@cd_status", SqlDbType.Int, questao.cd_status), _
                      dal.CriarParametro("@xx_tipo", SqlDbType.Char, questao.xx_tipo), _
-                     dal.CriarParametro("@no_userid", SqlDbType.VarChar, questao.no_userid)}
+                     dal.CriarParametro("@no_userid", SqlDbType.VarChar, questao.no_userid), _
+                     dal.CriarParametro("@dt_competencia", SqlDbType.VarChar, questao.dt_competencia)}
 
             dal.GetDataSet("st_sgs_questao_i", CommandType.StoredProcedure, param)
         Catch ex As Exception
@@ -113,7 +114,8 @@ Public Class QuestaoDAL
                      dal.CriarParametro("@cd_empresa", SqlDbType.Int, questao.empresa.cd_empresa), _
                      dal.CriarParametro("@cd_status", SqlDbType.Int, questao.cd_status), _
                      dal.CriarParametro("@xx_tipo", SqlDbType.Char, questao.xx_tipo), _
-                     dal.CriarParametro("@no_userid", SqlDbType.VarChar, questao.no_userid)}
+                     dal.CriarParametro("@no_userid", SqlDbType.VarChar, questao.no_userid), _
+                     dal.CriarParametro("@dt_competencia", SqlDbType.VarChar, questao.dt_competencia)}
 
             dal.GetDataSet("st_sgs_questao_u", CommandType.StoredProcedure, param)
         Catch ex As Exception

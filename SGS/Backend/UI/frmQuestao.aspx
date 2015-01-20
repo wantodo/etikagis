@@ -36,6 +36,7 @@
                                         <asp:ListItem>Indicador</asp:ListItem>
                                         <asp:ListItem>Empresa</asp:ListItem>
                                         <asp:ListItem>Status</asp:ListItem>
+                                        <asp:ListItem>Competência</asp:ListItem>
                                     </asp:DropDownList>
 								    <asp:TextBox runat="server" id="txtFiltro" Width="171px" />                                	
 									    <asp:ImageButton id="btnConsultar" runat="server" 
@@ -206,6 +207,13 @@
                                                     <asp:AsyncPostBackTrigger ControlID ="cmbIndicador" />
                                                 </Triggers>
                                             </asp:UpdatePanel>                                            
+                                        </td>
+								    </tr>
+                                    
+                                    <tr>
+									    <td>Competência*</td> <td>                         
+                                        <asp:DropDownList ID="cmbCompetencia" runat="server" Width="202px">
+                                        </asp:DropDownList>
                                         </td>
 								    </tr>                    
                                    

@@ -8,5 +8,5 @@ Public Class Questao
     Public cd_status As Integer
     Public xx_tipo As String
     Public no_userid As String
-
+    Public dt_competencia As String
 End Class
