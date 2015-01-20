@@ -95,6 +95,15 @@ Partial Public Class frmQuestionario
     Protected WithEvents cmbEmpresa As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
+    '''cmbCompetencia control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents cmbCompetencia As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
     '''pnlCategoria control.
     '''</summary>
     '''<remarks>

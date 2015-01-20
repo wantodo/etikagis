@@ -12,6 +12,7 @@
 
         If Not IsPostBack Then
             carrega_cmbEmpresa()
+            carrega_cmbCompetencia()
 
             If Not Request.QueryString.Item("excluir") Is Nothing Then
                 If Request.QueryString("excluir").ToString = "1" Then
@@ -42,7 +43,10 @@
         Dim dt As DataTable
         Dim dv As DataView
 
-        ds = objQuestionarioBLL.ListaQuestionario(cmbEmpresa.SelectedValue, IIf(cmbCategoria.SelectedValue = "", 0, cmbCategoria.SelectedValue), IIf(cmbArea.SelectedValue = "", 0, cmbArea.SelectedValue))
+        ds = objQuestionarioBLL.ListaQuestionario(cmbEmpresa.SelectedValue, _
+                                                  IIf(cmbCategoria.SelectedValue = "", 0, cmbCategoria.SelectedValue), _
+                                                  IIf(cmbArea.SelectedValue = "", 0, cmbArea.SelectedValue), _
+                                                  cmbCompetencia.SelectedValue)
         dv = ds.Tables(0).DefaultView
         dt = ds.Tables(0)
         gridQuestao.DataSource = dt
@@ -68,7 +72,7 @@
 
     Private Sub carregaGridQuestionario()
         Dim objQuestionarioBLL As New BLL.QuestionarioBLL
-        Dim parametros() As String = {"cd_perfil", "cd_usuario", "cd_empresa", "cd_representante"}
+        Dim parametros() As String = {"cd_perfil", "cd_usuario", "cd_empresa", "cd_representante", "dt_competencia"}
         Dim ds As DataSet
         Dim dt As DataTable
         Dim dv As DataView
@@ -77,6 +81,7 @@
         parametros(1) = 0
         parametros(2) = cmbEmpresa.SelectedValue
         parametros(3) = cmbArea.SelectedValue
+        parametros(4) = cmbCompetencia.SelectedValue
 
         ds = objQuestionarioBLL.RetornaQuestionarioRepresentante(parametros)
         dv = ds.Tables(0).DefaultView
@@ -128,6 +133,18 @@
         lista.Text = "<Selecione>"
         lista.Value = 0
         cmbEmpresa.Items.Insert(0, lista)
+    End Sub
+
+    Private Sub carrega_cmbCompetencia()
+        Dim StartDate, EndDate As Date
+
+        StartDate = New Date(2014, 12, 31)
+        EndDate = New Date(2050, 12, 31)
+
+        While StartDate <= EndDate
+            cmbCompetencia.Items.Add(StartDate.Year.ToString())
+            StartDate = StartDate.AddYears(1)
+        End While
     End Sub
 
     Private Sub carrega_cmbCategoria()
@@ -223,6 +240,7 @@
                     .status.cd_status = 1
                     .nm_ordem = tx.Text
                     .no_userid = Session("sessionUser")
+                    .cd_questionario = cmbCompetencia.SelectedValue
                 End With
 
                 objQuestionarioBLL.InsereQuestionario(objQuestionario)
@@ -284,6 +302,7 @@
     Private Sub limpaCampos()
         lblRepresentante.Text = ""
         carrega_cmbEmpresa()
+        carrega_cmbCompetencia()
         carrega_cmbCategoria()
         carrega_cmbArea()
         txtPrazo.Text = ""
@@ -376,7 +395,7 @@
 
         If objQuestionarioBLL.EnviaEmailQuestionadioLiberado(objQuestionario) Then
 
-            objQuestionarioBLL.AlteraQuestionario(0, 4, cmbArea.SelectedValue)
+            objQuestionarioBLL.AlteraQuestionario(0, 4, cmbCompetencia.SelectedValue, cmbArea.SelectedValue)
 
             lblMsg.Text = "Questionário finalizado com sucesso!"
             lblMsg.ForeColor = Drawing.Color.LightGreen

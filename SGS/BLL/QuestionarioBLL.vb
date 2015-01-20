@@ -2,10 +2,10 @@
 
 Public Class QuestionarioBLL
 
-    Public Function ListaQuestionario(codEmpresa As Integer, codCategoria As Integer, codRepresentante As Integer) As DataSet
+    Public Function ListaQuestionario(codEmpresa As Integer, codCategoria As Integer, codRepresentante As Integer, dtCompetencia As String) As DataSet
         Dim obj As New DAL.QuestionarioDAL
 
-        Return obj.ListaQuestionario(codEmpresa, codCategoria, codRepresentante)
+        Return obj.ListaQuestionario(codEmpresa, codCategoria, codRepresentante, dtCompetencia)
     End Function
 
     Public Sub InsereQuestionario(objQuestionario As MODEL.Questionario)
@@ -32,10 +32,10 @@ Public Class QuestionarioBLL
         Return obj.RetornaPontoFocal(codEmpresa)
     End Function
 
-    Public Sub AlteraQuestionario(codQuestionario As Integer, codStatus As Integer, Optional ByVal codRepresentante As Integer = 0)
+    Public Sub AlteraQuestionario(codQuestionario As Integer, codStatus As Integer, dt_competencia As String, Optional ByVal codRepresentante As Integer = 0)
         Dim obj As New DAL.QuestionarioDAL
 
-        obj.AlteraQuestionario(codQuestionario, codStatus, codRepresentante)
+        obj.AlteraQuestionario(codQuestionario, codStatus, codRepresentante, dt_competencia)
     End Sub
 
     Function RetornaStatusQuestionario(parametros As Array) As DataSet
