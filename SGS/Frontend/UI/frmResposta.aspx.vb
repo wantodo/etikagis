@@ -317,9 +317,10 @@
 
     Private Sub carregagridQuestao()
         Dim objQuestionarioBLL As New BLL.QuestionarioBLL
-        Dim parametros() As String = {"cd_perfil", "cd_usuario", "cd_empresa", "cd_representante"}
+        Dim parametros() As String = {"cd_perfil", "cd_usuario", "cd_empresa", "cd_representante", "dt_competencia"}
         Dim ds As DataSet
         Dim dt As DataTable
+        Dim dtCompetencia As DataTable
 
         parametros(0) = Session("codPerfil")
         parametros(1) = Session("codUsuario")
@@ -328,6 +329,12 @@
             parametros(3) = cmbArea.SelectedValue
         Else
             parametros(3) = 0
+        End If
+
+        dtCompetencia = objQuestionarioBLL.RetornaUltimaCompetencia(parametros(3)).Tables(0)
+
+        If dtCompetencia.Rows.Count > 0 Then
+            parametros(4) = dtCompetencia.Rows(0)("dt_competencia")
         End If
 
         ds = objQuestionarioBLL.RetornaQuestionarioRepresentante(parametros)
@@ -419,6 +426,9 @@
         Dim objQuestionarioBLL As New BLL.QuestionarioBLL
         Dim objResposta As New MODEL.Resposta
         Dim respondido As Boolean
+        Dim cdRepresentante As Integer
+        Dim dtCompetencia As DataTable
+        Dim competencia As String
 
         If txtResposta.Visible = True And txtResposta.Text = "" Then
 
@@ -430,8 +440,17 @@
             pnlMsg.Visible = False
         End If
 
-        If txtResposta.Visible = True Then
 
+        If cmbArea.SelectedValue <> "" And cmbArea.SelectedValue <> "-1" Then
+            cdRepresentante = cmbArea.SelectedValue
+        Else
+            cdRepresentante = 0
+        End If
+
+        dtCompetencia = objQuestionarioBLL.RetornaUltimaCompetencia(cdRepresentante).Tables(0)
+        competencia = dtCompetencia.Rows(0)("dt_competencia")
+
+        If txtResposta.Visible = True Then
             With objResposta
                 If lblCodigoResposta.Text <> "" Then
                     .cd_resposta = lblCodigoResposta.Text
@@ -444,7 +463,7 @@
 
             If Request.QueryString("codStatus").ToString = 4 Then
                 If objRespostaBLL.InsereResposta(objResposta) Then
-                    objQuestionarioBLL.AlteraQuestionario(Request.QueryString("codQuestionario").ToString, 5)
+                    objQuestionarioBLL.AlteraQuestionario(Request.QueryString("codQuestionario").ToString, 5, competencia)
 
                     lblMsg.Text = "Resposta cadastrada com sucesso!"
                     lblMsg.ForeColor = Drawing.Color.LightGreen
@@ -461,7 +480,7 @@
             End If
         Else
             If gridItemResposta.Rows.Count > 0 Then
-                objQuestionarioBLL.AlteraQuestionario(Request.QueryString("codQuestionario").ToString, 5)
+                objQuestionarioBLL.AlteraQuestionario(Request.QueryString("codQuestionario").ToString, 5, competencia)
 
                 lblMsg.Text = "Resposta cadastrada com sucesso!"
                 lblMsg.ForeColor = Drawing.Color.LightGreen
@@ -583,6 +602,14 @@
     Protected Sub btnSim_Click(sender As Object, e As EventArgs) Handles btnSim.Click
         Dim objQuestionario As New MODEL.Questionario
         Dim objQuestionarioBLL As New BLL.QuestionarioBLL
+        Dim cdRepresentante As Integer
+        Dim dtCompetencia As DataTable
+        Dim competencia As String
+
+        cdRepresentante = Session("codRepresentante")
+
+        dtCompetencia = objQuestionarioBLL.RetornaUltimaCompetencia(cdRepresentante).Tables(0)
+        competencia = dtCompetencia.Rows(0)("dt_competencia")
 
         pnlFinalizar.Visible = False
 
@@ -595,7 +622,7 @@
 
             For i = 0 To gridQuestao.Rows.Count - 1
                 If gridQuestao.Rows(i).Cells(7).Text = 5 Then
-                    objQuestionarioBLL.AlteraQuestionario(gridQuestao.Rows(i).Cells(2).Text, 6)
+                    objQuestionarioBLL.AlteraQuestionario(gridQuestao.Rows(i).Cells(2).Text, 6, competencia)
                 End If
             Next
 

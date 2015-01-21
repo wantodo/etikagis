@@ -221,6 +221,12 @@ Public Class QuestionarioBLL
 
         obj.AlteraPrazo(cd_representante, dt_prazo)
     End Sub
+
+    Function RetornaUltimaCompetencia(cd_representante As Integer) As DataSet
+        Dim obj As New DAL.QuestionarioDAL
+
+        Return obj.RetornaUltimaCompetencia(cd_representante)
+    End Function
 End Class
 
 
