@@ -240,7 +240,7 @@
                     .status.cd_status = 1
                     .nm_ordem = tx.Text
                     .no_userid = Session("sessionUser")
-                    .cd_questionario = cmbCompetencia.SelectedValue
+                    .dt_competencia = cmbCompetencia.SelectedValue
                 End With
 
                 objQuestionarioBLL.InsereQuestionario(objQuestionario)
