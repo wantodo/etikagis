@@ -68,10 +68,11 @@
 								    </tr> 
                                     
                                     <tr>
-									    <td>Competência*</td> <td>                      
-                                            <asp:DropDownList ID="cmbCompetencia" AutoPostBack="true" runat="server" Width="476px" Height="19px">
+									    <td>Competência*</td> <td>                         
+                                        <asp:DropDownList ID="cmbCompetencia" runat="server" Width="202px">
+                                        </asp:DropDownList>
                                         </td>
-								    </tr>  
+								    </tr>    
 
                                     <tr>
 									    <td>Categoria</td> <td>        
