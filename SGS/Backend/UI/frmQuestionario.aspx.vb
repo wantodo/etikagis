@@ -312,6 +312,7 @@
     Private Sub habilitaCampos()
         cmbEmpresa.Enabled = True
         cmbCategoria.Enabled = True
+        cmbCompetencia.Enabled = True
         cmbArea.Enabled = True
         txtPrazo.Enabled = True
         gridQuestao.Enabled = True
@@ -320,6 +321,7 @@
     Private Sub desabilitaCampos()
         cmbEmpresa.Enabled = False
         cmbCategoria.Enabled = False
+        cmbCompetencia.Enabled = False
         cmbArea.Enabled = False
         txtPrazo.Enabled = False
         gridQuestao.Enabled = False
