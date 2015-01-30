@@ -61,6 +61,22 @@
                                                 </Triggers>
                                             </asp:UpdatePanel>
                                         </td>
+                                    </tr>                                 
+
+                                    <tr>
+                                        <td>Competência*</td>
+                                        <td>                         
+                                            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                                                    <ContentTemplate >                     
+                                                        <asp:DropDownList ID="cmbCompetencia" AutoPostBack="true" runat="server" Width="269px" 
+                                                            Height="22px" Visible="true">
+                                                        </asp:DropDownList>
+                                                    </ContentTemplate>
+                                                    <Triggers>
+                                                        <asp:AsyncPostBackTrigger ControlID ="cmbArea" />
+                                                    </Triggers>
+                                                </asp:UpdatePanel>
+                                        </td>
                                     </tr>
 
                                     <tr>

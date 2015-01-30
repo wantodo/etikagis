@@ -3,12 +3,13 @@ Imports System.Data.SqlClient
 Imports System.IO
 
 Public Class AnaliseQuestaoDAL
-    Public Function ListaAnaliseQuestao(cd_representante As Integer) As DataSet
+    Public Function ListaAnaliseQuestao(cd_representante As Integer, competencia As String) As DataSet
         Try
             Dim dal As New BDDAL(COMUM.strConexao, True)
             Dim param() As SqlParameter
 
-            param = {dal.CriarParametro("@cd_representante", SqlDbType.VarChar, cd_representante)}
+            param = {dal.CriarParametro("@cd_representante", SqlDbType.VarChar, cd_representante), _
+                     dal.CriarParametro("@competencia", SqlDbType.VarChar, competencia)}
 
             Return dal.GetDataSet("st_sgs_analise_questao_s", CommandType.StoredProcedure, param)
         Catch ex As Exception

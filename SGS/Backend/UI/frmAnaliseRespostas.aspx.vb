@@ -10,6 +10,7 @@ Public Class frmAnaliseRespostas
 
         If Not IsPostBack Then
             carrega_cmbEmpresa()
+            carrega_cmbCompetencia()
             pnlMsg.Visible = False
 
             If Not Request.QueryString.Item("editar") Is Nothing Then
@@ -64,6 +65,18 @@ Public Class frmAnaliseRespostas
             End If
 
         End If
+    End Sub
+
+    Private Sub carrega_cmbCompetencia()
+        Dim StartDate, EndDate As Date
+
+        StartDate = New Date(2014, 12, 31)
+        EndDate = New Date(2050, 12, 31)
+
+        While StartDate <= EndDate
+            cmbCompetencia.Items.Add(StartDate.Year.ToString())
+            StartDate = StartDate.AddYears(1)
+        End While
     End Sub
 
     Private Sub carrega_gridItemQuestao(codQuestionario As Integer)
@@ -131,7 +144,7 @@ Public Class frmAnaliseRespostas
         Dim dt As DataTable
         Dim dv As DataView
 
-        ds = objAnaliseQuestaoBLL.ListaAnaliseQuestao(cmbArea.SelectedValue)
+        ds = objAnaliseQuestaoBLL.ListaAnaliseQuestao(cmbArea.SelectedValue, cmbCompetencia.SelectedValue)
         dv = ds.Tables(0).DefaultView
         dt = ds.Tables(0)
 
@@ -146,6 +159,15 @@ Public Class frmAnaliseRespostas
     End Sub
 
     Protected Sub cmbArea_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbArea.SelectedIndexChanged
+        If cmbCompetencia.Text = "" Then
+            lblMsg.Text = "Informe uma competência!"
+            lblMsg.ForeColor = Drawing.Color.Red
+            pnlMsg.Visible = True
+            Exit Sub
+        Else
+            pnlMsg.Visible = False
+        End If
+
         carregaGridQuestao()
 
         'gridQuestao.Focus()
