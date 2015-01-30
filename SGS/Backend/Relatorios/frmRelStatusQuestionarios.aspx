@@ -98,6 +98,22 @@
                                             </asp:UpdatePanel>
                                         </td>
                                     </tr>
+
+                                    <tr>
+                                        <td>Competência</td>
+                                        <td>                         
+                                            <asp:UpdatePanel ID="pnlCompetencia" runat="server">
+                                                <ContentTemplate >                     
+                                                    <asp:DropDownList ID="cmbCompetencia" AutoPostBack="true" runat="server" Width="269px" 
+                                                        Height="22px">
+                                                    </asp:DropDownList>
+                                                </ContentTemplate>
+                                                <Triggers>
+                                                    <asp:AsyncPostBackTrigger ControlID ="cmbCompetencia" />
+                                                </Triggers>
+                                            </asp:UpdatePanel>
+                                        </td>
+                                    </tr>
                                 </table>
                         </fieldset>
 

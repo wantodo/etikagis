@@ -12,6 +12,7 @@ Public Class frmRelStatusQuestionarios
         If Not IsPostBack Then
             carrega_cmbEmpresa()
             carrega_cmbStatus()
+            carrega_cmbCompetencia()
         End If
     End Sub
 
@@ -111,9 +112,21 @@ Public Class frmRelStatusQuestionarios
         carregagridQuestao()
     End Sub
 
+    Private Sub carrega_cmbCompetencia()
+        Dim StartDate, EndDate As Date
+
+        StartDate = New Date(2014, 12, 31)
+        EndDate = New Date(2050, 12, 31)
+
+        While StartDate <= EndDate
+            cmbCompetencia.Items.Add(StartDate.Year.ToString())
+            StartDate = StartDate.AddYears(1)
+        End While
+    End Sub
+
     Private Sub carregagridQuestao()
         Dim objQuestionarioBLL As New BLL.QuestionarioBLL
-        Dim parametros() As String = {"cd_empresa", "cd_area", "cd_indicador", "cd_status"}
+        Dim parametros() As String = {"cd_empresa", "cd_area", "cd_indicador", "cd_status", "dt_competencia"}
         Dim ds As DataSet
         Dim dt As DataTable
         Dim dv As DataView
@@ -137,6 +150,11 @@ Public Class frmRelStatusQuestionarios
             parametros(3) = cmbStatus.SelectedValue
         Else
             parametros(3) = 0
+        End If
+        If cmbCompetencia.SelectedValue <> "" Then
+            parametros(4) = cmbCompetencia.SelectedValue
+        Else
+            parametros(4) = 0
         End If
 
 

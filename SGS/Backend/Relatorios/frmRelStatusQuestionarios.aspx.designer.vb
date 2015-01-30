@@ -131,6 +131,24 @@ Partial Public Class frmRelStatusQuestionarios
     Protected WithEvents cmbStatus As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
+    '''pnlCompetencia control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents pnlCompetencia As Global.System.Web.UI.UpdatePanel
+
+    '''<summary>
+    '''cmbCompetencia control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents cmbCompetencia As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
     '''btnExportar control.
     '''</summary>
     '''<remarks>
